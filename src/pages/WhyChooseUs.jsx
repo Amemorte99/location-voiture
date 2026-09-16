@@ -1,11 +1,13 @@
-import { motion } from "framer-motion";
-import { FaCheckCircle, FaClock, FaShieldAlt, FaThumbsUp, FaMoneyBillWave, FaHeadset, FaCar, FaStar, FaArrowRight, FaSearch, FaCalendarCheck, FaKey } from "react-icons/fa";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaCheckCircle, FaClock, FaShieldAlt, FaMoneyBillWave, FaHeadset, FaCar, FaStar, FaArrowRight, FaSearch, FaCalendarCheck, FaKey, FaChevronDown, FaQuestionCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
 import { Helmet } from "react-helmet-async";
 
 export default function WhyChooseUs() {
   const { currentUser } = useAuth();
+  const [openFaq, setOpenFaq] = useState(0);
   const features = [
     { 
       icon: <FaShieldAlt size={32} />, 
@@ -16,7 +18,7 @@ export default function WhyChooseUs() {
     { 
       icon: <FaClock size={32} />, 
       title: "Disponibilité 24/7", 
-      desc: "Service disponible jour et nuit. Réservez et récupérez votre véhicule à tout moment via notre système automatisé.",
+      desc: "Service continu jour et nuit. Réservez en ligne et récupérez votre véhicule à l'aéroport Fès-Saïss ou en agence dès votre arrivée.",
       highlight: "Service non-stop"
     },
     { 
@@ -46,9 +48,9 @@ export default function WhyChooseUs() {
   ];
 
   const stats = [
-    { number: "500+", label: "Clients Satisfaits", icon: <FaThumbsUp size={22} /> },
-    { number: "4.9/5", label: "Note Moyenne", icon: <FaStar size={22} /> },
-    { number: "24/7", label: "Assistance", icon: <FaHeadset size={22} /> }
+    { number: "20+", label: "Véhicules Récents", icon: <FaCar size={22} /> },
+    { number: "100%", label: "Kilométrage Illimité", icon: <FaCheckCircle size={22} /> },
+    { number: "24/7", label: "Assistance Régionale", icon: <FaHeadset size={22} /> }
   ];
 
   const steps = [
@@ -56,7 +58,7 @@ export default function WhyChooseUs() {
       step: "01",
       icon: <FaSearch size={28} />,
       title: "Explorez & Choisissez",
-      desc: "Parcourez notre flotte premium et trouvez le véhicule parfait grâce à nos filtres intelligents."
+      desc: "Parcourez notre flotte et trouvez le véhicule idéal pour vos trajets (citadine, berline ou SUV)."
     },
     {
       step: "02",
@@ -69,6 +71,33 @@ export default function WhyChooseUs() {
       icon: <FaKey size={28} />,
       title: "Prenez la route",
       desc: "Récupérez votre véhicule prêt à partir. Profitez de la route en toute sérénité avec LocaFès."
+    }
+  ];
+
+  const faqs = [
+    {
+      q: "Comment fonctionne la caution / dépôt de garantie ?",
+      a: "Chez LocaFès, la caution s'effectue par simple pré-autorisation sur carte bancaire (le montant n'est pas débité de votre compte) ou par chèque / espèces selon votre convenance. Elle vous est immédiatement débloquée lors de la restitution du véhicule après état des lieux."
+    },
+    {
+      q: "Quels sont les modes de règlement acceptés ?",
+      a: "Vous pouvez régler directement lors de la prise en charge en espèces (Dirhams ou Euros) ou par carte bancaire. Aucune avance ni carte bancaire n'est exigée lors de votre pré-réservation en ligne."
+    },
+    {
+      q: "Comment se déroule la prise en charge à l'aéroport Fès-Saïss ?",
+      a: "Un agent LocaFès vous attend personnellement dans le hall des arrivées avec une pancarte à votre nom dès l'atterrissage. Le contrat est finalisé sur place en 5 minutes et la voiture vous est remise sur le parking de l'aéroport, sans file d'attente à un guichet."
+    },
+    {
+      q: "Quels sont les documents obligatoires lors de la remise des clés ?",
+      a: "Vous devez simplement présenter l'original de votre permis de conduire (valable depuis plus de 2 ans) ainsi qu'un passeport en cours de validité (pour les touristes et MRE) ou une pièce d'identité / CIN (pour les résidents marocains)."
+    },
+    {
+      q: "Le kilométrage est-il réellement illimité ?",
+      a: "Oui, à 100%. Tous nos contrats incluent le kilométrage illimité sur l'ensemble du territoire marocain. Vous pouvez explorer Fès, Meknès, Chefchaouen ou le sud sans aucun supplément kilométrique."
+    },
+    {
+      q: "Que se passe-t-il en cas d'imprévu mécanique ou de crevaison ?",
+      a: "Notre service d'assistance routière intervient 24h/24 et 7j/7 partout au Maroc. En cas d'immobilisation, nous dépêchons un technicien ou mettons à disposition un véhicule de remplacement dans les meilleurs délais."
     }
   ];
 
@@ -89,7 +118,7 @@ export default function WhyChooseUs() {
             viewport={{ once: true }}
             className="inline-block px-5 py-2 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-extrabold text-[10px] uppercase tracking-[0.3em] mb-4 border border-[#E8DDD0] shadow-sm"
           >
-            🌟 L'Excellence LocaFès
+            L'Excellence LocaFès
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -111,7 +140,6 @@ export default function WhyChooseUs() {
           </motion.p>
         </div>
 
-        {/* ========== STATS BAND ========== */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-28">
           {stats.map((stat, idx) => (
             <motion.div 
@@ -136,7 +164,6 @@ export default function WhyChooseUs() {
           ))}
         </div>
 
-        {/* ========== FEATURES GRID ========== */}
         <div className="mb-32">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-[10px] uppercase tracking-[0.2em] mb-4 border border-[#E8DDD0]">
@@ -189,7 +216,6 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* ========== HOW IT WORKS ========== */}
         <div className="mb-32">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-[10px] uppercase tracking-[0.2em] mb-4 border border-[#E8DDD0]">
@@ -235,7 +261,61 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* ========== CTA SECTION ========== */}
+        <div className="mb-32 max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-5 py-2 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-extrabold text-[10px] uppercase tracking-[0.3em] mb-4 border border-[#E8DDD0]">
+              Questions Fréquentes
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-[#111827] tracking-tight">
+              Tout ce que vous devez <span className="text-[#C4A47C]">savoir</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div 
+                  key={idx} 
+                  className={`rounded-[24px] border transition-all duration-300 overflow-hidden ${
+                    isOpen ? 'bg-[#F8F5F0]/60 border-[#C4A47C]/40 shadow-sm' : 'bg-white border-gray-100 hover:border-gray-200'
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base text-[#111827] cursor-pointer"
+                  >
+                    <span className="flex items-center gap-3">
+                      <FaQuestionCircle className={isOpen ? 'text-[#C4A47C]' : 'text-gray-300'} size={18} />
+                      {faq.q}
+                    </span>
+                    <FaChevronDown 
+                      className={`text-[#6B7280] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 text-[#C4A47C]' : ''}`} 
+                      size={14} 
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 pt-1 text-sm text-[#4B5563] leading-relaxed font-medium pl-14">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -246,18 +326,7 @@ export default function WhyChooseUs() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C4A47C]/8 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#8B7355]/6 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px] pointer-events-none" />
           
-          {/* Voiture Fantôme Flottante au Centre */}
-          <motion.div 
-            animate={{ y: [-10, 10, -10] }} 
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.08] pointer-events-none select-none"
-          >
-            <img 
-              src="/images/Hyundai Tucson 2023.webp" 
-              alt="Voiture de fond" 
-              className="w-[120%] md:w-[80%] max-w-4xl object-contain mix-blend-screen drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-            />
-          </motion.div>
+
           
           <div className="relative z-10 max-w-3xl mx-auto">
             <span className="inline-block px-4 py-1.5 bg-[#C4A47C]/10 text-[#D4B88C] rounded-full font-bold text-[10px] uppercase tracking-[0.2em] mb-8 border border-[#C4A47C]/20">

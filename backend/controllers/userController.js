@@ -52,30 +52,43 @@ const getUserById = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select('+password');
+    const user = await User.findOne({ _id: req.params.id, deletedAt: null }).select('+password');
 
-    if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      user.phone = req.body.phone || user.phone;
-      user.role = req.body.role || user.role;
-
-      if (req.body.password) {
-        user.password = req.body.password;
-      }
-
-      const updatedUser = await user.save();
-
-      res.json({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        phone: updatedUser.phone,
-        role: updatedUser.role,
-      });
-    } else {
-      res.status(404).json({ message: 'Utilisateur non trouvé' });
+    if (!user) {
+      return res.status(404).json({ message: 'Utilisateur non trouvé' });
     }
+
+    if (req.body.email && req.body.email.toLowerCase() !== user.email) {
+      const emailExists = await User.findOne({
+        email: req.body.email.toLowerCase(),
+        _id: { $ne: user._id },
+        deletedAt: null
+      });
+      if (emailExists) {
+        return res.status(400).json({ message: 'Cet email est déjà utilisé par un autre compte' });
+      }
+      user.email = req.body.email.toLowerCase();
+    }
+
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.phone !== undefined) user.phone = req.body.phone;
+    if (req.body.role) user.role = req.body.role;
+
+    if (req.body.password && req.body.password.trim().length >= 6) {
+      user.password = req.body.password;
+    } else if (req.body.password && req.body.password.trim().length < 6) {
+      return res.status(400).json({ message: 'Le mot de passe doit comporter au moins 6 caractères' });
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      phone: updatedUser.phone,
+      role: updatedUser.role,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -84,7 +97,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({ _id: req.params.id, deletedAt: null });
     if (user) {
       user.deletedAt = new Date();
       await user.save();
@@ -100,29 +113,42 @@ const deleteUser = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findOne({ _id: req.user._id, deletedAt: null });
 
-    if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      user.phone = req.body.phone || user.phone;
-
-      if (req.body.password) {
-        user.password = req.body.password;
-      }
-
-      const updatedUser = await user.save();
-
-      res.json({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        phone: updatedUser.phone,
-        role: updatedUser.role,
-      });
-    } else {
-      res.status(404).json({ message: 'Utilisateur non trouvé' });
+    if (!user) {
+      return res.status(404).json({ message: 'Utilisateur non trouvé' });
     }
+
+    if (req.body.email && req.body.email.toLowerCase() !== user.email) {
+      const emailExists = await User.findOne({
+        email: req.body.email.toLowerCase(),
+        _id: { $ne: user._id },
+        deletedAt: null
+      });
+      if (emailExists) {
+        return res.status(400).json({ message: 'Cet email est déjà utilisé par un autre compte' });
+      }
+      user.email = req.body.email.toLowerCase();
+    }
+
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.phone !== undefined) user.phone = req.body.phone;
+
+    if (req.body.password && req.body.password.trim().length >= 6) {
+      user.password = req.body.password;
+    } else if (req.body.password && req.body.password.trim().length < 6) {
+      return res.status(400).json({ message: 'Le mot de passe doit comporter au moins 6 caractères' });
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      phone: updatedUser.phone,
+      role: updatedUser.role,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

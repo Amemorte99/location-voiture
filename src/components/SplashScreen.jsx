@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaCar } from 'react-icons/fa';
 
 export default function SplashScreen({ onComplete }) {
-  const [alreadySeen] = useState(() => sessionStorage.getItem('splashSeen') === 'true');
+  const [alreadySeen] = useState(() => sessionStorage.getItem('locafes_splash_shown') === 'true');
   const [show, setShow] = useState(true);
 
   useEffect(() => {
@@ -16,9 +16,9 @@ export default function SplashScreen({ onComplete }) {
     if (alreadySeen) return;
     const timer = setTimeout(() => {
       setShow(false);
-      sessionStorage.setItem('splashSeen', 'true');
-      setTimeout(onComplete, 600); 
-    }, 2200);
+      sessionStorage.setItem('locafes_splash_shown', 'true');
+      setTimeout(onComplete, 400); 
+    }, 1100);
     return () => clearTimeout(timer);
   }, [alreadySeen, onComplete]);
 

@@ -1,7 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaCar, FaUser, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
+import { FaBars, FaTimes, FaCar, FaUser, FaSignOutAlt, FaTachometerAlt, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 
 export default function Navbar() {
   const { currentUser, logout, isAdmin } = useAuth();
@@ -51,7 +51,8 @@ export default function Navbar() {
   const navLinks = [
     { path: '/', label: 'Accueil' },
     { path: '/cars', label: 'Voitures' },
-    { path: "/WhyChooseUs", label: "Pourquoi nous choisir" },
+    { path: '/why-choose-us', label: 'Pourquoi nous choisir' },
+    { path: '/contact', label: 'Contact' },
   ];
 
   
@@ -217,6 +218,27 @@ export default function Navbar() {
                 Connexion
               </Link>
             )}
+
+            <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-3">
+              <a 
+                href="tel:+212535621020" 
+                className="flex items-center justify-center gap-2 py-3 bg-[#F8F5F0] text-[#111827] rounded-xl font-bold text-xs hover:bg-[#F0EBE3] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaPhoneAlt className="text-[#C4A47C]" size={12} />
+                Appeler
+              </a>
+              <a 
+                href="https://wa.me/212668898245" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-3 bg-emerald-50 text-emerald-700 rounded-xl font-bold text-xs hover:bg-emerald-100 transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaWhatsapp className="text-emerald-500" size={14} />
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
     </nav>

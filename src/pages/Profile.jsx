@@ -2,21 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { getMyBookings, updateBookingStatus } from '../services/bookingService';
-import { FaCalendarAlt, FaCar, FaTimes, FaCheck, FaDownload, FaCrown, FaShieldAlt, FaStar, FaTrophy, FaUser, FaEnvelope, FaPhone, FaLock, FaArrowRight } from 'react-icons/fa';
+import { FaCalendarAlt, FaCar, FaTimes, FaCheck, FaDownload, FaUser, FaEnvelope, FaPhone, FaLock, FaArrowRight, FaMapMarkerAlt } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { generateInvoicePDF } from '../utils/generatePDF';
 import { updateProfile } from '../services/userService';
 import { resolveImageUrl } from '../utils/imageUrl';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-
-
-function getLoyaltyTier(bookingsCount) {
-  if (bookingsCount >= 20) return { name: 'Platinum', icon: <FaCrown />, color: 'from-purple-500 to-indigo-500', bg: 'bg-purple-100', textColors: 'text-purple-600', ring: 'ring-purple-200', next: null, progress: 100 };
-  if (bookingsCount >= 10) return { name: 'Gold', icon: <FaTrophy />, color: 'from-amber-400 to-orange-400', bg: 'bg-amber-100', textColors: 'text-amber-600', ring: 'ring-amber-200', next: 'Platinum', target: 20, progress: (bookingsCount / 20) * 100 };
-  if (bookingsCount >= 5) return { name: 'Silver', icon: <FaStar />, color: 'from-slate-300 to-slate-400', bg: 'bg-slate-100', textColors: 'text-slate-600', ring: 'ring-slate-200', next: 'Gold', target: 10, progress: (bookingsCount / 10) * 100 };
-  return { name: 'Bronze', icon: <FaShieldAlt />, color: 'from-orange-200 to-orange-300', bg: 'bg-orange-50', textColors: 'text-orange-700', ring: 'ring-orange-100', next: 'Silver', target: 5, progress: (bookingsCount / 5) * 100 };
-}
 
 export default function Profile() {
   const { currentUser, logout, updateUser } = useAuth();
@@ -40,7 +32,7 @@ export default function Profile() {
   const fetchBookings = async () => {
     try {
       const data = await getMyBookings();
-      setBookings(data || []);
+      setBookings(Array.isArray(data) ? data : (data?.bookings || []));
     } catch (err) {
       toast.error("Erreur lors de la récupération des réservations.");
     } finally {
@@ -53,8 +45,6 @@ export default function Profile() {
   const totalSpent = bookings
     .filter(b => b.status === 'confirmed' || b.status === 'completed')
     .reduce((sum, b) => sum + (b.totalPrice || 0), 0);
-
-  const tier = getLoyaltyTier(confirmedBookingsCount);
 
   const filteredBookings = filterStatus === 'all'
     ? bookings
@@ -116,10 +106,10 @@ export default function Profile() {
 
   const getStatusBadge = (status) => {
     const styles = {
-      pending: "bg-amber-50 text-amber-600 border-amber-200",
-      confirmed: "bg-emerald-50 text-emerald-600 border-emerald-200",
-      cancelled: "bg-rose-50 text-rose-500 border-rose-200",
-      completed: "bg-[#F8F5F0] text-[#C4A47C] border-[#DDD0C0]",
+      pending: "bg-amber-50 text-amber-700 border-amber-200",
+      confirmed: "bg-emerald-50 text-emerald-700 border-emerald-200",
+      cancelled: "bg-rose-50 text-rose-700 border-rose-200",
+      completed: "bg-gray-100 text-gray-700 border-gray-200",
     };
     const labels = {
       pending: "En attente",
@@ -128,7 +118,7 @@ export default function Profile() {
       completed: "Terminée",
     };
     return (
-      <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${styles[status] || styles.pending}`}>
+      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${styles[status] || styles.pending}`}>
         {labels[status] || status}
       </span>
     );
@@ -145,133 +135,107 @@ export default function Profile() {
   if (!currentUser) return null;
 
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-white">
+    <div className="min-h-screen pt-28 pb-20 bg-gray-50/50">
       <Helmet>
         <title>Mon Profil | LocaFès</title>
         <meta name="description" content="Gérez votre profil et vos réservations LocaFès." />
       </Helmet>
 
       <div className="max-w-6xl mx-auto px-6">
-        
-        {}
-        <div className="bg-[#F8FAFC] border border-gray-100 rounded-[40px] p-10 md:p-14 mb-12 shadow-[0_4px_20px_-12px_rgba(0,0,0,0.05)] relative overflow-hidden">
-          {}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#F0EBE3]/50 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-50/50 rounded-full blur-[60px]" />
-          
-          <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
-            {}
-            <div className="relative group shrink-0">
-              <div className={`absolute inset-0 bg-gradient-to-br ${tier.color} rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity`} />
-              <div className={`relative w-28 h-28 rounded-[2rem] bg-white border-2 border-white shadow-xl flex items-center justify-center text-4xl font-extrabold ${tier.textColors}`}>
-                {currentUser.name?.charAt(0).toUpperCase()}
-              </div>
-              {}
-              <div className={`absolute -bottom-2 -right-2 w-10 h-10 ${tier.bg} ${tier.textColors} rounded-2xl flex items-center justify-center text-sm shadow-md border-4 border-[#F8FAFC]`}>
-                {tier.icon}
-              </div>
+        {/* En-tête profil réel et épuré */}
+        <div className="bg-white border border-gray-200/80 rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+            {/* Avatar initiales */}
+            <div className="w-20 h-20 rounded-2xl bg-[#F8F5F0] border border-[#E8DDD0] flex items-center justify-center text-2xl font-bold text-[#C4A47C] shrink-0 shadow-inner">
+              {currentUser.name?.charAt(0).toUpperCase()}
             </div>
-            
-            {}
+
+            {/* Infos utilisateur */}
             <div className="text-center md:text-left flex-1 min-w-0">
-              <div className="flex flex-col md:flex-row md:items-center gap-3 mb-2">
-                <h1 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight truncate">{currentUser.name}</h1>
-                <span className={`inline-flex px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest ${tier.bg} ${tier.textColors} shadow-sm border border-white/50 w-fit mx-auto md:mx-0`}>
-                  {tier.name}
+              <div className="flex flex-col md:flex-row md:items-center gap-2 mb-1">
+                <h1 className="text-2xl md:text-3xl font-bold text-[#111827] truncate">
+                  {currentUser.name}
+                </h1>
+                <span className="inline-flex px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gray-100 text-[#4B5563] w-fit mx-auto md:mx-0">
+                  {currentUser.role === 'admin' ? 'Administrateur' : 'Client LocaFès'}
                 </span>
               </div>
-              <p className="text-sm font-bold text-[#6B7280]">{currentUser.email}</p>
-              
-              {}
-              {tier.next && (
-                <div className="mt-6 max-w-sm mx-auto md:mx-0">
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-[10px] text-[#9CA3AF] font-bold uppercase tracking-widest">Progression vers {tier.next}</span>
-                    <span className="text-[10px] text-[#111827] font-black">{confirmedBookingsCount}/{tier.target} locations</span>
-                  </div>
-                  <div className="h-2 bg-white rounded-full overflow-hidden border border-gray-100 shadow-inner">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      animate={{ width: `${Math.min(tier.progress, 100)}%` }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className={`h-full bg-gradient-to-r ${tier.color} rounded-full`} 
-                    />
-                  </div>
-                </div>
+              <p className="text-xs text-[#6B7280] font-medium">{currentUser.email}</p>
+              {currentUser.phone && (
+                <p className="text-xs text-[#6B7280] mt-0.5">{currentUser.phone}</p>
               )}
             </div>
-            
-            {}
-            <div className="flex gap-4 w-full md:w-auto shrink-0 mt-6 md:mt-0">
-              <div className="flex-1 md:flex-none text-center p-5 rounded-[24px] bg-white border border-gray-100 shadow-sm shadow-gray-100 min-w-[100px]">
-                <p className="text-3xl font-black text-[#111827]">{confirmedBookingsCount}</p>
-                <p className="text-[9px] font-black text-[#6B7280] uppercase tracking-widest mt-1">Locations</p>
+
+            {/* Statistiques réelles */}
+            <div className="flex gap-4 w-full md:w-auto shrink-0 justify-center">
+              <div className="text-center px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 min-w-[90px]">
+                <p className="text-xl font-bold text-[#111827]">{bookings.length}</p>
+                <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Réservations</p>
               </div>
-              <div className="flex-1 md:flex-none text-center p-5 rounded-[24px] bg-white border border-gray-100 shadow-sm shadow-gray-100 min-w-[100px]">
-                <p className="text-xl md:text-2xl font-black text-[#C4A47C]">{totalSpent}</p>
-                <p className="text-[9px] font-black text-[#6B7280] uppercase tracking-widest mt-1">DH Total</p>
+              <div className="text-center px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 min-w-[90px]">
+                <p className="text-xl font-bold text-emerald-600">{confirmedBookingsCount}</p>
+                <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Validées</p>
+              </div>
+              <div className="text-center px-4 py-3 rounded-xl bg-[#F8F5F0] border border-[#E8DDD0] min-w-[100px]">
+                <p className="text-xl font-bold text-[#111827]">{totalSpent} <span className="text-xs font-semibold text-[#C4A47C]">DH</span></p>
+                <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Dépenses</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-10">
-          
-          {}
+        <div className="grid lg:grid-cols-4 gap-8">
+          {/* Navigation latérale */}
           <div className="lg:col-span-1">
-            <div className="sticky top-32 space-y-6">
-              
-              {}
-              <div className="bg-[#F8FAFC] rounded-[32px] p-3 shadow-sm border border-gray-100">
+            <div className="sticky top-28 space-y-4">
+              <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-200/80 space-y-1">
                 <button 
                   onClick={() => setActiveTab('bookings')}
-                  className={`w-full flex items-center gap-3 px-5 py-4 rounded-[20px] font-extrabold text-sm transition-all ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-colors ${
                     activeTab === 'bookings' 
-                      ? 'bg-white text-[#111827] shadow-sm shadow-gray-200 border border-transparent' 
-                      : 'text-[#6B7280] hover:bg-white/50 border border-transparent hover:border-gray-100'
+                      ? 'bg-[#111827] text-white shadow-sm' 
+                      : 'text-[#4B5563] hover:bg-gray-50'
                   }`}
                 >
-                  <FaCalendarAlt size={16} className={activeTab === 'bookings' ? 'text-[#C4A47C]' : 'text-[#9CA3AF]'} />
+                  <FaCalendarAlt size={14} className={activeTab === 'bookings' ? 'text-[#C4A47C]' : 'text-gray-400'} />
                   Mes Réservations
-                  <span className={`ml-auto text-[10px] font-black px-2 py-1 rounded-lg ${
-                     activeTab === 'bookings' ? 'bg-[#F8FAFC] text-[#C4A47C]' : 'bg-gray-100 text-[#6B7280]'
+                  <span className={`ml-auto text-xs font-bold px-2 py-0.5 rounded-full ${
+                    activeTab === 'bookings' ? 'bg-white/20 text-white' : 'bg-gray-100 text-[#4B5563]'
                   }`}>{bookings.length}</span>
                 </button>
+
                 <button 
                   onClick={() => setActiveTab('settings')}
-                  className={`w-full flex items-center gap-3 px-5 py-4 mt-2 rounded-[20px] font-extrabold text-sm transition-all ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-colors ${
                     activeTab === 'settings' 
-                      ? 'bg-white text-[#111827] shadow-sm shadow-gray-200 border border-transparent' 
-                      : 'text-[#6B7280] hover:bg-white/50 border border-transparent hover:border-gray-100'
+                      ? 'bg-[#111827] text-white shadow-sm' 
+                      : 'text-[#4B5563] hover:bg-gray-50'
                   }`}
                 >
-                  <FaUser size={16} className={activeTab === 'settings' ? 'text-[#C4A47C]' : 'text-[#9CA3AF]'} />
+                  <FaUser size={14} className={activeTab === 'settings' ? 'text-[#C4A47C]' : 'text-gray-400'} />
                   Mon Profil
                 </button>
               </div>
 
-              {}
               <Link 
                 to="/cars"
-                className="flex items-center gap-3 w-full px-6 py-4 bg-[#111827] rounded-[24px] text-sm font-black text-white hover:bg-black hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200 transition-all group"
+                className="flex items-center gap-2.5 w-full px-5 py-3.5 bg-white border border-gray-200/80 rounded-xl text-xs font-bold text-[#111827] hover:border-[#C4A47C] hover:text-[#C4A47C] transition-all shadow-sm group"
               >
-                <FaCar className="text-white/60" />
+                <FaCar className="text-[#C4A47C]" />
                 Nouvelle réservation
-                <FaArrowRight size={12} className="ml-auto group-hover:translate-x-1 transition-transform" />
+                <FaArrowRight size={11} className="ml-auto text-gray-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </div>
 
-          {}
+          {/* Contenu principal */}
           <div className="lg:col-span-3">
             <AnimatePresence mode="wait">
-              
-              {}
+              {/* Onglet Réservations */}
               {activeTab === 'bookings' && (
-                <motion.div key="bookings" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-                  
-                  {}
-                  <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+                <motion.div key="bookings" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-6">
+                  {/* Filtres par statut */}
+                  <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                     {[
                       { key: 'all', label: 'Toutes' },
                       { key: 'pending', label: 'En attente' },
@@ -282,16 +246,16 @@ export default function Profile() {
                       <button
                         key={f.key}
                         onClick={() => setFilterStatus(f.key)}
-                        className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-[11px] font-extrabold whitespace-nowrap transition-all border ${
+                        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors border ${
                           filterStatus === f.key
-                            ? 'bg-[#111827] text-white border-[#111827] shadow-md shadow-gray-300'
-                            : 'bg-white text-[#6B7280] border-gray-200 hover:border-gray-300 hover:text-[#111827] bg-[#F8FAFC]'
+                            ? 'bg-[#111827] text-white border-[#111827]'
+                            : 'bg-white text-[#6B7280] border-gray-200 hover:border-gray-300 hover:text-[#111827]'
                         }`}
                       >
                         {f.label}
                         {statusCounts[f.key] > 0 && (
-                          <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-md ${
-                            filterStatus === f.key ? 'bg-white/20' : 'bg-gray-200 text-[#4B5563]'
+                          <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                            filterStatus === f.key ? 'bg-white/20 text-white' : 'bg-gray-100 text-[#4B5563]'
                           }`}>{statusCounts[f.key]}</span>
                         )}
                       </button>
@@ -299,235 +263,222 @@ export default function Profile() {
                   </div>
 
                   {loading ? (
-                    <div className="flex justify-center py-20">
-                      <div className="w-10 h-10 border-4 border-[#C4A47C] border-t-transparent rounded-full animate-spin" />
+                    <div className="flex justify-center py-16">
+                      <div className="w-8 h-8 border-3 border-[#C4A47C] border-t-transparent rounded-full animate-spin" />
                     </div>
                   ) : filteredBookings.length === 0 ? (
-                    <div className="bg-[#F8FAFC] rounded-[40px] p-16 text-center border border-gray-100">
-                      <div className="w-20 h-20 bg-white shadow-sm border border-gray-50 rounded-[28px] flex items-center justify-center mx-auto mb-6">
-                        <FaCar className="text-gray-300 text-3xl" />
+                    <div className="bg-white rounded-2xl p-12 text-center border border-gray-200/80 shadow-sm">
+                      <div className="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-gray-400">
+                        <FaCar size={24} />
                       </div>
-                      <p className="text-xl font-extrabold text-[#111827] mb-2">
+                      <p className="text-lg font-bold text-[#111827] mb-1">
                         {filterStatus === 'all' ? 'Aucune réservation' : `Aucune réservation "${filterStatus}"`}
                       </p>
-                      <p className="text-sm font-medium text-[#6B7280] mb-8 max-w-sm mx-auto">
+                      <p className="text-xs text-[#6B7280] mb-6 max-w-sm mx-auto">
                         {filterStatus === 'all' 
-                          ? "Vous n'avez pas encore loué de véhicule chez LocaFès."
-                          : "Aucune réservation ne correspond à ce filtre."}
+                          ? "Vous n'avez pas encore effectué de réservation."
+                          : "Aucune réservation trouvée pour ce statut."}
                       </p>
                       {filterStatus === 'all' && (
-                        <Link to="/cars" className="inline-flex items-center gap-2 px-8 py-4 bg-[#111827] text-white rounded-2xl font-black text-sm hover:shadow-xl shadow-gray-200 transition-all hover:-translate-y-0.5">
-                          Explorer les véhicules <FaArrowRight />
+                        <Link to="/cars" className="inline-flex items-center gap-2 px-6 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-black transition-colors shadow-sm">
+                          Découvrir le catalogue <FaArrowRight size={10} />
                         </Link>
                       )}
                     </div>
                   ) : (
-                    <div className="space-y-5">
-                      {filteredBookings.map((booking, idx) => (
-                        <motion.div
+                    <div className="space-y-4">
+                      {filteredBookings.map((booking) => (
+                        <div
                           key={booking._id}
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                          className="bg-white rounded-[32px] p-5 border border-gray-100 shadow-[0_4px_30px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 group"
+                          className="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/40 transition-colors"
                         >
-                          <div className="flex flex-col md:flex-row gap-6">
-                            {}
-                            <div className="w-full md:w-48 h-32 bg-[#F8FAFC] rounded-2xl overflow-hidden shrink-0 border border-gray-50 flex items-center justify-center p-2 relative">
+                          <div className="flex flex-col sm:flex-row gap-5">
+                            {/* Photo véhicule */}
+                            <div className="w-full sm:w-40 h-28 bg-gray-50 rounded-xl overflow-hidden shrink-0 border border-gray-100 flex items-center justify-center p-2">
                               {booking.car?.image ? (
                                 <img 
                                   src={resolveImageUrl(booking.car.image)} 
                                   alt={booking.car?.name} 
-                                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-700" 
+                                  className="w-full h-full object-contain" 
                                 />
                               ) : (
-                                <div className="text-gray-300 flex flex-col items-center">
-                                  <FaCar size={28} />
-                                </div>
+                                <FaCar size={24} className="text-gray-300" />
                               )}
                             </div>
 
-                            {}
-                            <div className="flex-1 flex flex-col justify-between py-1">
+                            {/* Données de la réservation */}
+                            <div className="flex-1 flex flex-col justify-between">
                               <div>
-                                <div className="flex justify-between items-start gap-3 mb-2">
-                                  <h4 className="text-xl font-extrabold text-[#111827] tracking-tight">{booking.car?.name || 'Véhicule Premium'}</h4>
+                                <div className="flex justify-between items-start gap-3 mb-1">
+                                  <h4 className="text-lg font-bold text-[#111827]">{booking.car?.name || 'Véhicule'}</h4>
                                   {getStatusBadge(booking.status)}
                                 </div>
-                                <div className="flex items-center gap-2 text-xs font-bold text-[#6B7280]">
-                                  <FaCalendarAlt className="text-[#9CA3AF] shrink-0" size={12} />
-                                  <span>{new Date(booking.startDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>
+                                <div className="flex items-center gap-2 text-xs text-[#6B7280]">
+                                  <FaCalendarAlt size={12} className="text-gray-400" />
+                                  <span>{new Date(booking.startDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                                   <span className="text-gray-300">→</span>
-                                  <span>{new Date(booking.endDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>
+                                  <span>{new Date(booking.endDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                                 </div>
+                                {booking.pickupLocation && (
+                                  <div className="flex items-center gap-1.5 text-[11px] text-[#A68B5B] font-semibold mt-1">
+                                    <FaMapMarkerAlt size={10} />
+                                    <span>{booking.pickupLocation}</span>
+                                    {booking.flightNumber && <span className="text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded text-[10px] font-bold">Vol {booking.flightNumber}</span>}
+                                    {booking.pickupTime && <span className="text-gray-400">· {booking.pickupTime}</span>}
+                                  </div>
+                                )}
                               </div>
                               
-                              <div className="flex flex-wrap items-center justify-between pt-5 mt-auto">
+                              <div className="flex flex-wrap items-center justify-between pt-4 mt-2 border-t border-gray-100 gap-3">
                                 <div>
-                                  <p className="text-[10px] font-black uppercase text-[#9CA3AF] tracking-widest mb-0.5">Montant Réglé</p>
-                                  <div className="flex items-baseline gap-1">
-                                    <span className="text-xl font-black text-[#111827]">{booking.totalPrice}</span>
-                                    <span className="text-[10px] font-bold text-[#6B7280]">DH</span>
+                                  <p className="text-[11px] text-[#6B7280]">Montant total</p>
+                                  <p className="text-lg font-bold text-[#111827]">{Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-xs font-normal text-[#6B7280]">DH</span></p>
+                                  <div className="mt-1">
+                                    {booking.paymentMethod === 'card' ? (
+                                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-100">
+                                        ✓ Réglé en ligne (Carte)
+                                      </span>
+                                    ) : (
+                                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#F8F5F0] text-[#8C6D3F] text-[10px] font-bold border border-[#E8DDD0]">
+                                        • Espèces à la remise des clés
+                                      </span>
+                                    )}
                                   </div>
                                 </div>
                                 
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
                                   {booking.status === 'pending' && (
                                     <button 
                                       onClick={() => handleCancel(booking._id)}
-                                      className="px-5 py-2.5 bg-rose-50 text-rose-500 rounded-xl text-xs font-black hover:bg-rose-500 hover:text-white transition-all flex items-center gap-1.5"
+                                      className="px-4 py-2 bg-rose-50 text-rose-600 rounded-xl text-xs font-bold hover:bg-rose-100 transition-colors"
                                     >
-                                      Annuler la location
+                                      Annuler
                                     </button>
                                   )}
                                   
-                                  {(booking.status === 'confirmed' || booking.status === 'completed') && (
+                                  {booking.status !== 'cancelled' && (
                                     <button 
                                       onClick={() => generateInvoicePDF(booking, true)}
-                                      className="px-5 py-2.5 bg-gray-50 border border-gray-200 text-[#111827] rounded-xl text-xs font-black hover:border-[#111827] transition-all flex items-center gap-2"
+                                      className="px-4 py-2 bg-gray-50 border border-gray-200 text-[#111827] rounded-xl text-xs font-bold hover:border-gray-400 transition-colors flex items-center gap-1.5 cursor-pointer"
                                     >
-                                      <FaDownload size={10} className="text-[#6B7280]" /> Reçu PDF
+                                      <FaDownload size={10} className="text-[#6B7280]" /> Facture / Bon PDF
                                     </button>
                                   )}
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   )}
                 </motion.div>
               )}
 
-              {}
+              {/* Onglet Profil / Paramètres */}
               {activeTab === 'settings' && (
-                <motion.div key="settings" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-8">
-                  
-                  <div className="bg-white rounded-[40px] p-8 md:p-12 border border-gray-100 shadow-[0_4px_30px_-15px_rgba(0,0,0,0.05)]">
-                    <div className="flex items-center gap-4 mb-10">
-                      <div className="w-14 h-14 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center shadow-sm">
-                        <FaUser className="text-[#C4A47C]" size={20} />
+                <motion.div key="settings" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-6">
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-sm">
+                    <div className="flex items-center gap-3 mb-6 pb-2 border-b border-gray-100">
+                      <div className="w-9 h-9 bg-[#F8F5F0] text-[#C4A47C] rounded-xl flex items-center justify-center text-sm">
+                        <FaUser />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-extrabold text-[#111827]">Données Personnelles</h3>
-                        <p className="text-sm text-[#6B7280] font-medium">Configurez vos préférences de contact</p>
+                        <h3 className="text-base font-bold text-[#111827]">Données Personnelles</h3>
+                        <p className="text-xs text-[#6B7280]">Mettez à jour vos coordonnées de contact</p>
                       </div>
                     </div>
                     
-                    <form onSubmit={handleProfileUpdate} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
-                        
-                        {}
-                        <div className="space-y-2">
-                          <label htmlFor="profile-name" className="block text-[10px] font-black uppercase tracking-widest text-[#6B7280] ml-1">
+                    <form onSubmit={handleProfileUpdate} className="space-y-5">
+                      <div className="grid md:grid-cols-2 gap-5">
+                        <div className="space-y-1.5">
+                          <label htmlFor="profile-name" className="block text-xs font-bold text-[#6B7280]">
                             Nom Complet
                           </label>
                           <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                              <FaUser className="text-gray-400" size={14} />
-                            </div>
+                            <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
                             <input 
                               id="profile-name"
                               value={editFormData.name} 
                               onChange={e => setEditFormData({...editFormData, name: e.target.value})} 
-                              className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#F8F5F0] outline-none transition-all font-bold text-sm text-[#111827]" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]" 
                             />
                           </div>
                         </div>
 
-                        {}
-                        <div className="space-y-2">
-                          <label htmlFor="profile-email" className="block text-[10px] font-black uppercase tracking-widest text-[#6B7280] ml-1">
+                        <div className="space-y-1.5">
+                          <label htmlFor="profile-email" className="block text-xs font-bold text-[#6B7280]">
                             Adresse Email
                           </label>
                           <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                              <FaEnvelope className="text-gray-400" size={14} />
-                            </div>
+                            <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
                             <input 
                               id="profile-email"
                               type="email"
                               value={editFormData.email} 
                               onChange={e => setEditFormData({...editFormData, email: e.target.value})} 
-                              className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#F8F5F0] outline-none transition-all font-bold text-sm text-[#111827]" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]" 
                             />
                           </div>
                         </div>
 
-                        {}
-                        <div className="space-y-2">
-                          <label htmlFor="profile-phone" className="block text-[10px] font-black uppercase tracking-widest text-[#6B7280] ml-1">
+                        <div className="space-y-1.5">
+                          <label htmlFor="profile-phone" className="block text-xs font-bold text-[#6B7280]">
                             Téléphone
                           </label>
                           <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                              <FaPhone className="text-gray-400" size={14} />
-                            </div>
+                            <FaPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
                             <input 
                               id="profile-phone"
                               type="tel"
                               value={editFormData.phone} 
                               onChange={e => setEditFormData({...editFormData, phone: e.target.value})} 
-                              className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#F8F5F0] outline-none transition-all font-bold text-sm text-[#111827]" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]" 
                             />
                           </div>
                         </div>
 
-                        {}
-                        <div className="space-y-2">
-                          <label htmlFor="profile-password" className="block text-[10px] font-black uppercase tracking-widest text-[#6B7280] ml-1">
-                            Nouveau Mot de Passe
+                        <div className="space-y-1.5">
+                          <label htmlFor="profile-password" className="block text-xs font-bold text-[#6B7280]">
+                            Nouveau Mot de Passe (optionnel)
                           </label>
                           <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                              <FaLock className="text-gray-400" size={14} />
-                            </div>
+                            <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
                             <input 
                               id="profile-password"
                               type="password"
                               value={editFormData.password} 
                               onChange={e => setEditFormData({...editFormData, password: e.target.value})} 
-                              placeholder="Laisser vide pour ne pas changer"
-                              className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#F8F5F0] outline-none transition-all font-bold text-sm text-[#111827] placeholder:text-gray-400" 
+                              placeholder="Laisser vide pour conserver l'actuel"
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827] placeholder:text-gray-400" 
                             />
                           </div>
                         </div>
-
                       </div>
                       
-                      <div className="pt-8">
+                      <div className="pt-2">
                         <button 
                           type="submit" 
                           disabled={updating} 
-                          className="w-full md:w-auto px-10 py-4 bg-[#111827] text-white rounded-2xl font-black text-sm shadow-xl shadow-gray-200 hover:bg-black hover:-translate-y-0.5 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+                          className="px-6 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-black transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
                         >
-                          {updating ? (
-                            <>
-                              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                              Sauvegarde...
-                            </>
-                          ) : (
-                            <>
-                              <FaCheck /> Sauvegarder les données
-                            </>
-                          )}
+                          {updating ? 'Enregistrement...' : <><FaCheck size={11} /> Enregistrer les modifications</>}
                         </button>
                       </div>
                     </form>
                   </div>
 
-                  {}
-                  <div className="bg-[#FFF5F5] rounded-[32px] p-8 border border-rose-100 flex flex-col md:flex-row items-center justify-between gap-6">
+                  {/* Déconnexion */}
+                  <div className="bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
-                      <h4 className="text-sm font-extrabold text-rose-600 mb-1">Déconnexion de l'appareil</h4>
-                      <p className="text-xs text-rose-500/70 font-medium">Vous devrez vous reconnecter pour gérer vos réservations.</p>
+                      <h4 className="text-sm font-bold text-[#111827]">Session active</h4>
+                      <p className="text-xs text-[#6B7280]">Déconnectez-vous de votre compte sur cet appareil.</p>
                     </div>
                     <button 
                       onClick={logout}
-                      className="w-full md:w-auto px-8 py-3.5 bg-white border border-rose-200 text-rose-500 shadow-sm shadow-rose-100 rounded-xl font-black text-xs hover:border-rose-500 transition-all"
+                      className="px-5 py-2.5 bg-gray-50 border border-gray-200 text-rose-600 rounded-xl font-bold text-xs hover:bg-rose-50 hover:border-rose-200 transition-colors"
                     >
-                      Me déconnecter
+                      Se déconnecter
                     </button>
                   </div>
                 </motion.div>
@@ -537,36 +488,43 @@ export default function Profile() {
         </div>
       </div>
 
-      {}
+      {/* Modal confirmation annulation */}
       <AnimatePresence>
         {confirmCancel && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
             <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setConfirmCancel(null)}
-              className="absolute inset-0 bg-[#111827]/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              initial={{ opacity: 0, scale: 0.96, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="relative bg-white rounded-[40px] shadow-2xl p-10 max-w-sm w-full text-center border border-gray-100"
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className="relative bg-white rounded-3xl shadow-2xl p-7 sm:p-8 max-w-sm w-full text-center border border-slate-100"
             >
-              <div className="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <FaTimes className="text-rose-500 text-2xl" />
+              <div className="w-12 h-12 bg-rose-50 text-rose-600 border border-rose-100/80 rounded-2xl flex items-center justify-center mx-auto mb-4 text-lg">
+                <FaTimes size={16} />
               </div>
-              <h3 className="text-xl font-extrabold text-[#111827] mb-3">Annuler la réservation ?</h3>
-              <p className="text-sm text-[#6B7280] font-medium mb-8 leading-relaxed">Cette action annulera définitivement la réservation sélectionnée.</p>
-              <div className="flex gap-4">
+              <h3 className="text-lg font-bold text-slate-900 mb-1.5">Annuler la réservation ?</h3>
+              <p className="text-xs text-slate-500 font-medium mb-6 leading-relaxed">
+                Cette action annulera définitivement la réservation sélectionnée auprès de notre service.
+              </p>
+              <div className="flex gap-3">
                 <button
+                  type="button"
                   onClick={() => setConfirmCancel(null)}
-                  className="flex-1 py-3.5 bg-gray-50 text-[#111827] border border-gray-200 rounded-xl font-bold text-sm hover:bg-white transition-all"
+                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Garder
                 </button>
                 <button
+                  type="button"
                   onClick={doCancel}
-                  className="flex-1 py-3.5 bg-[#111827] text-white rounded-xl font-bold text-sm hover:bg-black transition-all shadow-lg shadow-gray-200"
+                  className="flex-1 py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
                 >
                   Oui, annuler
                 </button>

@@ -60,7 +60,7 @@ const carSchema = mongoose.Schema(
     rating: {
       type: Number,
       required: true,
-      default: 5.0,
+      default: 0,
     },
     numReviews: {
       type: Number,

@@ -8,7 +8,7 @@ const {
   deleteBooking,
 } = require('../controllers/bookingController');
 const { protect, admin } = require('../middlewares/authMiddleware');
-const { validate, bookingValidationRules } = require('../middlewares/validationMiddleware');
+const { validate, bookingValidationRules, updateBookingStatusValidationRules } = require('../middlewares/validationMiddleware');
 
 
 router.route('/')
@@ -18,7 +18,7 @@ router.get('/admin', protect, admin, getAllBookings);
 router.get('/my', protect, getMyBookings);
 
 router.route('/:id')
-  .put(protect, updateBookingStatus)
+  .put(protect, updateBookingStatusValidationRules(), validate, updateBookingStatus)
   .delete(protect, admin, deleteBooking);
 
 module.exports = router;

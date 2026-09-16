@@ -1,13 +1,15 @@
 const Booking = require('../models/Booking');
 const Car = require('../models/Car');
 const { resolveImageUrl } = require('../utils/imageHelper');
-
+const { sendBookingConfirmation } = require('../services/mailService');
 
 const createBooking = async (req, res) => {
   try {
-    const { car, fullName, phone, startDate, endDate, paymentMethod } = req.body;
+    const { 
+      car, fullName, phone, startDate, endDate, paymentMethod, 
+      pickupLocation, pickupTime, flightNumber, deliveryAddress, deliveryNotes, babySeat 
+    } = req.body;
 
-    
     const carDetails = await Car.findOne({ _id: car, deletedAt: null });
     if (!carDetails) {
       return res.status(404).json({ message: 'Véhicule non trouvé ou indisponible' });
@@ -34,10 +36,12 @@ const createBooking = async (req, res) => {
 
     const diffTime = Math.abs(eDate - sDate);
     const calculatedTotalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
-    const calculatedTotalPrice = calculatedTotalDays * carDetails.price;
+    const isBabySeat = Boolean(babySeat);
+    const calculatedTotalPrice = (calculatedTotalDays * carDetails.price) + (isBabySeat ? calculatedTotalDays * 30 : 0);
 
     const overlapping = await Booking.findOne({
       car,
+      deletedAt: null,
       status: { $nin: ['cancelled', 'completed'] },
       $and: [
         { startDate: { $lt: new Date(endDate) } },
@@ -46,6 +50,14 @@ const createBooking = async (req, res) => {
     });
 
     if (overlapping) {
+      // Si la réservation chevauchante est celle créée par le webhook Stripe pour le même utilisateur, on la retourne
+      if (paymentMethod === 'card' && overlapping.user.toString() === req.user._id.toString()) {
+        const existingPopulated = await Booking.findById(overlapping._id)
+          .populate('car', 'name image price')
+          .populate('user', 'name email');
+        existingPopulated.car.image = resolveImageUrl(existingPopulated.car.image);
+        return res.status(200).json(existingPopulated);
+      }
       return res.status(400).json({ message: 'Ce véhicule est déjà réservé pour cette période. Veuillez choisir d\'autres dates.' });
     }
 
@@ -59,7 +71,13 @@ const createBooking = async (req, res) => {
       totalDays: calculatedTotalDays,
       totalPrice: calculatedTotalPrice,
       paymentMethod,
-      status: paymentMethod === 'card' ? 'confirmed' : 'pending',
+      pickupLocation: pickupLocation || 'Aéroport Fès-Saïss (Terminal Arrivées)',
+      pickupTime: pickupTime || '',
+      flightNumber: flightNumber || '',
+      deliveryAddress: deliveryAddress || '',
+      deliveryNotes: deliveryNotes || '',
+      babySeat: isBabySeat,
+      status: 'confirmed', // Réservation immédiatement confirmée et garantie pour le client
     });
 
     const populatedBooking = await Booking.findById(booking._id)
@@ -68,6 +86,9 @@ const createBooking = async (req, res) => {
 
     populatedBooking.car.image = resolveImageUrl(populatedBooking.car.image);
 
+    if (populatedBooking.user?.email) {
+      sendBookingConfirmation(populatedBooking, populatedBooking.user.email).catch(() => {});
+    }
 
     res.status(201).json(populatedBooking);
   } catch (error) {
@@ -78,9 +99,18 @@ const createBooking = async (req, res) => {
 
 const getMyBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find({ user: req.user._id })
+    const page = Number(req.query.page) || 1;
+    const limit = Math.min(Number(req.query.limit) || 10, 100);
+    const skip = (page - 1) * limit;
+
+    const query = { user: req.user._id, deletedAt: null };
+
+    const totalBookings = await Booking.countDocuments(query);
+    const bookings = await Booking.find(query)
       .populate('car', 'name image price')
       .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
       .lean();
 
     const bookingsWithImages = bookings.map(b => {
@@ -90,7 +120,12 @@ const getMyBookings = async (req, res) => {
       return b;
     });
 
-    res.json(bookingsWithImages);
+    res.json({
+      bookings: bookingsWithImages,
+      page,
+      totalPages: Math.ceil(totalBookings / limit),
+      totalBookings
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -105,12 +140,15 @@ const getAllBookings = async (req, res) => {
     const { search } = req.query;
 
     
-    const query = {};
+    const query = { deletedAt: null };
     if (search) {
       const safeSearch = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
       query.$or = [
         { fullName: { $regex: safeSearch, $options: 'i' } },
         { phone: { $regex: safeSearch, $options: 'i' } },
+        { flightNumber: { $regex: safeSearch, $options: 'i' } },
+        { deliveryAddress: { $regex: safeSearch, $options: 'i' } },
+        { pickupLocation: { $regex: safeSearch, $options: 'i' } },
       ];
     }
 
@@ -118,6 +156,7 @@ const getAllBookings = async (req, res) => {
     const bookings = await Booking.find(query)
       .populate('car', 'name image price')
       .populate('user', 'name email')
+      .populate('assignedDriver', 'name phone whatsapp status zone')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
@@ -144,7 +183,7 @@ const getAllBookings = async (req, res) => {
 
 const updateBookingStatus = async (req, res) => {
   try {
-    const booking = await Booking.findById(req.params.id);
+    const booking = await Booking.findOne({ _id: req.params.id, deletedAt: null });
     if (!booking) {
       return res.status(404).json({ message: 'Réservation non trouvée' });
     }
@@ -170,11 +209,15 @@ const updateBookingStatus = async (req, res) => {
     }
 
     booking.status = req.body.status || booking.status;
+    if (isAdmin && req.body.assignedDriver !== undefined) {
+      booking.assignedDriver = req.body.assignedDriver || null;
+    }
     const updatedBooking = await booking.save();
 
     const populated = await Booking.findById(updatedBooking._id)
       .populate('car', 'name image price')
       .populate('user', 'name email')
+      .populate('assignedDriver', 'name phone whatsapp status zone')
       .lean();
     
     if (populated && populated.car) {
@@ -189,9 +232,10 @@ const updateBookingStatus = async (req, res) => {
 
 const deleteBooking = async (req, res) => {
   try {
-    const booking = await Booking.findById(req.params.id);
+    const booking = await Booking.findOne({ _id: req.params.id, deletedAt: null });
     if (booking) {
-      await booking.deleteOne();
+      booking.deletedAt = new Date();
+      await booking.save();
       
       res.json({ message: 'Réservation supprimée' });
     } else {

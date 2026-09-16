@@ -1,7 +1,7 @@
 const BACKEND_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export const resolveImageUrl = (imagePath) => {
-  if (!imagePath) return '/placeholder-car.jpg';
+  if (!imagePath) return '/images/cars-lineup.png';
   
   let resolvedPath = imagePath;
   

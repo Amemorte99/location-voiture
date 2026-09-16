@@ -18,23 +18,18 @@ const protect = async (req, res, next) => {
     
       req.user = await User.findById(decoded.id).select('-password');
 
-    
       if (!req.user || req.user.deletedAt) {
-        res.status(401);
-        return res.json({ message: 'Compte désactivé ou introuvable' });
+        return res.status(401).json({ message: 'Compte désactivé ou introuvable' });
       }
 
       return next();
     } catch (error) {
-      console.error(error);
-      res.status(401);
-      return res.json({ message: 'Not authorized, token failed' });
+      return res.status(401).json({ message: 'Session expirée ou jeton invalide' });
     }
   }
 
   if (!token) {
-    res.status(401);
-    return res.json({ message: 'Not authorized, no token' });
+    return res.status(401).json({ message: "Non autorisé, aucun jeton d'accès fourni" });
   }
 };
 
@@ -42,8 +37,7 @@ const admin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     return next();
   } else {
-    res.status(401);
-    return res.json({ message: 'Not authorized as an admin' });
+    return res.status(403).json({ message: 'Accès interdit : droits administrateur requis' });
   }
 };
 

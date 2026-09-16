@@ -14,9 +14,9 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[3px] z-[100] bg-transparent">
+    <div className="fixed top-0 left-0 w-full h-[2px] z-[100] bg-transparent">
       <div
-        className="h-full bg-gradient-to-r from-[#A68B5B] via-[#C4A47C] to-[#D4B88C] transition-all duration-150 ease-out shadow-[0_0_10px_rgba(196,164,124,0.4)]"
+        className="h-full bg-gradient-to-r from-[#A68B5B] via-[#C4A47C] to-[#D4B88C] transition-all duration-150 ease-out"
         style={{ width: `${progress}%` }}
         role="progressbar"
         aria-valuenow={Math.round(progress)}

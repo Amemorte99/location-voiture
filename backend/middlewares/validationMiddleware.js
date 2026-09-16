@@ -53,10 +53,49 @@ const loginValidationRules = () => {
   ];
 };
 
+const updateProfileValidationRules = () => {
+  return [
+    body('name').optional().notEmpty().withMessage('Le nom ne peut pas être vide').trim(),
+    body('phone').optional().notEmpty().withMessage('Le téléphone ne peut pas être vide').trim(),
+  ];
+};
+
+const updateUserAdminValidationRules = () => {
+  return [
+    body('name').optional().notEmpty().withMessage('Le nom ne peut pas être vide').trim(),
+    body('email').optional().isEmail().withMessage('Email invalide').normalizeEmail(),
+    body('role').optional().isIn(['user', 'admin']).withMessage('Rôle invalide'),
+    body('phone').optional().trim(),
+  ];
+};
+
+const carUpdateValidationRules = () => {
+  return [
+    body('name').optional().notEmpty().withMessage('Le nom ne peut pas être vide'),
+    body('brand').optional().notEmpty().withMessage('La marque ne peut pas être vide'),
+    body('price').optional().isNumeric().withMessage('Le prix doit être un nombre'),
+    body('year').optional().isNumeric().withMessage('L\'année doit être un nombre'),
+    body('fuel').optional().isIn(['Essence', 'Diesel', 'Électrique', 'Hybride']).withMessage('Type de carburant invalide'),
+    body('gearbox').optional().isIn(['Manuelle', 'Automatique']).withMessage('Type de boîte invalide'),
+    body('available').optional().isBoolean().withMessage('La disponibilité doit être un booléen'),
+  ];
+};
+
+const updateBookingStatusValidationRules = () => {
+  return [
+    body('status').isIn(['pending', 'confirmed', 'completed', 'cancelled']).withMessage('Statut de réservation invalide'),
+  ];
+};
+
 module.exports = {
   validate,
   carValidationRules,
+  carUpdateValidationRules,
   bookingValidationRules,
   registerValidationRules,
   loginValidationRules,
+  updateProfileValidationRules,
+  updateUserAdminValidationRules,
+  updateBookingStatusValidationRules,
 };
+

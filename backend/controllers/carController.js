@@ -20,10 +20,11 @@ const getCars = async (req, res) => {
       const end = new Date(endDate);
       
       const overlappingBookings = await Booking.find({
+        deletedAt: null,
         status: { $nin: ['cancelled', 'completed'] },
         $and: [
-          { startDate: { $lte: end } },
-          { endDate: { $gte: start } }
+          { startDate: { $lt: end } },
+          { endDate: { $gt: start } }
         ]
       });
 
@@ -49,6 +50,7 @@ const getCars = async (req, res) => {
     
     const now = new Date();
     const activeBookings = await Booking.find({
+      deletedAt: null,
       status: { $nin: ['cancelled', 'completed'] },
       endDate: { $gte: now }
     });
@@ -80,6 +82,7 @@ const getCarById = async (req, res) => {
 
       const activeBooking = await Booking.findOne({
         car: carDoc._id,
+        deletedAt: null,
         status: { $nin: ['cancelled', 'completed'] },
         endDate: { $gte: now } 
       });
@@ -135,10 +138,14 @@ const updateCar = async (req, res) => {
     if (req.file) {
       carData.image = `/uploads/${req.file.filename}`;
     }
-    const car = await Car.findByIdAndUpdate(req.params.id, carData, {
-      new: true,
-      runValidators: true,
-    });
+    const car = await Car.findOneAndUpdate(
+      { _id: req.params.id, deletedAt: null },
+      carData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
     if (car) {
       const carResponse = car.toObject();
       carResponse.image = resolveImageUrl(carResponse.image);
@@ -154,7 +161,7 @@ const updateCar = async (req, res) => {
 
 const deleteCar = async (req, res) => {
   try {
-    const car = await Car.findById(req.params.id);
+    const car = await Car.findOne({ _id: req.params.id, deletedAt: null });
     if (car) {
       car.deletedAt = new Date();
       await car.save();
@@ -180,7 +187,7 @@ const createCarReview = async (req, res) => {
       return res.status(400).json({ message: "Le commentaire ne peut pas être vide" });
     }
 
-    const car = await Car.findById(req.params.id);
+    const car = await Car.findOne({ _id: req.params.id, deletedAt: null });
 
     if (car) {
       const alreadyReviewed = car.reviews.find(
@@ -200,9 +207,10 @@ const createCarReview = async (req, res) => {
 
       car.reviews.push(review);
       car.numReviews = car.reviews.length;
-      car.rating =
+      car.rating = Number((
         car.reviews.reduce((acc, item) => item.rating + acc, 0) /
-        car.reviews.length;
+        car.reviews.length
+      ).toFixed(1));
 
       await car.save();
       res.status(201).json({ message: 'Avis ajouté avec succès' });

@@ -60,8 +60,7 @@ export default function StripePaymentForm({ totalPrice, onPaymentSuccess }) {
           />
         </div>
         {stripeError && (
-          <div className="mt-3 text-xs text-rose-500 font-bold bg-rose-50 border border-rose-100 px-4 py-2.5 rounded-xl flex items-center gap-2">
-            <span>⚠️</span>
+          <div className="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-xs font-bold flex items-center gap-2 mt-3">
             <span>{stripeError}</span>
           </div>
         )}

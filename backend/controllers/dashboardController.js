@@ -7,24 +7,23 @@ const getStats = async (req, res) => {
   try {
     const totalUsers = await User.countDocuments({ deletedAt: null });
     const totalCars = await Car.countDocuments({ deletedAt: null });
-    const totalBookings = await Booking.countDocuments();
+    const totalBookings = await Booking.countDocuments({ deletedAt: null });
 
-    
     const revenueResult = await Booking.aggregate([
-      { $match: { status: { $in: ['confirmed', 'completed'] } } },
+      { $match: { status: { $in: ['confirmed', 'completed'] }, deletedAt: null } },
       { $group: { _id: null, total: { $sum: '$totalPrice' } } },
     ]);
     const totalRevenue = revenueResult.length > 0 ? revenueResult[0].total : 0;
 
-   
     const bookingsByStatus = await Booking.aggregate([
+      { $match: { deletedAt: null } },
       { $group: { _id: '$status', count: { $sum: 1 } } },
     ]);
 
-    
-    const recentBookings = await Booking.find({})
+    const recentBookings = await Booking.find({ deletedAt: null })
       .populate('car', 'name image price')
       .populate('user', 'name email')
+      .populate('assignedDriver', 'name phone whatsapp status zone')
       .sort({ createdAt: -1 })
       .limit(5);
 
@@ -55,11 +54,10 @@ const getStats = async (req, res) => {
     const growth = {
       users: await calcGrowth(User, { deletedAt: null }),
       cars: await calcGrowth(Car, { deletedAt: null }),
-      bookings: await calcGrowth(Booking, { status: { $ne: 'cancelled' } }),
-      revenue: await calcGrowth(Booking, { status: { $ne: 'cancelled' } }, 'totalPrice')
+      bookings: await calcGrowth(Booking, { status: { $ne: 'cancelled' }, deletedAt: null }),
+      revenue: await calcGrowth(Booking, { status: { $ne: 'cancelled' }, deletedAt: null }, 'totalPrice')
     };
 
-   
     const period = req.query.period || '7j';
     let daysToFetch = 7;
     let format = "%Y-%m-%d";
@@ -71,12 +69,12 @@ const getStats = async (req, res) => {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - daysToFetch);
 
-
     const dailyTrends = await Booking.aggregate([
       {
         $match: {
           createdAt: { $gte: startDate },
-          status: { $ne: 'cancelled' }
+          status: { $ne: 'cancelled' },
+          deletedAt: null
         }
       },
       {

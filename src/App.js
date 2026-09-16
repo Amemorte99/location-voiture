@@ -1,27 +1,35 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { ErrorBoundary } from 'react-error-boundary';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ScrollProgress from './components/ScrollProgress';
-import SplashScreen from './components/SplashScreen';
 
 import Home from './pages/Home';
-import Cars from './pages/Cars';
-import CarDetails from './pages/CarDetails';
-import Booking from './pages/Booking';
-import Login from './pages/Login';
-import WhyChooseUs from './pages/WhyChooseUs';
-import Dashboard from './pages/Dashboard';
-import NotFound from './pages/NotFound';
-import BookingSuccess from './pages/BookingSuccess';
-import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import WhatsAppButton from './components/WhatsAppButton';
+
+const Cars = lazy(() => import('./pages/Cars'));
+const CarDetails = lazy(() => import('./pages/CarDetails'));
+const Booking = lazy(() => import('./pages/Booking'));
+const Login = lazy(() => import('./pages/Login'));
+const WhyChooseUs = lazy(() => import('./pages/WhyChooseUs'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const BookingSuccess = lazy(() => import('./pages/BookingSuccess'));
+const Profile = lazy(() => import('./pages/Profile'));
+const Contact = lazy(() => import('./pages/Contact'));
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center bg-transparent">
+      <div className="w-12 h-12 border-4 border-[#C4A47C] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -46,7 +54,6 @@ function ErrorFallback({ error, resetErrorBoundary }) {
   );
 }
 
-// Page transition wrapper
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0 },
@@ -76,6 +83,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/cars" element={<Cars />} />
           <Route path="/WhyChooseUs" element={<WhyChooseUs />} />
+          <Route path="/why-choose-us" element={<WhyChooseUs />} />
           <Route path="/cars/:id" element={<CarDetails />} />
           <Route 
             path="/booking/:id" 
@@ -86,6 +94,8 @@ function AnimatedRoutes() {
             } 
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Login defaultRegister={true} />} />
+          <Route path="/contact" element={<Contact />} />
           <Route 
             path="/profile" 
             element={
@@ -113,16 +123,23 @@ function AnimatedRoutes() {
 function AppContent() {
   const location = useLocation();
   const isDashboard = location.pathname.startsWith('/dashboard');
-  const isAuthPage = location.pathname === '/login';
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
   const hideNavAndFooter = isDashboard || isAuthPage;
 
   return (
     <div className="min-h-screen flex flex-col">
+      <a 
+        href='#main-content' 
+        className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-[#111827] focus:p-4 focus:rounded-xl focus:shadow-2xl focus:z-50 font-bold border border-[#C4A47C]'
+      >
+        Aller au contenu principal
+      </a>
       <ScrollToTop />
-      <ScrollProgress />
       {!hideNavAndFooter && <Navbar />}
-      <main className="flex-1">
-        <AnimatedRoutes />
+      <main id="main-content" className="flex-1">
+        <Suspense fallback={<LoadingFallback />}>
+          <AnimatedRoutes />
+        </Suspense>
       </main>
       {!hideNavAndFooter && <Footer />}
       <WhatsAppButton />
@@ -131,22 +148,11 @@ function AppContent() {
 }
 
 function App() {
-  const [showSplash, setShowSplash] = useState(() => {
-    // Only show splash once per session
-    return !sessionStorage.getItem('locafes_splash_shown');
-  });
-
-  const handleSplashComplete = useCallback(() => {
-    setShowSplash(false);
-    sessionStorage.setItem('locafes_splash_shown', 'true');
-  }, []);
-
   return (
     <HelmetProvider>
       <Router>
         <AuthProvider>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
-            {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
             <AppContent />
           </ErrorBoundary>
         </AuthProvider>

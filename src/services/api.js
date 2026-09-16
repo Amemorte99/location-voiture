@@ -28,11 +28,12 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response && error.response.status === 401) {
-            
             console.warn('Session expirée ou non autorisée');
-            
-            
-            
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            if (!['/login', '/register'].includes(window.location.pathname)) {
+                window.location.href = '/login';
+            }
         }
         return Promise.reject(error);
     }

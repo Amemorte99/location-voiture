@@ -5,11 +5,11 @@ import { getCarById } from "../services/carService";
 import { 
   FaGasPump, FaCog, FaCalendarAlt, FaArrowLeft, 
   FaCheckCircle, FaCar, FaStar, FaUsers, 
-  FaSuitcase, FaDoorOpen 
+  FaSuitcase, FaDoorOpen, FaWhatsapp 
 } from "react-icons/fa";
 import SkeletonCard from "../components/SkeletonCard";
 import { useAuth } from "../contexts/AuthContext";
-import axios from 'axios';
+import api from '../services/api';
 import { toast } from 'react-hot-toast';
 import { resolveImageUrl } from "../utils/imageUrl";
 
@@ -25,9 +25,6 @@ export default function CarDetails() {
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [comment, setComment] = useState("");
-
-  
-  const [activeImage, setActiveImage] = useState(0);
 
   
   const [startDate, setStartDate] = useState("");
@@ -52,8 +49,7 @@ export default function CarDetails() {
     e.preventDefault();
     if (!currentUser) return;
     try {
-      const API_URL = '/api/cars';
-      await axios.post(`${API_URL}/${id}/reviews`, { rating, comment });
+      await api.post(`/api/cars/${id}/reviews`, { rating, comment });
       toast.success("Avis ajouté avec succès !");
       setComment("");
       setRating(5);
@@ -83,31 +79,30 @@ export default function CarDetails() {
     );
   }
 
-  const averageRating = car.rating || 5;
+  const resolvedImg = resolveImageUrl(car?.image);
 
-  
-  const resolvedImg = resolveImageUrl(car.image);
-  const images = [resolvedImg, resolvedImg, resolvedImg];
-
-  
-  let totalDays = 0;
-  let totalPrice = 0;
-  if (startDate && endDate) {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    if (end >= start) {
-      const diffTime = Math.abs(end - start);
-      totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-      totalPrice = totalDays * car.price;
+  const handleStartDateChange = (val) => {
+    setStartDate(val);
+    if (endDate && new Date(val) >= new Date(endDate)) {
+      const nextDay = new Date(val);
+      nextDay.setDate(nextDay.getDate() + 1);
+      setEndDate(nextDay.toISOString().split('T')[0]);
     }
-  }
+  };
 
-  
-  const detailedRatings = [
-    { label: "Confort", value: 4.8 },
-    { label: "Propreté", value: 5.0 },
-    { label: "Qualité/Prix", value: 4.5 },
-  ];
+  const getMinEndDate = () => {
+    if (!startDate) return new Date().toISOString().split('T')[0];
+    const d = new Date(startDate);
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().split('T')[0];
+  };
+
+  const totalDays = (startDate && endDate) 
+    ? Math.max(1, Math.ceil((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)))
+    : 0;
+
+  const totalPrice = totalDays * (car?.price || 0);
+  const averageRating = car?.numReviews > 0 ? car.rating.toFixed(1) : null;
 
   return (
     <div className="min-h-screen pt-24 pb-24 bg-white">
@@ -122,37 +117,20 @@ export default function CarDetails() {
           </button>
         </div>
 
-        {}
-        <div className="w-full h-[50vh] lg:h-[65vh] bg-gradient-to-b from-gray-50 to-gray-200/40 rounded-[48px] overflow-hidden flex items-center justify-center relative shadow-[inset_0_-20px_50px_rgba(0,0,0,0.02)]">
-           
-           {}
-           <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden pointer-events-none select-none z-0">
-             <span className="text-[15vw] lg:text-[180px] font-black text-gray-900/[0.03] uppercase tracking-tighter leading-none whitespace-nowrap">
-               {car.brand || 'LOCAFÈS'}
-             </span>
-             <span className="text-[20vw] lg:text-[220px] font-black text-gray-900/[0.02] uppercase tracking-tighter leading-none whitespace-nowrap -mt-20">
-               {car.category || 'PREMIUM'}
-             </span>
-           </div>
-
-           {}
-           <div className="relative z-10 w-full max-w-4xl h-full p-10 flex items-center justify-center group">
-             <AnimatePresence mode="wait">
-               <motion.img 
-                 key={activeImage}
-                 initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                 animate={{ opacity: 1, x: 0, scale: 1 }}
-                 exit={{ opacity: 0, x: -50, scale: 0.95 }}
-                 transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                 src={images[activeImage]} 
-                 alt={car.name} 
-                 className="w-full h-[120%] lg:h-[130%] object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 ease-out" 
-                 style={{ filter: "drop-shadow(0 30px 40px rgba(0,0,0,0.25))" }}
-               />
-             </AnimatePresence>
-
-             {}
-             <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[60%] h-8 bg-black/15 blur-[20px] rounded-[100%] scale-y-50 pointer-events-none group-hover:w-[70%] group-hover:opacity-60 transition-all duration-700"></div>
+        {/* Showcase Véhicule */}
+        <div className="w-full h-[45vh] lg:h-[60vh] bg-gradient-to-b from-gray-50 to-gray-100/60 rounded-3xl overflow-hidden flex items-center justify-center relative border border-gray-100">
+           <div className="relative z-10 w-full max-w-4xl h-full p-8 flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.img 
+                  key={resolvedImg}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  src={resolvedImg} 
+                  alt={car.name} 
+                  className="max-h-[85%] max-w-[90%] object-contain"
+                />
+              </AnimatePresence>
            </div>
            
            {}
@@ -166,15 +144,15 @@ export default function CarDetails() {
                    toast.error("Ce véhicule est actuellement occupé.");
                  }
                }}
-               className={`flex items-center gap-2 px-4 py-2 mt-4 lg:mt-0 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg backdrop-blur-md border hover:scale-105 transition-all cursor-pointer ${
-               car.isAvailableNow !== false 
-                 ? 'text-emerald-700 bg-white/90 border-emerald-100 shadow-emerald-500/10 hover:shadow-emerald-500/30' 
-                 : 'text-rose-700 bg-white/90 border-rose-100 shadow-rose-500/10 cursor-not-allowed hover:scale-100'
-             }`}>
-               <span className={`w-2 h-2 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`}></span>
-               {car.isAvailableNow !== false ? 'Véhicule Disponible' : 'Véhicule Occupé'}
-               {car.isAvailableNow !== false && <span className="opacity-50 hidden sm:inline ml-1">- Réserver</span>}
-             </button>
+               className={`flex items-center gap-2 px-3.5 py-1.5 mt-4 lg:mt-0 rounded-full text-[11px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm transition-colors cursor-pointer ${
+                car.isAvailableNow !== false 
+                  ? 'text-emerald-700 bg-white/90 border-emerald-200' 
+                  : 'text-rose-700 bg-white/90 border-rose-200 cursor-not-allowed'
+              }`}>
+                <span className={`w-2 h-2 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-500' : 'bg-rose-500'}`}></span>
+                {car.isAvailableNow !== false ? 'Véhicule Disponible' : 'Véhicule Occupé'}
+                {car.isAvailableNow !== false && <span className="opacity-60 hidden sm:inline ml-1">- Réserver</span>}
+              </button>
            </div>
         </div>
       </div>
@@ -186,43 +164,41 @@ export default function CarDetails() {
           {}
           <div className="space-y-16">
             
-            {}
-            <div className="hidden lg:block border-b border-gray-100 pb-8">
-               <h1 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-2 tracking-tight">{car.brand} {car.name}</h1>
-               <div className="flex items-center gap-4 text-sm font-bold text-[#6B7280]">
-                 <span className="uppercase tracking-widest">{car.category || 'Premium'}</span>
-                 <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
-                 <div className="flex items-center gap-1 text-amber-400">
-                    <FaStar /> <span className="text-[#111827]">{averageRating}</span> <span className="font-medium text-gray-500">({car.numReviews || 0} avis)</span>
+             {/* Titre & Évaluation Desktop */}
+             <div className="hidden lg:block border-b border-gray-100 pb-8">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-2 tracking-tight">{car.brand} {car.name}</h1>
+                <div className="flex items-center gap-4 text-sm font-bold text-[#6B7280]">
+                  <span className="uppercase tracking-widest">{car.category || 'Premium'}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+                  {car.numReviews > 0 ? (
+                    <div className="flex items-center gap-1 text-amber-500">
+                      <FaStar /> <span className="text-[#111827]">{averageRating}</span> <span className="font-medium text-gray-500">({car.numReviews} avis)</span>
+                    </div>
+                  ) : (
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                      Nouveau en flotte
+                    </span>
+                  )}
+                </div>
+             </div>
+
+             {/* Titre & Évaluation Mobile */}
+             <div className="lg:hidden mb-12 border-b border-gray-100 pb-8">
+               <h1 className="text-3xl font-extrabold text-[#111827] tracking-tight mb-2">{car.brand} {car.name}</h1>
+               {car.numReviews > 0 ? (
+                 <div className="flex items-center gap-1 text-amber-500 text-sm font-bold">
+                    <FaStar /> <span className="text-[#111827]">{averageRating}</span> <span className="font-medium text-gray-500">({car.numReviews} avis)</span>
                  </div>
-               </div>
-            </div>
+               ) : (
+                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                   Nouveau en flotte
+                 </span>
+               )}
+             </div>
 
-            {}
-            <div className="lg:hidden mb-12 border-b border-gray-100 pb-8">
-              <h1 className="text-3xl font-extrabold text-[#111827] tracking-tight mb-2">{car.brand} {car.name}</h1>
-              <div className="flex items-center gap-1 text-amber-400 text-sm font-bold">
-                 <FaStar /> <span className="text-[#111827]">{averageRating}</span> <span className="font-medium text-gray-500">({car.numReviews || 0} avis)</span>
-              </div>
-            </div>
 
-            {}
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-[#9CA3AF] mb-4">Aperçu Galerie (Démo)</p>
-              <div className="flex gap-4">
-                 {images.map((img, idx) => (
-                   <button 
-                     key={idx}
-                     onClick={() => setActiveImage(idx)}
-                     className={`w-28 h-20 rounded-2xl overflow-hidden border-2 bg-gray-50 flex items-center justify-center transition-all ${activeImage === idx ? 'border-[#C4A47C] shadow-md shadow-black/8' : 'border-transparent hover:border-gray-200'}`}
-                   >
-                     <img src={img} alt="thumb" className="w-full h-full object-cover mix-blend-multiply" />
-                   </button>
-                 ))}
-              </div>
-            </div>
 
-            {}
+            {/* Spécifications Minimalistes Modernes */}
             <div>
               <h3 className="text-xl font-extrabold text-[#111827] mb-6">Spécifications Techniques</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -235,7 +211,7 @@ export default function CarDetails() {
               </div>
             </div>
 
-            {}
+            {/* Inclus avec la location */}
             <div>
               <h3 className="text-xl font-extrabold text-[#111827] mb-6">Inclus avec la location</h3>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -257,28 +233,20 @@ export default function CarDetails() {
               </div>
             )}
 
-            {}
+            {/* Avis Clients Réels */}
             <div className="pt-12 border-t border-gray-100">
-              <h3 className="text-2xl font-extrabold text-[#111827] mb-10">Avis Clients ({car.numReviews || 0})</h3>
-              
-              <div className="grid md:grid-cols-2 gap-12 mb-12">
-                {}
-                <div className="space-y-6">
-                  {detailedRatings.map((r, i) => (
-                    <div key={i}>
-                      <div className="flex justify-between text-xs font-bold tracking-wide text-[#111827] mb-2">
-                        <span>{r.label}</span>
-                        <span>{r.value.toFixed(1)} / 5</span>
-                      </div>
-                      <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-[#111827] rounded-full" style={{ width: `${(r.value / 5) * 100}%` }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-2xl font-extrabold text-[#111827]">
+                  Avis Clients {car.numReviews > 0 ? `(${car.numReviews})` : ''}
+                </h3>
+                {car.numReviews > 0 && (
+                  <div className="flex items-center gap-1.5 text-sm font-bold text-amber-500">
+                    <FaStar />
+                    <span className="text-[#111827] font-extrabold">{averageRating} / 5</span>
+                  </div>
+                )}
               </div>
 
-              {}
               <div className="grid md:grid-cols-2 gap-12">
                 
                 {}
@@ -359,15 +327,13 @@ export default function CarDetails() {
 
           </div>
 
-
-          {/* ====== DROITE : PANNEAU RÉSERVATION BLANC PUR ====== */}
           <div className="lg:sticky lg:top-24 z-20" id="reservation-panel">
-            <div className="bg-white border border-gray-200 rounded-[32px] p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)]">
+            <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm">
                
               <div className="mb-8">
                 <p className="text-[10px] text-[#6B7280] font-black uppercase tracking-widest mb-1">Prix Journalier</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold text-[#111827]">{car.price}</span>
+                  <span className="text-4xl font-extrabold text-[#111827]">{Number(car.price || 0).toLocaleString('fr-FR')}</span>
                   <span className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">DH / Jour</span>
                 </div>
               </div>
@@ -382,7 +348,7 @@ export default function CarDetails() {
                       type="date" 
                       value={startDate}
                       min={new Date().toISOString().split('T')[0]}
-                      onChange={(e) => setStartDate(e.target.value)}
+                      onChange={(e) => handleStartDateChange(e.target.value)}
                       className="w-full bg-transparent text-[#111827] font-bold outline-none text-sm cursor-pointer"
                     />
                   </div>
@@ -391,7 +357,7 @@ export default function CarDetails() {
                     <input 
                       type="date" 
                       value={endDate}
-                      min={startDate || new Date().toISOString().split('T')[0]}
+                      min={getMinEndDate()}
                       onChange={(e) => setEndDate(e.target.value)}
                       className="w-full bg-transparent text-[#111827] font-bold outline-none text-sm cursor-pointer"
                     />
@@ -409,8 +375,8 @@ export default function CarDetails() {
                     >
                       <div className="pt-6 pb-2 space-y-3">
                         <div className="flex justify-between items-center text-sm font-medium text-[#4B5563]">
-                          <span>{car.price} DH x {totalDays} jours</span>
-                          <span className="text-[#111827] font-bold">{totalPrice} DH</span>
+                          <span>{Number(car.price || 0).toLocaleString('fr-FR')} DH x {totalDays} jour{totalDays > 1 ? 's' : ''}</span>
+                          <span className="text-[#111827] font-bold">{Number(totalPrice || 0).toLocaleString('fr-FR')} DH</span>
                         </div>
                         <div className="flex justify-between items-center text-sm font-medium text-[#4B5563]">
                           <span>Frais de service</span>
@@ -419,7 +385,7 @@ export default function CarDetails() {
                         <div className="h-px bg-gray-200 my-4"></div>
                         <div className="flex justify-between items-end">
                           <span className="text-xs text-[#6B7280] font-black uppercase tracking-widest">Total</span>
-                          <span className="text-2xl font-black text-[#111827]">{totalPrice} <span className="text-xs text-[#6B7280] uppercase tracking-widest">DH</span></span>
+                          <span className="text-2xl font-black text-[#111827]">{Number(totalPrice || 0).toLocaleString('fr-FR')} <span className="text-xs text-[#6B7280] uppercase tracking-widest">DH</span></span>
                         </div>
                       </div>
                     </motion.div>
@@ -428,7 +394,10 @@ export default function CarDetails() {
               </div>
 
               <Link 
-                to={`/booking/${car._id || car.id}`} 
+                to={startDate && endDate 
+                  ? `/booking/${car._id || car.id}?startDate=${startDate}&endDate=${endDate}`
+                  : `/booking/${car._id || car.id}`
+                } 
                 className={`flex items-center justify-center w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all ${
                   car.isAvailableNow !== false 
                     ? 'bg-[#111827] text-white hover:bg-black hover:-translate-y-0.5 shadow-lg shadow-gray-200/50'
@@ -437,6 +406,17 @@ export default function CarDetails() {
               >
                 {car.isAvailableNow !== false ? 'Confirmer la Réservation' : 'Véhicule Indisponible'}
               </Link>
+
+              <a 
+                href={`https://wa.me/212668898245?text=${encodeURIComponent(
+                  `Bonjour LocaFès, je souhaite des renseignements pour louer la ${car.name} (${car.price} DH/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 flex items-center justify-center gap-2.5 w-full py-3.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded-2xl font-bold text-xs uppercase tracking-wider transition-all border border-emerald-100"
+              >
+                <FaWhatsapp size={16} /> Échanger sur WhatsApp
+              </a>
               
               <div className="mt-6 flex items-center justify-center gap-2 text-xs font-bold text-[#6B7280]">
                  <FaCheckCircle className="text-emerald-500" /> Sans frais cachés ni caution complexe
@@ -447,6 +427,39 @@ export default function CarDetails() {
 
         </div>
       </div>
+
+      {/* Barre d'action fixe sur mobile */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md px-6 py-3.5 border-t border-gray-200 flex items-center justify-between shadow-2xl">
+        <div>
+          <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider line-clamp-1">{car.name}</p>
+          <p className="text-lg font-black text-[#111827]">
+            {car.price} <span className="text-xs font-bold text-[#C4A47C]">DH/j</span>
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <a
+            href={`https://wa.me/212668898245?text=${encodeURIComponent(
+              `Bonjour LocaFès, je souhaite des renseignements pour la ${car.name}. Est-elle disponible ?`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100"
+            aria-label="Contacter sur WhatsApp"
+          >
+            <FaWhatsapp size={16} />
+          </a>
+          <Link
+            to={startDate && endDate 
+              ? `/booking/${car._id || car.id}?startDate=${startDate}&endDate=${endDate}`
+              : `/booking/${car._id || car.id}`
+            }
+            className="px-5 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md shadow-black/10 hover:bg-[#C4A47C] transition-all"
+          >
+            Réserver
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }

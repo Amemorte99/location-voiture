@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from 'react-helmet-async';
@@ -51,21 +51,23 @@ export default function Cars() {
     }
   }, [dateValue.startDate, dateValue.endDate, fetchCars]);
 
-  const filteredCars = cars
-    .filter(car => {
-      const matchesSearch = car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (car.brand && car.brand.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesFuel = filterFuel === "all" || car.fuel === filterFuel;
-      const matchesGearbox = filterGearbox === "all" || car.gearbox === filterGearbox;
-      const matchesPrice = car.price <= priceRange;
-      return matchesSearch && matchesFuel && matchesGearbox && matchesPrice;
-    })
-    .sort((a, b) => {
-      if (sortBy === "price-asc") return a.price - b.price;
-      if (sortBy === "price-desc") return b.price - a.price;
-      if (sortBy === "year-desc") return b.year - a.year;
-      return 0;
-    });
+  const filteredCars = useMemo(() => {
+    return cars
+      .filter(car => {
+        const matchesSearch = car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (car.brand && car.brand.toLowerCase().includes(searchTerm.toLowerCase()));
+        const matchesFuel = filterFuel === "all" || car.fuel === filterFuel;
+        const matchesGearbox = filterGearbox === "all" || car.gearbox === filterGearbox;
+        const matchesPrice = car.price <= priceRange;
+        return matchesSearch && matchesFuel && matchesGearbox && matchesPrice;
+      })
+      .sort((a, b) => {
+        if (sortBy === "price-asc") return a.price - b.price;
+        if (sortBy === "price-desc") return b.price - a.price;
+        if (sortBy === "year-desc") return b.year - a.year;
+        return 0;
+      });
+  }, [cars, searchTerm, filterFuel, filterGearbox, priceRange, sortBy]);
 
   
   const activeFilters = [];
@@ -74,7 +76,7 @@ export default function Cars() {
   if (priceRange < 2000) activeFilters.push({ key: 'price', label: `≤ ${priceRange} DH`, clear: () => setPriceRange(2000) });
   if (searchTerm) activeFilters.push({ key: 'search', label: `"${searchTerm}"`, clear: () => setSearchTerm("") });
   if (sortBy !== "default") {
-    const sortLabels = { "price-asc": "Prix ↑", "price-desc": "Prix ↓", "year-desc": "Récent" };
+    const sortLabels = { "price-asc": "Prix croissant", "price-desc": "Prix décroissant", "year-desc": "Plus récents" };
     activeFilters.push({ key: 'sort', label: sortLabels[sortBy], clear: () => setSortBy("default") });
   }
 
@@ -109,7 +111,7 @@ export default function Cars() {
             Trouvez votre <span className="text-[#C4A47C]">véhicule idéal</span>
           </h1>
           <p className="text-lg text-[#6B7280] max-w-xl mx-auto font-medium">
-            {cars.length} véhicules disponibles à Fès. Filtrez et trouvez le vôtre en quelques clics.
+            {loading ? 'Chargement du catalogue...' : `${filteredCars.length} véhicule${filteredCars.length !== 1 ? 's' : ''} disponible${filteredCars.length !== 1 ? 's' : ''} à Fès`}
           </p>
         </div>
 
@@ -142,7 +144,7 @@ export default function Cars() {
                   onChange={newValue => setDateValue(newValue)}
                   displayFormat={"DD/MM/YYYY"}
                   readOnly={true}
-                  placeholder="📅 Dates de location"
+                  placeholder="Dates de location"
                   inputClassName="w-full px-4 py-4 bg-transparent outline-none text-sm font-bold text-[#111827] cursor-pointer"
                 />
               </div>
@@ -156,7 +158,7 @@ export default function Cars() {
               <FaFilter size={12} />
               Filtres
               {activeFilters.length > 0 && (
-                <span className="w-5 h-5 bg-[#111827] rounded-full text-[10px] font-black flex items-center justify-center">{activeFilters.length}</span>
+                <span className="w-5 h-5 bg-[#C4A47C] text-white rounded-full text-[10px] font-black flex items-center justify-center">{activeFilters.length}</span>
               )}
             </button>
           </div>
@@ -167,7 +169,7 @@ export default function Cars() {
           {}
           <div className="flex items-center gap-1.5 bg-white rounded-2xl p-1.5 border border-gray-100 shadow-sm">
             <FaGasPump className="text-gray-400 ml-3 mr-1" size={12} />
-            {["all", "Essence", "Diesel"].map(fuel => (
+            {["all", "Essence", "Diesel", "Hybride"].map(fuel => (
               <button
                 key={fuel}
                 onClick={() => setFilterFuel(fuel)}
@@ -204,9 +206,9 @@ export default function Cars() {
           <div className="flex items-center gap-1.5 bg-white rounded-2xl p-1.5 border border-gray-100 shadow-sm">
             {[
               { key: "default", label: "Défaut", icon: null },
-              { key: "price-asc", label: "Prix ↑", icon: <FaSortAmountUp size={10} /> },
-              { key: "price-desc", label: "Prix ↓", icon: <FaSortAmountDown size={10} /> },
-              { key: "year-desc", label: "Récent", icon: <FaClock size={10} /> },
+              { key: "price-asc", label: "Prix croissant", icon: <FaSortAmountUp size={10} /> },
+              { key: "price-desc", label: "Prix décroissant", icon: <FaSortAmountDown size={10} /> },
+              { key: "year-desc", label: "Plus récents", icon: <FaClock size={10} /> },
             ].map(sort => (
               <button
                 key={sort.key}
@@ -341,8 +343,8 @@ export default function Cars() {
                     <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#6B7280] mb-3">
                       <FaGasPump size={10} /> Carburant
                     </label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {["all", "Essence", "Diesel"].map(fuel => (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {["all", "Essence", "Diesel", "Hybride"].map(fuel => (
                         <button
                           key={fuel}
                           onClick={() => setFilterFuel(fuel)}
@@ -484,27 +486,27 @@ export default function Cars() {
                           </div>
                         )}
                         {}
-                        <div className="absolute top-4 left-4">
-                          <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                        <div className="absolute top-3.5 left-3.5 z-10">
+                          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-semibold tracking-wide backdrop-blur-md shadow-sm ${
                             car.isAvailableNow !== false
-                              ? 'bg-emerald-500 text-white'
-                              : 'bg-rose-500 text-white'
+                              ? 'bg-white/95 text-slate-800 border border-emerald-500/30'
+                              : 'bg-white/95 text-slate-500 border border-slate-200'
                           }`}>
-                            {car.isAvailableNow !== false ? 'Disponible' : 'Indisponible'}
+                            <span className={`w-2 h-2 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
+                            {car.isAvailableNow !== false ? 'Disponible à Fès' : 'Réservé'}
                           </span>
                         </div>
                       </div>
 
-                      {}
                       <div className="flex-1 p-6 flex flex-col justify-between">
                         <div>
                           <div className="flex items-start justify-between mb-3">
                             <div>
-                              <h3 className="text-xl font-black text-[#111827] group-hover:text-[#C4A47C] transition-colors">{car.name}</h3>
-                              <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest">{car.brand || 'Premium'}</p>
+                              <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#C4A47C] transition-colors">{car.name}</h3>
+                              <p className="text-xs font-semibold text-[#8B7355] tracking-wider">{car.brand || 'Gamme Récente'} • Fès Saïss</p>
                             </div>
-                            <span className="px-3 py-1 bg-gray-50 rounded-full text-[10px] font-bold text-[#6B7280] border border-gray-100">
-                              {car.gearbox === 'Automatique' ? 'Auto' : 'BVM'}
+                            <span className="px-3 py-1 bg-gray-50 rounded-lg text-[11px] font-semibold text-[#111827] border border-gray-100">
+                              {car.gearbox === 'Automatique' ? 'Boîte Auto' : 'Manuelle'}
                             </span>
                           </div>
                           <div className="flex items-center gap-4 text-xs text-[#6B7280] font-medium">
@@ -514,13 +516,16 @@ export default function Cars() {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">
+                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                           <div>
-                            <p className="text-[9px] font-bold uppercase text-gray-400 tracking-widest mb-0.5">Tarif / Jour</p>
-                            <p className="text-2xl font-black text-[#C4A47C]">{car.price} <span className="text-xs text-gray-500 font-bold">DH</span></p>
+                            <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">À partir de</p>
+                            <p className="text-2xl font-black text-[#111827] leading-none">
+                              {car.price} <span className="text-xs font-bold text-[#C4A47C]">DH / jour</span>
+                            </p>
+                            <p className="text-[10px] text-emerald-600 font-medium mt-1">Assurance tous risques incluse</p>
                           </div>
-                          <span className="flex items-center gap-2 px-6 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-widest group-hover:bg-[#C4A47C] group-hover:shadow-lg group-hover:shadow-black/10 transition-all">
-                            Détails <FaArrowRight size={10} />
+                          <span className="flex items-center gap-2 px-5 py-2.5 bg-[#111827] text-white rounded-xl font-bold text-xs hover:bg-[#C4A47C] hover:text-[#111827] hover:shadow-lg transition-all">
+                            Réserver <FaArrowRight size={10} />
                           </span>
                         </div>
                       </div>
