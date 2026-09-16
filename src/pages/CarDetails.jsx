@@ -5,7 +5,8 @@ import { getCarById } from "../services/carService";
 import { 
   FaGasPump, FaCog, FaCalendarAlt, FaArrowLeft, 
   FaCheckCircle, FaCar, FaStar, FaUsers, 
-  FaSuitcase, FaDoorOpen, FaWhatsapp 
+  FaSuitcase, FaDoorOpen, FaWhatsapp,
+  FaExpand, FaTimes, FaShieldAlt
 } from "react-icons/fa";
 import SkeletonCard from "../components/SkeletonCard";
 import { useAuth } from "../contexts/AuthContext";
@@ -21,14 +22,26 @@ export default function CarDetails() {
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
   
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
   
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [comment, setComment] = useState("");
-
   
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 16;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
+    setMousePos({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+  };
 
   const fetchCar = useCallback(async () => {
     try {
@@ -104,69 +117,159 @@ export default function CarDetails() {
   const totalPrice = totalDays * (car?.price || 0);
   const averageRating = car?.numReviews > 0 ? car.rating.toFixed(1) : null;
 
+  const displayName = car?.name?.toLowerCase().startsWith(car?.brand?.toLowerCase())
+    ? car.name
+    : `${car?.brand || ''} ${car?.name || ''}`.trim();
+
   return (
     <div className="min-h-screen pt-24 pb-24 bg-white">
       
-      {}
-      <div className="relative w-full max-w-7xl mx-auto px-6 mb-16">
-        
-        {}
-        <div className="absolute top-4 left-6 z-30">
-          <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-[#4B5563] hover:text-[#111827] font-extrabold uppercase tracking-widest text-[10px] transition-all bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-gray-200/50">
-            <FaArrowLeft size={10} /> Retour
-          </button>
-        </div>
+      {/* Showcase Véhicule Studio Luxe avec Tilt 3D & Animation Fluide */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+        <div 
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="relative w-full h-[50vh] sm:h-[55vh] lg:h-[65vh] rounded-3xl overflow-hidden flex items-center justify-center border border-slate-800 shadow-[0_25px_60px_rgba(0,0,0,0.25)] bg-gradient-to-b from-[#070B14] via-[#0E1726] to-[#151F32] group select-none"
+          style={{ perspective: '1200px' }}
+        >
+          {/* Éclairage Studio & Effet Projecteur */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Lumière zénithale douce */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-gradient-to-b from-white/15 via-[#C4A47C]/10 to-transparent blur-3xl rounded-full" />
+            {/* Halo central ambré & cobalt */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] h-[65%] bg-gradient-to-r from-blue-500/5 via-[#C4A47C]/15 to-blue-500/5 blur-3xl rounded-full" />
+            {/* Ombre portée réaliste au sol sous le châssis */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[75%] h-14 bg-black/70 blur-2xl rounded-[100%]" />
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[55%] h-8 bg-black/90 blur-lg rounded-[100%]" />
+            {/* Grille studio micro-texture */}
+            <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#C4A47C_1px,transparent_1px)] [background-size:28px_28px]" />
+          </div>
 
-        {/* Showcase Véhicule */}
-        <div className="w-full h-[45vh] lg:h-[60vh] bg-gradient-to-b from-gray-50 to-gray-100/60 rounded-3xl overflow-hidden flex items-center justify-center relative border border-gray-100">
-           <div className="relative z-10 w-full max-w-4xl h-full p-8 flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.img 
-                  key={resolvedImg}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                  src={resolvedImg} 
-                  alt={car.name} 
-                  className="max-h-[85%] max-w-[90%] object-contain"
-                />
-              </AnimatePresence>
-           </div>
-           
-           {}
-           <div className="absolute top-6 right-6 z-20">
-             <button 
-               onClick={() => {
-                 if (car.isAvailableNow !== false) {
-                   document.getElementById('reservation-panel')?.scrollIntoView({ behavior: 'smooth' });
-                   setTimeout(() => document.getElementById('startDateInput')?.focus(), 500);
-                 } else {
-                   toast.error("Ce véhicule est actuellement occupé.");
-                 }
-               }}
-               className={`flex items-center gap-2 px-3.5 py-1.5 mt-4 lg:mt-0 rounded-full text-[11px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm transition-colors cursor-pointer ${
-                car.isAvailableNow !== false 
-                  ? 'text-emerald-700 bg-white/90 border-emerald-200' 
-                  : 'text-rose-700 bg-white/90 border-rose-200 cursor-not-allowed'
-              }`}>
-                <span className={`w-2 h-2 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-500' : 'bg-rose-500'}`}></span>
-                {car.isAvailableNow !== false ? 'Véhicule Disponible' : 'Véhicule Occupé'}
-                {car.isAvailableNow !== false && <span className="opacity-60 hidden sm:inline ml-1">- Réserver</span>}
+          {/* Barre Supérieure dans le Showcase */}
+          <div className="absolute top-5 left-5 right-5 z-20 flex items-center justify-between pointer-events-auto">
+            <button 
+              onClick={() => navigate(-1)} 
+              className="flex items-center gap-2 text-white/90 hover:text-white font-extrabold uppercase tracking-widest text-[11px] transition-all bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/15 shadow-lg shadow-black/20 hover:scale-105"
+            >
+              <FaArrowLeft size={11} /> Retour
+            </button>
+
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => {
+                  if (car.isAvailableNow !== false) {
+                    document.getElementById('reservation-panel')?.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => document.getElementById('startDateInput')?.focus(), 500);
+                  } else {
+                    toast.error("Ce véhicule est actuellement occupé.");
+                  }
+                }}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-lg transition-all cursor-pointer ${
+                  car.isAvailableNow !== false 
+                    ? 'text-emerald-300 bg-emerald-950/60 border-emerald-500/40 hover:bg-emerald-900/80 hover:border-emerald-400' 
+                    : 'text-rose-300 bg-rose-950/60 border-rose-500/40 cursor-not-allowed'
+                }`}
+              >
+                <span className={`w-2.5 h-2.5 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-400 animate-pulse' : 'bg-rose-400'}`}></span>
+                {car.isAvailableNow !== false ? 'Disponible à Fès' : 'Occupé'}
+                {car.isAvailableNow !== false && <span className="opacity-75 hidden sm:inline ml-1">- Réserver</span>}
               </button>
-           </div>
+            </div>
+          </div>
+
+          {/* Image du Véhicule avec Tilt 3D & Respiration Fluide */}
+          <div className="relative z-10 w-full max-w-5xl h-full p-6 sm:p-10 md:p-14 flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.img 
+                key={resolvedImg}
+                src={resolvedImg} 
+                alt={displayName} 
+                initial={{ opacity: 0, scale: 0.93 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  rotateY: mousePos.x,
+                  rotateX: mousePos.y,
+                  y: [0, -6, 0]
+                }}
+                transition={{ 
+                  opacity: { duration: 0.4 },
+                  scale: { duration: 0.4 },
+                  rotateY: { type: "spring", stiffness: 100, damping: 25 },
+                  rotateX: { type: "spring", stiffness: 100, damping: 25 },
+                  y: { repeat: Infinity, duration: 4.5, ease: "easeInOut" }
+                }}
+                whileHover={{ scale: 1.03 }}
+                onClick={() => setIsZoomOpen(true)}
+                className="max-h-[82%] max-w-[90%] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] cursor-pointer transition-transform select-none"
+                title="Cliquez pour agrandir en haute définition"
+              />
+            </AnimatePresence>
+          </div>
+
+          {/* Barre Inférieure dans le Showcase */}
+          <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center justify-between pointer-events-auto">
+            <div className="hidden sm:flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 text-white/85 text-[11px] font-semibold shadow-lg">
+              <FaShieldAlt className="text-[#C4A47C]" size={13} />
+              <span>Garantie & Clés en main • Fès</span>
+            </div>
+
+            <button
+              onClick={() => setIsZoomOpen(true)}
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/25 text-white backdrop-blur-md px-4 py-2 rounded-full border border-white/15 text-xs font-bold transition-all ml-auto shadow-lg hover:scale-105"
+            >
+              <FaExpand size={12} />
+              <span className="hidden sm:inline">Vue Haute Définition</span>
+              <span className="sm:hidden">Zoom HD</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {}
+      {/* Modal Plein Écran Haute Définition (Lightbox) */}
+      <AnimatePresence>
+        {isZoomOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8"
+            onClick={() => setIsZoomOpen(false)}
+          >
+            <button
+              onClick={() => setIsZoomOpen(false)}
+              className="absolute top-6 right-6 z-50 p-3.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all border border-white/20 hover:scale-110 cursor-pointer"
+              aria-label="Fermer"
+            >
+              <FaTimes size={20} />
+            </button>
+
+            <motion.img
+              initial={{ scale: 0.88, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.88, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 220 }}
+              src={resolvedImg}
+              alt={displayName}
+              className="max-h-[85vh] max-w-[92vw] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.9)]"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/90 text-xs font-semibold bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 shadow-xl">
+              <span className="text-[#C4A47C] font-bold">{displayName}</span> • Cliquez n'importe où pour fermer
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1fr_420px] gap-16 items-start relative">
           
-          {}
           <div className="space-y-16">
             
              {/* Titre & Évaluation Desktop */}
              <div className="hidden lg:block border-b border-gray-100 pb-8">
-                <h1 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-2 tracking-tight">{car.brand} {car.name}</h1>
+                <h1 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-2 tracking-tight">{displayName}</h1>
                 <div className="flex items-center gap-4 text-sm font-bold text-[#6B7280]">
                   <span className="uppercase tracking-widest">{car.category || 'Premium'}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
@@ -184,7 +287,7 @@ export default function CarDetails() {
 
              {/* Titre & Évaluation Mobile */}
              <div className="lg:hidden mb-12 border-b border-gray-100 pb-8">
-               <h1 className="text-3xl font-extrabold text-[#111827] tracking-tight mb-2">{car.brand} {car.name}</h1>
+               <h1 className="text-3xl font-extrabold text-[#111827] tracking-tight mb-2">{displayName}</h1>
                {car.numReviews > 0 ? (
                  <div className="flex items-center gap-1 text-amber-500 text-sm font-bold">
                     <FaStar /> <span className="text-[#111827]">{averageRating}</span> <span className="font-medium text-gray-500">({car.numReviews} avis)</span>
@@ -409,7 +512,7 @@ export default function CarDetails() {
 
               <a 
                 href={`https://wa.me/212668898245?text=${encodeURIComponent(
-                  `Bonjour LocaFès, je souhaite des renseignements pour louer la ${car.name} (${car.price} DH/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
+                  `Bonjour LocaFès, je souhaite des renseignements pour louer la ${displayName} (${car.price} DH/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -431,7 +534,7 @@ export default function CarDetails() {
       {/* Barre d'action fixe sur mobile */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md px-6 py-3.5 border-t border-gray-200 flex items-center justify-between shadow-2xl">
         <div>
-          <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider line-clamp-1">{car.name}</p>
+          <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider line-clamp-1">{displayName}</p>
           <p className="text-lg font-black text-[#111827]">
             {car.price} <span className="text-xs font-bold text-[#C4A47C]">DH/j</span>
           </p>
@@ -439,7 +542,7 @@ export default function CarDetails() {
         <div className="flex items-center gap-2">
           <a
             href={`https://wa.me/212668898245?text=${encodeURIComponent(
-              `Bonjour LocaFès, je souhaite des renseignements pour la ${car.name}. Est-elle disponible ?`
+              `Bonjour LocaFès, je souhaite des renseignements pour la ${displayName}. Est-elle disponible ?`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
