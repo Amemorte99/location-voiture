@@ -7,6 +7,9 @@ const { sendBookingConfirmation } = require('../services/mailService');
 
 
 const createPaymentIntent = async (req, res) => {
+  if (!stripe) {
+    return res.status(503).json({ message: 'Paiement par carte en ligne non configuré.' });
+  }
   try {
     const { 
       carId, startDate, endDate, fullName, phone, optionsPrice = 0,

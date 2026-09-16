@@ -93,6 +93,17 @@ const app = express();
 
 app.set('trust proxy', 1);
 
+app.use(async (req, res, next) => {
+  if (process.env.VERCEL) {
+    try {
+      await connectDB();
+    } catch (err) {
+      console.error('[DB Middleware Error]:', err.message);
+    }
+  }
+  next();
+});
+
 app.use(compression({
   level: 6,
   threshold: 1024, 
