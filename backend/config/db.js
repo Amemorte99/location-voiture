@@ -40,6 +40,9 @@ const seedInitialDataIfEmpty = async () => {
 };
 
 const connectDB = async () => {
+  if (mongoose.connection && mongoose.connection.readyState >= 1) {
+    return mongoose.connection;
+  }
   if (process.env.MONGO_URI) {
     try {
       const conn = await mongoose.connect(process.env.MONGO_URI, {
