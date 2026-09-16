@@ -161,21 +161,21 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads'), staticCacheO
 app.use('/images', express.static(path.join(__dirname, '..', 'public', 'images'), staticCacheOptions));
 
 
-app.use('/api/auth/login', authLimiter);
-app.use('/api/auth/register', authLimiter);
+app.use(['/api/auth/login', '/auth/login'], authLimiter);
+app.use(['/api/auth/register', '/auth/register'], authLimiter);
 
-app.use('/api', apiLimiter);
+app.use(['/api', '/'], apiLimiter);
 
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/cars', carRoutes);
-app.use('/api/bookings', bookingRoutes);
-app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/stripe', stripeRoutes);
-app.use('/api/drivers', driverRoutes);
+app.use(['/api/auth', '/auth'], authRoutes);
+app.use(['/api/users', '/users'], userRoutes);
+app.use(['/api/cars', '/cars'], carRoutes);
+app.use(['/api/bookings', '/bookings'], bookingRoutes);
+app.use(['/api/dashboard', '/dashboard'], dashboardRoutes);
+app.use(['/api/stripe', '/stripe'], stripeRoutes);
+app.use(['/api/drivers', '/drivers'], driverRoutes);
 
 
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({ 
     status: 'OK', 
     uptime: Math.floor(process.uptime()),
