@@ -52,10 +52,16 @@ const connectDB = async () => {
       await seedInitialDataIfEmpty();
       return conn;
     } catch (error) {
-      console.warn(`[DB] Serveur MongoDB distant indisponible (${error.message}).`);
+      console.error(`[DB] Erreur de connexion à MongoDB (${error.message}).`);
       try { await mongoose.disconnect(); } catch {}
+      if (process.env.VERCEL) {
+        return null;
+      }
       console.info(`[DB] Démarrage de l'instance locale persistante...`);
     }
+  } else if (process.env.VERCEL) {
+    console.warn('[DB] Variable MONGO_URI non configurée sur Vercel.');
+    return null;
   }
 
   try {

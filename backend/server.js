@@ -121,7 +121,11 @@ const authLimiter = rateLimit({
 
 
 
-const allowedOrigins = ['http://localhost:3000', 'https://location-voiture.vercel.app'];
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://locafes-app.vercel.app',
+  'https://location-voiture.vercel.app'
+];
 if (process.env.CLIENT_URL) {
   allowedOrigins.push(...process.env.CLIENT_URL.split(',').map(u => u.trim()));
 }
@@ -132,7 +136,7 @@ app.use(cors({
     
     const normalizedOrigin = origin.endsWith('/') ? origin.slice(0, -1) : origin;
 
-    if (allowedOrigins.includes(normalizedOrigin)) {
+    if (allowedOrigins.includes(normalizedOrigin) || normalizedOrigin.endsWith('.vercel.app')) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
