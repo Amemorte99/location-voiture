@@ -125,7 +125,20 @@ app.use(compression({
 
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } })); 
-app.use(mongoSanitize()); 
+app.use((req, res, next) => {
+  try {
+    if (req.body && typeof req.body === 'object') {
+      mongoSanitize.sanitize(req.body);
+    }
+    if (req.params && typeof req.params === 'object') {
+      mongoSanitize.sanitize(req.params);
+    }
+    if (!process.env.VERCEL && req.query && typeof req.query === 'object') {
+      mongoSanitize.sanitize(req.query);
+    }
+  } catch (e) {}
+  next();
+}); 
 
 
 const apiLimiter = rateLimit({
