@@ -1,3 +1,4 @@
+process.env.VERCEL = '1';
 const app = require('../backend/server');
 const connectDB = require('../backend/config/db');
 

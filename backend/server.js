@@ -1,7 +1,8 @@
-require('dotenv').config({ quiet: true });
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env'), quiet: true });
+require('dotenv').config({ path: path.join(__dirname, '../.env'), quiet: true });
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const helmet = require('helmet');
 const compression = require('compression');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -9,15 +10,13 @@ const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/db');
 const { notFound, errorHandler } = require('./utils/errorHandler');
 
-
 const logger = require('./utils/logger');
 const { initCronJobs } = require('./services/cronService');
 
 const requiredEnvVars = ['MONGO_URI', 'JWT_SECRET'];
 requiredEnvVars.forEach(key => {
   if (!process.env[key]) {
-    logger.error(`CRITICAL: Missing environment variable: ${key}`);
-    process.exit(1);
+    logger.warn(`Missing environment variable: ${key} (make sure it is set in production)`);
   }
 });
 
