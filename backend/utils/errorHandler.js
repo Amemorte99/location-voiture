@@ -31,14 +31,11 @@ const errorHandler = (err, req, res, next) => {
     message = `La valeur du champ "${field}" existe déjà`;
   }
 
-  const isProduction = process.env.NODE_ENV === 'production';
-
   res.status(statusCode).json({
     success: false,
-    message: isProduction && statusCode === 500
-      ? 'Erreur interne du serveur'
-      : message,
-    stack: isProduction ? undefined : err.stack,
+    message: err.message || message,
+    url: req.url,
+    originalUrl: req.originalUrl,
   });
 };
 

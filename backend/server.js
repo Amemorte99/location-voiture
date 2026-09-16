@@ -93,6 +93,15 @@ const app = express();
 
 app.set('trust proxy', 1);
 
+app.use((req, res, next) => {
+  if (req.headers['x-matched-path']) {
+    req.url = req.headers['x-matched-path'];
+  } else if (req.url && req.url.startsWith('/api/index.js')) {
+    req.url = req.url.replace('/api/index.js', '/api') || '/';
+  }
+  next();
+});
+
 app.use(async (req, res, next) => {
   if (process.env.VERCEL) {
     try {
