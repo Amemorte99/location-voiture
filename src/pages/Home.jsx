@@ -13,11 +13,11 @@ import {
 import { toast } from "react-hot-toast";
 
 const HERO_CARS = [
-  { src: "/images/peugeot-208 2021.png",       name: "Peugeot 208 GT",   year: 2021, price: 300, tag: "Citadine" },
-  { src: "/images/Hyundai Tucson 2023.webp",  name: "Hyundai Tucson",   year: 2023, price: 450, tag: "SUV Premium" },
-  { src: "/images/Toyota Yaris 2022.png",      name: "Toyota Yaris",    year: 2022, price: 350, tag: "Hybride" },
-  { src: "/images/Skoda Octavia 2022.webp",    name: "Skoda Octavia",   year: 2022, price: 400, tag: "Berline" },
-  { src: "/images/Dacia Duster 2021.webp",     name: "Dacia Duster 4x4",year: 2021, price: 350, tag: "SUV Baroudeur" },
+  { src: "/images/hero-golf8.png",            name: "Volkswagen Golf 8",  year: 2023, price: 450, tag: "Berline Compacte" },
+  { src: "/images/hero-evoque.png",           name: "Range Rover Evoque", year: 2023, price: 900, tag: "Prestige SUV" },
+  { src: "/images/hero-mercedes.png",         name: "Mercedes Classe C",  year: 2023, price: 850, tag: "Berline Luxe" },
+  { src: "/images/hero-qashqai.png",          name: "Nissan Qashqai",     year: 2023, price: 500, tag: "SUV Familial" },
+  { src: "/images/hero-peugeot-208.png",      name: "Peugeot 208 GT",     year: 2021, price: 300, tag: "Citadine GT" },
 ];
 
 const CAROUSEL_INTERVAL = 5000;
