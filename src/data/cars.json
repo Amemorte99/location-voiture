@@ -1,7 +1,7 @@
 [
   {
-    "id": 1,
     "name": "Dacia Logan",
+    "brand": "Dacia",
     "price": 300,
     "image": "/images/Dacia Logan 2020.jpg",
     "year": 2020,
@@ -9,8 +9,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 2,
     "name": "Dacia Sandero",
+    "brand": "Dacia",
     "price": 250,
     "image": "/images/dacia-sandero 2021.jpg",
     "year": 2021,
@@ -18,8 +18,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 3,
     "name": "Renault Clio 5",
+    "brand": "Renault",
     "price": 250,
     "image": "/images/renault-clio 5 2022.jpg",
     "year": 2022,
@@ -27,8 +27,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 4,
     "name": "Peugeot 208",
+    "brand": "Peugeot",
     "price": 300,
     "image": "/images/peugeot-208 2021.png",
     "year": 2021,
@@ -36,8 +36,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 5,
     "name": "Hyundai i10",
+    "brand": "Hyundai",
     "price": 250,
     "image": "/images/Hyundai i10 2020.jpg",
     "year": 2020,
@@ -45,8 +45,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 6,
     "name": "Kia Picanto",
+    "brand": "Kia",
     "price": 300,
     "image": "/images/Kia Picanto 2020.webp",
     "year": 2020,
@@ -54,8 +54,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 7,
     "name": "Citroën C3",
+    "brand": "Citroën",
     "price": 300,
     "image": "/images/citroen-c3 2021.jpg",
     "year": 2021,
@@ -63,8 +63,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 8,
     "name": "Volkswagen Polo",
+    "brand": "Volkswagen",
     "price": 350,
     "image": "/images/Volkswagen Polo 2022.webp",
     "year": 2022,
@@ -72,8 +72,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 9,
     "name": "Toyota Yaris",
+    "brand": "Toyota",
     "price": 350,
     "image": "/images/Toyota Yaris 2022.png",
     "year": 2022,
@@ -81,8 +81,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 10,
     "name": "Fiat 500",
+    "brand": "Fiat",
     "price": 250,
     "image": "/images/Fiat 500 2020.png",
     "year": 2020,
@@ -90,8 +90,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 11,
     "name": "Dacia Duster",
+    "brand": "Dacia",
     "price": 350,
     "image": "/images/Dacia Duster 2021.webp",
     "year": 2021,
@@ -99,8 +99,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 12,
     "name": "Renault Captur",
+    "brand": "Renault",
     "price": 400,
     "image": "/images/renault-captur 2022.webp",
     "year": 2022,
@@ -108,8 +108,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 13,
     "name": "Peugeot 2008",
+    "brand": "Peugeot",
     "price": 400,
     "image": "/images/Peugeot 2008 2022.webp",
     "year": 2022,
@@ -117,8 +117,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 14,
     "name": "Hyundai Tucson",
+    "brand": "Hyundai",
     "price": 450,
     "image": "/images/Hyundai Tucson 2023.webp",
     "year": 2023,
@@ -126,8 +126,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 15,
     "name": "Nissan Qashqai",
+    "brand": "Nissan",
     "price": 400,
     "image": "/images/Nissan Qashqai 2023.jpg",
     "year": 2023,
@@ -135,8 +135,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 16,
     "name": "Suzuki Swift",
+    "brand": "Suzuki",
     "price": 400,
     "image": "/images/Suzuki Swift 2020.jpg",
     "year": 2020,
@@ -144,8 +144,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 17,
     "name": "Seat Ibiza",
+    "brand": "Seat",
     "price": 300,
     "image": "/images/Seat Ibiza 2021.webp",
     "year": 2021,
@@ -153,8 +153,8 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 18,
     "name": "Renault Megane",
+    "brand": "Renault",
     "price": 300,
     "image": "/images/Renault Megane 2021.jpg",
     "year": 2021,
@@ -162,8 +162,8 @@
     "gearbox": "Automatique"
   },
   {
-    "id": 19,
     "name": "Opel Corsa",
+    "brand": "Opel",
     "price": 400,
     "image": "/images/Opel Corsa 2020.png",
     "year": 2020,
@@ -171,12 +171,57 @@
     "gearbox": "Manuelle"
   },
   {
-    "id": 20,
     "name": "Skoda Octavia",
+    "brand": "Skoda",
     "price": 400,
     "image": "/images/Skoda Octavia 2022.webp",
     "year": 2022,
     "fuel": "Diesel",
     "gearbox": "Automatique"
+  },
+  {
+    "name": "Volkswagen Golf 8",
+    "brand": "Volkswagen",
+    "price": 450,
+    "image": "/images/Volkswagen Golf 8 2023.jpg",
+    "year": 2023,
+    "fuel": "Diesel",
+    "gearbox": "Automatique"
+  },
+  {
+    "name": "Mercedes-Benz Classe C",
+    "brand": "Mercedes-Benz",
+    "price": 900,
+    "image": "/images/Mercedes Classe C 2023.jpg",
+    "year": 2023,
+    "fuel": "Diesel",
+    "gearbox": "Automatique"
+  },
+  {
+    "name": "Range Rover Evoque",
+    "brand": "Land Rover",
+    "price": 1100,
+    "image": "/images/Range Rover Evoque 2023.jpg",
+    "year": 2023,
+    "fuel": "Diesel",
+    "gearbox": "Automatique"
+  },
+  {
+    "name": "Peugeot 3008 GT",
+    "brand": "Peugeot",
+    "price": 550,
+    "image": "/images/Peugeot 3008 2023.jpg",
+    "year": 2023,
+    "fuel": "Diesel",
+    "gearbox": "Automatique"
+  },
+  {
+    "name": "Dacia Jogger (7 Places)",
+    "brand": "Dacia",
+    "price": 380,
+    "image": "/images/Dacia Jogger 2023.jpg",
+    "year": 2023,
+    "fuel": "Essence",
+    "gearbox": "Manuelle"
   }
 ]
