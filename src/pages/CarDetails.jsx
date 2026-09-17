@@ -178,7 +178,14 @@ export default function CarDetails() {
           </div>
 
           {/* Image du Véhicule avec Tilt 3D & Respiration Fluide */}
-          <div className="relative z-10 w-full max-w-5xl h-full p-6 sm:p-10 md:p-14 flex items-center justify-center">
+          <div className="relative z-10 w-full max-w-5xl h-full p-4 sm:p-8 md:p-12 flex items-center justify-center">
+            {/* Aura d'ambiance douce projetée derrière le véhicule */}
+            <img 
+              src={resolvedImg} 
+              alt="" 
+              aria-hidden="true" 
+              className="absolute w-[80%] max-h-[75%] object-contain blur-3xl opacity-20 pointer-events-none -z-10" 
+            />
             <AnimatePresence mode="wait">
               <motion.img 
                 key={resolvedImg}
@@ -201,7 +208,7 @@ export default function CarDetails() {
                 }}
                 whileHover={{ scale: 1.03 }}
                 onClick={() => setIsZoomOpen(true)}
-                className="max-h-[82%] max-w-[90%] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] cursor-pointer transition-transform select-none"
+                className="max-h-[85%] max-w-[92%] object-contain rounded-2xl filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)] cursor-pointer transition-transform select-none"
                 title="Cliquez pour agrandir en haute définition"
               />
             </AnimatePresence>

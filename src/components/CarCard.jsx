@@ -11,13 +11,16 @@ const CarCard = memo(function CarCard({ car }) {
   return (
     <div className="transform transition-all duration-300 hover:-translate-y-2">
       <div className="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
-        <div className="relative h-56 overflow-hidden bg-[#F9FAFB] flex items-center justify-center">
+        <div className="relative h-56 overflow-hidden bg-gradient-to-b from-[#F8F9FA] via-[#ECEEF2] to-[#E2E6EA] flex items-center justify-center">
+          {/* Ombre de sol subtile pour les véhicules transparents */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-5 bg-black/20 blur-md rounded-full pointer-events-none" />
+          
           {car.image ? (
             <img 
               src={resolveImageUrl(car.image)}
               alt={car.name} 
               loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+              className="relative z-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
               onError={(e) => {
                 e.target.onerror = null; 
                 e.target.style.display = 'none';
