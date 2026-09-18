@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaChartLine, FaCar, FaCalendarAlt, FaUsers, FaCog, FaSignOutAlt, FaTimes, FaUserTie, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChartLine, FaCar, FaCalendarAlt, FaUsers, FaCog, FaSignOutAlt, FaTimes, FaUserTie, FaChevronLeft, FaChevronRight, FaEnvelope } from "react-icons/fa";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -13,7 +13,8 @@ export default function Sidebar({
   toggleCollapse,
   pendingBookings = 0,
   stats = null,
-  availableDrivers = 0
+  availableDrivers = 0,
+  unreadMessages = 0
 }) {
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ export default function Sidebar({
   const menuItems = [
     { id: 'overview', label: 'Dashboard', icon: <FaChartLine /> },
     { id: 'bookings', label: 'Réservations', icon: <FaCalendarAlt />, badge: pendingBookings },
+    { id: 'messages', label: 'Messages & Demandes', icon: <FaEnvelope />, badge: unreadMessages || stats?.unreadMessagesCount || 0 },
     { id: 'cars', label: 'Gestion Voitures', icon: <FaCar />, badge: stats?.totalCars || null },
     { id: 'drivers', label: 'Chauffeurs & Livreurs', icon: <FaUserTie />, badge: availableDrivers || null },
     { id: 'users', label: 'Clients', icon: <FaUsers />, badge: stats?.totalUsers || null },
@@ -151,6 +153,8 @@ export default function Sidebar({
                         ? 'bg-white/20 text-white'
                         : item.id === 'bookings'
                         ? 'bg-rose-100 text-rose-600 animate-pulse'
+                        : item.id === 'messages'
+                        ? 'bg-emerald-100 text-emerald-700 animate-pulse'
                         : 'bg-slate-100 text-[#C4A47C]'
                     }`}>
                       {item.badge}
@@ -162,6 +166,8 @@ export default function Sidebar({
                     <span className={`hidden lg:flex absolute top-1.5 right-1.5 w-4 h-4 rounded-full text-[9px] font-black items-center justify-center shadow-xs ${
                       item.id === 'bookings'
                         ? 'bg-rose-500 text-white animate-pulse'
+                        : item.id === 'messages'
+                        ? 'bg-emerald-500 text-white animate-pulse'
                         : 'bg-[#C4A47C] text-slate-900'
                     }`}>
                       {item.badge}

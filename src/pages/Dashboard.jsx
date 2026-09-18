@@ -16,7 +16,9 @@ import BookingsTab from './admin/BookingsTab';
 import CarsTab from './admin/CarsTab';
 import DriversTab from './admin/DriversTab';
 import SettingsTab from './admin/SettingsTab';
+import MessagesTab from './admin/MessagesTab';
 import { getDrivers, assignDriverToBooking } from '../services/driverService';
+import { getMessages, updateMessageStatus, deleteMessage } from '../services/messageService';
 import { STATUS_LABELS, STATUS_STYLES } from '../utils/constants';
 
 const handleOpenInvoice = (booking) => {
@@ -150,6 +152,9 @@ export default function Dashboard() {
   const [bookings, setBookings] = useState([]);
   const [cars, setCars] = useState([]);
   const [drivers, setDrivers] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
+  const [messageStatusFilter, setMessageStatusFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
@@ -190,6 +195,9 @@ export default function Dashboard() {
     try {
       const data = await getDashboardStats(period);
       setStats(data);
+      if (data && data.unreadMessagesCount !== undefined) {
+        setUnreadMessagesCount(data.unreadMessagesCount);
+      }
     } catch (err) {
       toast.error('Erreur chargement stats');
     }
@@ -239,13 +247,25 @@ export default function Dashboard() {
         else { setCars(data); setTotalPages(1); }
       } else if (activeTab === 'drivers') {
         await fetchDrivers();
+      } else if (activeTab === 'messages') {
+        const data = await getMessages({ ...params, status: messageStatusFilter });
+        if (data.messages) {
+          setMessages(data.messages);
+          setTotalPages(data.totalPages);
+          if (data.unreadCount !== undefined) {
+            setUnreadMessagesCount(data.unreadCount);
+          }
+        } else {
+          setMessages(Array.isArray(data) ? data : []);
+          setTotalPages(1);
+        }
       }
     } catch (err) {
       toast.error(err.response?.data?.message || 'Erreur de chargement');
     } finally {
       setLoading(false);
     }
-  }, [activeTab, searchTerm, fetchStats, fetchDrivers, page]);
+  }, [activeTab, searchTerm, messageStatusFilter, fetchStats, fetchDrivers, page]);
 
   useEffect(() => {
     fetchStats();
@@ -421,6 +441,38 @@ export default function Dashboard() {
     }
   };
 
+  const handleToggleMessageStatus = async (id, currentStatus) => {
+    const newStatus = currentStatus === 'read' ? 'unread' : 'read';
+    try {
+      const res = await updateMessageStatus(id, newStatus);
+      setMessages(prev => prev.map(m => (m._id || m.id) === id ? res.message : m));
+      if (newStatus === 'read') {
+        setUnreadMessagesCount(prev => Math.max(0, prev - 1));
+      } else {
+        setUnreadMessagesCount(prev => prev + 1);
+      }
+      toast.success(newStatus === 'read' ? 'Marqué comme lu' : 'Marqué comme non lu');
+      fetchStats();
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Erreur de mise à jour du message');
+    }
+  };
+
+  const handleDeleteMessage = async (id) => {
+    showConfirm('Êtes-vous sûr de vouloir supprimer ce message de contact ?', async () => {
+      setConfirmModal(null);
+      try {
+        await deleteMessage(id);
+        setMessages(prev => prev.filter(m => (m._id || m.id) !== id));
+        toast.success('Message supprimé');
+        fetchData(page);
+        fetchStats();
+      } catch (err) {
+        toast.error(err.response?.data?.message || 'Erreur lors de la suppression');
+      }
+    });
+  };
+
   const getStatusBadge = (status) => (
     <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${STATUS_STYLES[status] || STATUS_STYLES.pending}`}>
       {STATUS_LABELS[status] || status}
@@ -433,6 +485,7 @@ export default function Dashboard() {
     if (activeTab === 'bookings') return <SkeletonTable cols={5} />;
     if (activeTab === 'cars') return <SkeletonTable cols={5} />;
     if (activeTab === 'users') return <SkeletonTable cols={6} />;
+    if (activeTab === 'messages') return <SkeletonTable cols={5} />;
     return <div className="flex justify-center py-32"><div className="w-16 h-16 border-4 border-[#C4A47C] border-t-transparent rounded-full animate-spin" /></div>;
   };
 
@@ -448,6 +501,7 @@ export default function Dashboard() {
         pendingBookings={pendingCount}
         stats={stats}
         availableDrivers={drivers.filter(d => d.status === 'disponible').length}
+        unreadMessages={unreadMessagesCount}
       />
 
       <main className={`flex-1 min-w-0 w-full overflow-x-hidden transition-all duration-300 ease-in-out ${sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-72'} min-h-screen relative`}>
@@ -524,6 +578,22 @@ export default function Dashboard() {
                     drivers={drivers}
                     stats={stats}
                     onRefresh={fetchDrivers}
+                  />
+                )}
+                {activeTab === 'messages' && (
+                  <MessagesTab
+                    messages={messages}
+                    loading={loading}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    statusFilter={messageStatusFilter}
+                    setStatusFilter={setMessageStatusFilter}
+                    onToggleStatus={handleToggleMessageStatus}
+                    onDeleteMessage={handleDeleteMessage}
+                    unreadCount={unreadMessagesCount}
+                    page={page}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
                   />
                 )}
                 {activeTab === 'settings' && <SettingsTab bookings={bookings} users={users} cars={cars} />}

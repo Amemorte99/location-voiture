@@ -34,6 +34,7 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const stripeRoutes = require('./routes/stripeRoutes');
 const driverRoutes = require('./routes/driverRoutes');
+const messageRoutes = require('./routes/messageRoutes');
 
 const seedInitialDrivers = async () => {
   try {
@@ -206,6 +207,7 @@ app.use(['/api/bookings', '/bookings'], bookingRoutes);
 app.use(['/api/dashboard', '/dashboard'], dashboardRoutes);
 app.use(['/api/stripe', '/stripe'], stripeRoutes);
 app.use(['/api/drivers', '/drivers'], driverRoutes);
+app.use(['/api/messages', '/messages'], messageRoutes);
 
 
 app.get(['/api/health', '/health'], (req, res) => {

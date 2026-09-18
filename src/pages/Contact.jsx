@@ -6,6 +6,7 @@ import {
   FaCar, FaPlane, FaCheckCircle, FaPaperPlane
 } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
+import { sendMessage } from '../services/messageService';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -18,19 +19,35 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim()) {
       toast.error('Veuillez renseigner au moins votre nom et votre numéro de téléphone.');
       return;
     }
+    if (!formData.message.trim()) {
+      toast.error('Veuillez saisir votre message.');
+      return;
+    }
 
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    try {
+      await sendMessage(formData);
       setSubmitted(true);
       toast.success('Votre message a bien été envoyé ! Notre équipe vous répond sous 30 minutes.');
-    }, 500);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: "Demande d'information",
+        message: ''
+      });
+    } catch (err) {
+      console.error('Erreur envoi message:', err);
+      toast.error(err.response?.data?.message || "Erreur lors de l'envoi du message. Veuillez réessayer ou nous contacter sur WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const generateWhatsAppLink = () => {

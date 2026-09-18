@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Car = require('../models/Car');
 const Booking = require('../models/Booking');
+const Message = require('../models/Message');
 
 
 const getStats = async (req, res) => {
@@ -8,6 +9,7 @@ const getStats = async (req, res) => {
     const totalUsers = await User.countDocuments({ deletedAt: null });
     const totalCars = await Car.countDocuments({ deletedAt: null });
     const totalBookings = await Booking.countDocuments({ deletedAt: null });
+    const unreadMessagesCount = await Message.countDocuments({ status: 'unread' });
 
     const revenueResult = await Booking.aggregate([
       { $match: { status: { $in: ['confirmed', 'completed'] }, deletedAt: null } },
@@ -148,7 +150,8 @@ const getStats = async (req, res) => {
       recentUsers,
       trends,
       growth,
-      pendingBookingsCount: bookingsByStatus.find(s => s._id === 'pending')?.count || 0
+      pendingBookingsCount: bookingsByStatus.find(s => s._id === 'pending')?.count || 0,
+      unreadMessagesCount,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
