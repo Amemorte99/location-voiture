@@ -11,6 +11,7 @@ import {
   FaWhatsapp, FaMapMarkerAlt, FaChevronLeft, FaChevronRight
 } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../contexts/AuthContext";
 
 const HERO_CARS = [
   { src: "/images/hero-golf8.png",            name: "Volkswagen Golf 8",  year: 2023, price: 450, tag: "Berline Compacte" },
@@ -23,6 +24,7 @@ const HERO_CARS = [
 const CAROUSEL_INTERVAL = 5000;
 
 export default function Home() {
+  const { currentUser, isAdmin } = useAuth();
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -435,13 +437,23 @@ export default function Home() {
                   <FaCar size={14} />
                   Réserver Immédiatement
                 </Link>
-                <Link
-                  to="/login"
-                  className="px-8 py-3.5 bg-[#242424] hover:bg-[#2e2e2e] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
-                >
-                  Créer un compte
-                  <FaArrowRight size={11} className="text-gray-400" />
-                </Link>
+                {currentUser ? (
+                  <Link
+                    to={isAdmin ? "/dashboard" : "/profile"}
+                    className="px-8 py-3.5 bg-[#242424] hover:bg-[#2e2e2e] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
+                  >
+                    {isAdmin ? "Tableau de bord" : "Mon profil"}
+                    <FaArrowRight size={11} className="text-gray-400" />
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="px-8 py-3.5 bg-[#242424] hover:bg-[#2e2e2e] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
+                  >
+                    Créer un compte
+                    <FaArrowRight size={11} className="text-gray-400" />
+                  </Link>
+                )}
               </div>
             </motion.div>
           </div>
