@@ -316,7 +316,7 @@ export default function Profile() {
                                 <div className="flex items-center gap-2 text-xs text-[#6B7280]">
                                   <FaCalendarAlt size={12} className="text-gray-400" />
                                   <span>{new Date(booking.startDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                                  <span className="text-gray-300">→</span>
+                                  <FaArrowRight size={10} className="text-gray-300 mx-1" />
                                   <span>{new Date(booking.endDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                                 </div>
                                 {booking.pickupLocation && (
@@ -336,7 +336,7 @@ export default function Profile() {
                                   <div className="mt-1">
                                     {booking.paymentMethod === 'card' ? (
                                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-100">
-                                        ✓ Réglé en ligne (Carte)
+                                        <FaCheck size={9} /> Réglé en ligne (Carte)
                                       </span>
                                     ) : (
                                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#F8F5F0] text-[#8C6D3F] text-[10px] font-bold border border-[#E8DDD0]">

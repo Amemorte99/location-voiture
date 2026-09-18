@@ -1,4 +1,3 @@
-
 const dotenv = require('dotenv');
 const Car = require('./models/Car');
 const User = require('./models/User');
@@ -12,15 +11,12 @@ const seedDB = async () => {
   try {
     await connectDB();
 
-    
     await Car.deleteMany();
-    console.log('  Cars collection cleared');
+    console.log('[DB] Flotte automobile réinitialisée');
 
-    
     await Car.insertMany(cars);
-    console.log(' 20 cars seeded successfully');
+    console.log('[DB] Véhicules insérés avec succès');
 
-    
     const adminExists = await User.findOne({ email: 'admin@locafes.ma' });
     if (!adminExists) {
       const adminPassword = process.env.ADMIN_PASSWORD || 'AdminLocafes2024!';
@@ -31,15 +27,15 @@ const seedDB = async () => {
         role: 'admin',
         phone: '0535621020',
       });
-      console.log('[OK] Admin user created (admin@locafes.ma)');
+      console.log('[DB] Administrateur créé (admin@locafes.ma)');
     } else {
-      console.log('[INFO] Admin user already exists');
+      console.log('[DB] Administrateur déjà existant');
     }
 
-    console.log('\n[SUCCESS] Seed completed!');
+    console.log('[SUCCESS] Initialisation terminée');
     process.exit(0);
   } catch (error) {
-    console.error('[ERROR] Seed error:', error.message);
+    console.error('[ERROR] Erreur initialisation :', error.message);
     process.exit(1);
   }
 };

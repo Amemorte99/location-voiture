@@ -221,7 +221,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
         </div>
       </div>
 
-      {/* 2. CARTES INDICATEURS CLAIRES & AÉRÉES */}
+      {/* Indicateurs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Total Équipe */}
@@ -533,8 +533,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
         </div>
 
       ) : (
-
-        /* --- VUE TABLEAU PANORAMIQUE DÉTAILLÉ --- */
+        /* Vue tableau */
         <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">

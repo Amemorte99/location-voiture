@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaCar, FaTimes, 
-  FaWhatsapp, FaPlane, FaHotel
+  FaWhatsapp, FaPlane, FaHotel, FaChevronRight
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -78,7 +78,7 @@ export default function Footer() {
                     to={link.path}
                     className="text-sm text-gray-400 hover:text-white hover:translate-x-1.5 transition-all inline-flex items-center gap-2.5 group font-medium"
                   >
-                    <span className="text-[#C4A47C]/40 group-hover:text-[#C4A47C] transition-colors text-[10px]">›</span>
+                    <FaChevronRight className="text-[#C4A47C]/50 group-hover:text-[#C4A47C] transition-colors text-[9px]" />
                     <span>{link.label}</span>
                   </Link>
                 </li>

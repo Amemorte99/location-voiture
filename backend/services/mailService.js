@@ -81,7 +81,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
             <div style="padding: 32px 28px;">
               <div style="text-align: center; margin-bottom: 24px;">
                 <span style="display: inline-block; background-color: #ECFDF5; color: #059669; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 16px; border-radius: 50px; border: 1px solid #A7F3D0;">
-                  ✓ Réservation Confirmée
+                  Réservation Confirmée
                 </span>
                 <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 16px 0 6px 0;">
                   Votre véhicule vous attend à Fès

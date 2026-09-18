@@ -374,8 +374,9 @@ export default function Home() {
                 <p className="text-xs text-[#6B7280] leading-relaxed">
                   08h00 – 21h00 en agence · Accueil 24h/24 à l'aéroport avec suivi des vols.
                 </p>
-                <span className="inline-block text-[11px] font-bold text-emerald-600 mt-2">
-                  ● Service disponible en continu
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 mt-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Service disponible en continu
                 </span>
               </div>
             </div>
@@ -568,7 +569,7 @@ function HeroCarousel() {
           <FaChevronRight size={12} />
         </button>
 
-        {/* Animated Car Showcase (No mode="wait" -> instantaneous fluid crossfade & glide) */}
+        {/* Carrousel véhicules */}
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={current}

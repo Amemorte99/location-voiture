@@ -73,7 +73,7 @@ export default function Cars() {
   const activeFilters = [];
   if (filterFuel !== "all") activeFilters.push({ key: 'fuel', label: filterFuel, clear: () => setFilterFuel("all") });
   if (filterGearbox !== "all") activeFilters.push({ key: 'gearbox', label: filterGearbox, clear: () => setFilterGearbox("all") });
-  if (priceRange < 2000) activeFilters.push({ key: 'price', label: `≤ ${priceRange} DH`, clear: () => setPriceRange(2000) });
+  if (priceRange < 2000) activeFilters.push({ key: 'price', label: `Max ${priceRange} DH`, clear: () => setPriceRange(2000) });
   if (searchTerm) activeFilters.push({ key: 'search', label: `"${searchTerm}"`, clear: () => setSearchTerm("") });
   if (sortBy !== "default") {
     const sortLabels = { "price-asc": "Prix croissant", "price-desc": "Prix décroissant", "year-desc": "Plus récents" };

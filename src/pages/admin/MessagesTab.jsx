@@ -235,7 +235,7 @@ export default function MessagesTab({
                 }`}
               >
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                  {/* Gauche : Avatar + Infos client + Extrait message + Traçabilité */}
+                  {/* Carte message */}
                   <div 
                     className="flex items-start gap-4 min-w-0 flex-1 cursor-pointer" 
                     onClick={() => handleOpenMessage(msg)}
@@ -299,13 +299,15 @@ export default function MessagesTab({
                           {msg.subject || 'Demande d\'information'}
                         </span>
                         {msg.phone && (
-                          <span className="text-xs text-slate-500 font-semibold">
-                            📞 {msg.phone}
+                          <span className="text-xs text-slate-500 font-semibold inline-flex items-center gap-1.5">
+                            <FaPhoneAlt size={10} className="text-slate-400" />
+                            {msg.phone}
                           </span>
                         )}
                         {msg.email && (
-                          <span className="text-xs text-slate-400 truncate hidden sm:inline">
-                            ✉️ {msg.email}
+                          <span className="text-xs text-slate-400 truncate hidden sm:inline-flex items-center gap-1.5">
+                            <FaEnvelope size={10} className="text-slate-400" />
+                            {msg.email}
                           </span>
                         )}
                       </div>
@@ -411,7 +413,7 @@ export default function MessagesTab({
         </div>
       )}
 
-      {/* Modal Détails & Traçabilité Complète */}
+      {/* Modal consultation message */}
       <AnimatePresence>
         {selectedMessage && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -455,9 +457,9 @@ export default function MessagesTab({
                 </button>
               </div>
 
-              {/* Corps Modal Défilable */}
+              {/* Contenu modal */}
               <div className="p-6 sm:p-8 space-y-6 overflow-y-auto">
-                {/* 1. Bloc Coordonnées Client */}
+                {/* Coordonnées client */}
                 <div className="p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
@@ -486,7 +488,7 @@ export default function MessagesTab({
                   </div>
                 </div>
 
-                {/* 2. Bloc Message Transmis */}
+                {/* Message */}
                 <div className="space-y-2">
                   <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
                     Message transmis par le client
@@ -496,7 +498,7 @@ export default function MessagesTab({
                   </div>
                 </div>
 
-                {/* 3. Bloc Traçabilité & Statut de Traitement */}
+                {/* Traçabilité & Suivi */}
                 <div className="p-5 bg-emerald-50/30 rounded-2xl border border-emerald-100/80 space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">

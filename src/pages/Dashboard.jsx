@@ -32,9 +32,6 @@ const handleOpenInvoice = (booking) => {
   }
 };
 
-
-
-
 function ConfirmModal({ message, onConfirm, onCancel }) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
@@ -75,14 +72,6 @@ function ConfirmModal({ message, onConfirm, onCancel }) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
 
 function SkeletonRow({ cols = 5 }) {
   return (
@@ -627,7 +616,6 @@ export default function Dashboard() {
         </div>
       </main>
 
-      {}
       <AnimatePresence>
         {confirmModal && (
           <ConfirmModal
@@ -674,7 +662,7 @@ export default function Dashboard() {
                 </button>
               </div>
 
-              {/* Formulaire défilable */}
+              {/* Formulaire */}
               <form onSubmit={handleCreateCar} className="p-6 sm:p-8 space-y-5 overflow-y-auto">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">
@@ -848,9 +836,9 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                {/* Corps de la modal défilable avec espacements harmonieux */}
+                {/* Détails réservation */}
                 <div className="p-6 sm:p-8 space-y-6 overflow-y-auto">
-                  {/* 1. Bloc Véhicule & Locataire - Fond neutre doux unifié */}
+                  {/* Véhicule & Locataire */}
                   <div className="p-5 bg-slate-50/70 rounded-2xl border border-slate-200/70 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
                     {/* Véhicule */}
                     <div className="flex items-center gap-4">
@@ -896,7 +884,7 @@ export default function Dashboard() {
                           Période
                         </span>
                         <p className="text-xs font-bold text-slate-900 leading-snug">
-                          {new Date(selectedBooking.startDate).toLocaleDateString('fr-FR')} → {new Date(selectedBooking.endDate).toLocaleDateString('fr-FR')}
+                          Du {new Date(selectedBooking.startDate).toLocaleDateString('fr-FR')} au {new Date(selectedBooking.endDate).toLocaleDateString('fr-FR')}
                         </p>
                         <span className="inline-block mt-1 px-2 py-0.5 bg-white rounded text-[10px] font-bold text-slate-600 border border-slate-200/80">
                           {durationDays} {durationDays > 1 ? 'jours' : 'jour'}
@@ -1190,7 +1178,7 @@ export default function Dashboard() {
                 </button>
               </div>
 
-              {/* Formulaire défilable */}
+              {/* Formulaire */}
               <form onSubmit={handleUpdateCar} className="p-6 sm:p-8 space-y-5 overflow-y-auto">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">

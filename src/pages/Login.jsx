@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { 
   FaEnvelope, FaLock, FaEye, FaEyeSlash, FaUser, 
-  FaPhoneAlt, FaArrowRight 
+  FaPhoneAlt, FaArrowRight, FaArrowLeft 
 } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 
@@ -180,7 +180,7 @@ export default function Login({ defaultRegister = false }) {
               to="/" 
               className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-[#0B1329] transition-colors group"
             >
-              <span className="text-[#C4A47C] font-black group-hover:-translate-x-1 transition-transform">←</span>
+              <FaArrowLeft size={11} className="text-[#C4A47C] group-hover:-translate-x-1 transition-transform" />
               <span className="group-hover:text-[#0B1329] transition-colors">Retour au catalogue</span>
             </Link>
             <Link to="/" className="flex flex-col items-end group">
@@ -225,7 +225,7 @@ export default function Login({ defaultRegister = false }) {
             </button>
           </div>
 
-          {/* Titre avec typographie Serif / Playfair Display prestigieuse */}
+          {/* Titre principal */}
           <div className="mb-7">
             <div className="inline-flex items-center gap-2 mb-2">
               <span className="w-4 h-[1.5px] bg-[#C4A47C]" />

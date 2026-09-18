@@ -192,19 +192,22 @@ export default function CarsTab({
                         <td className="px-6 py-4">
                           <button
                             onClick={() => handleToggleAvailability(car)}
-                            className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.11em] border transition-all ${
+                            className={`px-3.5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.11em] border transition-all inline-flex items-center gap-1.5 ${
                               !car.available 
-                                ? 'bg-rose-50 text-rose-500 border-rose-100 hover:bg-rose-100' 
+                                ? 'bg-rose-50 text-rose-600 border-rose-200 hover:bg-rose-100' 
                                 : !car.isAvailableNow 
-                                  ? 'bg-amber-50 text-amber-600 border-amber-100'
-                                  : 'bg-emerald-50 text-emerald-600 border-emerald-100 hover:bg-emerald-100'
+                                  ? 'bg-amber-50 text-amber-700 border-amber-200'
+                                  : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
                             }`}
                           >
+                            <span className={`w-1.5 h-1.5 rounded-full ${
+                              !car.available ? 'bg-rose-500' : !car.isAvailableNow ? 'bg-amber-500' : 'bg-emerald-500'
+                            }`} />
                             {!car.available 
-                              ? '● Hors Service' 
+                              ? 'Hors Service' 
                               : !car.isAvailableNow 
-                                ? '◑ Réservé' 
-                                : '● Disponible'}
+                                ? 'Réservé' 
+                                : 'Disponible'}
                           </button>
                         </td>
                         <td className="px-6 py-4 text-center">
@@ -280,13 +283,14 @@ export default function CarsTab({
                       <div className="absolute top-3 right-3">
                         <button
                           onClick={() => handleToggleAvailability(car)}
-                          className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider backdrop-blur-md border transition-all ${
+                          className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider backdrop-blur-md border transition-all inline-flex items-center gap-1.5 ${
                             car.available
                               ? 'bg-emerald-500/90 text-white border-emerald-400'
                               : 'bg-rose-500/90 text-white border-rose-400'
                           }`}
                         >
-                          {car.available ? '● Disponible' : '○ Indisponible'}
+                          <span className={`w-1.5 h-1.5 rounded-full ${car.available ? 'bg-white' : 'bg-rose-200'}`} />
+                          {car.available ? 'Disponible' : 'Indisponible'}
                         </button>
                       </div>
                     </div>

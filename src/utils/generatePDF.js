@@ -165,7 +165,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setLineWidth(0.3);
     doc.line(18, startY + 23, 192, startY + 23);
 
-    // 3. Section Informations : 2 Colonnes claires et spacieuses
+    // 3. Section Informations
     const infoY = startY + 31;
 
     // Colonne Gauche : Client
@@ -357,13 +357,13 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setFontSize(7.5);
     if (isCardPaid) {
       doc.setTextColor(emeraldGreen[0], emeraldGreen[1], emeraldGreen[2]);
-      doc.text('✓ Facture acquittée en totalité (CB)', finX, bottomY + 48);
+      doc.text('Facture acquittée en totalité (CB)', finX, bottomY + 48);
     } else {
       doc.setTextColor(goldAccent[0], goldAccent[1], goldAccent[2]);
-      doc.text('• Règlement en espèces à la livraison', finX, bottomY + 48);
+      doc.text('Règlement en espèces à la livraison', finX, bottomY + 48);
     }
 
-    // 6. Pied de page épuré (SANS AUCUNE MENTION DE CAPITAL)
+    // 6. Pied de page
     const footerY = 278;
     doc.setDrawColor(lineLight[0], lineLight[1], lineLight[2]);
     doc.setLineWidth(0.3);
