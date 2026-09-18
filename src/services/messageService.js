@@ -12,9 +12,10 @@ export const getMessages = async (params = {}) => {
   return response.data;
 };
 
-// Mise à jour du statut d'un message (admin: 'read', 'unread', 'archived')
-export const updateMessageStatus = async (id, status) => {
-  const response = await api.patch(`/api/messages/${id}/status`, { status });
+// Mise à jour du statut ou des notes d'un message (admin)
+export const updateMessageStatus = async (id, payload) => {
+  const data = typeof payload === 'string' ? { status: payload } : payload;
+  const response = await api.patch(`/api/messages/${id}/status`, data);
   return response.data;
 };
 

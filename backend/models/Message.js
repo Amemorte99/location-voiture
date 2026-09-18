@@ -37,6 +37,20 @@ const messageSchema = new mongoose.Schema(
       enum: ['unread', 'read', 'archived'],
       default: 'unread',
     },
+    treatedAt: {
+      type: Date,
+      default: null,
+    },
+    treatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
+    adminNotes: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     source: {
       type: String,
       default: 'website_contact',

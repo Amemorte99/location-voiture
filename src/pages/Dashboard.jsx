@@ -441,20 +441,43 @@ export default function Dashboard() {
     }
   };
 
-  const handleToggleMessageStatus = async (id, currentStatus) => {
-    const newStatus = currentStatus === 'read' ? 'unread' : 'read';
+  const handleToggleMessageStatus = async (id, targetStatus) => {
     try {
-      const res = await updateMessageStatus(id, newStatus);
-      setMessages(prev => prev.map(m => (m._id || m.id) === id ? res.message : m));
-      if (newStatus === 'read') {
-        setUnreadMessagesCount(prev => Math.max(0, prev - 1));
+      const res = await updateMessageStatus(id, targetStatus);
+      const updatedDoc = res.data;
+      if (updatedDoc) {
+        setMessages(prev => prev.map(m => (m._id || m.id) === id ? updatedDoc : m));
       } else {
-        setUnreadMessagesCount(prev => prev + 1);
+        setMessages(prev => prev.map(m => (m._id || m.id) === id ? { ...m, status: targetStatus } : m));
       }
-      toast.success(newStatus === 'read' ? 'Marqué comme lu' : 'Marqué comme non lu');
+      if (res.unreadCount !== undefined) {
+        setUnreadMessagesCount(res.unreadCount);
+      } else {
+        if (targetStatus === 'read') {
+          setUnreadMessagesCount(prev => Math.max(0, prev - 1));
+        } else {
+          setUnreadMessagesCount(prev => prev + 1);
+        }
+      }
+      toast.success(targetStatus === 'read' ? 'Demande marquée comme traitée' : 'Demande marquée comme non lue');
       fetchStats();
+      return updatedDoc;
     } catch (err) {
       toast.error(err.response?.data?.message || 'Erreur de mise à jour du message');
+    }
+  };
+
+  const handleUpdateMessageNotes = async (id, adminNotes) => {
+    try {
+      const res = await updateMessageStatus(id, { adminNotes });
+      const updatedDoc = res.data;
+      if (updatedDoc) {
+        setMessages(prev => prev.map(m => (m._id || m.id) === id ? updatedDoc : m));
+      }
+      toast.success('Note de suivi enregistrée');
+      return updatedDoc;
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Erreur lors de l\'enregistrement de la note');
     }
   };
 
@@ -589,6 +612,7 @@ export default function Dashboard() {
                     statusFilter={messageStatusFilter}
                     setStatusFilter={setMessageStatusFilter}
                     onToggleStatus={handleToggleMessageStatus}
+                    onUpdateNotes={handleUpdateMessageNotes}
                     onDeleteMessage={handleDeleteMessage}
                     unreadCount={unreadMessagesCount}
                     page={page}

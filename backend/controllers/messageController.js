@@ -1,4 +1,5 @@
 const Message = require('../models/Message');
+const User = require('../models/User');
 
 // @desc    Créer un message de contact (Public)
 // @route   POST /api/messages
@@ -66,7 +67,12 @@ const getMessages = async (req, res) => {
     }
 
     const [messages, total, unreadCount] = await Promise.all([
-      Message.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+      Message.find(query)
+        .populate('treatedBy', 'name email')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
       Message.countDocuments(query),
       Message.countDocuments({ status: 'unread' }),
     ]);
@@ -91,26 +97,45 @@ const getMessages = async (req, res) => {
   }
 };
 
-// @desc    Mettre à jour le statut d'un message (Admin)
+// @desc    Mettre à jour le statut ou les notes d'un message (Admin)
 // @route   PATCH /api/messages/:id/status
 // @access  Private/Admin
 const updateMessageStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
+    const { status, adminNotes } = req.body;
 
-    if (!['unread', 'read', 'archived'].includes(status)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Statut invalide. Utilisez "unread", "read" ou "archived".',
-      });
+    const updateFields = {};
+
+    if (status) {
+      if (!['unread', 'read', 'archived'].includes(status)) {
+        return res.status(400).json({
+          success: false,
+          message: 'Statut invalide. Utilisez "unread", "read" ou "archived".',
+        });
+      }
+      updateFields.status = status;
+
+      if (status === 'read') {
+        updateFields.treatedAt = new Date();
+        if (req.user && req.user._id) {
+          updateFields.treatedBy = req.user._id;
+        }
+      } else if (status === 'unread') {
+        updateFields.treatedAt = null;
+        updateFields.treatedBy = null;
+      }
+    }
+
+    if (adminNotes !== undefined) {
+      updateFields.adminNotes = adminNotes;
     }
 
     const updatedMessage = await Message.findByIdAndUpdate(
       id,
-      { status },
+      updateFields,
       { new: true, runValidators: true }
-    );
+    ).populate('treatedBy', 'name email');
 
     if (!updatedMessage) {
       return res.status(404).json({
