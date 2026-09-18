@@ -12,9 +12,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm from '../components/StripePaymentForm';
 
-const stripePromise = process.env.REACT_APP_STRIPE_PUBLIC_KEY 
-  ? loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-  : null;
+const DEFAULT_STRIPE_PUBLIC_KEY = 'pk_test_51TMYoLDanD70ZyTenwDYse1sg87hHlX5zLUnTNwSlXlrcIlU2t2WUleoW66aseOyhK7n1HhHJ8kgB3TNv89mwsp700vYWPUnI1';
+const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY || DEFAULT_STRIPE_PUBLIC_KEY;
+const stripePromise = stripePublicKey ? loadStripe(stripePublicKey) : null;
 
 export default function Booking() {
   const { id } = useParams();

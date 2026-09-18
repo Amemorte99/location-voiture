@@ -21,10 +21,10 @@ requiredEnvVars.forEach(key => {
 });
 
 if (!process.env.STRIPE_SECRET_KEY) {
-  logger.warn('STRIPE_SECRET_KEY non configurée — paiements par carte désactivés');
+  logger.info('STRIPE_SECRET_KEY non fournie dans .env — utilisation de la configuration de test par défaut');
 }
 if (!process.env.STRIPE_WEBHOOK_SECRET) {
-  logger.warn('STRIPE_WEBHOOK_SECRET non configurée — webhook Stripe désactivé en mode local');
+  logger.info('STRIPE_WEBHOOK_SECRET non configurée — webhook Stripe désactivé (optionnel)');
 }
 
 const authRoutes = require('./routes/authRoutes');

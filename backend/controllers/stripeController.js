@@ -52,8 +52,8 @@ const createPaymentIntent = async (req, res) => {
       metadata: {
         carId: car._id.toString(),
         carName: car.name,
-        userId: req.user._id.toString(),
-        userEmail: req.user.email,
+        userId: req.user?._id ? req.user._id.toString() : '',
+        userEmail: req.user?.email || '',
         fullName,
         phone,
         startDate,
