@@ -92,7 +92,7 @@ export default function Cars() {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#F9FAFB]">
       <Helmet>
-        <title>Flotte Automobile | LocaFès - Voitures Premium</title>
+        <title>Flotte Automobile | LocaGawa - Voitures Premium</title>
         <meta name="description" content="Découvrez notre large gamme de véhicules premium à Fès. Filtrez par prix, carburant et boîte de vitesse." />
       </Helmet>
 

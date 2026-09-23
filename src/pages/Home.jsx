@@ -91,9 +91,9 @@ export default function Home() {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>LocaFès | Location de Voitures à Fès — Simple et Sans Surprise</title>
-        <meta name="description" content="Louez un véhicule récent à Fès avec LocaFès. Assurance incluse, kilométrage illimité, livraison à l'aéroport Fès-Saïss. Tarifs clairs, service 7j/7." />
-        <meta property="og:title" content="LocaFès — Location de Voitures à Fès" />
+        <title>LocaGawa | Location de Voitures à Fès — Simple et Sans Surprise</title>
+        <meta name="description" content="Louez un véhicule récent à Fès avec LocaGawa. Assurance incluse, kilométrage illimité, livraison à l'aéroport Fès-Saïss. Tarifs clairs, service 7j/7." />
+        <meta property="og:title" content="LocaGawa — Location de Voitures à Fès" />
         <meta property="og:description" content="Véhicules récents, assurance incluse, remise à l'aéroport. Réservez en ligne." />
       </Helmet>
 
@@ -269,7 +269,7 @@ export default function Home() {
               Nos engagements
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4 tracking-tight">
-              Pourquoi choisir <span className="text-[#E3383C]">LocaFès</span> ?
+              Pourquoi choisir <span className="text-[#E3383C]">LocaGawa</span> ?
             </h2>
             <p className="text-[#6B7280] font-medium max-w-xl mx-auto text-sm leading-relaxed">
               Une location transparente, sécurisée et adaptée à tous vos projets au Maroc.
@@ -426,7 +426,7 @@ export default function Home() {
                 Votre voyage <span className="text-[#E3383C]">Premium</span> <br /> commence ici.
               </h2>
               <p className="text-gray-400 text-sm sm:text-base font-normal mb-10 max-w-xl mx-auto leading-relaxed">
-                Rejoignez le cercle des clients privilégiés de LocaFès et profitez d'une expérience de conduite sans compromis.
+                Rejoignez le cercle des clients privilégiés de LocaGawa et profitez d'une expérience de conduite sans compromis.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center items-center">

@@ -12,7 +12,7 @@ export default function Footer() {
   const quickLinks = [
     { path: "/", label: "Accueil" },
     { path: "/cars", label: "Notre Flotte & Tarifs" },
-    { path: "/why-choose-us", label: "Pourquoi LocaFès" },
+    { path: "/why-choose-us", label: "Pourquoi LocaGawa" },
     { path: "/contact", label: "Contact & Devis" },
     { path: "/login", label: "Espace Client Privilège" }
   ];
@@ -20,7 +20,7 @@ export default function Footer() {
   const legalContent = {
     privacy: {
       title: "Politique de Confidentialité",
-      content: "LocaFès s'engage à protéger la vie privée de ses clients. Les informations personnelles collectées (nom, téléphone, email, permis de conduire) sont strictement nécessaires à l'établissement du contrat de location et à la gestion de vos réservations. Vos données ne sont jamais cédées ou vendues à des tiers. Vous bénéficiez d'un droit d'accès, de rectification et de suppression de vos données personnelles sur simple demande à contact@locafes.ma."
+      content: "LocaGawa s'engage à protéger la vie privée de ses clients. Les informations personnelles collectées (nom, téléphone, email, permis de conduire) sont strictement nécessaires à l'établissement du contrat de location et à la gestion de vos réservations. Vos données ne sont jamais cédées ou vendues à des tiers. Vous bénéficiez d'un droit d'accès, de rectification et de suppression de vos données personnelles sur simple demande à contact@locafes.ma."
     },
     terms: {
       title: "Conditions Générales de Location",
@@ -28,7 +28,7 @@ export default function Footer() {
     },
     mentions: {
       title: "Mentions Légales",
-      content: "LocaFès SARL — Agence de location de véhicules de prestige à Fès. Siège social : Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc. Tél : +212 535 62 10 20 — Email : contact@locafes.ma. RC Fès N° 45892 — Patente N° 12457890 — IF N° 33458912 — ICE N° 002345891000042."
+      content: "LocaGawa SARL — Agence de location de véhicules de prestige à Fès. Siège social : Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc. Tél : +212 535 62 10 20 — Email : contact@locafes.ma. RC Fès N° 45892 — Patente N° 12457890 — IF N° 33458912 — ICE N° 002345891000042."
     }
   };
 
@@ -38,7 +38,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-32 bg-[#E3383C]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-10 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Liseré supérieur or prestige LocaFès */}
+      {/* Liseré supérieur or prestige LocaGawa */}
       <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E3383C]/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 pt-20 pb-12 sm:pt-24 sm:pb-16">
@@ -51,7 +51,7 @@ export default function Footer() {
                 <FaCar className="text-[#E3383C] group-hover:text-[#0A2463] transition-colors" size={16} />
               </div>
               <span className="tracking-tight">
-                LOCA<span className="text-[#E3383C]">FÈS</span>
+                LOCA<span className="text-[#E3383C]">GAWA</span>
               </span>
             </Link>
 
@@ -61,7 +61,7 @@ export default function Footer() {
 
             <div className="pt-2 text-xs text-gray-400 flex items-center gap-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E3383C]" />
-              <span>LocaFès SARL • RC Fès N° 45892</span>
+              <span>LocaGawa SARL • RC Fès N° 45892</span>
             </div>
           </div>
 
@@ -184,7 +184,7 @@ export default function Footer() {
         <div className="border-t border-white/[0.08] pt-8 sm:pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400">
           
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <p className="font-medium text-gray-400">© {currentYear} LocaFès SARL. Tous droits réservés.</p>
+            <p className="font-medium text-gray-400">© {currentYear} LocaGawa SARL. Tous droits réservés.</p>
             <span className="hidden sm:inline text-gray-600">•</span>
             <p className="text-gray-400 text-xs">Location de voitures & conciergerie à Fès</p>
           </div>

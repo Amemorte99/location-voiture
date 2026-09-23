@@ -44,12 +44,12 @@ export default function BookingSuccess() {
   };
 
   const refCode = bookingId ? `LF-${bookingId.slice(-6).toUpperCase()}` : 'LF-WEB';
-  const waMsg = `Bonjour LocaFès, je viens de finaliser ma réservation pour ${car?.name || 'mon véhicule'} du ${startDate || ''} au ${endDate || ''}. Prise en charge : ${pickupLocation}. Réf : ${refCode}. Pouvez-vous me confirmer la bonne prise en compte ?`;
+  const waMsg = `Bonjour LocaGawa, je viens de finaliser ma réservation pour ${car?.name || 'mon véhicule'} du ${startDate || ''} au ${endDate || ''}. Prise en charge : ${pickupLocation}. Réf : ${refCode}. Pouvez-vous me confirmer la bonne prise en compte ?`;
   const waUrl = `https://wa.me/212668898245?text=${encodeURIComponent(waMsg)}`;
 
   return (
     <>
-    <Helmet><title>Réservation Confirmée | LocaFès</title></Helmet>
+    <Helmet><title>Réservation Confirmée | LocaGawa</title></Helmet>
     <div className="min-h-screen flex items-center justify-center px-6 py-24 bg-[#F9FAFB]">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-2xl z-10">
         <div className="bg-white rounded-[40px] p-8 md:p-14 text-center border border-gray-100 shadow-xl shadow-gray-200/50">

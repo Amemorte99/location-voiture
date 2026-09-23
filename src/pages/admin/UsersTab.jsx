@@ -17,7 +17,7 @@ function exportCSV(users) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `clients_locafes_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`;
+  a.download = `clients_locagawa_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`;
   a.click();
   URL.revokeObjectURL(url);
 }

@@ -75,7 +75,7 @@ export default function Navbar() {
             <FaCar className="text-white" size={24} />
           </div>
           <span className={`transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-[#111827]'}`}>
-            LOCA<span className="text-[#E3383C]">FÈS</span>
+            LOCA<span className="text-[#E3383C]">GAWA</span>
           </span>
         </Link>
 

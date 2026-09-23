@@ -81,12 +81,12 @@ export default function Sidebar({
               : 'p-6 pb-8 flex items-center justify-between'
           }`}
         >
-          <Link to="/" className="flex items-center gap-3 group" title="LocaFès - Accueil">
+          <Link to="/" className="flex items-center gap-3 group" title="LocaGawa - Accueil">
             <div className="w-10 h-10 rounded-xl bg-[#0F2F75] flex items-center justify-center shadow-md text-[#E3383C] group-hover:scale-105 transition-transform shrink-0">
               <FaCar size={18} />
             </div>
             <span className={`text-xl font-black uppercase tracking-tighter text-slate-900 ${effectiveCollapsed ? 'lg:hidden' : ''}`}>
-              LOCA<span className="text-[#E3383C]">FÈS</span>
+              LOCA<span className="text-[#E3383C]">GAWA</span>
             </span>
           </Link>
 

@@ -71,7 +71,7 @@ export default function Login({ defaultRegister = false }) {
           password: formData.password,
           phone: formData.phone.trim()
         });
-        toast.success("Compte créé avec succès ! Bienvenue chez LocaFès.");
+        toast.success("Compte créé avec succès ! Bienvenue chez LocaGawa.");
         if (newUser?.role === 'admin') {
           navigate('/dashboard', { replace: true });
           return;
@@ -117,8 +117,8 @@ export default function Login({ defaultRegister = false }) {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-[#0A2463] py-10 px-4 sm:px-6 font-sans">
       <Helmet>
-        <title>{isRegister ? 'Inscription Prestige | LocaFès' : 'Connexion Espace Client Privilège | LocaFès'}</title>
-        <meta name="description" content="Accédez à votre espace client LocaFès pour gérer vos réservations et vos contrats de location." />
+        <title>{isRegister ? 'Inscription Prestige | LocaGawa' : 'Connexion Espace Client Privilège | LocaGawa'}</title>
+        <meta name="description" content="Accédez à votre espace client LocaGawa pour gérer vos réservations et vos contrats de location." />
       </Helmet>
 
       <svg 
@@ -155,10 +155,10 @@ export default function Login({ defaultRegister = false }) {
         >
           <img
             src="/images/login-luxury-cars.jpg" 
-            alt="Flotte de prestige LocaFès" 
+            alt="Flotte de prestige LocaGawa" 
             className="w-full h-full object-cover object-center filter contrast-[1.08] brightness-[0.95]"
           />
-          {/* Dégradés d'assombrissement et de fusion pour le thème LocaFès #0A2463 */}
+          {/* Dégradés d'assombrissement et de fusion pour le thème LocaGawa #0A2463 */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A2463] via-[#0A2463]/30 to-[#0A2463]/85" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A2463]/75 via-transparent to-[#0A2463]/75" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,#070B14_85%)]" />
@@ -185,7 +185,7 @@ export default function Login({ defaultRegister = false }) {
             </Link>
             <Link to="/" className="flex flex-col items-end group">
               <span className="text-xl font-black tracking-tight text-[#0F2F75]">
-                LOCA<span className="text-[#E3383C]">FÈS</span>
+                LOCA<span className="text-[#E3383C]">GAWA</span>
               </span>
               <span className="text-[8px] tracking-[0.25em] font-extrabold text-[#E3383C]/90 uppercase -mt-0.5">
                 Prestige Car
@@ -240,7 +240,7 @@ export default function Login({ defaultRegister = false }) {
               {isRegister ? (
                 <>Créer votre compte <span className="text-[#E3383C] italic font-normal">Privilège</span></>
               ) : (
-                <>Bienvenue chez <span className="text-[#E3383C] italic font-normal">LocaFès</span></>
+                <>Bienvenue chez <span className="text-[#E3383C] italic font-normal">LocaGawa</span></>
               )}
             </h1>
             <p className="text-gray-500 text-xs font-medium mt-1.5 leading-relaxed">
@@ -449,7 +449,7 @@ export default function Login({ defaultRegister = false }) {
 
           <div className="mt-7 pt-6 border-t border-gray-100 text-center">
             <p className="text-xs text-gray-500 font-medium">
-              {isRegister ? 'Vous disposez déjà d’un compte ?' : 'Première visite chez LocaFès ?'}
+              {isRegister ? 'Vous disposez déjà d’un compte ?' : 'Première visite chez LocaGawa ?'}
               <button
                 type="button"
                 onClick={() => setIsRegister(!isRegister)}
@@ -473,7 +473,7 @@ export default function Login({ defaultRegister = false }) {
 
         {/* Mention de bas de page */}
         <p className="mt-6 text-center text-xs text-gray-400/80 font-medium tracking-wide">
-          © {new Date().getFullYear()} LocaFès • Conciergerie Automobile & Location de Prestige à Fès
+          © {new Date().getFullYear()} LocaGawa • Conciergerie Automobile & Location de Prestige à Fès
         </p>
       </div>
     </div>

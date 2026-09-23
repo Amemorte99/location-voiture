@@ -19,7 +19,7 @@ function downloadCSV(headers, rows, filename) {
 
 export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
   const defaultAgency = {
-    name: 'LocaFès',
+    name: 'LocaGawa',
     phone: '+212 535 62 10 20',
     email: 'contact@locafes.ma',
     address: 'Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc',
@@ -65,7 +65,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
         STATUS_LABELS[b.status] || b.status || '',
         b.paymentMethod === 'card' ? 'Carte' : 'Espèces',
       ]);
-      downloadCSV(headers, rows, `reservations_locafes_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`);
+      downloadCSV(headers, rows, `reservations_locagawa_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`);
       toast.success('Réservations exportées avec succès !');
     } else if (key === 'users') {
       if (!users || users.length === 0) {
@@ -80,7 +80,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
         STATUS_ROLE_LABELS[u.role] || u.role || '',
         u.createdAt ? new Date(u.createdAt).toLocaleDateString('fr-FR') : '',
       ]);
-      downloadCSV(headers, rows, `clients_locafes_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`);
+      downloadCSV(headers, rows, `clients_locagawa_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`);
       toast.success('Clients exportés avec succès !');
     } else if (key === 'cars') {
       if (!cars || cars.length === 0) {
@@ -97,7 +97,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
         c.price || '',
         c.available ? 'Oui' : 'Non',
       ]);
-      downloadCSV(headers, rows, `parc_auto_locafes_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`);
+      downloadCSV(headers, rows, `parc_auto_locagawa_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`);
       toast.success('Parc automobile exporté avec succès !');
     }
   };

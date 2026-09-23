@@ -51,7 +51,7 @@ export default function Contact() {
   };
 
   const generateWhatsAppLink = () => {
-    const text = `Bonjour LocaFès,\nJe m'appelle ${formData.name || 'un client'}.\nObjet : ${formData.subject}\n${formData.message ? `Message : ${formData.message}\n` : ''}${formData.phone ? `Téléphone : ${formData.phone}` : ''}`;
+    const text = `Bonjour LocaGawa,\nJe m'appelle ${formData.name || 'un client'}.\nObjet : ${formData.subject}\n${formData.message ? `Message : ${formData.message}\n` : ''}${formData.phone ? `Téléphone : ${formData.phone}` : ''}`;
     return `https://wa.me/212668898245?text=${encodeURIComponent(text)}`;
   };
 
@@ -60,8 +60,8 @@ export default function Contact() {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#F9FAFB]">
       <Helmet>
-        <title>Contact & Réservations | LocaFès — Location Voitures Fès</title>
-        <meta name="description" content="Contactez l'agence LocaFès par téléphone au 05 35 62 10 20 ou par WhatsApp direct 24/7 au +212 668 89 82 45. Adresse : Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès." />
+        <title>Contact & Réservations | LocaGawa — Location Voitures Fès</title>
+        <meta name="description" content="Contactez l'agence LocaGawa par téléphone au 05 35 62 10 20 ou par WhatsApp direct 24/7 au +212 668 89 82 45. Adresse : Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès." />
       </Helmet>
 
       <div className="max-w-6xl mx-auto px-6">
@@ -118,7 +118,7 @@ export default function Contact() {
               </p>
             </div>
             <a
-              href="https://wa.me/212668898245?text=Bonjour%20LocaF%C3%A8s,%20je%20souhaite%20des%20informations%20sur%20la%20location%20d'un%20v%C3%A9hicule."
+              href="https://wa.me/212668898245?text=Bonjour%20LocaGawa,%20je%20souhaite%20des%20informations%20sur%20la%20location%20d'un%20v%C3%A9hicule."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 w-full py-2.5 px-4 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 text-xs font-bold text-center transition-colors shadow-sm"
@@ -318,7 +318,7 @@ export default function Contact() {
             {/* Carte Google Maps Agrandie et Soignée */}
             <div className="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm h-64 relative">
               <iframe
-                title="Carte Agence LocaFès"
+                title="Carte Agence LocaGawa"
                 src="https://maps.google.com/maps?q=Place+Atlas+Fes+Morocco&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"

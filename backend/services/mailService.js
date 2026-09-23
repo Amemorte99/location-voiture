@@ -60,19 +60,19 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
     const paymentLabel = booking.paymentMethod === 'card' ? 'Carte bancaire en ligne' : 'Règlement en espèces à la prise en charge';
 
     const mailOptions = {
-      from: `"LocaFès Prestige" <${senderEmail}>`,
+      from: `"LocaGawa Prestige" <${senderEmail}>`,
       to: recipientEmail,
-      subject: `Confirmation de votre réservation ${refCode} — LocaFès`,
+      subject: `Confirmation de votre réservation ${refCode} — LocaGawa`,
       html: `
         <div style="background-color: #F8FAFC; padding: 30px 15px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1E293B;">
           <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 20px; overflow: hidden; border: 1px solid #E2E8F0; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
             
             <!-- Header Or & Marine -->
-            <div style="background: linear-gradient(135deg, #0B1329 0%, #111E3D 100%); padding: 32px 24px; text-align: center; border-bottom: 3px solid #C4A47C;">
+            <div style="background: linear-gradient(135deg, #0B1329 0%, #111E3D 100%); padding: 32px 24px; text-align: center; border-bottom: 3px solid #E3383C;">
               <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 900; letter-spacing: 1px;">
-                LOCA<span style="color: #C4A47C;">FÈS</span>
+                LOCA<span style="color: #E3383C;">GAWA</span>
               </h1>
-              <p style="color: #C4A47C; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin: 6px 0 0 0;">
+              <p style="color: #E3383C; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin: 6px 0 0 0;">
                 Location Automobile de Prestige • Fès
               </p>
             </div>
@@ -96,7 +96,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
                 <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                   <tr>
                     <td style="padding: 8px 0; color: #64748B; font-weight: 600;">Conducteur :</td>
-                    <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">${booking.fullName || 'Client LocaFès'}</td>
+                    <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">${booking.fullName || 'Client LocaGawa'}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; color: #64748B; font-weight: 600;">Véhicule réservé :</td>
@@ -132,7 +132,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
               </div>
 
               <p style="color: #94A3B8; font-size: 11px; text-align: center; line-height: 1.5; margin: 0;">
-                LocaFès SARL • Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc<br/>
+                LocaGawa SARL • Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc<br/>
                 Email : contact@locafes.ma • Tél : +212 535 62 10 20
               </p>
             </div>

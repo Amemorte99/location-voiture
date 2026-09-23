@@ -46,7 +46,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
       format: 'a4',
     });
 
-    // Palette Prestige LocaFès
+    // Palette Prestige LocaGawa
     const slateDark = [15, 47, 117];      // #0F2F75 (bleu marine)
     const goldAccent = [227, 56, 60];     // #E3383C (rouge accent)
     const softCream = [245, 248, 253];    // #F5F8FD (fond bleu très doux)
@@ -56,7 +56,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
 
     const urlParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
 
-    const clientName = booking.fullName || booking.user?.name || urlParams.get('fullName') || 'Client LocaFès';
+    const clientName = booking.fullName || booking.user?.name || urlParams.get('fullName') || 'Client LocaGawa';
     const clientPhone = booking.phone || urlParams.get('phone') || 'Non renseigné';
     const clientEmail = booking.email || booking.user?.email || urlParams.get('email') || 'contact@client.ma';
     const carName = booking.car?.name || booking.carName || urlParams.get('carName') || 'Véhicule de Tourisme';
@@ -131,7 +131,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     const locaWidth = doc.getTextWidth('LOCA');
 
     doc.setTextColor(goldAccent[0], goldAccent[1], goldAccent[2]);
-    doc.text('FÈS', 18 + locaWidth + 1.2, startY);
+    doc.text('GAWA', 18 + locaWidth + 1.2, startY);
 
     doc.setFontSize(8);
     doc.setFont('helvetica', 'bold');
@@ -248,7 +248,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
           formatDH(totalPrice),
         ],
         [
-          'Pack Sérénité LocaFès\nAssurance tous risques, kilométrage illimité, assistance 24/7',
+          'Pack Sérénité LocaGawa\nAssurance tous risques, kilométrage illimité, assistance 24/7',
           'Toute la durée',
           'Inclus',
           'OFFERT',
@@ -293,7 +293,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(7.5);
     doc.setTextColor(goldAccent[0], goldAccent[1], goldAccent[2]);
-    doc.text('LOCAFÈS SARL — DIRECTION OPÉRATIONS', 62, stampBoxY + 7, { align: 'center' });
+    doc.text('LOCAGAWA SARL — DIRECTION OPÉRATIONS', 62, stampBoxY + 7, { align: 'center' });
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7);
@@ -373,7 +373,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setFontSize(7.5);
     doc.setTextColor(slateDark[0], slateDark[1], slateDark[2]);
     doc.text(
-      'LocaFès SARL • Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc',
+      'LocaGawa SARL • Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc',
       105,
       footerY + 4.5,
       { align: 'center' }
@@ -389,7 +389,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
       { align: 'center' }
     );
     doc.text(
-      'Document électronique officiel faisant office de facture et de confirmation de réservation LocaFès.',
+      'Document électronique officiel faisant office de facture et de confirmation de réservation LocaGawa.',
       105,
       footerY + 12.5,
       { align: 'center' }
@@ -404,15 +404,15 @@ export const generateInvoicePDF = (booking, isUser = false) => {
 
       // Si le navigateur bloque les pop-ups ou sur mobile, déclencher le téléchargement direct
       if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        doc.save(`Facture_LocaFes_${receiptNum}.pdf`);
-        toast.success(`Facture téléchargée : Facture_LocaFes_${receiptNum}.pdf`);
+        doc.save(`Facture_LocaGawa_${receiptNum}.pdf`);
+        toast.success(`Facture téléchargée : Facture_LocaGawa_${receiptNum}.pdf`);
       } else {
         toast.success('Facture ouverte dans un nouvel onglet');
       }
     } catch (saveErr) {
       console.warn('Fallback doc.save :', saveErr);
-      doc.save(`Facture_LocaFes_${receiptNum}.pdf`);
-      toast.success(`Facture téléchargée : Facture_LocaFes_${receiptNum}.pdf`);
+      doc.save(`Facture_LocaGawa_${receiptNum}.pdf`);
+      toast.success(`Facture téléchargée : Facture_LocaGawa_${receiptNum}.pdf`);
     }
   } catch (globalErr) {
     console.error('Erreur génération facture PDF :', globalErr);

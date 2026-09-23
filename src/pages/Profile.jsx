@@ -137,8 +137,8 @@ export default function Profile() {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-gray-50/50">
       <Helmet>
-        <title>Mon Profil | LocaFès</title>
-        <meta name="description" content="Gérez votre profil et vos réservations LocaFès." />
+        <title>Mon Profil | LocaGawa</title>
+        <meta name="description" content="Gérez votre profil et vos réservations LocaGawa." />
       </Helmet>
 
       <div className="max-w-6xl mx-auto px-6">
@@ -157,7 +157,7 @@ export default function Profile() {
                   {currentUser.name}
                 </h1>
                 <span className="inline-flex px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gray-100 text-[#4B5563] w-fit mx-auto md:mx-0">
-                  {currentUser.role === 'admin' ? 'Administrateur' : 'Client LocaFès'}
+                  {currentUser.role === 'admin' ? 'Administrateur' : 'Client LocaGawa'}
                 </span>
               </div>
               <p className="text-xs text-[#6B7280] font-medium">{currentUser.email}</p>

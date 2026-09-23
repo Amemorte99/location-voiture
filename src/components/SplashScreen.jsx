@@ -57,7 +57,7 @@ export default function SplashScreen({ onComplete }) {
             className="text-center"
           >
             <h1 className="text-4xl font-black tracking-tighter text-white mb-2">
-              LOCA<span className="text-[#E3383C]">FÈS</span>
+              LOCA<span className="text-[#E3383C]">GAWA</span>
             </h1>
             <motion.p
               initial={{ opacity: 0 }}

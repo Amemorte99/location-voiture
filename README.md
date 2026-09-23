@@ -1,4 +1,4 @@
-# LocaFès — Application Web de Location de Voitures
+# LocaGawa — Application Web de Location de Voitures
 
 Application web complète de réservation et de gestion de flotte automobile développée pour une agence de location basée à Fès (Maroc). Le projet couvre l'ensemble du flux opérationnel : consultation du catalogue en ligne, réservation avec vérification des disponibilités, paiement par carte bancaire ou en espèces, génération instantanée de factures PDF conformes et tableau de bord administrateur pour piloter l'activité.
 
@@ -89,7 +89,7 @@ L'accès au tableau de bord est protégé et réservé aux comptes administrateu
 ## Facturation et Mentions Légales
 
 Les factures PDF générées par l'application sont conformes aux usages commerciaux marocains :
-- **Raison sociale** : LocaFès SARL, Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès.
+- **Raison sociale** : LocaGawa SARL, Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès.
 - **Identifiants légaux** : Registre du Commerce (RC Fès N° 45892), Patente N° 12457890, Identifiant Fiscal (IF N° 33458912), Identifiant Commun de l'Entreprise (ICE N° 002345891000042).
 - **Ventilation fiscale** : Prix HT, TVA 20% incluse, Packs d'assurance inclus (0 DH), Total TTC net en dirhams marocains (`DH`).
 - **Génération locale pure** : le document est assemblé directement en mémoire côté client via `jsPDF`, garantissant rapidité, zéro fuite de données vers un tiers et affichage net sans bug de police.

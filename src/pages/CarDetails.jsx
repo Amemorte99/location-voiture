@@ -519,7 +519,7 @@ export default function CarDetails() {
 
               <a 
                 href={`https://wa.me/212668898245?text=${encodeURIComponent(
-                  `Bonjour LocaFès, je souhaite des renseignements pour louer la ${displayName} (${car.price} DH/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
+                  `Bonjour LocaGawa, je souhaite des renseignements pour louer la ${displayName} (${car.price} DH/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -549,7 +549,7 @@ export default function CarDetails() {
         <div className="flex items-center gap-2">
           <a
             href={`https://wa.me/212668898245?text=${encodeURIComponent(
-              `Bonjour LocaFès, je souhaite des renseignements pour la ${displayName}. Est-elle disponible ?`
+              `Bonjour LocaGawa, je souhaite des renseignements pour la ${displayName}. Est-elle disponible ?`
             )}`}
             target="_blank"
             rel="noopener noreferrer"

@@ -10,9 +10,9 @@ export default function WhatsAppButton() {
 
   const getMessage = () => {
     if (location.pathname.startsWith('/cars/')) {
-      return 'Bonjour, je suis intéressé par un véhicule sur votre site LocaFès. Pouvez-vous me donner plus d\'informations ?';
+      return 'Bonjour, je suis intéressé par un véhicule sur votre site LocaGawa. Pouvez-vous me donner plus d\'informations ?';
     }
-    return 'Bonjour, je souhaite des informations sur la location de voiture chez LocaFès.';
+    return 'Bonjour, je souhaite des informations sur la location de voiture chez LocaGawa.';
   };
 
   useEffect(() => {

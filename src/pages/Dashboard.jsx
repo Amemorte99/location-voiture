@@ -650,7 +650,7 @@ export default function Dashboard() {
                   <h3 className="text-xl font-bold text-slate-900 tracking-tight">
                     Nouveau <span className="text-[#E3383C]">Véhicule</span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Ajouter une nouvelle automobile à la flotte LocaFès</p>
+                  <p className="text-xs text-slate-400 mt-0.5">Ajouter une nouvelle automobile à la flotte LocaGawa</p>
                 </div>
                 <button
                   type="button"
@@ -1026,7 +1026,7 @@ export default function Dashboard() {
                       <div className="flex flex-col sm:flex-row gap-2.5 pt-2 border-t border-slate-100">
                         <a
                           href={currentDriver ? `https://wa.me/${driverPhone}?text=${encodeURIComponent(
-                            `ORDRE DE MISSION LOCAFÈS\n` +
+                            `ORDRE DE MISSION LOCAGAWA\n` +
                             `Chauffeur assigné : ${currentDriver.name}\n` +
                             `Véhicule : ${selectedBooking.car?.name || 'Véhicule'}\n` +
                             `Client : ${selectedBooking.fullName}\n` +
@@ -1057,7 +1057,7 @@ export default function Dashboard() {
 
                         <a
                           href={`https://wa.me/${clientPhone}?text=${encodeURIComponent(
-                            `Bonjour ${selectedBooking.fullName}, nous préparons votre véhicule (${selectedBooking.car?.name || ''}) chez LocaFès pour votre arrivée.`
+                            `Bonjour ${selectedBooking.fullName}, nous préparons votre véhicule (${selectedBooking.car?.name || ''}) chez LocaGawa pour votre arrivée.`
                           )}`}
                           target="_blank"
                           rel="noopener noreferrer"

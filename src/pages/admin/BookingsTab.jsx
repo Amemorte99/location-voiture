@@ -36,7 +36,7 @@ function exportCSV(bookings) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `reservations_locafes_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`;
+  a.download = `reservations_locagawa_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -297,7 +297,7 @@ export default function BookingsTab({
                             href={`https://wa.me/${
                               booking.assignedDriver.whatsapp || booking.assignedDriver.phone?.replace(/[^0-9]/g, '')
                             }?text=${encodeURIComponent(
-                              `MISSION LOCAFÈS — ${booking.assignedDriver.name}\n` +
+                              `MISSION LOCAGAWA — ${booking.assignedDriver.name}\n` +
                               `Véhicule : ${booking.car?.name || 'Véhicule'}\n` +
                               `Client : ${booking.fullName}\n` +
                               `Téléphone : ${booking.phone}\n` +
@@ -332,7 +332,7 @@ export default function BookingsTab({
 
                         <a
                           href={`https://wa.me/${booking.phone?.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                            `Bonjour ${booking.fullName}, votre réservation LocaFès pour la ${booking.car?.name || 'voiture'} est bien enregistrée.`
+                            `Bonjour ${booking.fullName}, votre réservation LocaGawa pour la ${booking.car?.name || 'voiture'} est bien enregistrée.`
                           )}`}
                           target="_blank"
                           rel="noopener noreferrer"

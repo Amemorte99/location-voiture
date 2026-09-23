@@ -71,7 +71,7 @@ export default function MessagesTab({
   const getWhatsAppLink = (msg) => {
     if (!msg) return '#';
     const phone = cleanPhoneNumber(msg.phone);
-    const greeting = `Bonjour ${msg.name || ''},\nNous faisons suite à votre demande sur LocaFès concernant "${msg.subject || 'votre projet de location'}".\nComment pouvons-nous vous aider ?`;
+    const greeting = `Bonjour ${msg.name || ''},\nNous faisons suite à votre demande sur LocaGawa concernant "${msg.subject || 'votre projet de location'}".\nComment pouvons-nous vous aider ?`;
     return `https://wa.me/${phone}?text=${encodeURIComponent(greeting)}`;
   };
 

@@ -223,7 +223,7 @@ app.get(['/api/health', '/health'], (req, res) => {
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 app.get('/', (req, res) => {
-  res.json({ message: 'API LocaFès is running...' });
+  res.json({ message: 'API LocaGawa is running...' });
 });
 
 

@@ -70,14 +70,14 @@ export default function WhyChooseUs() {
       step: "03",
       icon: <FaKey size={28} />,
       title: "Prenez la route",
-      desc: "Récupérez votre véhicule prêt à partir. Profitez de la route en toute sérénité avec LocaFès."
+      desc: "Récupérez votre véhicule prêt à partir. Profitez de la route en toute sérénité avec LocaGawa."
     }
   ];
 
   const faqs = [
     {
       q: "Comment fonctionne la caution / dépôt de garantie ?",
-      a: "Chez LocaFès, la caution s'effectue par simple pré-autorisation sur carte bancaire (le montant n'est pas débité de votre compte) ou par chèque / espèces selon votre convenance. Elle vous est immédiatement débloquée lors de la restitution du véhicule après état des lieux."
+      a: "Chez LocaGawa, la caution s'effectue par simple pré-autorisation sur carte bancaire (le montant n'est pas débité de votre compte) ou par chèque / espèces selon votre convenance. Elle vous est immédiatement débloquée lors de la restitution du véhicule après état des lieux."
     },
     {
       q: "Quels sont les modes de règlement acceptés ?",
@@ -85,7 +85,7 @@ export default function WhyChooseUs() {
     },
     {
       q: "Comment se déroule la prise en charge à l'aéroport Fès-Saïss ?",
-      a: "Un agent LocaFès vous attend personnellement dans le hall des arrivées avec une pancarte à votre nom dès l'atterrissage. Le contrat est finalisé sur place en 5 minutes et la voiture vous est remise sur le parking de l'aéroport, sans file d'attente à un guichet."
+      a: "Un agent LocaGawa vous attend personnellement dans le hall des arrivées avec une pancarte à votre nom dès l'atterrissage. Le contrat est finalisé sur place en 5 minutes et la voiture vous est remise sur le parking de l'aéroport, sans file d'attente à un guichet."
     },
     {
       q: "Quels sont les documents obligatoires lors de la remise des clés ?",
@@ -104,8 +104,8 @@ export default function WhyChooseUs() {
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white">
       <Helmet>
-        <title>Pourquoi LocaFès | Location Premium à Fès</title>
-        <meta name="description" content="Découvrez pourquoi LocaFès est le choix #1 pour la location de voitures à Fès. Sécurité, transparence, flotte moderne et support 24/7." />
+        <title>Pourquoi LocaGawa | Location Premium à Fès</title>
+        <meta name="description" content="Découvrez pourquoi LocaGawa est le choix #1 pour la location de voitures à Fès. Sécurité, transparence, flotte moderne et support 24/7." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -118,7 +118,7 @@ export default function WhyChooseUs() {
             viewport={{ once: true }}
             className="inline-block px-5 py-2 bg-[#EEF3FB] text-[#E3383C] rounded-full font-extrabold text-[10px] uppercase tracking-[0.3em] mb-4 border border-[#D3E0F4] shadow-sm"
           >
-            L'Excellence LocaFès
+            L'Excellence LocaGawa
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -336,7 +336,7 @@ export default function WhyChooseUs() {
               L'excellence à portée <br className="hidden md:block" /> de main.
             </h3>
             <p className="text-white/50 text-lg md:text-xl font-medium mb-12 max-w-xl mx-auto">
-              Ne nous croyez pas sur parole. Vivez l'expérience LocaFès Premium 
+              Ne nous croyez pas sur parole. Vivez l'expérience LocaGawa Premium 
               dès aujourd'hui à des tarifs imbattables.
             </p>
             <div className="flex flex-wrap gap-5 justify-center">

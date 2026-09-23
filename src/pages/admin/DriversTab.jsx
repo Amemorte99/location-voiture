@@ -493,7 +493,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
 
                   {/* Bouton Ordre de Mission WhatsApp (propre sur une seule ligne) */}
                   <a
-                    href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaF%C3%A8s.`}
+                    href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaGawa.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200/80 text-xs font-bold transition-all shadow-xs active:scale-95 mb-1"
@@ -611,7 +611,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
 
                       <td className="py-4 px-6 text-center">
                         <a
-                          href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaF%C3%A8s.`}
+                          href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaGawa.`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 font-bold text-xs transition-all"

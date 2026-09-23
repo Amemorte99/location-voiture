@@ -6,7 +6,7 @@ import { FaHome, FaSearch } from 'react-icons/fa';
 export default function NotFound() {
   return (
     <>
-    <Helmet><title>Page non trouvée | LocaFès</title></Helmet>
+    <Helmet><title>Page non trouvée | LocaGawa</title></Helmet>
     <div className="min-h-screen flex items-center justify-center px-6 bg-[#F9FAFB] relative overflow-hidden">
       {}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#E3EBF8]/50 rounded-full blur-[150px] pointer-events-none" />
@@ -43,7 +43,7 @@ export default function NotFound() {
           transition={{ delay: 0.3 }}
           className="text-lg text-[#6B7280] mb-12 max-w-md mx-auto font-medium"
         >
-          Il semble que vous ayez quitté la route. Reprenez le contrôle et retournez vers l'accueil de LocaFès.
+          Il semble que vous ayez quitté la route. Reprenez le contrôle et retournez vers l'accueil de LocaGawa.
         </motion.p>
 
         <motion.div 
