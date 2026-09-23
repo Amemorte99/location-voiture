@@ -97,10 +97,10 @@ export default function Home() {
         <meta property="og:description" content="Véhicules récents, assurance incluse, remise à l'aéroport. Réservez en ligne." />
       </Helmet>
 
-      <section className="relative min-h-[100vh] bg-[#0F2F75] pt-20 overflow-hidden flex items-center">
+      <section className="relative min-h-[100vh] bg-gradient-to-br from-[#2461B8] via-[#1A48A8] to-[#0F2F75] pt-20 overflow-hidden flex items-center">
         {/* Subtle warm radial glows — no lasers, no grids */}
-        <div className="absolute top-[-10%] left-[-8%] w-[55%] h-[55%] bg-[#E3383C]/8 blur-[160px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#8F1C20]/10 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-[-10%] left-[-8%] w-[55%] h-[55%] bg-white/5 blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#0A2463]/30 blur-[140px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10 py-20 lg:py-12">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -408,7 +408,7 @@ export default function Home() {
 
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="bg-[#0F2F75] rounded-[32px] sm:rounded-[36px] px-8 py-14 sm:py-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
+          <div className="bg-gradient-to-br from-[#2461B8] via-[#1A48A8] to-[#0F2F75] rounded-[32px] sm:rounded-[36px] px-8 py-14 sm:py-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
             {/* Lueur subtile en arrière-plan */}
             <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#E3383C]/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-1/4 w-60 h-60 bg-white/5 rounded-full blur-[80px] pointer-events-none" />
