@@ -62,8 +62,10 @@ export default function MessagesTab({
   const cleanPhoneNumber = (phone) => {
     if (!phone) return '';
     let cleaned = phone.replace(/[^0-9]/g, '');
-    if (cleaned.startsWith('0')) {
-      cleaned = '212' + cleaned.substring(1);
+    if (cleaned.startsWith('00235')) {
+      cleaned = cleaned.substring(2);
+    } else if (cleaned.length === 8) {
+      cleaned = '235' + cleaned;
     }
     return cleaned;
   };

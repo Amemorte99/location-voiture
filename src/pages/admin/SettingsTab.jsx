@@ -20,13 +20,13 @@ function downloadCSV(headers, rows, filename) {
 export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
   const defaultAgency = {
     name: 'LocaGawa',
-    phone: '+212 535 62 10 20',
+    phone: '+235 22 00 00 00',
     email: 'contact@locafes.ma',
-    address: 'Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc',
-    currency: 'DH',
+    address: 'Avenue Charles de Gaulle, Centre-Ville, N’Djamena, Tchad',
+    currency: 'FCFA',
     website: 'www.locafes.ma',
     hours: '08:00 - 21:00 (7j/7)',
-    deposit: '5 000 DH (empreinte CB)',
+    deposit: '300 000 FCFA (empreinte CB)',
   };
 
   const [agency, setAgency] = useState(() => {
@@ -54,7 +54,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
         toast.error('Aucune réservation à exporter');
         return;
       }
-      const headers = ['Conducteur', 'Téléphone', 'Véhicule', 'Début', 'Fin', 'Montant (DH)', 'Statut', 'Paiement'];
+      const headers = ['Conducteur', 'Téléphone', 'Véhicule', 'Début', 'Fin', 'Montant (FCFA)', 'Statut', 'Paiement'];
       const rows = bookings.map(b => [
         b.fullName || '',
         b.phone || '',
@@ -87,7 +87,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
         toast.error('Aucune voiture à exporter');
         return;
       }
-      const headers = ['Nom', 'Marque', 'Année', 'Carburant', 'Boîte', 'Prix (DH/J)', 'Disponible'];
+      const headers = ['Nom', 'Marque', 'Année', 'Carburant', 'Boîte', 'Prix (FCFA/J)', 'Disponible'];
       const rows = cars.map(c => [
         c.name || '',
         c.brand || '',
@@ -151,11 +151,11 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#6B7280]">Devise principale</label>
               <select
-                value={agency.currency || 'DH'}
+                value={agency.currency || 'FCFA'}
                 onChange={e => setAgency({ ...agency, currency: e.target.value })}
                 className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none font-medium text-xs text-[#111827]"
               >
-                <option value="DH">DH — Dirham Marocain</option>
+                <option value="FCFA">FCFA — Franc CFA (BEAC)</option>
                 <option value="EUR">EUR — Euro</option>
                 <option value="USD">USD — Dollar</option>
               </select>
@@ -235,14 +235,14 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
                 <FaClock className="text-[#E3383C] mt-0.5 shrink-0" />
                 <div>
                   <p className="font-bold text-[#111827]">Prise en charge flexible</p>
-                  <p className="text-[#6B7280]">Aéroport Fès-Saïss, Agence Centre-Ville ou livraison directe à l'hôtel / riad.</p>
+                  <p className="text-[#6B7280]">Aéroport de N’Djamena, Agence Centre-Ville ou livraison directe à l'hôtel / domicile.</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5 p-3 bg-gray-50 rounded-xl">
                 <FaShieldAlt className="text-emerald-500 mt-0.5 shrink-0" />
                 <div>
                   <p className="font-bold text-[#111827]">Assurance tous risques</p>
-                  <p className="text-[#6B7280]">Incluse avec chaque contrat de location. Assistance 24/7 partout au Maroc.</p>
+                  <p className="text-[#6B7280]">Incluse avec chaque contrat de location. Assistance 24/7 partout au Tchad.</p>
                 </div>
               </div>
             </div>

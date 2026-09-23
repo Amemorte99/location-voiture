@@ -28,7 +28,7 @@ export default function Footer() {
     },
     mentions: {
       title: "Mentions Légales",
-      content: "LocaGawa SARL — Agence de location de véhicules de prestige à Fès. Siège social : Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc. Tél : +212 535 62 10 20 — Email : contact@locafes.ma. RC Fès N° 45892 — Patente N° 12457890 — IF N° 33458912 — ICE N° 002345891000042."
+      content: "LocaGawa SARL — Agence de location de véhicules de prestige à N’Djamena. Siège social : Avenue Charles de Gaulle, Centre-Ville, N’Djamena, Tchad. Tél : +235 22 00 00 00 — Email : contact@locafes.ma. RCCM TD-NDJ-XXXX — Patente N° 12457890 — IF N° 33458912 — ICE N° 002345891000042."
     }
   };
 
@@ -56,12 +56,12 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm leading-7 text-gray-400/90 max-w-sm font-normal">
-              L'art de voyager avec distinction à Fès. Une flotte récente révisée en concession, un accueil personnalisé à l'Aéroport Saïss et un service de conciergerie sur-mesure.
+              L'art de voyager avec distinction à N’Djamena. Une flotte récente révisée en concession, un accueil personnalisé à l'Aéroport de N’Djamena et un service de conciergerie sur-mesure.
             </p>
 
             <div className="pt-2 text-xs text-gray-400 flex items-center gap-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E3383C]" />
-              <span>LocaGawa SARL • RC Fès N° 45892</span>
+              <span>LocaGawa SARL • RCCM TD-NDJ-XXXX</span>
             </div>
           </div>
 
@@ -86,7 +86,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 3 : Nos Points d'Accueil à Fès (3 cols) */}
+          {/* Colonne 3 : Nos Points d'Accueil à N’Djamena (3 cols) */}
           <div className="lg:col-span-3">
             <h4 className="text-white font-bold text-xs uppercase tracking-[0.25em] mb-7 flex items-center gap-2">
               <span className="w-3 h-[1px] bg-[#E3383C]" />
@@ -97,7 +97,7 @@ export default function Footer() {
               <div className="group">
                 <div className="flex items-center gap-2.5 text-white font-semibold group-hover:text-[#E3383C] transition-colors">
                   <FaPlane className="text-[#E3383C] shrink-0" size={13} />
-                  <span>Aéroport Fès-Saïss (FEZ)</span>
+                  <span>Aéroport International de N’Djamena (NDJ)</span>
                 </div>
                 <p className="text-gray-400 text-xs pl-6 mt-1.5 leading-relaxed">
                   Terminal Arrivées • Accueil sur vol 24h/24
@@ -107,20 +107,20 @@ export default function Footer() {
               <div className="group">
                 <div className="flex items-center gap-2.5 text-white font-semibold group-hover:text-[#E3383C] transition-colors">
                   <FaMapMarkerAlt className="text-[#E3383C] shrink-0" size={13} />
-                  <span>Agence Quartier Atlas</span>
+                  <span>Agence Centre-Ville</span>
                 </div>
                 <p className="text-gray-400 text-xs pl-6 mt-1.5 leading-relaxed">
-                  Boulevard Allal Ben Abdellah • 08h00 – 21h00
+                  Avenue Charles de Gaulle • 08h00 – 21h00
                 </p>
               </div>
 
               <div className="group">
                 <div className="flex items-center gap-2.5 text-white font-semibold group-hover:text-[#E3383C] transition-colors">
                   <FaHotel className="text-[#E3383C] shrink-0" size={13} />
-                  <span>Livraison Riads & Hôtels</span>
+                  <span>Livraison Hôtels & Domiciles</span>
                 </div>
                 <p className="text-gray-400 text-xs pl-6 mt-1.5 leading-relaxed">
-                  Médina & Ville Nouvelle • Prise en charge gratuite
+                  Tous quartiers de N’Djamena • Prise en charge gratuite
                 </p>
               </div>
 
@@ -136,7 +136,7 @@ export default function Footer() {
             <div className="space-y-5 text-sm">
 
               <a
-                href="tel:+212535621020"
+                href="tel:+23522000000"
                 className="flex items-center gap-3.5 text-gray-300 hover:text-[#E3383C] transition-colors group"
               >
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#E3383C] group-hover:border-[#E3383C]/50 transition-colors shrink-0">
@@ -144,12 +144,12 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">Téléphone agence</p>
-                  <p className="text-white font-bold group-hover:text-[#E3383C] transition-colors text-sm mt-0.5">+212 535 62 10 20</p>
+                  <p className="text-white font-bold group-hover:text-[#E3383C] transition-colors text-sm mt-0.5">+235 22 00 00 00</p>
                 </div>
               </a>
 
               <a
-                href="https://wa.me/212668898245"
+                href="https://wa.me/23566000000"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3.5 text-gray-300 hover:text-emerald-400 transition-colors group"
@@ -159,7 +159,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wider">WhatsApp 24/7</p>
-                  <p className="text-white font-bold group-hover:text-emerald-400 transition-colors text-sm mt-0.5">+212 668 89 82 45</p>
+                  <p className="text-white font-bold group-hover:text-emerald-400 transition-colors text-sm mt-0.5">+235 66 00 00 00</p>
                 </div>
               </a>
 
@@ -186,7 +186,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <p className="font-medium text-gray-400">© {currentYear} LocaGawa SARL. Tous droits réservés.</p>
             <span className="hidden sm:inline text-gray-600">•</span>
-            <p className="text-gray-400 text-xs">Location de voitures & conciergerie à Fès</p>
+            <p className="text-gray-400 text-xs">Location de voitures & conciergerie à N’Djamena</p>
           </div>
 
           {/* Liens légaux avec dégagement à droite pour ne pas être masqués par le WhatsApp flottant */}

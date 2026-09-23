@@ -2,7 +2,7 @@
   {
     "name": "Dacia Logan",
     "brand": "Dacia",
-    "price": 300,
+    "price": 18000,
     "image": "/images/Dacia Logan 2020.jpg",
     "year": 2020,
     "fuel": "Essence",
@@ -11,7 +11,7 @@
   {
     "name": "Dacia Sandero",
     "brand": "Dacia",
-    "price": 250,
+    "price": 15000,
     "image": "/images/dacia-sandero 2021.jpg",
     "year": 2021,
     "fuel": "Essence",
@@ -20,7 +20,7 @@
   {
     "name": "Renault Clio 5",
     "brand": "Renault",
-    "price": 250,
+    "price": 15000,
     "image": "/images/renault-clio 5 2022.jpg",
     "year": 2022,
     "fuel": "Diesel",
@@ -29,7 +29,7 @@
   {
     "name": "Peugeot 208",
     "brand": "Peugeot",
-    "price": 300,
+    "price": 18000,
     "image": "/images/peugeot-208 2021.png",
     "year": 2021,
     "fuel": "Diesel",
@@ -38,7 +38,7 @@
   {
     "name": "Hyundai i10",
     "brand": "Hyundai",
-    "price": 250,
+    "price": 15000,
     "image": "/images/Hyundai i10 2020.jpg",
     "year": 2020,
     "fuel": "Essence",
@@ -47,7 +47,7 @@
   {
     "name": "Kia Picanto",
     "brand": "Kia",
-    "price": 300,
+    "price": 18000,
     "image": "/images/Kia Picanto 2020.webp",
     "year": 2020,
     "fuel": "Essence",
@@ -56,7 +56,7 @@
   {
     "name": "Citroën C3",
     "brand": "Citroën",
-    "price": 300,
+    "price": 18000,
     "image": "/images/citroen-c3 2021.jpg",
     "year": 2021,
     "fuel": "Essence",
@@ -65,7 +65,7 @@
   {
     "name": "Volkswagen Polo",
     "brand": "Volkswagen",
-    "price": 350,
+    "price": 21000,
     "image": "/images/Volkswagen Polo 2022.webp",
     "year": 2022,
     "fuel": "Diesel",
@@ -74,7 +74,7 @@
   {
     "name": "Toyota Yaris",
     "brand": "Toyota",
-    "price": 350,
+    "price": 21000,
     "image": "/images/Toyota Yaris 2022.png",
     "year": 2022,
     "fuel": "Hybride",
@@ -83,7 +83,7 @@
   {
     "name": "Fiat 500",
     "brand": "Fiat",
-    "price": 250,
+    "price": 15000,
     "image": "/images/Fiat 500 2020.png",
     "year": 2020,
     "fuel": "Essence",
@@ -92,7 +92,7 @@
   {
     "name": "Dacia Duster",
     "brand": "Dacia",
-    "price": 350,
+    "price": 21000,
     "image": "/images/Dacia Duster 2021.webp",
     "year": 2021,
     "fuel": "Diesel",
@@ -101,7 +101,7 @@
   {
     "name": "Renault Captur",
     "brand": "Renault",
-    "price": 400,
+    "price": 24000,
     "image": "/images/renault-captur 2022.webp",
     "year": 2022,
     "fuel": "Diesel",
@@ -110,7 +110,7 @@
   {
     "name": "Peugeot 2008",
     "brand": "Peugeot",
-    "price": 400,
+    "price": 24000,
     "image": "/images/Peugeot 2008 2022.webp",
     "year": 2022,
     "fuel": "Diesel",
@@ -119,7 +119,7 @@
   {
     "name": "Hyundai Tucson",
     "brand": "Hyundai",
-    "price": 450,
+    "price": 27000,
     "image": "/images/Hyundai Tucson 2023.webp",
     "year": 2023,
     "fuel": "Diesel",
@@ -128,7 +128,7 @@
   {
     "name": "Nissan Qashqai",
     "brand": "Nissan",
-    "price": 400,
+    "price": 24000,
     "image": "/images/Nissan Qashqai 2023.jpg",
     "year": 2023,
     "fuel": "Diesel",
@@ -137,7 +137,7 @@
   {
     "name": "Suzuki Swift",
     "brand": "Suzuki",
-    "price": 400,
+    "price": 24000,
     "image": "/images/Suzuki Swift 2020.jpg",
     "year": 2020,
     "fuel": "Essence",
@@ -146,7 +146,7 @@
   {
     "name": "Seat Ibiza",
     "brand": "Seat",
-    "price": 300,
+    "price": 18000,
     "image": "/images/Seat Ibiza 2021.webp",
     "year": 2021,
     "fuel": "Essence",
@@ -155,7 +155,7 @@
   {
     "name": "Renault Megane",
     "brand": "Renault",
-    "price": 300,
+    "price": 18000,
     "image": "/images/Renault Megane 2021.jpg",
     "year": 2021,
     "fuel": "Diesel",
@@ -164,7 +164,7 @@
   {
     "name": "Opel Corsa",
     "brand": "Opel",
-    "price": 400,
+    "price": 24000,
     "image": "/images/Opel Corsa 2020.png",
     "year": 2020,
     "fuel": "Essence",
@@ -173,7 +173,7 @@
   {
     "name": "Skoda Octavia",
     "brand": "Skoda",
-    "price": 400,
+    "price": 24000,
     "image": "/images/Skoda Octavia 2022.webp",
     "year": 2022,
     "fuel": "Diesel",
@@ -182,7 +182,7 @@
   {
     "name": "Volkswagen Golf 8",
     "brand": "Volkswagen",
-    "price": 450,
+    "price": 27000,
     "image": "/images/Volkswagen Golf 8 2023.jpg",
     "year": 2023,
     "fuel": "Diesel",
@@ -191,7 +191,7 @@
   {
     "name": "Mercedes-Benz Classe C",
     "brand": "Mercedes-Benz",
-    "price": 900,
+    "price": 54000,
     "image": "/images/Mercedes Classe C 2023.jpg",
     "year": 2023,
     "fuel": "Diesel",
@@ -200,7 +200,7 @@
   {
     "name": "Range Rover Evoque",
     "brand": "Land Rover",
-    "price": 1100,
+    "price": 66000,
     "image": "/images/Range Rover Evoque 2023.jpg",
     "year": 2023,
     "fuel": "Diesel",
@@ -209,7 +209,7 @@
   {
     "name": "Peugeot 3008 GT",
     "brand": "Peugeot",
-    "price": 550,
+    "price": 33000,
     "image": "/images/Peugeot 3008 2023.jpg",
     "year": 2023,
     "fuel": "Diesel",
@@ -218,7 +218,7 @@
   {
     "name": "Dacia Jogger (7 Places)",
     "brand": "Dacia",
-    "price": 380,
+    "price": 23000,
     "image": "/images/Dacia Jogger 2023.jpg",
     "year": 2023,
     "fuel": "Essence",

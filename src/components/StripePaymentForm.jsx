@@ -75,7 +75,7 @@ export default function StripePaymentForm({ totalPrice, onPaymentSuccess }) {
         ) : (
           <>
             <FaLock size={10} className="text-white/60" />
-            <span>Payer {totalPrice ? `${totalPrice} DH` : ""} & Confirmer</span>
+            <span>Payer {totalPrice ? `${totalPrice} FCFA` : ""} & Confirmer</span>
           </>
         )}
         {!isProcessing && <FaArrowRight size={12} />}

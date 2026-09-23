@@ -50,7 +50,7 @@ const bookingSchema = mongoose.Schema(
     },
     pickupLocation: {
       type: String,
-      default: 'Agence Quartier Atlas (Bd Allal Ben Abdellah)',
+      default: 'Agence Centre-Ville (Av. Charles de Gaulle)',
       maxlength: 200,
     },
     pickupTime: {

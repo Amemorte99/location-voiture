@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { resolveImageUrl } from '../../utils/imageUrl';
 
 function exportCSV(cars) {
-  const headers = ['Nom', 'Marque', 'Année', 'Carburant', 'Boîte', 'Prix (DH/J)', 'Disponible'];
+  const headers = ['Nom', 'Marque', 'Année', 'Carburant', 'Boîte', 'Prix (FCFA/J)', 'Disponible'];
   const rows = cars.map(c => [
     c.name || '',
     c.brand || '',
@@ -186,8 +186,8 @@ export default function CarsTab({
                           <p className="text-xs font-semibold text-[#111827]">{car.year} · {car.gearbox}</p>
                         </td>
                         <td className="px-6 py-4">
-                          <span className="text-base font-bold text-[#111827]">{car.price}</span>
-                          <span className="text-[11px] text-[#6B7280] ml-1">DH/j</span>
+                          <span className="text-base font-bold text-[#111827]">{Number(car.price || 0).toLocaleString('fr-FR')}</span>
+                          <span className="text-[11px] text-[#6B7280] ml-1">FCFA/j</span>
                         </td>
                         <td className="px-6 py-4">
                           <button
@@ -315,8 +315,8 @@ export default function CarsTab({
 
                       <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
                         <div>
-                          <span className="text-xl font-bold text-[#111827]">{car.price}</span>
-                          <span className="text-xs text-[#6B7280] font-normal ml-1">DH / jour</span>
+                          <span className="text-xl font-bold text-[#111827]">{Number(car.price || 0).toLocaleString('fr-FR')}</span>
+                          <span className="text-xs text-[#6B7280] font-normal ml-1">FCFA / jour</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                           <button

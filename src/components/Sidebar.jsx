@@ -197,7 +197,7 @@ export default function Sidebar({
             <p className="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 mb-2.5">Résumé</p>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: 'Revenus', val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} DH` },
+                { label: 'Revenus', val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} FCFA` },
                 { label: 'Réservations', val: stats.totalBookings || 0 },
               ].map(({ label, val }) => (
                 <div key={label}>

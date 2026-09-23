@@ -221,7 +221,7 @@ export default function Navbar() {
 
             <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-3">
               <a 
-                href="tel:+212535621020" 
+                href="tel:+23522000000" 
                 className="flex items-center justify-center gap-2 py-3 bg-[#EEF3FB] text-[#111827] rounded-xl font-bold text-xs hover:bg-[#E3EBF8] transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
@@ -229,7 +229,7 @@ export default function Navbar() {
                 Appeler
               </a>
               <a 
-                href="https://wa.me/212668898245" 
+                href="https://wa.me/23566000000" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 py-3 bg-emerald-50 text-emerald-700 rounded-xl font-bold text-xs hover:bg-emerald-100 transition-colors"

@@ -1,7 +1,7 @@
 {
   "name": "locafes-backend",
   "version": "1.0.0",
-  "description": "API REST pour la plateforme de location de véhicules LocaFès",
+  "description": "API REST pour la plateforme de location de véhicules LocaN’Djamena",
   "main": "server.js",
   "scripts": {
     "test": "node -c server.js",

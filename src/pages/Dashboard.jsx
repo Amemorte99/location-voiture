@@ -686,7 +686,7 @@ export default function Dashboard() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">Tarif (DH / Jour) *</label>
+                    <label className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">Tarif (FCFA / Jour) *</label>
                     <input
                       required
                       type="number"
@@ -989,7 +989,7 @@ export default function Dashboard() {
                                   </span>
                                 </div>
                                 <p className="text-xs text-slate-500 font-medium mt-0.5">
-                                  {currentDriver.phone} • Zone : {currentDriver.zone || 'Fès'}
+                                  {currentDriver.phone} • Zone : {currentDriver.zone || 'N’Djamena'}
                                 </p>
                               </div>
                             ) : (
@@ -1031,11 +1031,11 @@ export default function Dashboard() {
                             `Véhicule : ${selectedBooking.car?.name || 'Véhicule'}\n` +
                             `Client : ${selectedBooking.fullName}\n` +
                             `Téléphone : ${selectedBooking.phone}\n` +
-                            `Lieu de rendez-vous : ${selectedBooking.pickupLocation || 'Agence Quartier Atlas'}` +
+                            `Lieu de rendez-vous : ${selectedBooking.pickupLocation || 'Agence Centre-Ville'}` +
                             (selectedBooking.flightNumber ? ` (Vol : ${selectedBooking.flightNumber})` : '') +
                             (selectedBooking.deliveryAddress ? ` - Adresse : ${selectedBooking.deliveryAddress}` : '') + `\n` +
                             `Date & Heure : ${new Date(selectedBooking.startDate).toLocaleDateString('fr-FR')} à ${selectedBooking.pickupTime || 'Heure convenue'}\n` +
-                            `Montant à encaisser : ${selectedBooking.totalPrice} DH (${selectedBooking.paymentMethod === 'card' ? 'Payé par carte bancaire' : 'Espèces à encaisser'})` +
+                            `Montant à encaisser : ${selectedBooking.totalPrice} FCFA (${selectedBooking.paymentMethod === 'card' ? 'Payé par carte bancaire' : 'Espèces à encaisser'})` +
                             (selectedBooking.deliveryNotes ? `\nInstructions spéciales : ${selectedBooking.deliveryNotes}` : '')
                           )}` : '#'}
                           target={currentDriver ? "_blank" : undefined}
@@ -1081,7 +1081,7 @@ export default function Dashboard() {
                         <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                           {selectedBooking.totalPrice?.toLocaleString('fr-FR')}
                         </span>
-                        <span className="text-xs font-bold text-[#E3383C]">DH</span>
+                        <span className="text-xs font-bold text-[#E3383C]">FCFA</span>
                       </div>
                     </div>
 
@@ -1200,7 +1200,7 @@ export default function Dashboard() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">Tarif (DH / Jour) *</label>
+                    <label className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">Tarif (FCFA / Jour) *</label>
                     <input
                       required
                       type="number"
@@ -1351,7 +1351,7 @@ export default function Dashboard() {
                     value={editingUser.phone || ''}
                     onChange={e => setEditingUser({ ...editingUser, phone: e.target.value })}
                     className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
-                    placeholder="06 00 00 00 00"
+                    placeholder="66 00 00 00"
                   />
                 </div>
                 <div className="space-y-1.5">

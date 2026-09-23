@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
     { 
       icon: <FaClock size={32} />, 
       title: "Disponibilité 24/7", 
-      desc: "Service continu jour et nuit. Réservez en ligne et récupérez votre véhicule à l'aéroport Fès-Saïss ou en agence dès votre arrivée.",
+      desc: "Service continu jour et nuit. Réservez en ligne et récupérez votre véhicule à l'aéroport de N’Djamena ou en agence dès votre arrivée.",
       highlight: "Service non-stop"
     },
     { 
@@ -81,10 +81,10 @@ export default function WhyChooseUs() {
     },
     {
       q: "Quels sont les modes de règlement acceptés ?",
-      a: "Vous pouvez régler directement lors de la prise en charge en espèces (Dirhams ou Euros) ou par carte bancaire. Aucune avance ni carte bancaire n'est exigée lors de votre pré-réservation en ligne."
+      a: "Vous pouvez régler directement lors de la prise en charge en espèces (Francs CFA ou Euros) ou par carte bancaire. Aucune avance ni carte bancaire n'est exigée lors de votre pré-réservation en ligne."
     },
     {
-      q: "Comment se déroule la prise en charge à l'aéroport Fès-Saïss ?",
+      q: "Comment se déroule la prise en charge à l'aéroport de N’Djamena ?",
       a: "Un agent LocaGawa vous attend personnellement dans le hall des arrivées avec une pancarte à votre nom dès l'atterrissage. Le contrat est finalisé sur place en 5 minutes et la voiture vous est remise sur le parking de l'aéroport, sans file d'attente à un guichet."
     },
     {
@@ -93,19 +93,19 @@ export default function WhyChooseUs() {
     },
     {
       q: "Le kilométrage est-il réellement illimité ?",
-      a: "Oui, à 100%. Tous nos contrats incluent le kilométrage illimité sur l'ensemble du territoire marocain. Vous pouvez explorer Fès, Meknès, Chefchaouen ou le sud sans aucun supplément kilométrique."
+      a: "Oui, à 100%. Tous nos contrats incluent le kilométrage illimité sur l'ensemble du territoire tchadien. Vous pouvez explorer N’Djamena, Moundou, Abéché ou le sud sans aucun supplément kilométrique."
     },
     {
       q: "Que se passe-t-il en cas d'imprévu mécanique ou de crevaison ?",
-      a: "Notre service d'assistance routière intervient 24h/24 et 7j/7 partout au Maroc. En cas d'immobilisation, nous dépêchons un technicien ou mettons à disposition un véhicule de remplacement dans les meilleurs délais."
+      a: "Notre service d'assistance routière intervient 24h/24 et 7j/7 partout au Tchad. En cas d'immobilisation, nous dépêchons un technicien ou mettons à disposition un véhicule de remplacement dans les meilleurs délais."
     }
   ];
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white">
       <Helmet>
-        <title>Pourquoi LocaGawa | Location Premium à Fès</title>
-        <meta name="description" content="Découvrez pourquoi LocaGawa est le choix #1 pour la location de voitures à Fès. Sécurité, transparence, flotte moderne et support 24/7." />
+        <title>Pourquoi LocaGawa | Location Premium à N’Djamena</title>
+        <meta name="description" content="Découvrez pourquoi LocaGawa est le choix #1 pour la location de voitures à N’Djamena. Sécurité, transparence, flotte moderne et support 24/7." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -135,7 +135,7 @@ export default function WhyChooseUs() {
             transition={{ delay: 0.1 }}
             className="text-xl text-[#6B7280] max-w-3xl mx-auto leading-relaxed font-medium"
           >
-            Nous redéfinissons les standards de la location automobile au Maroc 
+            Nous redéfinissons les standards de la location automobile au Tchad 
             avec un engagement total sur la sécurité, le confort et la transparence.
           </motion.p>
         </div>

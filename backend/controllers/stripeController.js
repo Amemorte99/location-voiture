@@ -43,11 +43,12 @@ const createPaymentIntent = async (req, res) => {
     const finalTotalPrice = (totalDays * car.price) + Number(optionsPrice);
 
     
-    const amountInCentimes = Math.round(finalTotalPrice * 100); 
+    // Le franc CFA (XAF) est une devise sans décimales chez Stripe : montant en unités entières
+    const amountInCentimes = Math.round(finalTotalPrice);
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amountInCentimes,
-      currency: 'mad',
+      currency: 'xaf',
       payment_method_types: ['card'],
       metadata: {
         carId: car._id.toString(),
@@ -136,7 +137,7 @@ const handleStripeWebhook = async (req, res) => {
           totalPrice: Number(metadata.totalPrice),
           paymentMethod: 'card',
           status: 'confirmed',
-          pickupLocation: metadata.pickupLocation || 'Aéroport Fès-Saïss (Terminal Arrivées)',
+          pickupLocation: metadata.pickupLocation || 'Aéroport de N’Djamena (Terminal Arrivées)',
           pickupTime: metadata.pickupTime || '',
           flightNumber: metadata.flightNumber || '',
           deliveryAddress: metadata.deliveryAddress || '',

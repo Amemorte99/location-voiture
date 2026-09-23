@@ -21,11 +21,11 @@ const seedDB = async () => {
     if (!adminExists) {
       const adminPassword = process.env.ADMIN_PASSWORD || 'AdminLocafes2024!';
       await User.create({
-        name: 'Admin LocaFès',
+        name: 'Admin LocaN’Djamena',
         email: 'admin@locafes.ma',
         password: adminPassword,
         role: 'admin',
-        phone: '0535621020',
+        phone: '22000000',
       });
       console.log('[DB] Administrateur créé (admin@locafes.ma)');
     } else {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const WHATSAPP_NUMBER = '212668898245';
+const WHATSAPP_NUMBER = '23566000000';
 
 export default function WhatsAppButton() {
   const location = useLocation();

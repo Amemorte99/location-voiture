@@ -38,7 +38,7 @@ const CarCard = memo(function CarCard({ car }) {
                 : 'bg-white/95 text-slate-500 border border-slate-200'
             }`}>
               <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
-              {isAvailable ? 'Disponible à Fès' : 'Réservé'}
+              {isAvailable ? 'Disponible à N’Djamena' : 'Réservé'}
             </span>
           </div>
 
@@ -69,7 +69,7 @@ const CarCard = memo(function CarCard({ car }) {
               )}
             </div>
             <p className="text-[#8F1C20] text-xs font-semibold tracking-wider mt-0.5">
-              {car.brand || 'Gamme Récente'} • Fès Saïss
+              {car.brand || 'Gamme Récente'} • N’Djamena
             </p>
           </div>
 
@@ -94,7 +94,7 @@ const CarCard = memo(function CarCard({ car }) {
             <div>
               <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">À partir de</p>
               <p className="text-2xl font-black text-[#111827] leading-none">
-                {car.price} <span className="text-xs font-bold text-[#E3383C]">DH / jour</span>
+                {Number(car.price || 0).toLocaleString('fr-FR')} <span className="text-xs font-bold text-[#E3383C]">FCFA / jour</span>
               </p>
               <p className="text-[10px] text-emerald-600 font-medium mt-1">Assurance incluse</p>
             </div>

@@ -14,11 +14,11 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../contexts/AuthContext";
 
 const HERO_CARS = [
-  { src: "/images/hero-golf8.png",            name: "Volkswagen Golf 8",  year: 2023, price: 450, tag: "Berline Compacte" },
-  { src: "/images/hero-evoque.png",           name: "Range Rover Evoque", year: 2023, price: 900, tag: "Prestige SUV" },
-  { src: "/images/hero-mercedes.png",         name: "Mercedes Classe C",  year: 2023, price: 850, tag: "Berline Luxe" },
-  { src: "/images/hero-qashqai.png",          name: "Nissan Qashqai",     year: 2023, price: 500, tag: "SUV Familial" },
-  { src: "/images/hero-peugeot-208.png",      name: "Peugeot 208 GT",     year: 2021, price: 300, tag: "Citadine GT" },
+  { src: "/images/hero-golf8.png",            name: "Volkswagen Golf 8",  year: 2023, price: 27000, tag: "Berline Compacte" },
+  { src: "/images/hero-evoque.png",           name: "Range Rover Evoque", year: 2023, price: 54000, tag: "Prestige SUV" },
+  { src: "/images/hero-mercedes.png",         name: "Mercedes Classe C",  year: 2023, price: 51000, tag: "Berline Luxe" },
+  { src: "/images/hero-qashqai.png",          name: "Nissan Qashqai",     year: 2023, price: 30000, tag: "SUV Familial" },
+  { src: "/images/hero-peugeot-208.png",      name: "Peugeot 208 GT",     year: 2021, price: 18000, tag: "Citadine GT" },
 ];
 
 const CAROUSEL_INTERVAL = 5000;
@@ -91,9 +91,9 @@ export default function Home() {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>LocaGawa | Location de Voitures à Fès — Simple et Sans Surprise</title>
-        <meta name="description" content="Louez un véhicule récent à Fès avec LocaGawa. Assurance incluse, kilométrage illimité, livraison à l'aéroport Fès-Saïss. Tarifs clairs, service 7j/7." />
-        <meta property="og:title" content="LocaGawa — Location de Voitures à Fès" />
+        <title>LocaGawa | Location de Voitures à N’Djamena — Simple et Sans Surprise</title>
+        <meta name="description" content="Louez un véhicule récent à N’Djamena avec LocaGawa. Assurance incluse, kilométrage illimité, livraison à l'aéroport de N’Djamena. Tarifs clairs, service 7j/7." />
+        <meta property="og:title" content="LocaGawa — Location de Voitures à N’Djamena" />
         <meta property="og:description" content="Véhicules récents, assurance incluse, remise à l'aéroport. Réservez en ligne." />
       </Helmet>
 
@@ -113,18 +113,18 @@ export default function Home() {
               className="w-full lg:w-1/2 text-center lg:text-left"
             >
               <p className="text-[#E3383C] text-xs font-bold uppercase tracking-[0.25em] mb-5">
-                Agence de location à Fès
+                Agence de location à N’Djamena
               </p>
 
               <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-black mb-6 leading-[1.1] tracking-tight text-white">
                 Location de Voitures<br />
-                <span className="text-[#E3383C]">à Fès</span>, Simple et<br />
+                <span className="text-[#E3383C]">à N’Djamena</span>, Simple et<br />
                 Sans Surprise.
               </h1>
 
               <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
                 Véhicules récents et entretenus, assurance tous risques incluse,
-                remise des clés rapide à l'aéroport Fès-Saïss ou en agence.
+                remise des clés rapide à l'aéroport de N’Djamena ou en agence.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
@@ -136,7 +136,7 @@ export default function Home() {
                   <FaArrowRight size={13} />
                 </Link>
                 <a
-                  href="https://wa.me/212668898245"
+                  href="https://wa.me/23566000000"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-7 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-bold text-sm hover:bg-white/10 transition-all flex items-center gap-2.5 backdrop-blur-sm"
@@ -150,7 +150,7 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-5 justify-center lg:justify-start">
                 {[
                   { icon: <FaCheckCircle className="text-emerald-400" size={13} />, label: "Kilométrage illimité" },
-                  { icon: <FaMapMarkerAlt className="text-[#E3383C]" size={13} />, label: "Aéroport Fès-Saïss" },
+                  { icon: <FaMapMarkerAlt className="text-[#E3383C]" size={13} />, label: "Aéroport de N’Djamena" },
                   { icon: <FaShieldAlt className="text-[#E3383C]" size={13} />, label: "Assurance incluse" },
                   { icon: <FaPhoneAlt className="text-slate-400" size={12} />, label: "Support 7j/7" },
                 ].map((item, i) => (
@@ -187,7 +187,7 @@ export default function Home() {
               { 
                 icon: <FaClock size={18} />, 
                 value: "7j/7", 
-                label: "Assistance Fès & Région", 
+                label: "Assistance N’Djamena & Région", 
                 desc: "Support téléphonique & WhatsApp continu" 
               },
             ].map((stat, i) => (
@@ -272,7 +272,7 @@ export default function Home() {
               Pourquoi choisir <span className="text-[#E3383C]">LocaGawa</span> ?
             </h2>
             <p className="text-[#6B7280] font-medium max-w-xl mx-auto text-sm leading-relaxed">
-              Une location transparente, sécurisée et adaptée à tous vos projets au Maroc.
+              Une location transparente, sécurisée et adaptée à tous vos projets au Tchad.
             </p>
           </div>
 
@@ -357,9 +357,9 @@ export default function Home() {
                 <FaMapMarkerAlt size={16} />
               </div>
               <div>
-                <h4 className="font-bold text-[#111827] text-sm mb-1">Agence & Aéroport Fès-Saïss</h4>
+                <h4 className="font-bold text-[#111827] text-sm mb-1">Agence & Aéroport de N’Djamena</h4>
                 <p className="text-xs text-[#6B7280] leading-relaxed">
-                  Boulevard Allal Ben Abdellah, Quartier Atlas & Terminal Saïss.
+                  Avenue Charles de Gaulle (Centre-Ville) & Aéroport de N’Djamena.
                 </p>
                 <Link to="/contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#E3383C] hover:text-[#111827] transition-colors mt-2">
                   Plan d'accès <FaArrowRight size={8} />
@@ -390,11 +390,11 @@ export default function Home() {
               <div>
                 <h4 className="font-bold text-[#111827] text-sm mb-1">Contact & Réservations</h4>
                 <div className="flex flex-col gap-0.5">
-                  <a href="tel:+212535621020" className="text-xs text-[#111827] font-bold hover:text-[#E3383C] transition-colors">
-                    Tél : 05 35 62 10 20
+                  <a href="tel:+23522000000" className="text-xs text-[#111827] font-bold hover:text-[#E3383C] transition-colors">
+                    Tél : 22 00 00 00
                   </a>
-                  <a href="https://wa.me/212668898245" target="_blank" rel="noopener noreferrer" className="text-xs text-emerald-700 font-bold hover:underline">
-                    WhatsApp : +212 668 89 82 45
+                  <a href="https://wa.me/23566000000" target="_blank" rel="noopener noreferrer" className="text-xs text-emerald-700 font-bold hover:underline">
+                    WhatsApp : +235 66 00 00 00
                   </a>
                 </div>
                 <Link to="/contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#E3383C] hover:text-[#111827] transition-colors mt-2">
@@ -552,7 +552,7 @@ function HeroCarousel() {
               {car.name}
             </p>
             <p className="text-[#E3383C] text-xs sm:text-sm font-extrabold mt-0.5">
-              {car.price} DH <span className="text-[10px] text-gray-400 font-normal">/ jour</span>
+              {Number(car.price || 0).toLocaleString('fr-FR')} FCFA <span className="text-[10px] text-gray-400 font-normal">/ jour</span>
             </p>
           </motion.div>
         </AnimatePresence>

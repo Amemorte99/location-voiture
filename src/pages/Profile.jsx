@@ -177,7 +177,7 @@ export default function Profile() {
                 <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Validées</p>
               </div>
               <div className="text-center px-4 py-3 rounded-xl bg-[#EEF3FB] border border-[#D3E0F4] min-w-[100px]">
-                <p className="text-xl font-bold text-[#111827]">{totalSpent} <span className="text-xs font-semibold text-[#E3383C]">DH</span></p>
+                <p className="text-xl font-bold text-[#111827]">{totalSpent} <span className="text-xs font-semibold text-[#E3383C]">FCFA</span></p>
                 <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Dépenses</p>
               </div>
             </div>
@@ -332,7 +332,7 @@ export default function Profile() {
                               <div className="flex flex-wrap items-center justify-between pt-4 mt-2 border-t border-gray-100 gap-3">
                                 <div>
                                   <p className="text-[11px] text-[#6B7280]">Montant total</p>
-                                  <p className="text-lg font-bold text-[#111827]">{Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-xs font-normal text-[#6B7280]">DH</span></p>
+                                  <p className="text-lg font-bold text-[#111827]">{Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-xs font-normal text-[#6B7280]">FCFA</span></p>
                                   <div className="mt-1">
                                     {booking.paymentMethod === 'card' ? (
                                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-100">

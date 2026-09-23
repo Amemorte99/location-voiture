@@ -37,7 +37,7 @@ const createBooking = async (req, res) => {
     const diffTime = Math.abs(eDate - sDate);
     const calculatedTotalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
     const isBabySeat = Boolean(babySeat);
-    const calculatedTotalPrice = (calculatedTotalDays * carDetails.price) + (isBabySeat ? calculatedTotalDays * 30 : 0);
+    const calculatedTotalPrice = (calculatedTotalDays * carDetails.price) + (isBabySeat ? calculatedTotalDays * 2000 : 0);
 
     const overlapping = await Booking.findOne({
       car,
@@ -71,7 +71,7 @@ const createBooking = async (req, res) => {
       totalDays: calculatedTotalDays,
       totalPrice: calculatedTotalPrice,
       paymentMethod,
-      pickupLocation: pickupLocation || 'Aéroport Fès-Saïss (Terminal Arrivées)',
+      pickupLocation: pickupLocation || 'Aéroport de N’Djamena (Terminal Arrivées)',
       pickupTime: pickupTime || '',
       flightNumber: flightNumber || '',
       deliveryAddress: deliveryAddress || '',

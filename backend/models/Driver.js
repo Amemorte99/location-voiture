@@ -27,7 +27,7 @@ const driverSchema = new mongoose.Schema(
     },
     zone: {
       type: String,
-      default: 'Toutes zones (Fès)',
+      default: 'Toutes zones (N’Djamena)',
       maxlength: [100, 'La zone ne peut pas dépasser 100 caractères'],
     },
     licenseNumber: {

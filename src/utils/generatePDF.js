@@ -62,7 +62,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     const carName = booking.car?.name || booking.carName || urlParams.get('carName') || 'Véhicule de Tourisme';
     const carBrand = booking.car?.brand || '';
     const totalPrice = Number(booking.totalPrice || urlParams.get('totalPrice') || 0);
-    const formatDH = (val) => `${Math.round(Number(val || 0))} DH`;
+    const formatDH = (val) => `${Math.round(Number(val || 0))} FCFA`;
 
     const rawStartDate = booking.startDate || urlParams.get('startDate');
     const rawEndDate = booking.endDate || urlParams.get('endDate');
@@ -96,15 +96,15 @@ export const generateInvoicePDF = (booking, isUser = false) => {
 
     const paymentMethod = booking.paymentMethod || 'cash';
     const paymentLabel = paymentMethod === 'card' ? 'Carte Bancaire en ligne' : 'Règlement en espèces à la prise en charge';
-    const pickupLocation = booking.pickupLocation || urlParams.get('pickupLocation') || 'Aéroport Fès-Saïss (Terminal Arrivées)';
+    const pickupLocation = booking.pickupLocation || urlParams.get('pickupLocation') || 'Aéroport de N’Djamena (Terminal Arrivées)';
     const flightNumber = booking.flightNumber || urlParams.get('flightNumber') || '';
     const pickupTime = booking.pickupTime || urlParams.get('pickupTime') || '';
     const deliveryAddress = booking.deliveryAddress || urlParams.get('deliveryAddress') || '';
 
-    let agencyPhone = '+212 535 62 10 20';
+    let agencyPhone = '+235 22 00 00 00';
     let agencyEmail = 'contact@locafes.ma';
-    let agencyAddress = 'Boulevard Allal Ben Abdellah, Quartier Atlas';
-    let agencyCity = '30000 Fès, Maroc';
+    let agencyAddress = 'Avenue Charles de Gaulle, Centre-Ville';
+    let agencyCity = 'N’Djamena, Tchad';
 
     try {
       const savedAgency = typeof window !== 'undefined' ? localStorage.getItem('locafes_agency_settings') : null;
@@ -242,7 +242,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
       head: [['Désignation de la prestation', 'Période & Durée', 'Tarif / Jour', 'Total TTC']],
       body: [
         [
-          `Location de véhicule : ${carName} ${carBrand ? `(${carBrand})` : ''}\nCatégorie Tourisme & Confort Fès`,
+          `Location de véhicule : ${carName} ${carBrand ? `(${carBrand})` : ''}\nCatégorie Tourisme & Confort N’Djamena`,
           `Du ${startDate} au ${endDate}\n(${diffDays} jour${diffDays > 1 ? 's' : ''})`,
           formatDH(carPrice),
           formatDH(totalPrice),
@@ -271,7 +271,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
       '• Pièces : Permis original valide + Passeport ou CNI.',
       '• Carburant : Restitution au même niveau qu\'au départ.',
       '• Caution : Empreinte de garantie non débitée à la remise des clés.',
-      '• Ligne directe conciergerie 24/7 : +212 668 89 82 45',
+      '• Ligne directe conciergerie 24/7 : +235 66 00 00 00',
     ];
 
     doc.setFont('helvetica', 'normal');
@@ -298,7 +298,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7);
     doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
-    doc.text(`FÈS-SAÏSS • CONTRAT RÉF : ${receiptNum}`, 62, stampBoxY + 12, { align: 'center' });
+    doc.text(`N’DJAMENA • CONTRAT RÉF : ${receiptNum}`, 62, stampBoxY + 12, { align: 'center' });
     doc.setTextColor(emeraldGreen[0], emeraldGreen[1], emeraldGreen[2]);
     doc.setFont('helvetica', 'bold');
     doc.text('DOCUMENT OFFICIEL VALIDÉ', 62, stampBoxY + 17, { align: 'center' });
@@ -306,7 +306,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     // Colonne Droite : Récapitulatif Financier (Sobre et Aéré, sans boîte sombre)
     const finX = 125;
     const finRightX = 192;
-    const htPrice = Math.round(totalPrice * 0.8333);
+    const htPrice = Math.round(totalPrice / 1.18);
     const tvaPrice = totalPrice - htPrice;
 
     doc.setFont('helvetica', 'normal');
@@ -317,7 +317,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.text(formatDH(htPrice), finRightX, bottomY + 2, { align: 'right' });
 
     doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
-    doc.text('TVA (20% incluse) :', finX, bottomY + 8.5);
+    doc.text('TVA (18% incluse) :', finX, bottomY + 8.5);
     doc.setTextColor(slateDark[0], slateDark[1], slateDark[2]);
     doc.text(formatDH(tvaPrice), finRightX, bottomY + 8.5, { align: 'right' });
 
@@ -325,7 +325,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.text('Assurances & Packs :', finX, bottomY + 15);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(emeraldGreen[0], emeraldGreen[1], emeraldGreen[2]);
-    doc.text('INCLUS (0 DH)', finRightX, bottomY + 15, { align: 'right' });
+    doc.text('INCLUS (0 FCFA)', finRightX, bottomY + 15, { align: 'right' });
 
     // Ligne dorée fine avant total
     doc.setDrawColor(goldAccent[0], goldAccent[1], goldAccent[2]);
@@ -373,7 +373,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setFontSize(7.5);
     doc.setTextColor(slateDark[0], slateDark[1], slateDark[2]);
     doc.text(
-      'LocaGawa SARL • Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc',
+      'LocaGawa SARL • Avenue Charles de Gaulle, Centre-Ville, N’Djamena, Tchad',
       105,
       footerY + 4.5,
       { align: 'center' }
@@ -383,7 +383,7 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     doc.setFontSize(7);
     doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
     doc.text(
-      'RC Fès N° 45892 • Patente N° 12457890 • IF N° 33458912 • ICE N° 002345891000042 • Tél : +212 535 62 10 20',
+      'RCCM N° TD-NDJ-XXXX • NIF N° XXXXXXXX • Tél : +235 22 00 00 00',
       105,
       footerY + 8.5,
       { align: 'center' }

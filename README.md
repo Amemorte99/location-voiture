@@ -1,18 +1,18 @@
 # LocaGawa — Application Web de Location de Voitures
 
-Application web complète de réservation et de gestion de flotte automobile développée pour une agence de location basée à Fès (Maroc). Le projet couvre l'ensemble du flux opérationnel : consultation du catalogue en ligne, réservation avec vérification des disponibilités, paiement par carte bancaire ou en espèces, génération instantanée de factures PDF conformes et tableau de bord administrateur pour piloter l'activité.
+Application web complète de réservation et de gestion de flotte automobile développée pour une agence de location basée à N’Djamena (Tchad). Le projet couvre l'ensemble du flux opérationnel : consultation du catalogue en ligne, réservation avec vérification des disponibilités, paiement par carte bancaire ou en espèces, génération instantanée de factures PDF conformes et tableau de bord administrateur pour piloter l'activité.
 
 ---
 
 ## Contexte et Problématiques Métier
 
-À Fès, la location de véhicules s'adresse aussi bien aux résidents locaux qu'aux touristes et voyageurs d'affaires arrivant par l'Aéroport Fès-Saïss ou la gare ferroviaire.
+À N’Djamena, la location de véhicules s'adresse aussi bien aux résidents locaux qu'aux touristes et voyageurs d'affaires arrivant par l'Aéroport de N’Djamena ou la gare ferroviaire.
 
 Ce projet a été conçu pour répondre aux besoins concrets d'une agence locale :
 - **Prévenir les doubles réservations** : contrôle algorithmique des dates sélectionnées afin d'empêcher qu'un même véhicule ne soit loué sur deux périodes qui se chevauchent.
-- **Simplifier la logistique à l'arrivée** : collecte dès la réservation du lieu de prise en charge (Terminal Aéroport Fès-Saïss, Gare, Agence ou livraison directe en Riad/Hôtel), du numéro de vol éventuel et de l'heure d'arrivée.
+- **Simplifier la logistique à l'arrivée** : collecte dès la réservation du lieu de prise en charge (Terminal Aéroport de N’Djamena, Gare, Agence ou livraison directe en Hôtel/Domicile), du numéro de vol éventuel et de l'heure d'arrivée.
 - **Proposer deux modes de règlement adaptés** : paiement sécurisé en ligne par carte bancaire (via Stripe) ou paiement traditionnel en espèces le jour de la prise en charge du véhicule.
-- **Automatiser la facturation** : édition immédiate côté navigateur d'une facture/contrat PDF aux normes marocaines (mentions fiscales complètes, ventilation HT/TVA 20%, cachet agence numérique).
+- **Automatiser la facturation** : édition immédiate côté navigateur d'une facture/contrat PDF aux normes tchadiennes (mentions fiscales complètes, ventilation HT/TVA 18%, cachet agence numérique).
 - **Fournir un outil de gestion centralisé** : tableau de bord administrateur permettant de suivre le chiffre d'affaires, gérer les véhicules, assigner des chauffeurs et modifier les statuts des réservations.
 
 ---
@@ -22,24 +22,24 @@ Ce projet a été conçu pour répondre aux besoins concrets d'une agence locale
 ### 1. Espace Client & Navigation
 - **Catalogue avec recherche et filtres combinés** :
   - Recherche en temps réel par mot-clé (nom ou marque du véhicule).
-  - Filtre par budget avec curseur dynamique de prix (jusqu'à 2 000 DH/jour).
+  - Filtre par budget avec curseur dynamique de prix (jusqu'à 2 000 FCFA/jour).
   - Filtres par type de carburant (Essence, Diesel, Électrique, Hybride) et boîte de vitesses (Manuelle, Automatique).
   - Tri par tarif (croissant / décroissant), année du modèle ou note client.
   - Badges de filtres actifs avec réinitialisation en un clic.
 - **Fiche véhicule complète** :
   - Visuel haute définition du véhicule.
   - Caractéristiques techniques : motorisation, transmission, nombre de places, climatisation, capacité bagages.
-  - Simulateur tarifaire instantané calculant le nombre de jours et le coût total en DH selon les dates choisies.
+  - Simulateur tarifaire instantané calculant le nombre de jours et le coût total en FCFA selon les dates choisies.
   - Section d'avis et notation clients (système 5 étoiles avec commentaires).
   - Bouton de contact WhatsApp direct avec message pré-rempli ciblant le modèle et son tarif.
 - **Tunnel de réservation en 3 étapes** :
-  - **Étape 1 — Dates & Logistique** : dates de début et de fin, lieu de remise (Aéroport Saïss, Gare Fès-Ville, Agence Atlas ou adresse personnalisée), numéro de vol et heure d'arrivée.
-  - **Étape 2 — Conducteur & Options** : coordonnées du client et ajout d'options à 30 DH/jour (siège bébé, GPS, conducteur additionnel).
+  - **Étape 1 — Dates & Logistique** : dates de début et de fin, lieu de remise (Aéroport de N’Djamena, Gare Routière, Agence Centre-Ville ou adresse personnalisée), numéro de vol et heure d'arrivée.
+  - **Étape 2 — Conducteur & Options** : coordonnées du client et ajout d'options à 30 FCFA/jour (siège bébé, GPS, conducteur additionnel).
   - **Étape 3 — Paiement & Confirmation** : choix entre carte bancaire via formulaire sécurisé Stripe Elements ou paiement en espèces à la livraison.
 - **Confirmation & Facturation PDF immédiate** :
   - Redirection automatique vers la page de succès après validation.
   - Téléchargement ou ouverture directe de la facture PDF officielle.
-  - Ventilation comptable détaillée (Sous-total HT, TVA 20% incluse, Total TTC).
+  - Ventilation comptable détaillée (Sous-total HT, TVA 18% incluse, Total TTC).
   - Libellé adapté selon le mode de paiement (*"Facture acquittée en totalité (CB)"* ou *"Règlement en espèces à la livraison"*).
 - **Espace Profil Client** :
   - Consultation et mise à jour des informations personnelles (nom, email, téléphone, mot de passe).
@@ -51,12 +51,12 @@ Ce projet a été conçu pour répondre aux besoins concrets d'une agence locale
   - Jauge visuelle de robustesse du mot de passe.
 - **Support & Contact** :
   - Bouton WhatsApp flottant présent sur toutes les pages.
-  - Page Contact dédiée avec coordonnées fixes de l'agence (`05 35 62 10 20`), ligne WhatsApp directe (`+212 668 89 82 45`) et formulaire d'envoi de message.
+  - Page Contact dédiée avec coordonnées fixes de l'agence (`22 00 00 00`), ligne WhatsApp directe (`+235 66 00 00 00`) et formulaire d'envoi de message.
 
 ### 2. Espace Administration (`/dashboard`)
 L'accès au tableau de bord est protégé et réservé aux comptes administrateurs :
 - **Vue d'ensemble (Overview)** :
-  - 4 indicateurs clés : Chiffre d'affaires global (en DH), Réservations actives, Nombre total de voitures, Clients inscrits.
+  - 4 indicateurs clés : Chiffre d'affaires global (en FCFA), Réservations actives, Nombre total de voitures, Clients inscrits.
   - Graphique d'évolution des revenus mensuels généré avec Recharts.
   - Tableau des réservations récentes avec statut et actions directes.
 - **Gestion des Réservations** :
@@ -89,9 +89,9 @@ L'accès au tableau de bord est protégé et réservé aux comptes administrateu
 ## Facturation et Mentions Légales
 
 Les factures PDF générées par l'application sont conformes aux usages commerciaux marocains :
-- **Raison sociale** : LocaGawa SARL, Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès.
-- **Identifiants légaux** : Registre du Commerce (RC Fès N° 45892), Patente N° 12457890, Identifiant Fiscal (IF N° 33458912), Identifiant Commun de l'Entreprise (ICE N° 002345891000042).
-- **Ventilation fiscale** : Prix HT, TVA 20% incluse, Packs d'assurance inclus (0 DH), Total TTC net en dirhams marocains (`DH`).
+- **Raison sociale** : LocaGawa SARL, Avenue Charles de Gaulle, Centre-Ville, 30000 N’Djamena.
+- **Identifiants légaux** : Registre du Commerce (RCCM TD-NDJ-XXXX), Patente N° 12457890, Identifiant Fiscal (IF N° 33458912), Identifiant Commun de l'Entreprise (ICE N° 002345891000042).
+- **Ventilation fiscale** : Prix HT, TVA 18% incluse, Packs d'assurance inclus (0 FCFA), Total TTC net en francs CFA (`FCFA`).
 - **Génération locale pure** : le document est assemblé directement en mémoire côté client via `jsPDF`, garantissant rapidité, zéro fuite de données vers un tiers et affichage net sans bug de police.
 
 ---

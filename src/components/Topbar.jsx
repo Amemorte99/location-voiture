@@ -135,7 +135,7 @@ export default function Topbar({ setIsOpen, isCollapsed, toggleCollapse, pending
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-xs font-bold text-[#111827] truncate">{b.fullName}</p>
-                            <p className="text-[11px] text-[#6B7280] truncate">{b.car?.name} · {b.totalPrice} DH</p>
+                            <p className="text-[11px] text-[#6B7280] truncate">{b.car?.name} · {b.totalPrice} FCFA</p>
                             {b.createdAt && (
                               <p className="text-[10px] text-gray-400 mt-0.5">{formatNotifTime(b.createdAt)}</p>
                             )}

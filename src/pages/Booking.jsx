@@ -39,7 +39,7 @@ export default function Booking() {
     endDate: initialEndDate
   });
 
-  const [pickupLocation, setPickupLocation] = useState('Aéroport Fès-Saïss (Terminal Arrivées)');
+  const [pickupLocation, setPickupLocation] = useState('Aéroport de N’Djamena (Terminal Arrivées)');
   const [pickupTime, setPickupTime] = useState('12:00');
   const [flightNumber, setFlightNumber] = useState('');
   const [deliveryAddress, setDeliveryAddress] = useState('');
@@ -82,7 +82,7 @@ export default function Booking() {
       if (end > start) {
         const diff = differenceInDays(end, start) || 1;
         setDays(diff);
-        const optionsExtra = babySeat ? diff * 30 : 0;
+        const optionsExtra = babySeat ? diff * 2000 : 0;
         setTotal(diff * car.price + optionsExtra);
       } else {
         setDays(0);
@@ -149,7 +149,7 @@ export default function Booking() {
     if (payment === 'card') {
       try {
         setSubmitting(true);
-        const optionsExtra = babySeat ? days * 30 : 0;
+        const optionsExtra = babySeat ? days * 2000 : 0;
         const response = await createPaymentIntent({
           carId: car._id || car.id,
           startDate: formData.startDate,
@@ -357,10 +357,10 @@ export default function Booking() {
                           onChange={(e) => setPickupLocation(e.target.value)}
                           className="w-full pl-12 pr-8 py-4 bg-[#F9FAFB] border border-gray-100 rounded-2xl focus:bg-white focus:border-[#E3383C] outline-none transition-all font-bold text-sm text-[#111827] appearance-none cursor-pointer"
                         >
-                          <option value="Aéroport Fès-Saïss (Terminal Arrivées)">Aéroport Fès-Saïss (Terminal Arrivées)</option>
-                          <option value="Livraison Hôtel ou Riad (Fès Médina & Ville)">Livraison Hôtel ou Riad (Fès Médina & Ville)</option>
-                          <option value="Agence Quartier Atlas (Bd Allal Ben Abdellah)">Agence Quartier Atlas (Bd Allal Ben Abdellah)</option>
-                          <option value="Gare Ferroviaire Fès-Ville">Gare Ferroviaire Fès-Ville</option>
+                          <option value="Aéroport de N’Djamena (Terminal Arrivées)">Aéroport de N’Djamena (Terminal Arrivées)</option>
+                          <option value="Livraison Hôtel ou Domicile (N’Djamena)">Livraison Hôtel ou Domicile (N’Djamena)</option>
+                          <option value="Agence Centre-Ville (Av. Charles de Gaulle)">Agence Centre-Ville (Av. Charles de Gaulle)</option>
+                          <option value="Gare Routière de N’Djamena">Gare Routière de N’Djamena</option>
                         </select>
                       </div>
 
@@ -396,7 +396,7 @@ export default function Booking() {
                             <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
                             <input
                               type="text"
-                              placeholder="Nom de l'hôtel, Riad ou adresse précise"
+                              placeholder="Nom de l'hôtel ou adresse précise"
                               value={deliveryAddress}
                               onChange={(e) => setDeliveryAddress(e.target.value)}
                               className="w-full pl-11 pr-4 py-3.5 bg-[#F9FAFB] border border-gray-100 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none transition-all text-xs font-semibold text-[#111827]"
@@ -499,7 +499,7 @@ export default function Booking() {
                               <p className="text-[10px] text-[#6B7280]">Confort et sécurité de 0 à 4 ans</p>
                             </div>
                           </div>
-                          <span className="text-xs font-extrabold text-[#111827]">+30 DH / jour</span>
+                          <span className="text-xs font-extrabold text-[#111827]">+2 000 FCFA / jour</span>
                         </label>
 
                         <label className={`flex items-center justify-between p-4 rounded-2xl border transition-all cursor-pointer ${
@@ -523,7 +523,7 @@ export default function Booking() {
 
                       <div className="flex items-center gap-2 text-[11px] font-bold text-[#6B7280] pt-2">
                         <FaCheckCircle className="text-emerald-500 shrink-0" size={13} />
-                        <span>Kilométrage illimité et assistance technique 24h/24 inclus sur tout le Maroc</span>
+                        <span>Kilométrage illimité et assistance technique 24h/24 inclus sur tout le Tchad</span>
                       </div>
                     </div>
                   </motion.div>
@@ -661,7 +661,7 @@ export default function Booking() {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-xs">
                   <span className="text-[#6B7280]">Tarif journalier</span>
-                  <span className="text-[#111827] font-bold">{Number(car.price || 0).toLocaleString('fr-FR')} DH</span>
+                  <span className="text-[#111827] font-bold">{Number(car.price || 0).toLocaleString('fr-FR')} FCFA</span>
                 </div>
                 <div className="flex justify-between text-xs">
                   <span className="text-[#6B7280]">Durée</span>
@@ -670,7 +670,7 @@ export default function Booking() {
                 {babySeat && (
                   <div className="flex justify-between text-xs">
                     <span className="text-[#6B7280]">Option siège bébé</span>
-                    <span className="text-[#111827] font-bold">+{Number(days * 30).toLocaleString('fr-FR')} DH</span>
+                    <span className="text-[#111827] font-bold">+{Number(days * 2000).toLocaleString('fr-FR')} FCFA</span>
                   </div>
                 )}
                 <div className="text-xs text-[#6B7280] bg-gray-50 p-3 rounded-xl border border-gray-100 space-y-0.5">
@@ -679,7 +679,7 @@ export default function Booking() {
                 </div>
                 <div className="border-t border-gray-100 pt-3 flex justify-between items-center mt-4">
                   <span className="text-[#111827] font-bold text-sm">Total à payer</span>
-                  <span className="text-xl font-bold text-[#111827]">{Number(total || 0).toLocaleString('fr-FR')} <span className="text-xs font-semibold text-[#E3383C]">DH</span></span>
+                  <span className="text-xl font-bold text-[#111827]">{Number(total || 0).toLocaleString('fr-FR')} <span className="text-xs font-semibold text-[#E3383C]">FCFA</span></span>
                 </div>
               </div>
 
@@ -777,7 +777,7 @@ export default function Booking() {
                   </div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-3xl font-black text-white tracking-tight">{total?.toLocaleString('fr-FR')}</span>
-                    <span className="text-xs font-bold text-[#E3383C]">DH</span>
+                    <span className="text-xs font-bold text-[#E3383C]">FCFA</span>
                   </div>
                 </div>
 

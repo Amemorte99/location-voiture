@@ -76,7 +76,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
     },
     {
       label: 'Revenus',
-      val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} DH`,
+      val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} FCFA`,
       icon: <FaMoneyBillWave size={18} />,
       color: 'text-emerald-600',
       bg: 'bg-emerald-50',
@@ -97,7 +97,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
             Tableau de <span className="text-[#E3383C]">Bord</span>
           </h2>
           <p className="text-[#6B7280] text-xs font-medium mt-0.5">
-            Activité et indicateurs de performance de l'agence à Fès
+            Activité et indicateurs de performance de l'agence à N’Djamena
           </p>
         </div>
       </div>
@@ -183,7 +183,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                 tickLine={false}
               />
               <Tooltip
-                formatter={(value) => [`${value} DH`, 'Revenus']}
+                formatter={(value) => [`${value} FCFA`, 'Revenus']}
                 contentStyle={{
                   borderRadius: '16px',
                   border: 'none',
@@ -248,7 +248,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                         )}
                         {(booking.pickupLocation?.includes('Hôtel') || booking.pickupLocation?.includes('Riad')) && (
                           <span className="text-[9px] font-bold text-[#A61F23] bg-[#EEF3FB] px-2 py-0.5 rounded-md border border-[#D3E0F4]">
-                            Riad/Hôtel
+                            Hôtel/Domicile
                           </span>
                         )}
                       </p>
@@ -256,7 +256,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                   </div>
 
                   <p className="text-xs font-black text-[#E3383C] whitespace-nowrap text-right">
-                    {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-[10px] text-slate-400 font-normal">DH</span>
+                    {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-[10px] text-slate-400 font-normal">FCFA</span>
                   </p>
 
                   <div className="flex justify-end">

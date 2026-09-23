@@ -1,16 +1,16 @@
 const Driver = require('../models/Driver');
 const Booking = require('../models/Booking');
 
-// Format phone for WhatsApp (e.g. 0668898245 -> 212668898245)
+// Format phone for WhatsApp (e.g. 66000000 -> 23566000000)
 const formatWhatsAppNumber = (rawPhone) => {
   if (!rawPhone) return '';
   let cleaned = rawPhone.replace(/\D/g, '');
-  if (cleaned.startsWith('0')) {
-    cleaned = '212' + cleaned.substring(1);
-  } else if (cleaned.startsWith('212')) {
-    // already starts with 212
-  } else if (cleaned.length === 9) {
-    cleaned = '212' + cleaned;
+  if (cleaned.startsWith('00235')) {
+    cleaned = cleaned.substring(2);
+  } else if (cleaned.startsWith('235')) {
+    // already starts with 235
+  } else if (cleaned.length === 8) {
+    cleaned = '235' + cleaned;
   }
   return cleaned;
 };
@@ -70,7 +70,7 @@ const createDriver = async (req, res) => {
       name: name.trim(),
       phone: phone.trim(),
       whatsapp: formattedWhatsApp,
-      zone: zone || 'Toutes zones (Fès)',
+      zone: zone || 'Toutes zones (N’Djamena)',
       licenseNumber: licenseNumber || '',
       status: status || 'disponible',
     });

@@ -15,7 +15,7 @@ const handleOpenInvoice = (booking) => {
 };
 
 function exportCSV(bookings) {
-  const headers = ['Conducteur', 'Téléphone', 'Véhicule', 'Chauffeur Assigné', 'Lieu Prise en Charge', 'Heure', 'Vol / Adresse', 'Instructions Livreur', 'Début', 'Fin', 'Montant (DH)', 'Statut', 'Paiement'];
+  const headers = ['Conducteur', 'Téléphone', 'Véhicule', 'Chauffeur Assigné', 'Lieu Prise en Charge', 'Heure', 'Vol / Adresse', 'Instructions Livreur', 'Début', 'Fin', 'Montant (FCFA)', 'Statut', 'Paiement'];
   const rows = bookings.map(b => [
     b.fullName || '',
     b.phone || '',
@@ -170,7 +170,7 @@ export default function BookingsTab({
                       {booking.pickupLocation?.includes('Aéroport') ? (
                         <div className="space-y-1">
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-100">
-                            <FaPlane size={9} /> Aéroport Fès
+                            <FaPlane size={9} /> Aéroport N’Djamena
                           </span>
                           {booking.flightNumber && (
                             <p className="text-xs font-bold text-gray-800">Vol : <span className="text-[#E3383C]">{booking.flightNumber}</span></p>
@@ -184,7 +184,7 @@ export default function BookingsTab({
                       ) : (booking.pickupLocation?.includes('Hôtel') || booking.pickupLocation?.includes('Riad')) ? (
                         <div className="space-y-1">
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-50 text-amber-700 text-[10px] font-bold border border-amber-100">
-                            <FaHotel size={9} /> Hôtel / Riad
+                            <FaHotel size={9} /> Hôtel / Domicile
                           </span>
                           {booking.deliveryAddress && (
                             <p className="text-xs font-bold text-gray-800 truncate max-w-[150px]" title={booking.deliveryAddress}>
@@ -200,7 +200,7 @@ export default function BookingsTab({
                       ) : (
                         <div className="space-y-1">
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gray-100 text-gray-700 text-[10px] font-bold border border-gray-200">
-                            <FaMapMarkerAlt size={9} /> {booking.pickupLocation || 'Agence Atlas'}
+                            <FaMapMarkerAlt size={9} /> {booking.pickupLocation || 'Agence Centre-Ville'}
                           </span>
                           {booking.pickupTime && (
                             <p className="text-[10px] text-gray-500 font-medium flex items-center gap-1">
@@ -255,7 +255,7 @@ export default function BookingsTab({
                         {new Date(booking.startDate).toLocaleDateString('fr-FR')} — {new Date(booking.endDate).toLocaleDateString('fr-FR')}
                       </p>
                       <p className="text-sm font-bold text-[#E3383C]">
-                        {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} DH
+                        {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} FCFA
                       </p>
                     </td>
                     <td className="px-6 py-4" onClick={() => { setSelectedBooking(booking); setShowDetailModal(true); }}>
@@ -301,11 +301,11 @@ export default function BookingsTab({
                               `Véhicule : ${booking.car?.name || 'Véhicule'}\n` +
                               `Client : ${booking.fullName}\n` +
                               `Téléphone : ${booking.phone}\n` +
-                              `Lieu de rendez-vous : ${booking.pickupLocation || 'Agence Quartier Atlas'}` +
+                              `Lieu de rendez-vous : ${booking.pickupLocation || 'Agence Centre-Ville'}` +
                               (booking.flightNumber ? ` (Vol : ${booking.flightNumber})` : '') +
                               (booking.deliveryAddress ? ` - Adresse : ${booking.deliveryAddress}` : '') + `\n` +
                               `Date & Heure : ${new Date(booking.startDate).toLocaleDateString('fr-FR')} à ${booking.pickupTime || 'Heure convenue'}\n` +
-                              `Montant : ${booking.totalPrice} DH (${booking.paymentMethod === 'card' ? 'Payé par carte' : 'Espèces à encaisser'})` +
+                              `Montant : ${booking.totalPrice} FCFA (${booking.paymentMethod === 'card' ? 'Payé par carte' : 'Espèces à encaisser'})` +
                               (booking.deliveryNotes ? `\nConsignes : ${booking.deliveryNotes}` : '')
                             )}`}
                             target="_blank"

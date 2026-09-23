@@ -38,11 +38,11 @@ const STATUS_CONFIG = {
 };
 
 const POPULAR_ZONES = [
-  'Spécialiste Aéroport Fès-Saïss',
-  'Agence Quartier Atlas & Centre',
-  'Hôtels & Riads (Médina)',
-  'Gare Ferroviaire Fès-Ville',
-  'Toutes zones (Fès & Région)',
+  'Spécialiste Aéroport de N’Djamena',
+  'Agence Centre-Ville',
+  'Hôtels & Domiciles',
+  'Gare Routière de N’Djamena',
+  'Toutes zones (N’Djamena & Région)',
 ];
 
 export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
@@ -691,7 +691,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   <input
                     type="text"
                     required
-                    placeholder="Ex: Karim Alami"
+                    placeholder="Ex: Idriss Moussa"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
@@ -706,7 +706,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                     <input
                       type="text"
                       required
-                      placeholder="Ex: 06 61 48 92 15"
+                      placeholder="Ex: 66 00 00 01"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"

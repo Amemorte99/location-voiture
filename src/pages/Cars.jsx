@@ -16,7 +16,7 @@ export default function Cars() {
   const [filterFuel, setFilterFuel] = useState("all");
   const [filterGearbox, setFilterGearbox] = useState("all");
   const [sortBy, setSortBy] = useState("default");
-  const [priceRange, setPriceRange] = useState(2000);
+  const [priceRange, setPriceRange] = useState(120000);
   const [viewMode, setViewMode] = useState("grid"); 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -73,7 +73,7 @@ export default function Cars() {
   const activeFilters = [];
   if (filterFuel !== "all") activeFilters.push({ key: 'fuel', label: filterFuel, clear: () => setFilterFuel("all") });
   if (filterGearbox !== "all") activeFilters.push({ key: 'gearbox', label: filterGearbox, clear: () => setFilterGearbox("all") });
-  if (priceRange < 2000) activeFilters.push({ key: 'price', label: `Max ${priceRange} DH`, clear: () => setPriceRange(2000) });
+  if (priceRange < 120000) activeFilters.push({ key: 'price', label: `Max ${priceRange} FCFA`, clear: () => setPriceRange(120000) });
   if (searchTerm) activeFilters.push({ key: 'search', label: `"${searchTerm}"`, clear: () => setSearchTerm("") });
   if (sortBy !== "default") {
     const sortLabels = { "price-asc": "Prix croissant", "price-desc": "Prix décroissant", "year-desc": "Plus récents" };
@@ -85,7 +85,7 @@ export default function Cars() {
     setFilterFuel("all");
     setFilterGearbox("all");
     setSortBy("default");
-    setPriceRange(2000);
+    setPriceRange(120000);
     setDateValue({ startDate: null, endDate: null });
   };
 
@@ -93,7 +93,7 @@ export default function Cars() {
     <div className="min-h-screen pt-28 pb-20 bg-[#F9FAFB]">
       <Helmet>
         <title>Flotte Automobile | LocaGawa - Voitures Premium</title>
-        <meta name="description" content="Découvrez notre large gamme de véhicules premium à Fès. Filtrez par prix, carburant et boîte de vitesse." />
+        <meta name="description" content="Découvrez notre large gamme de véhicules premium à N’Djamena. Filtrez par prix, carburant et boîte de vitesse." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -111,7 +111,7 @@ export default function Cars() {
             Trouvez votre <span className="text-[#E3383C]">véhicule idéal</span>
           </h1>
           <p className="text-lg text-[#6B7280] max-w-xl mx-auto font-medium">
-            {loading ? 'Chargement du catalogue...' : `${filteredCars.length} véhicule${filteredCars.length !== 1 ? 's' : ''} disponible${filteredCars.length !== 1 ? 's' : ''} à Fès`}
+            {loading ? 'Chargement du catalogue...' : `${filteredCars.length} véhicule${filteredCars.length !== 1 ? 's' : ''} disponible${filteredCars.length !== 1 ? 's' : ''} à N’Djamena`}
           </p>
         </div>
 
@@ -321,20 +321,20 @@ export default function Cars() {
                       <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#6B7280]">
                         <FaMoneyBillWave size={10} /> Budget Maximum
                       </label>
-                      <span className="text-sm font-black text-[#E3383C]">{priceRange} DH</span>
+                      <span className="text-sm font-black text-[#E3383C]">{priceRange} FCFA</span>
                     </div>
                     <input
                       type="range"
-                      min="100"
-                      max="2000"
-                      step="50"
+                      min="5000"
+                      max="120000"
+                      step="1000"
                       value={priceRange}
                       onChange={(e) => setPriceRange(Number(e.target.value))}
                       className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-[#E3383C]"
                     />
                     <div className="flex justify-between mt-2 text-[10px] font-bold text-gray-400">
-                      <span>100 DH</span>
-                      <span>2000 DH</span>
+                      <span>5 000 FCFA</span>
+                      <span>120 000 FCFA</span>
                     </div>
                   </div>
 
@@ -493,7 +493,7 @@ export default function Cars() {
                               : 'bg-white/95 text-slate-500 border border-slate-200'
                           }`}>
                             <span className={`w-2 h-2 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
-                            {car.isAvailableNow !== false ? 'Disponible à Fès' : 'Réservé'}
+                            {car.isAvailableNow !== false ? 'Disponible à N’Djamena' : 'Réservé'}
                           </span>
                         </div>
                       </div>
@@ -503,7 +503,7 @@ export default function Cars() {
                           <div className="flex items-start justify-between mb-3">
                             <div>
                               <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#E3383C] transition-colors">{car.name}</h3>
-                              <p className="text-xs font-semibold text-[#8F1C20] tracking-wider">{car.brand || 'Gamme Récente'} • Fès Saïss</p>
+                              <p className="text-xs font-semibold text-[#8F1C20] tracking-wider">{car.brand || 'Gamme Récente'} • N’Djamena</p>
                             </div>
                             <span className="px-3 py-1 bg-gray-50 rounded-lg text-[11px] font-semibold text-[#111827] border border-gray-100">
                               {car.gearbox === 'Automatique' ? 'Boîte Auto' : 'Manuelle'}
@@ -520,7 +520,7 @@ export default function Cars() {
                           <div>
                             <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">À partir de</p>
                             <p className="text-2xl font-black text-[#111827] leading-none">
-                              {car.price} <span className="text-xs font-bold text-[#E3383C]">DH / jour</span>
+                              {Number(car.price || 0).toLocaleString('fr-FR')} <span className="text-xs font-bold text-[#E3383C]">FCFA / jour</span>
                             </p>
                             <p className="text-[10px] text-emerald-600 font-medium mt-1">Assurance tous risques incluse</p>
                           </div>

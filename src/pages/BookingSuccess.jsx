@@ -17,7 +17,7 @@ export default function BookingSuccess() {
   const totalPrice = searchParams.get('totalPrice');
   const fullName = searchParams.get('fullName');
   const phone = searchParams.get('phone');
-  const pickupLocation = searchParams.get('pickupLocation') || 'Aéroport Fès-Saïss (Terminal Arrivées)';
+  const pickupLocation = searchParams.get('pickupLocation') || 'Aéroport de N’Djamena (Terminal Arrivées)';
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -45,7 +45,7 @@ export default function BookingSuccess() {
 
   const refCode = bookingId ? `LF-${bookingId.slice(-6).toUpperCase()}` : 'LF-WEB';
   const waMsg = `Bonjour LocaGawa, je viens de finaliser ma réservation pour ${car?.name || 'mon véhicule'} du ${startDate || ''} au ${endDate || ''}. Prise en charge : ${pickupLocation}. Réf : ${refCode}. Pouvez-vous me confirmer la bonne prise en compte ?`;
-  const waUrl = `https://wa.me/212668898245?text=${encodeURIComponent(waMsg)}`;
+  const waUrl = `https://wa.me/23566000000?text=${encodeURIComponent(waMsg)}`;
 
   return (
     <>
@@ -63,7 +63,7 @@ export default function BookingSuccess() {
           </h1>
 
           <p className="text-sm text-[#6B7280] max-w-md mx-auto mb-8 font-medium leading-relaxed">
-            Votre dossier est validé sous la référence <span className="font-extrabold text-[#111827]">{refCode}</span>. Notre équipe prépare votre véhicule à Fès.
+            Votre dossier est validé sous la référence <span className="font-extrabold text-[#111827]">{refCode}</span>. Notre équipe prépare votre véhicule à N’Djamena.
           </p>
 
           {/* Récapitulatif Prise en charge */}
@@ -73,7 +73,7 @@ export default function BookingSuccess() {
                 <FaCar className="text-[#E3383C]" />
                 {car?.name || 'Véhicule sélectionné'}
               </span>
-              <span className="text-sm font-black text-[#E3383C]">{Number(totalPrice || 0).toLocaleString('fr-FR')} DH</span>
+              <span className="text-sm font-black text-[#E3383C]">{Number(totalPrice || 0).toLocaleString('fr-FR')} FCFA</span>
             </div>
             <div className="flex items-center gap-2 text-xs font-medium text-[#6B7280] pt-1">
               <FaMapMarkerAlt className="text-[#E3383C] shrink-0" size={13} />

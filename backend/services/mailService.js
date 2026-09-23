@@ -73,7 +73,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
                 LOCA<span style="color: #E3383C;">GAWA</span>
               </h1>
               <p style="color: #E3383C; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin: 6px 0 0 0;">
-                Location Automobile de Prestige • Fès
+                Location Automobile de Prestige • N’Djamena
               </p>
             </div>
 
@@ -84,7 +84,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
                   Réservation Confirmée
                 </span>
                 <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 16px 0 6px 0;">
-                  Votre véhicule vous attend à Fès
+                  Votre véhicule vous attend à N’Djamena
                 </h2>
                 <p style="color: #64748B; font-size: 13px; margin: 0;">
                   Dossier enregistré sous la référence <strong style="color: #0F172A;">${refCode}</strong>
@@ -108,7 +108,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; color: #64748B; font-weight: 600;">Prise en charge :</td>
-                    <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">${booking.pickupLocation || 'Aéroport Fès-Saïss'}</td>
+                    <td style="padding: 8px 0; color: #0F172A; font-weight: 700; text-align: right;">${booking.pickupLocation || 'Aéroport de N’Djamena'}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; color: #64748B; font-weight: 600;">Paiement :</td>
@@ -116,7 +116,7 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
                   </tr>
                   <tr style="border-top: 2px solid #E8DDD0;">
                     <td style="padding: 14px 0 4px 0; color: #0F172A; font-weight: 800; font-size: 15px;">TOTAL RÉGLÉ (TTC) :</td>
-                    <td style="padding: 14px 0 4px 0; color: #B48E5F; font-weight: 900; font-size: 18px; text-align: right;">${formattedTotal} DH</td>
+                    <td style="padding: 14px 0 4px 0; color: #B48E5F; font-weight: 900; font-size: 18px; text-align: right;">${formattedTotal} FCFA</td>
                   </tr>
                 </table>
               </div>
@@ -127,13 +127,13 @@ const sendBookingConfirmation = async (booking, recipientEmail) => {
                   Besoin d'une modification ou d'un accueil personnalisé à l'aéroport ?
                 </p>
                 <p style="margin: 0; font-size: 13px; font-weight: 800; color: #0F172A;">
-                  Ligne Conciergerie 24/7 : <span style="color: #059669;">+212 668 89 82 45</span> (Appel & WhatsApp)
+                  Ligne Conciergerie 24/7 : <span style="color: #059669;">+235 66 00 00 00</span> (Appel & WhatsApp)
                 </p>
               </div>
 
               <p style="color: #94A3B8; font-size: 11px; text-align: center; line-height: 1.5; margin: 0;">
-                LocaGawa SARL • Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès, Maroc<br/>
-                Email : contact@locafes.ma • Tél : +212 535 62 10 20
+                LocaGawa SARL • Avenue Charles de Gaulle, Centre-Ville, N’Djamena, Tchad<br/>
+                Email : contact@locafes.ma • Tél : +235 22 00 00 00
               </p>
             </div>
           </div>

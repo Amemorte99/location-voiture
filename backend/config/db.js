@@ -19,11 +19,11 @@ const seedInitialDataIfEmpty = async () => {
     let admin = await User.findOne({ email: 'admin@locafes.ma' }).select('+password');
     if (!admin) {
       await User.create({
-        name: 'Admin LocaFès',
+        name: 'Admin LocaN’Djamena',
         email: 'admin@locafes.ma',
         password: adminPassword,
         role: 'admin',
-        phone: '0535621020',
+        phone: '22000000',
       });
       console.log('[DB] Administrateur initialisé : admin@locafes.ma');
     } else {

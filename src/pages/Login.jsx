@@ -245,7 +245,7 @@ export default function Login({ defaultRegister = false }) {
             </h1>
             <p className="text-gray-500 text-xs font-medium mt-1.5 leading-relaxed">
               {isRegister 
-                ? 'Complétez vos coordonnées pour réserver en toute sérénité à Fès et à l\'Aéroport Saïss.' 
+                ? 'Complétez vos coordonnées pour réserver en toute sérénité à N’Djamena et à l\'aéroport.' 
                 : 'Saisissez vos identifiants pour accéder à vos réservations et contrats.'
               }
             </p>
@@ -273,7 +273,7 @@ export default function Login({ defaultRegister = false }) {
                       name="name"
                       type="text"
                       autoComplete="name"
-                      placeholder="Ex: Mohammed Benjelloun"
+                      placeholder="Ex: Mahamat Abakar"
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
@@ -297,7 +297,7 @@ export default function Login({ defaultRegister = false }) {
                   name="email"
                   type={isRegister ? 'email' : 'text'}
                   autoComplete="email"
-                  placeholder={isRegister ? 'nom@exemple.com' : 'nom@exemple.com ou 06 68 89 82 45'}
+                  placeholder={isRegister ? 'nom@exemple.com' : 'nom@exemple.com ou 66 00 00 00'}
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
@@ -326,7 +326,7 @@ export default function Login({ defaultRegister = false }) {
                       name="phone"
                       type="tel"
                       autoComplete="tel"
-                      placeholder="Ex: 06 68 89 82 45"
+                      placeholder="Ex: 66 00 00 00"
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
@@ -346,7 +346,7 @@ export default function Login({ defaultRegister = false }) {
                 {!isRegister && (
                   <button 
                     type="button" 
-                    onClick={() => toast('Pour réinitialiser votre accès, contactez notre équipe au 05 35 62 10 20 ou sur WhatsApp.')} 
+                    onClick={() => toast('Pour réinitialiser votre accès, contactez notre équipe au 22 00 00 00 ou sur WhatsApp.')} 
                     className="text-[10px] font-bold text-[#E3383C] hover:text-[#C42A2E] transition-colors hover:underline decoration-1 underline-offset-2"
                   >
                     Mot de passe oublié ?
@@ -464,8 +464,8 @@ export default function Login({ defaultRegister = false }) {
             <span className="w-2 h-2 rounded-full bg-[#E3383C]" />
             <p className="text-[11px] text-gray-500">
               Besoin d'aide ? Contactez notre agence au{' '}
-              <a href="tel:+212535621020" className="font-bold text-[#0F2F75] hover:text-[#E3383C] transition-colors">
-                +212 535 62 10 20
+              <a href="tel:+23522000000" className="font-bold text-[#0F2F75] hover:text-[#E3383C] transition-colors">
+                +235 22 00 00 00
               </a>
             </p>
           </div>
@@ -473,7 +473,7 @@ export default function Login({ defaultRegister = false }) {
 
         {/* Mention de bas de page */}
         <p className="mt-6 text-center text-xs text-gray-400/80 font-medium tracking-wide">
-          © {new Date().getFullYear()} LocaGawa • Conciergerie Automobile & Location de Prestige à Fès
+          © {new Date().getFullYear()} LocaGawa • Conciergerie Automobile & Location de Prestige à N’Djamena
         </p>
       </div>
     </div>

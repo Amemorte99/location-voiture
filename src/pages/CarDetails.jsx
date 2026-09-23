@@ -171,7 +171,7 @@ export default function CarDetails() {
                 }`}
               >
                 <span className={`w-2.5 h-2.5 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-400 animate-pulse' : 'bg-rose-400'}`}></span>
-                {car.isAvailableNow !== false ? 'Disponible à Fès' : 'Occupé'}
+                {car.isAvailableNow !== false ? 'Disponible à N’Djamena' : 'Occupé'}
                 {car.isAvailableNow !== false && <span className="opacity-75 hidden sm:inline ml-1">- Réserver</span>}
               </button>
             </div>
@@ -218,7 +218,7 @@ export default function CarDetails() {
           <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center justify-between pointer-events-auto">
             <div className="hidden sm:flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 text-white/85 text-[11px] font-semibold shadow-lg">
               <FaShieldAlt className="text-[#E3383C]" size={13} />
-              <span>Garantie & Clés en main • Fès</span>
+              <span>Garantie & Clés en main • N’Djamena</span>
             </div>
 
             <button
@@ -444,7 +444,7 @@ export default function CarDetails() {
                 <p className="text-[10px] text-[#6B7280] font-black uppercase tracking-widest mb-1">Prix Journalier</p>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl font-extrabold text-[#111827]">{Number(car.price || 0).toLocaleString('fr-FR')}</span>
-                  <span className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">DH / Jour</span>
+                  <span className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">FCFA / Jour</span>
                 </div>
               </div>
 
@@ -485,8 +485,8 @@ export default function CarDetails() {
                     >
                       <div className="pt-6 pb-2 space-y-3">
                         <div className="flex justify-between items-center text-sm font-medium text-[#4B5563]">
-                          <span>{Number(car.price || 0).toLocaleString('fr-FR')} DH x {totalDays} jour{totalDays > 1 ? 's' : ''}</span>
-                          <span className="text-[#111827] font-bold">{Number(totalPrice || 0).toLocaleString('fr-FR')} DH</span>
+                          <span>{Number(car.price || 0).toLocaleString('fr-FR')} FCFA x {totalDays} jour{totalDays > 1 ? 's' : ''}</span>
+                          <span className="text-[#111827] font-bold">{Number(totalPrice || 0).toLocaleString('fr-FR')} FCFA</span>
                         </div>
                         <div className="flex justify-between items-center text-sm font-medium text-[#4B5563]">
                           <span>Frais de service</span>
@@ -495,7 +495,7 @@ export default function CarDetails() {
                         <div className="h-px bg-gray-200 my-4"></div>
                         <div className="flex justify-between items-end">
                           <span className="text-xs text-[#6B7280] font-black uppercase tracking-widest">Total</span>
-                          <span className="text-2xl font-black text-[#111827]">{Number(totalPrice || 0).toLocaleString('fr-FR')} <span className="text-xs text-[#6B7280] uppercase tracking-widest">DH</span></span>
+                          <span className="text-2xl font-black text-[#111827]">{Number(totalPrice || 0).toLocaleString('fr-FR')} <span className="text-xs text-[#6B7280] uppercase tracking-widest">FCFA</span></span>
                         </div>
                       </div>
                     </motion.div>
@@ -518,8 +518,8 @@ export default function CarDetails() {
               </Link>
 
               <a 
-                href={`https://wa.me/212668898245?text=${encodeURIComponent(
-                  `Bonjour LocaGawa, je souhaite des renseignements pour louer la ${displayName} (${car.price} DH/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
+                href={`https://wa.me/23566000000?text=${encodeURIComponent(
+                  `Bonjour LocaGawa, je souhaite des renseignements pour louer la ${displayName} (${Number(car.price || 0).toLocaleString('fr-FR')} FCFA/jour)${startDate && endDate ? ` du ${startDate} au ${endDate}` : ''}. Est-elle disponible ?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -543,12 +543,12 @@ export default function CarDetails() {
         <div>
           <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider line-clamp-1">{displayName}</p>
           <p className="text-lg font-black text-[#111827]">
-            {car.price} <span className="text-xs font-bold text-[#E3383C]">DH/j</span>
+            {Number(car.price || 0).toLocaleString('fr-FR')} <span className="text-xs font-bold text-[#E3383C]">FCFA/j</span>
           </p>
         </div>
         <div className="flex items-center gap-2">
           <a
-            href={`https://wa.me/212668898245?text=${encodeURIComponent(
+            href={`https://wa.me/23566000000?text=${encodeURIComponent(
               `Bonjour LocaGawa, je souhaite des renseignements pour la ${displayName}. Est-elle disponible ?`
             )}`}
             target="_blank"

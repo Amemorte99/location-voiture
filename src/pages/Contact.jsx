@@ -52,7 +52,7 @@ export default function Contact() {
 
   const generateWhatsAppLink = () => {
     const text = `Bonjour LocaGawa,\nJe m'appelle ${formData.name || 'un client'}.\nObjet : ${formData.subject}\n${formData.message ? `Message : ${formData.message}\n` : ''}${formData.phone ? `Téléphone : ${formData.phone}` : ''}`;
-    return `https://wa.me/212668898245?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/23566000000?text=${encodeURIComponent(text)}`;
   };
 
 
@@ -60,20 +60,20 @@ export default function Contact() {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#F9FAFB]">
       <Helmet>
-        <title>Contact & Réservations | LocaGawa — Location Voitures Fès</title>
-        <meta name="description" content="Contactez l'agence LocaGawa par téléphone au 05 35 62 10 20 ou par WhatsApp direct 24/7 au +212 668 89 82 45. Adresse : Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès." />
+        <title>Contact & Réservations | LocaGawa — Location Voitures N’Djamena</title>
+        <meta name="description" content="Contactez l'agence LocaGawa par téléphone au 22 00 00 00 ou par WhatsApp direct 24/7 au +235 66 00 00 00. Adresse : Avenue Charles de Gaulle, Centre-Ville, 30000 N’Djamena." />
       </Helmet>
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-block px-4 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full font-bold text-[10px] uppercase tracking-[0.25em] mb-4 border border-[#D3E0F4]">
-            Service Client & Agence • Fès, Maroc
+            Service Client & Agence • N’Djamena, Tchad
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-4">
             Contactez Notre Équipe Locale
           </h1>
           <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
-            Une question sur un modèle, un devis personnalisé ou une livraison directe à l'aéroport Fès-Saïss ? 
+            Une question sur un modèle, un devis personnalisé ou une livraison directe à l'aéroport de N’Djamena ? 
             Nous vous répondons 7j/7 avec réactivité.
           </p>
         </div>
@@ -86,13 +86,13 @@ export default function Contact() {
                 <FaPhoneAlt />
               </div>
               <p className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">Téléphone Agence</p>
-              <h3 className="text-xl font-black text-[#111827] mb-1">05 35 62 10 20</h3>
+              <h3 className="text-xl font-black text-[#111827] mb-1">22 00 00 00</h3>
               <p className="text-xs text-[#6B7280] leading-relaxed">
                 Ligne directe non surtaxée • Joignable 7j/7 de 08h00 à 21h00.
               </p>
             </div>
             <a
-              href="tel:+212535621020"
+              href="tel:+23522000000"
               className="mt-5 w-full py-2.5 px-4 rounded-xl bg-gray-50 hover:bg-[#0F2F75] hover:text-white text-[#111827] text-xs font-bold text-center transition-colors border border-gray-100"
             >
               Appeler maintenant
@@ -112,13 +112,13 @@ export default function Contact() {
                 </span>
               </div>
               <p className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">WhatsApp Direct 24/7</p>
-              <h3 className="text-xl font-black text-[#111827] mb-1">+212 668 89 82 45</h3>
+              <h3 className="text-xl font-black text-[#111827] mb-1">+235 66 00 00 00</h3>
               <p className="text-xs text-[#6B7280] leading-relaxed">
                 Conseiller dédié en direct pour réservation rapide ou urgence.
               </p>
             </div>
             <a
-              href="https://wa.me/212668898245?text=Bonjour%20LocaGawa,%20je%20souhaite%20des%20informations%20sur%20la%20location%20d'un%20v%C3%A9hicule."
+              href="https://wa.me/23566000000?text=Bonjour%20LocaGawa,%20je%20souhaite%20des%20informations%20sur%20la%20location%20d'un%20v%C3%A9hicule."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 w-full py-2.5 px-4 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 text-xs font-bold text-center transition-colors shadow-sm"
@@ -127,16 +127,16 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* 3. Aéroport Fès-Saïss & Agence */}
+          {/* 3. Aéroport de N’Djamena & Agence */}
           <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#E3383C]/60 hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div className="w-11 h-11 rounded-xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center text-base mb-4 group-hover:bg-[#0F2F75] group-hover:text-white transition-colors">
                 <FaPlane />
               </div>
               <p className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">Permanence Aéroport</p>
-              <h3 className="text-xl font-black text-[#111827] mb-1">Terminal Arrivées FEZ</h3>
+              <h3 className="text-xl font-black text-[#111827] mb-1">Terminal Arrivées NDJ</h3>
               <p className="text-xs text-[#6B7280] leading-relaxed">
-                Accueil 24h/24 avec suivi des vols en direct • Agence : Boulevard Allal Ben Abdellah, Quartier Atlas.
+                Accueil 24h/24 avec suivi des vols en direct • Agence : Avenue Charles de Gaulle, Centre-Ville.
               </p>
             </div>
             <a
@@ -188,7 +188,7 @@ export default function Contact() {
                     <input
                       type="text"
                       required
-                      placeholder="Ex: Mohammed Alami"
+                      placeholder="Ex: Mahamat Abakar"
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-sm font-medium text-[#111827] transition-colors"
@@ -199,7 +199,7 @@ export default function Contact() {
                     <input
                       type="tel"
                       required
-                      placeholder="06 XX XX XX XX"
+                      placeholder="66 XX XX XX"
                       value={formData.phone}
                       onChange={e => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-sm font-medium text-[#111827] transition-colors"
@@ -227,7 +227,7 @@ export default function Contact() {
                     >
                       <option value="Demande d'information">Renseignement général</option>
                       <option value="Disponibilité d'un véhicule">Disponibilité d'un véhicule précis</option>
-                      <option value="Livraison Aéroport Fès-Saïss">Livraison à l'Aéroport Fès-Saïss</option>
+                      <option value="Livraison Aéroport de N’Djamena">Livraison à l'Aéroport de N’Djamena</option>
                       <option value="Location longue durée ou pro">Location longue durée / Entreprise</option>
                       <option value="Autre demande">Autre requête</option>
                     </select>
@@ -277,7 +277,7 @@ export default function Contact() {
                     <FaPlane size={13} />
                   </div>
                   <div>
-                    <p className="font-bold text-[#111827]">Aéroport Fès-Saïss (FEZ)</p>
+                    <p className="font-bold text-[#111827]">Aéroport International de N’Djamena (NDJ)</p>
                     <p className="text-[#6B7280] text-[11px] leading-relaxed">
                       Terminal Arrivées : accueil personnalisé avec panneau à votre nom, remise des clés directe au parking.
                     </p>
@@ -289,9 +289,9 @@ export default function Contact() {
                     <FaMapMarkerAlt size={13} />
                   </div>
                   <div>
-                    <p className="font-bold text-[#111827]">Agence Quartier Atlas</p>
+                    <p className="font-bold text-[#111827]">Agence Centre-Ville</p>
                     <p className="text-[#6B7280] text-[11px] leading-relaxed">
-                      Boulevard Allal Ben Abdellah, Quartier Atlas, 30000 Fès. À proximité immédiate de la Place de l'Atlas.
+                      Avenue Charles de Gaulle, Centre-Ville, N’Djamena. À proximité de la Place de la Nation.
                     </p>
                   </div>
                 </div>
@@ -301,9 +301,9 @@ export default function Contact() {
                     <FaCar size={13} />
                   </div>
                   <div>
-                    <p className="font-bold text-[#111827]">Livraison Hôtel ou Riad</p>
+                    <p className="font-bold text-[#111827]">Livraison Hôtel ou Domicile</p>
                     <p className="text-[#6B7280] text-[11px] leading-relaxed">
-                      Mise à disposition gratuite sur l'ensemble des hôtels et riads de Fès Ville Nouvelle et Médina.
+                      Mise à disposition gratuite sur l'ensemble des hôtels et quartiers de N’Djamena.
                     </p>
                   </div>
                 </div>
@@ -319,7 +319,7 @@ export default function Contact() {
             <div className="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm h-64 relative">
               <iframe
                 title="Carte Agence LocaGawa"
-                src="https://maps.google.com/maps?q=Place+Atlas+Fes+Morocco&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Place+de+la+Nation+NDjamena+Tchad&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
