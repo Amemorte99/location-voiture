@@ -97,10 +97,10 @@ export default function Home() {
         <meta property="og:description" content="Véhicules récents, assurance incluse, remise à l'aéroport. Réservez en ligne." />
       </Helmet>
 
-      <section className="relative min-h-[100vh] bg-[#111827] pt-20 overflow-hidden flex items-center">
+      <section className="relative min-h-[100vh] bg-[#0F2F75] pt-20 overflow-hidden flex items-center">
         {/* Subtle warm radial glows — no lasers, no grids */}
-        <div className="absolute top-[-10%] left-[-8%] w-[55%] h-[55%] bg-[#C4A47C]/8 blur-[160px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#8B7355]/10 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-[-10%] left-[-8%] w-[55%] h-[55%] bg-[#E3383C]/8 blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#8F1C20]/10 blur-[140px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10 py-20 lg:py-12">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -112,13 +112,13 @@ export default function Home() {
               transition={{ duration: 0.75, ease: "easeOut" }}
               className="w-full lg:w-1/2 text-center lg:text-left"
             >
-              <p className="text-[#C4A47C] text-xs font-bold uppercase tracking-[0.25em] mb-5">
+              <p className="text-[#E3383C] text-xs font-bold uppercase tracking-[0.25em] mb-5">
                 Agence de location à Fès
               </p>
 
               <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-black mb-6 leading-[1.1] tracking-tight text-white">
                 Location de Voitures<br />
-                <span className="text-[#C4A47C]">à Fès</span>, Simple et<br />
+                <span className="text-[#E3383C]">à Fès</span>, Simple et<br />
                 Sans Surprise.
               </h1>
 
@@ -130,7 +130,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
                 <Link
                   to="/cars"
-                  className="px-8 py-4 bg-[#C4A47C] text-[#111827] rounded-xl font-black text-sm hover:bg-[#D4B88C] transition-all shadow-lg shadow-[#C4A47C]/20 flex items-center gap-2.5 active:scale-95"
+                  className="px-8 py-4 bg-[#E3383C] text-white rounded-xl font-black text-sm hover:bg-[#F0585B] transition-all shadow-lg shadow-[#E3383C]/20 flex items-center gap-2.5 active:scale-95"
                 >
                   Voir les véhicules
                   <FaArrowRight size={13} />
@@ -150,8 +150,8 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-5 justify-center lg:justify-start">
                 {[
                   { icon: <FaCheckCircle className="text-emerald-400" size={13} />, label: "Kilométrage illimité" },
-                  { icon: <FaMapMarkerAlt className="text-[#C4A47C]" size={13} />, label: "Aéroport Fès-Saïss" },
-                  { icon: <FaShieldAlt className="text-[#C4A47C]" size={13} />, label: "Assurance incluse" },
+                  { icon: <FaMapMarkerAlt className="text-[#E3383C]" size={13} />, label: "Aéroport Fès-Saïss" },
+                  { icon: <FaShieldAlt className="text-[#E3383C]" size={13} />, label: "Assurance incluse" },
                   { icon: <FaPhoneAlt className="text-slate-400" size={12} />, label: "Support 7j/7" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-slate-400 text-sm">
@@ -192,7 +192,7 @@ export default function Home() {
               },
             ].map((stat, i) => (
               <div key={i} className="flex items-center gap-4 py-4 sm:py-2 px-3 sm:px-8 sm:justify-center">
-                <div className="w-12 h-12 rounded-2xl bg-[#F8F5F0] text-[#C4A47C] border border-[#E8DDD0]/60 flex items-center justify-center shrink-0 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center shrink-0 shadow-sm">
                   {stat.icon}
                 </div>
                 <div>
@@ -211,7 +211,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-[10px] uppercase tracking-widest mb-4 border border-[#E8DDD0]">
+            <span className="inline-block px-4 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full font-bold text-[10px] uppercase tracking-widest mb-4 border border-[#D3E0F4]">
               Notre Sélection
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4 tracking-tight">
@@ -230,7 +230,7 @@ export default function Home() {
                 <p className="text-rose-500 font-bold mb-4">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="px-6 py-2.5 bg-[#111827] text-white rounded-xl font-bold hover:bg-[#C4A47C] hover:text-[#111827] transition-colors"
+                  className="px-6 py-2.5 bg-[#0F2F75] text-white rounded-xl font-bold hover:bg-[#E3383C] hover:text-white transition-colors"
                 >
                   Réessayer
                 </button>
@@ -253,7 +253,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link
               to="/cars"
-              className="inline-flex items-center gap-3 px-9 py-3.5 bg-[#F8F5F0] text-[#111827] border border-[#E8DDD0] rounded-xl font-bold text-sm hover:bg-[#111827] hover:text-white hover:border-[#111827] transition-all"
+              className="inline-flex items-center gap-3 px-9 py-3.5 bg-[#EEF3FB] text-[#111827] border border-[#D3E0F4] rounded-xl font-bold text-sm hover:bg-[#0F2F75] hover:text-white hover:border-[#0F2F75] transition-all"
             >
               Voir tout le catalogue
               <FaArrowRight size={12} />
@@ -265,11 +265,11 @@ export default function Home() {
       <section className="py-20 bg-[#F9FAFB] border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-[10px] uppercase tracking-widest mb-4 border border-[#E8DDD0]">
+            <span className="inline-block px-4 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full font-bold text-[10px] uppercase tracking-widest mb-4 border border-[#D3E0F4]">
               Nos engagements
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4 tracking-tight">
-              Pourquoi choisir <span className="text-[#C4A47C]">LocaFès</span> ?
+              Pourquoi choisir <span className="text-[#E3383C]">LocaFès</span> ?
             </h2>
             <p className="text-[#6B7280] font-medium max-w-xl mx-auto text-sm leading-relaxed">
               Une location transparente, sécurisée et adaptée à tous vos projets au Maroc.
@@ -286,7 +286,7 @@ export default function Home() {
                 transition={{ delay: idx * 0.08 }}
                 className="group bg-white p-7 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-400 border border-gray-100"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-[#F8F5F0] text-[#C4A47C] rounded-xl mb-5 group-hover:bg-[#111827] transition-colors duration-300 border border-[#E8DDD0] group-hover:border-transparent">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-[#EEF3FB] text-[#E3383C] rounded-xl mb-5 group-hover:bg-[#0F2F75] transition-colors duration-300 border border-[#D3E0F4] group-hover:border-transparent">
                   {feature.icon}
                 </div>
                 <h3 className="text-base font-bold text-[#111827] mb-2 leading-snug">
@@ -305,11 +305,11 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-14">
-              <span className="inline-block px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-[10px] uppercase tracking-widest mb-4 border border-[#E8DDD0]">
+              <span className="inline-block px-4 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full font-bold text-[10px] uppercase tracking-widest mb-4 border border-[#D3E0F4]">
                 Avis clients
               </span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4 tracking-tight">
-                Ce que disent nos <span className="text-[#C4A47C]">clients</span>
+                Ce que disent nos <span className="text-[#E3383C]">clients</span>
               </h2>
             </div>
 
@@ -325,19 +325,19 @@ export default function Home() {
                 >
                   <div className="flex gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} size={13} className={i < review.rating ? "text-[#C4A47C]" : "text-gray-200"} />
+                      <FaStar key={i} size={13} className={i < review.rating ? "text-[#E3383C]" : "text-gray-200"} />
                     ))}
                   </div>
                   <p className="text-[#4B5563] font-medium leading-relaxed text-sm mb-6 italic flex-1">
                     "{review.comment}"
                   </p>
                   <div className="flex items-center gap-3 mt-auto">
-                    <div className="w-10 h-10 shrink-0 bg-gradient-to-br from-[#C4A47C] to-[#A68B5B] rounded-full flex items-center justify-center font-bold text-white text-sm uppercase">
+                    <div className="w-10 h-10 shrink-0 bg-gradient-to-br from-[#E3383C] to-[#C42A2E] rounded-full flex items-center justify-center font-bold text-white text-sm uppercase">
                       {review.name[0]}
                     </div>
                     <div>
                       <h4 className="font-bold text-[#111827] text-sm">{review.name}</h4>
-                      <p className="text-[10px] text-[#C4A47C] font-bold uppercase tracking-widest">
+                      <p className="text-[10px] text-[#E3383C] font-bold uppercase tracking-widest">
                         Sur {review.carName}
                       </p>
                     </div>
@@ -352,8 +352,8 @@ export default function Home() {
       <section className="py-14 bg-gray-50/70 border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/60 hover:shadow-md transition-all group">
-              <div className="w-11 h-11 rounded-xl bg-[#F8F5F0] text-[#C4A47C] border border-[#E8DDD0]/60 flex items-center justify-center shrink-0 group-hover:bg-[#111827] group-hover:text-white transition-colors">
+            <div className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#E3383C]/60 hover:shadow-md transition-all group">
+              <div className="w-11 h-11 rounded-xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center shrink-0 group-hover:bg-[#0F2F75] group-hover:text-white transition-colors">
                 <FaMapMarkerAlt size={16} />
               </div>
               <div>
@@ -361,14 +361,14 @@ export default function Home() {
                 <p className="text-xs text-[#6B7280] leading-relaxed">
                   Boulevard Allal Ben Abdellah, Quartier Atlas & Terminal Saïss.
                 </p>
-                <Link to="/contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#C4A47C] hover:text-[#111827] transition-colors mt-2">
+                <Link to="/contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#E3383C] hover:text-[#111827] transition-colors mt-2">
                   Plan d'accès <FaArrowRight size={8} />
                 </Link>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/60 hover:shadow-md transition-all group">
-              <div className="w-11 h-11 rounded-xl bg-[#F8F5F0] text-[#C4A47C] border border-[#E8DDD0]/60 flex items-center justify-center shrink-0 group-hover:bg-[#111827] group-hover:text-white transition-colors">
+            <div className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#E3383C]/60 hover:shadow-md transition-all group">
+              <div className="w-11 h-11 rounded-xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center shrink-0 group-hover:bg-[#0F2F75] group-hover:text-white transition-colors">
                 <FaClock size={16} />
               </div>
               <div>
@@ -383,21 +383,21 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/60 hover:shadow-md transition-all group">
-              <div className="w-11 h-11 rounded-xl bg-[#F8F5F0] text-[#C4A47C] border border-[#E8DDD0]/60 flex items-center justify-center shrink-0 group-hover:bg-[#111827] group-hover:text-white transition-colors">
+            <div className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#E3383C]/60 hover:shadow-md transition-all group">
+              <div className="w-11 h-11 rounded-xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center shrink-0 group-hover:bg-[#0F2F75] group-hover:text-white transition-colors">
                 <FaPhoneAlt size={14} />
               </div>
               <div>
                 <h4 className="font-bold text-[#111827] text-sm mb-1">Contact & Réservations</h4>
                 <div className="flex flex-col gap-0.5">
-                  <a href="tel:+212535621020" className="text-xs text-[#111827] font-bold hover:text-[#C4A47C] transition-colors">
+                  <a href="tel:+212535621020" className="text-xs text-[#111827] font-bold hover:text-[#E3383C] transition-colors">
                     Tél : 05 35 62 10 20
                   </a>
                   <a href="https://wa.me/212668898245" target="_blank" rel="noopener noreferrer" className="text-xs text-emerald-700 font-bold hover:underline">
                     WhatsApp : +212 668 89 82 45
                   </a>
                 </div>
-                <Link to="/contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#C4A47C] hover:text-[#111827] transition-colors mt-2">
+                <Link to="/contact" className="inline-flex items-center gap-1 text-[11px] font-bold text-[#E3383C] hover:text-[#111827] transition-colors mt-2">
                   Écrire un message <FaArrowRight size={8} />
                 </Link>
               </div>
@@ -408,9 +408,9 @@ export default function Home() {
 
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="bg-[#151515] rounded-[32px] sm:rounded-[36px] px-8 py-14 sm:py-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
+          <div className="bg-[#0F2F75] rounded-[32px] sm:rounded-[36px] px-8 py-14 sm:py-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
             {/* Lueur subtile en arrière-plan */}
-            <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#C4A47C]/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#E3383C]/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-1/4 w-60 h-60 bg-white/5 rounded-full blur-[80px] pointer-events-none" />
 
             <motion.div
@@ -419,11 +419,11 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative z-10 max-w-2xl mx-auto"
             >
-              <span className="inline-block px-4 py-1.5 bg-[#242424] text-[#D4B88C] rounded-full font-bold text-[10px] uppercase tracking-[0.2em] mb-6 border border-white/10">
+              <span className="inline-block px-4 py-1.5 bg-[#1A48A8] text-[#F0585B] rounded-full font-bold text-[10px] uppercase tracking-[0.2em] mb-6 border border-white/10">
                 Prêt pour l'aventure ?
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight leading-tight">
-                Votre voyage <span className="text-[#C4A47C]">Premium</span> <br /> commence ici.
+                Votre voyage <span className="text-[#E3383C]">Premium</span> <br /> commence ici.
               </h2>
               <p className="text-gray-400 text-sm sm:text-base font-normal mb-10 max-w-xl mx-auto leading-relaxed">
                 Rejoignez le cercle des clients privilégiés de LocaFès et profitez d'une expérience de conduite sans compromis.
@@ -432,7 +432,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 justify-center items-center">
                 <Link
                   to="/cars"
-                  className="px-8 py-3.5 bg-[#C4A47C] text-[#111827] rounded-xl font-bold text-sm hover:bg-[#D4B88C] transition-all shadow-md active:scale-95 flex items-center gap-2"
+                  className="px-8 py-3.5 bg-[#E3383C] text-white rounded-xl font-bold text-sm hover:bg-[#F0585B] transition-all shadow-md active:scale-95 flex items-center gap-2"
                 >
                   <FaCar size={14} />
                   Réserver Immédiatement
@@ -440,7 +440,7 @@ export default function Home() {
                 {currentUser ? (
                   <Link
                     to={isAdmin ? "/dashboard" : "/profile"}
-                    className="px-8 py-3.5 bg-[#242424] hover:bg-[#2e2e2e] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
+                    className="px-8 py-3.5 bg-[#1A48A8] hover:bg-[#2358BD] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
                   >
                     {isAdmin ? "Tableau de bord" : "Mon profil"}
                     <FaArrowRight size={11} className="text-gray-400" />
@@ -448,7 +448,7 @@ export default function Home() {
                 ) : (
                   <Link
                     to="/login"
-                    className="px-8 py-3.5 bg-[#242424] hover:bg-[#2e2e2e] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
+                    className="px-8 py-3.5 bg-[#1A48A8] hover:bg-[#2358BD] text-white border border-white/10 rounded-xl font-bold text-sm transition-all active:scale-95 flex items-center gap-2"
                   >
                     Créer un compte
                     <FaArrowRight size={11} className="text-gray-400" />
@@ -540,10 +540,10 @@ function HeroCarousel() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 6, scale: 0.95 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="bg-[#111827]/85 backdrop-blur-xl px-4 py-2.5 rounded-2xl border border-white/15 shadow-2xl flex flex-col items-end"
+            className="bg-[#0F2F75]/85 backdrop-blur-xl px-4 py-2.5 rounded-2xl border border-white/15 shadow-2xl flex flex-col items-end"
           >
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[9px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#C4A47C]/20 text-[#D4B88C] border border-[#C4A47C]/30">
+              <span className="text-[9px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#E3383C]/20 text-[#F0585B] border border-[#E3383C]/30">
                 {car.tag}
               </span>
               <span className="text-[10px] text-gray-400 font-semibold">{car.year}</span>
@@ -551,7 +551,7 @@ function HeroCarousel() {
             <p className="text-white font-black text-sm sm:text-base leading-tight tracking-tight">
               {car.name}
             </p>
-            <p className="text-[#C4A47C] text-xs sm:text-sm font-extrabold mt-0.5">
+            <p className="text-[#E3383C] text-xs sm:text-sm font-extrabold mt-0.5">
               {car.price} DH <span className="text-[10px] text-gray-400 font-normal">/ jour</span>
             </p>
           </motion.div>
@@ -566,7 +566,7 @@ function HeroCarousel() {
           type="button"
           onClick={prev}
           aria-label="Véhicule précédent"
-          className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-[#C4A47C] text-white hover:text-[#111827] border border-white/15 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-70 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl cursor-pointer"
+          className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-[#E3383C] text-white hover:text-white border border-white/15 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-70 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl cursor-pointer"
         >
           <FaChevronLeft size={12} />
         </button>
@@ -576,7 +576,7 @@ function HeroCarousel() {
           type="button"
           onClick={next}
           aria-label="Véhicule suivant"
-          className="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-[#C4A47C] text-white hover:text-[#111827] border border-white/15 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-70 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl cursor-pointer"
+          className="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-[#E3383C] text-white hover:text-white border border-white/15 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-70 hover:opacity-100 hover:scale-110 active:scale-95 shadow-xl cursor-pointer"
         >
           <FaChevronRight size={12} />
         </button>
@@ -604,7 +604,7 @@ function HeroCarousel() {
 
         {/* Realistic ground shadow with soft glow */}
         <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 w-[72%] h-8 bg-black/50 blur-[28px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-[4%] left-1/2 -translate-x-1/2 w-[45%] h-6 bg-[#C4A47C]/15 blur-[35px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[4%] left-1/2 -translate-x-1/2 w-[45%] h-6 bg-[#E3383C]/15 blur-[35px] rounded-full pointer-events-none" />
       </div>
 
       {/* Progress line + Dots */}
@@ -619,7 +619,7 @@ function HeroCarousel() {
               duration: isPaused ? 0 : CAROUSEL_INTERVAL / 1000,
               ease: "linear",
             }}
-            className="h-full bg-gradient-to-r from-[#C4A47C]/70 via-[#C4A47C] to-[#E5C9A2] rounded-full shadow-[0_0_8px_rgba(196,164,124,0.6)]"
+            className="h-full bg-gradient-to-r from-[#E3383C]/70 via-[#E3383C] to-[#F58A8C] rounded-full shadow-[0_0_8px_rgba(227, 56, 60,0.6)]"
           />
         </div>
 
@@ -636,7 +636,7 @@ function HeroCarousel() {
               <span
                 className={`block rounded-full transition-all duration-300 ${
                   i === current
-                    ? "w-7 h-1.5 bg-[#C4A47C] shadow-[0_0_10px_rgba(196,164,124,0.8)]"
+                    ? "w-7 h-1.5 bg-[#E3383C] shadow-[0_0_10px_rgba(227, 56, 60,0.8)]"
                     : "w-2 h-1.5 bg-white/20 group-hover:bg-white/50"
                 }`}
               />

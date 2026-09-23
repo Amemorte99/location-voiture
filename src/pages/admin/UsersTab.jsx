@@ -49,7 +49,7 @@ export default function UsersTab({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h2 className="text-2xl font-bold text-[#111827]">
-            Gestion <span className="text-[#C4A47C]">Clients</span>
+            Gestion <span className="text-[#E3383C]">Clients</span>
           </h2>
           <p className="text-[#6B7280] text-xs font-medium mt-0.5">
             Comptes utilisateurs et droits d'accès
@@ -72,7 +72,7 @@ export default function UsersTab({
               placeholder="Rechercher nom ou email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:border-[#C4A47C] transition-all outline-none font-medium shadow-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:border-[#E3383C] transition-all outline-none font-medium shadow-sm"
             />
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function UsersTab({
             onClick={() => setFilterRole(tab.key)}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterRole === tab.key
-                ? 'bg-[#111827] text-white shadow-sm'
+                ? 'bg-[#0F2F75] text-white shadow-sm'
                 : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
@@ -124,7 +124,7 @@ export default function UsersTab({
                   <tr key={user._id} className="hover:bg-[#F9FAFB] transition-colors group">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 shrink-0 rounded-xl bg-[#111827] text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                        <div className="w-10 h-10 shrink-0 rounded-xl bg-[#0F2F75] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                           {(user.name?.charAt(0) || user.email?.charAt(0) || '?').toUpperCase()}
                         </div>
                         <span className="font-bold text-sm text-[#111827] whitespace-nowrap">{user.name}</span>
@@ -137,7 +137,7 @@ export default function UsersTab({
                         onClick={() => handleToggleRole(user)}
                         className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all ${
                           user.role === 'admin'
-                            ? 'bg-[#111827] text-white shadow-sm'
+                            ? 'bg-[#0F2F75] text-white shadow-sm'
                             : 'bg-gray-100 text-[#6B7280] hover:bg-gray-200'
                         }`}
                       >
@@ -151,7 +151,7 @@ export default function UsersTab({
                       <div className="flex items-center justify-center gap-1.5">
                         <button
                           onClick={() => { setEditingUser(user); setShowUserEditModal(true); }}
-                          className="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-[#111827] hover:text-white transition-all border border-gray-100"
+                          className="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-[#0F2F75] hover:text-white transition-all border border-gray-100"
                           title="Modifier"
                         >
                           <FaEdit size={12} />
@@ -180,10 +180,10 @@ export default function UsersTab({
               Page <span className="font-bold text-[#111827]">{page}</span> sur <span className="font-bold text-[#111827]">{totalPages}</span>
             </p>
             <div className="flex items-center gap-2">
-              <button onClick={() => handlePageChange(page - 1)} disabled={page === 1} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-bold hover:border-[#C4A47C] hover:text-[#C4A47C] disabled:opacity-50 transition-all">
+              <button onClick={() => handlePageChange(page - 1)} disabled={page === 1} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-bold hover:border-[#E3383C] hover:text-[#E3383C] disabled:opacity-50 transition-all">
                 Précédent
               </button>
-              <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages} className="px-3 py-1.5 bg-[#111827] text-white rounded-lg text-xs font-bold hover:bg-black disabled:opacity-50 transition-all">
+              <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages} className="px-3 py-1.5 bg-[#0F2F75] text-white rounded-lg text-xs font-bold hover:bg-[#0A2463] disabled:opacity-50 transition-all">
                 Suivant
               </button>
             </div>

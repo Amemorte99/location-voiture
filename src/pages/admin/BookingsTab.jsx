@@ -75,7 +75,7 @@ export default function BookingsTab({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h2 className="text-2xl font-bold text-[#111827]">
-            Gestion <span className="text-[#C4A47C]">Réservations</span>
+            Gestion <span className="text-[#E3383C]">Réservations</span>
           </h2>
           <p className="text-[#6B7280] text-xs font-medium mt-0.5">
             Suivi des contrats et demandes de location
@@ -99,7 +99,7 @@ export default function BookingsTab({
               placeholder="Rechercher client ou voiture..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:border-[#C4A47C] transition-all outline-none font-medium shadow-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:border-[#E3383C] transition-all outline-none font-medium shadow-sm"
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function BookingsTab({
             onClick={() => setFilterStatus(tab.key)}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterStatus === tab.key
-                ? 'bg-[#111827] text-white shadow-sm'
+                ? 'bg-[#0F2F75] text-white shadow-sm'
                 : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
@@ -173,7 +173,7 @@ export default function BookingsTab({
                             <FaPlane size={9} /> Aéroport Fès
                           </span>
                           {booking.flightNumber && (
-                            <p className="text-xs font-bold text-gray-800">Vol : <span className="text-[#C4A47C]">{booking.flightNumber}</span></p>
+                            <p className="text-xs font-bold text-gray-800">Vol : <span className="text-[#E3383C]">{booking.flightNumber}</span></p>
                           )}
                           {booking.pickupTime && (
                             <p className="text-[10px] text-gray-500 font-medium flex items-center gap-1">
@@ -219,7 +219,7 @@ export default function BookingsTab({
                             className={`w-full text-[11px] py-1.5 pl-6 pr-6 rounded-lg font-bold border transition-all cursor-pointer truncate appearance-none outline-none ${
                               booking.assignedDriver
                                 ? 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100/70 focus:border-emerald-400'
-                                : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100 hover:text-slate-800 focus:border-[#C4A47C]'
+                                : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100 hover:text-slate-800 focus:border-[#E3383C]'
                             }`}
                             title={booking.assignedDriver ? `Chauffeur assigné : ${booking.assignedDriver.name}` : "Assigner un chauffeur"}
                           >
@@ -254,7 +254,7 @@ export default function BookingsTab({
                       <p className="text-xs font-medium text-gray-600 mb-0.5">
                         {new Date(booking.startDate).toLocaleDateString('fr-FR')} — {new Date(booking.endDate).toLocaleDateString('fr-FR')}
                       </p>
-                      <p className="text-sm font-bold text-[#C4A47C]">
+                      <p className="text-sm font-bold text-[#E3383C]">
                         {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} DH
                       </p>
                     </td>
@@ -266,7 +266,7 @@ export default function BookingsTab({
                         {booking.status !== 'cancelled' && (
                           <button
                             onClick={(e) => { e.stopPropagation(); handleOpenInvoice(booking); }}
-                            className="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-[#111827] hover:text-white transition-all border border-gray-100 cursor-pointer"
+                            className="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-[#0F2F75] hover:text-white transition-all border border-gray-100 cursor-pointer"
                             title="Ouvrir la Facture & Contrat PDF"
                           >
                             <FaFilePdf size={13} />
@@ -323,7 +323,7 @@ export default function BookingsTab({
                               setSelectedBooking(booking);
                               setShowDetailModal(true);
                             }}
-                            className="p-2 bg-gray-50 text-gray-400 hover:text-[#C4A47C] hover:bg-amber-50 rounded-lg transition-all border border-gray-100"
+                            className="p-2 bg-gray-50 text-gray-400 hover:text-[#E3383C] hover:bg-amber-50 rounded-lg transition-all border border-gray-100"
                             title="Assigner un chauffeur pour cette livraison"
                           >
                             <FaUserTie size={12} />
@@ -361,20 +361,20 @@ export default function BookingsTab({
         {totalPages > 1 && (
           <div className="px-6 py-4 bg-gray-50/50 border-t border-gray-100 flex items-center justify-between">
             <p className="text-[10px] font-black uppercase tracking-widest text-[#6B7280]">
-              Page <span className="text-[#C4A47C]">{page}</span> sur <span className="text-[#111827]">{totalPages}</span>
+              Page <span className="text-[#E3383C]">{page}</span> sur <span className="text-[#111827]">{totalPages}</span>
             </p>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => handlePageChange(page - 1)}
                 disabled={page === 1}
-                className="px-4 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-[#C4A47C] hover:text-[#C4A47C] disabled:opacity-50 disabled:hover:border-gray-100 disabled:hover:text-[#6B7280] transition-all"
+                className="px-4 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-[#E3383C] hover:text-[#E3383C] disabled:opacity-50 disabled:hover:border-gray-100 disabled:hover:text-[#6B7280] transition-all"
               >
                 Précédent
               </button>
               <button
                 onClick={() => handlePageChange(page + 1)}
                 disabled={page === totalPages}
-                className="px-4 py-2 bg-[#111827] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-black/10 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all"
+                className="px-4 py-2 bg-[#0F2F75] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-black/10 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all"
               >
                 Suivant
               </button>

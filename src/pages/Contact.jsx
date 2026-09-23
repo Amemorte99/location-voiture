@@ -66,7 +66,7 @@ export default function Contact() {
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-[10px] uppercase tracking-[0.25em] mb-4 border border-[#E8DDD0]">
+          <span className="inline-block px-4 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full font-bold text-[10px] uppercase tracking-[0.25em] mb-4 border border-[#D3E0F4]">
             Service Client & Agence • Fès, Maroc
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-4">
@@ -80,9 +80,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
           {/* 1. Téléphone Agence */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/60 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#E3383C]/60 hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
-              <div className="w-11 h-11 rounded-xl bg-[#F8F5F0] text-[#C4A47C] border border-[#E8DDD0]/60 flex items-center justify-center text-base mb-4 group-hover:bg-[#111827] group-hover:text-white transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center text-base mb-4 group-hover:bg-[#0F2F75] group-hover:text-white transition-colors">
                 <FaPhoneAlt />
               </div>
               <p className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">Téléphone Agence</p>
@@ -93,7 +93,7 @@ export default function Contact() {
             </div>
             <a
               href="tel:+212535621020"
-              className="mt-5 w-full py-2.5 px-4 rounded-xl bg-gray-50 hover:bg-[#111827] hover:text-white text-[#111827] text-xs font-bold text-center transition-colors border border-gray-100"
+              className="mt-5 w-full py-2.5 px-4 rounded-xl bg-gray-50 hover:bg-[#0F2F75] hover:text-white text-[#111827] text-xs font-bold text-center transition-colors border border-gray-100"
             >
               Appeler maintenant
             </a>
@@ -128,9 +128,9 @@ export default function Contact() {
           </div>
 
           {/* 3. Aéroport Fès-Saïss & Agence */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/60 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-[#E3383C]/60 hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
-              <div className="w-11 h-11 rounded-xl bg-[#F8F5F0] text-[#C4A47C] border border-[#E8DDD0]/60 flex items-center justify-center text-base mb-4 group-hover:bg-[#111827] group-hover:text-white transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-[#EEF3FB] text-[#E3383C] border border-[#D3E0F4]/60 flex items-center justify-center text-base mb-4 group-hover:bg-[#0F2F75] group-hover:text-white transition-colors">
                 <FaPlane />
               </div>
               <p className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">Permanence Aéroport</p>
@@ -141,7 +141,7 @@ export default function Contact() {
             </div>
             <a
               href="mailto:contact@locafes.ma"
-              className="mt-5 w-full py-2.5 px-4 rounded-xl bg-gray-50 hover:bg-[#111827] hover:text-white text-[#111827] text-xs font-bold text-center transition-colors border border-gray-100 truncate"
+              className="mt-5 w-full py-2.5 px-4 rounded-xl bg-gray-50 hover:bg-[#0F2F75] hover:text-white text-[#111827] text-xs font-bold text-center transition-colors border border-gray-100 truncate"
             >
               contact@locafes.ma
             </a>
@@ -191,7 +191,7 @@ export default function Contact() {
                       placeholder="Ex: Mohammed Alami"
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none text-sm font-medium text-[#111827] transition-colors"
+                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-sm font-medium text-[#111827] transition-colors"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -202,7 +202,7 @@ export default function Contact() {
                       placeholder="06 XX XX XX XX"
                       value={formData.phone}
                       onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none text-sm font-medium text-[#111827] transition-colors"
+                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-sm font-medium text-[#111827] transition-colors"
                     />
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export default function Contact() {
                       placeholder="nom@exemple.com"
                       value={formData.email}
                       onChange={e => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none text-sm font-medium text-[#111827] transition-colors"
+                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-sm font-medium text-[#111827] transition-colors"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -223,7 +223,7 @@ export default function Contact() {
                     <select
                       value={formData.subject}
                       onChange={e => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none text-xs font-bold text-[#111827] transition-colors"
+                      className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-xs font-bold text-[#111827] transition-colors"
                     >
                       <option value="Demande d'information">Renseignement général</option>
                       <option value="Disponibilité d'un véhicule">Disponibilité d'un véhicule précis</option>
@@ -241,7 +241,7 @@ export default function Contact() {
                     placeholder="Indiquez vos dates de séjour, le type de véhicule souhaité ou vos préférences..."
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full p-4 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none text-sm font-medium text-[#111827] resize-none transition-colors"
+                    className="w-full p-4 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none text-sm font-medium text-[#111827] resize-none transition-colors"
                   ></textarea>
                 </div>
 
@@ -249,7 +249,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="flex-1 py-3.5 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-black transition-colors shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="flex-1 py-3.5 bg-[#0F2F75] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-[#0A2463] transition-colors shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {sending ? 'Envoi en cours...' : <><FaPaperPlane size={11} /> Envoyer le formulaire</>}
                   </button>
@@ -273,7 +273,7 @@ export default function Contact() {
 
               <div className="space-y-3 text-xs">
                 <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100 flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#F8F5F0] text-[#C4A47C] flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#EEF3FB] text-[#E3383C] flex items-center justify-center shrink-0 mt-0.5">
                     <FaPlane size={13} />
                   </div>
                   <div>
@@ -285,7 +285,7 @@ export default function Contact() {
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100 flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#F8F5F0] text-[#C4A47C] flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#EEF3FB] text-[#E3383C] flex items-center justify-center shrink-0 mt-0.5">
                     <FaMapMarkerAlt size={13} />
                   </div>
                   <div>
@@ -297,7 +297,7 @@ export default function Contact() {
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100 flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#F8F5F0] text-[#C4A47C] flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#EEF3FB] text-[#E3383C] flex items-center justify-center shrink-0 mt-0.5">
                     <FaCar size={13} />
                   </div>
                   <div>

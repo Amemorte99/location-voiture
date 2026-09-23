@@ -67,21 +67,21 @@ export default function BookingSuccess() {
           </p>
 
           {/* Récapitulatif Prise en charge */}
-          <div className="bg-[#F8F5F0] rounded-2xl p-5 border border-[#E8DDD0] text-left mb-8 space-y-2">
+          <div className="bg-[#EEF3FB] rounded-2xl p-5 border border-[#D3E0F4] text-left mb-8 space-y-2">
             <div className="flex items-center justify-between text-xs font-bold text-[#111827]">
               <span className="flex items-center gap-2">
-                <FaCar className="text-[#C4A47C]" />
+                <FaCar className="text-[#E3383C]" />
                 {car?.name || 'Véhicule sélectionné'}
               </span>
-              <span className="text-sm font-black text-[#C4A47C]">{Number(totalPrice || 0).toLocaleString('fr-FR')} DH</span>
+              <span className="text-sm font-black text-[#E3383C]">{Number(totalPrice || 0).toLocaleString('fr-FR')} DH</span>
             </div>
             <div className="flex items-center gap-2 text-xs font-medium text-[#6B7280] pt-1">
-              <FaMapMarkerAlt className="text-[#C4A47C] shrink-0" size={13} />
+              <FaMapMarkerAlt className="text-[#E3383C] shrink-0" size={13} />
               <span>{pickupLocation}</span>
             </div>
             {startDate && endDate && (
               <div className="flex items-center gap-2 text-xs font-medium text-[#6B7280]">
-                <FaCalendarAlt className="text-[#C4A47C] shrink-0" size={12} />
+                <FaCalendarAlt className="text-[#E3383C] shrink-0" size={12} />
                 <span>Du {startDate} au {endDate}</span>
               </div>
             )}
@@ -94,19 +94,19 @@ export default function BookingSuccess() {
             </h4>
             <div className="grid sm:grid-cols-2 gap-3 text-xs font-semibold text-[#4B5563]">
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaIdCard className="text-[#C4A47C]" size={14} />
+                <FaIdCard className="text-[#E3383C]" size={14} />
                 <span>Permis de conduire valide (2 ans min.)</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaIdCard className="text-[#C4A47C]" size={14} />
+                <FaIdCard className="text-[#E3383C]" size={14} />
                 <span>Pièce d'identité ou passeport</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaMapMarkerAlt className="text-[#C4A47C]" size={14} />
+                <FaMapMarkerAlt className="text-[#E3383C]" size={14} />
                 <span>Remise sur le lieu convenu</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaClock className="text-[#C4A47C]" size={14} />
+                <FaClock className="text-[#E3383C]" size={14} />
                 <span>Assistance technique 7j/7</span>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function BookingSuccess() {
             <div className="grid sm:grid-cols-2 gap-3">
               <button 
                 onClick={handleDownload}
-                className="px-6 py-3.5 bg-[#111827] text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#C4A47C] transition-all"
+                className="px-6 py-3.5 bg-[#0F2F75] text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#E3383C] transition-all"
               >
                 <FaDownload size={13} /> Facture PDF
               </button>

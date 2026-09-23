@@ -86,7 +86,7 @@ export default function CarDetails() {
         <div className="text-center">
           <FaCar className="text-red-400 mx-auto text-5xl mb-6" />
           <h2 className="text-3xl font-extrabold mb-4 text-[#111827]">Véhicule non trouvé</h2>
-          <Link to="/cars" className="text-[#C4A47C] font-bold">Retour aux voitures</Link>
+          <Link to="/cars" className="text-[#E3383C] font-bold">Retour aux voitures</Link>
         </div>
       </div>
     );
@@ -129,20 +129,20 @@ export default function CarDetails() {
         <div 
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative w-full h-[50vh] sm:h-[55vh] lg:h-[65vh] rounded-3xl overflow-hidden flex items-center justify-center border border-slate-800 shadow-[0_25px_60px_rgba(0,0,0,0.25)] bg-gradient-to-b from-[#070B14] via-[#0E1726] to-[#151F32] group select-none"
+          className="relative w-full h-[50vh] sm:h-[55vh] lg:h-[65vh] rounded-3xl overflow-hidden flex items-center justify-center border border-slate-800 shadow-[0_25px_60px_rgba(0,0,0,0.25)] bg-gradient-to-b from-[#0A2463] via-[#0E1726] to-[#151F32] group select-none"
           style={{ perspective: '1200px' }}
         >
           {/* Éclairage Studio & Effet Projecteur */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {/* Lumière zénithale douce */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-gradient-to-b from-white/15 via-[#C4A47C]/10 to-transparent blur-3xl rounded-full" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-gradient-to-b from-white/15 via-[#E3383C]/10 to-transparent blur-3xl rounded-full" />
             {/* Halo central ambré & cobalt */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] h-[65%] bg-gradient-to-r from-blue-500/5 via-[#C4A47C]/15 to-blue-500/5 blur-3xl rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] h-[65%] bg-gradient-to-r from-blue-500/5 via-[#E3383C]/15 to-blue-500/5 blur-3xl rounded-full" />
             {/* Ombre portée réaliste au sol sous le châssis */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[75%] h-14 bg-black/70 blur-2xl rounded-[100%]" />
             <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[55%] h-8 bg-black/90 blur-lg rounded-[100%]" />
             {/* Grille studio micro-texture */}
-            <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#C4A47C_1px,transparent_1px)] [background-size:28px_28px]" />
+            <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#E3383C_1px,transparent_1px)] [background-size:28px_28px]" />
           </div>
 
           {/* Barre Supérieure dans le Showcase */}
@@ -217,7 +217,7 @@ export default function CarDetails() {
           {/* Barre Inférieure dans le Showcase */}
           <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center justify-between pointer-events-auto">
             <div className="hidden sm:flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 text-white/85 text-[11px] font-semibold shadow-lg">
-              <FaShieldAlt className="text-[#C4A47C]" size={13} />
+              <FaShieldAlt className="text-[#E3383C]" size={13} />
               <span>Garantie & Clés en main • Fès</span>
             </div>
 
@@ -263,7 +263,7 @@ export default function CarDetails() {
             />
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/90 text-xs font-semibold bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 shadow-xl">
-              <span className="text-[#C4A47C] font-bold">{displayName}</span> • Cliquez n'importe où pour fermer
+              <span className="text-[#E3383C] font-bold">{displayName}</span> • Cliquez n'importe où pour fermer
             </div>
           </motion.div>
         )}
@@ -327,7 +327,7 @@ export default function CarDetails() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {["Assurance tous risques", "Assistance routière 24/7", "Kilométrage illimité", "Véhicule désinfecté"].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-4 bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                    <div className="w-8 h-8 rounded-full bg-[#F0EBE3] text-[#C4A47C] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#E3EBF8] text-[#E3383C] flex items-center justify-center shrink-0">
                       <FaCheckCircle size={14} />
                     </div>
                     <span className="font-bold text-[#4B5563] text-sm">{item}</span>
@@ -396,7 +396,7 @@ export default function CarDetails() {
                                   onMouseLeave={() => setHoverRating(0)}
                                   className={`p-3 rounded-2xl border transition-all duration-300 transform ${
                                     active 
-                                      ? 'bg-white border-[#C4A47C] text-amber-400 scale-105 shadow-sm shadow-black/8' 
+                                      ? 'bg-white border-[#E3383C] text-amber-400 scale-105 shadow-sm shadow-black/8' 
                                       : 'bg-white border-gray-200 text-gray-200 hover:border-gray-300'
                                   }`}
                                 >
@@ -413,11 +413,11 @@ export default function CarDetails() {
                             rows="4" 
                             value={comment} 
                             onChange={e => setComment(e.target.value)} 
-                            className="w-full p-4 rounded-2xl border border-gray-200 outline-none text-[#111827] resize-none focus:border-[#C4A47C] focus:ring-4 focus:ring-[#F8F5F0] transition-all font-medium text-sm" 
+                            className="w-full p-4 rounded-2xl border border-gray-200 outline-none text-[#111827] resize-none focus:border-[#E3383C] focus:ring-4 focus:ring-[#EEF3FB] transition-all font-medium text-sm" 
                             placeholder="Racontez-nous votre expérience..."
                           ></textarea>
                         </div>
-                        <button type="submit" className="w-full py-4 bg-[#111827] text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-black transition-all shadow-lg shadow-gray-200">
+                        <button type="submit" className="w-full py-4 bg-[#0F2F75] text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-[#0A2463] transition-all shadow-lg shadow-gray-200">
                           Publier l'avis
                         </button>
                       </form>
@@ -425,7 +425,7 @@ export default function CarDetails() {
                   ) : (
                     <div className="bg-gray-50 p-8 rounded-[24px] text-center border border-gray-100 flex flex-col justify-center h-full min-h-[200px]">
                       <p className="text-[#4B5563] font-bold mb-6">Connectez-vous pour partager votre expérience avec la communauté.</p>
-                      <Link to="/login" className="inline-block px-8 py-3.5 bg-white border border-gray-200 hover:border-[#C4A47C] hover:text-[#C4A47C] text-[#111827] rounded-xl font-black text-xs uppercase tracking-widest transition-all">
+                      <Link to="/login" className="inline-block px-8 py-3.5 bg-white border border-gray-200 hover:border-[#E3383C] hover:text-[#E3383C] text-[#111827] rounded-xl font-black text-xs uppercase tracking-widest transition-all">
                         Se connecter
                       </Link>
                     </div>
@@ -451,7 +451,7 @@ export default function CarDetails() {
               {/* Calculateur de Prix Dynamique Épuré */}
               <div className="mb-8 space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-2xl border border-gray-200 p-3.5 focus-within:border-[#C4A47C] focus-within:ring-4 focus-within:ring-[#F8F5F0] transition-all">
+                  <div className="bg-gray-50 rounded-2xl border border-gray-200 p-3.5 focus-within:border-[#E3383C] focus-within:ring-4 focus-within:ring-[#EEF3FB] transition-all">
                     <label className="block text-[9px] text-[#9CA3AF] font-black uppercase tracking-widest mb-1">Date de Départ</label>
                     <input 
                       id="startDateInput"
@@ -462,7 +462,7 @@ export default function CarDetails() {
                       className="w-full bg-transparent text-[#111827] font-bold outline-none text-sm cursor-pointer"
                     />
                   </div>
-                  <div className="bg-gray-50 rounded-2xl border border-gray-200 p-3.5 focus-within:border-[#C4A47C] focus-within:ring-4 focus-within:ring-[#F8F5F0] transition-all">
+                  <div className="bg-gray-50 rounded-2xl border border-gray-200 p-3.5 focus-within:border-[#E3383C] focus-within:ring-4 focus-within:ring-[#EEF3FB] transition-all">
                     <label className="block text-[9px] text-[#9CA3AF] font-black uppercase tracking-widest mb-1">Date de Retour</label>
                     <input 
                       type="date" 
@@ -510,7 +510,7 @@ export default function CarDetails() {
                 } 
                 className={`flex items-center justify-center w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all ${
                   car.isAvailableNow !== false 
-                    ? 'bg-[#111827] text-white hover:bg-black hover:-translate-y-0.5 shadow-lg shadow-gray-200/50'
+                    ? 'bg-[#0F2F75] text-white hover:bg-[#0A2463] hover:-translate-y-0.5 shadow-lg shadow-gray-200/50'
                     : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                 }`}
               >
@@ -543,7 +543,7 @@ export default function CarDetails() {
         <div>
           <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider line-clamp-1">{displayName}</p>
           <p className="text-lg font-black text-[#111827]">
-            {car.price} <span className="text-xs font-bold text-[#C4A47C]">DH/j</span>
+            {car.price} <span className="text-xs font-bold text-[#E3383C]">DH/j</span>
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -563,7 +563,7 @@ export default function CarDetails() {
               ? `/booking/${car._id || car.id}?startDate=${startDate}&endDate=${endDate}`
               : `/booking/${car._id || car.id}`
             }
-            className="px-5 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md shadow-black/10 hover:bg-[#C4A47C] transition-all"
+            className="px-5 py-3 bg-[#0F2F75] text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md shadow-black/10 hover:bg-[#E3383C] transition-all"
           >
             Réserver
           </Link>
@@ -578,7 +578,7 @@ export default function CarDetails() {
 function BentoCard({ icon, label, value }) {
   return (
     <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between group hover:bg-white hover:shadow-lg shadow-gray-100 transition-all cursor-default h-full min-h-[120px]">
-      <div className="text-[#C4A47C] bg-[#F8F5F0] w-10 h-10 flex items-center justify-center rounded-xl mb-auto group-hover:scale-110 transition-transform">
+      <div className="text-[#E3383C] bg-[#EEF3FB] w-10 h-10 flex items-center justify-center rounded-xl mb-auto group-hover:scale-110 transition-transform">
         {icon}
       </div>
       <div className="mt-4">

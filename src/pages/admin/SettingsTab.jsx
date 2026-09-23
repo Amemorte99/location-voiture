@@ -106,7 +106,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
     <div className="space-y-6 text-left">
       <div>
         <h2 className="text-2xl font-bold text-[#111827]">
-          Paramètres <span className="text-[#C4A47C]">Agence</span>
+          Paramètres <span className="text-[#E3383C]">Agence</span>
         </h2>
         <p className="text-[#6B7280] text-xs font-medium mt-1">
           Coordonnées figurant sur les reçus PDF et exportations
@@ -117,7 +117,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
         {/* Formulaire coordonnées de l'agence */}
         <form onSubmit={handleSave} className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200/80 space-y-5">
           <div className="flex items-center gap-3 pb-2 border-b border-gray-100">
-            <div className="w-9 h-9 rounded-xl bg-[#F8F5F0] text-[#C4A47C] flex items-center justify-center text-sm">
+            <div className="w-9 h-9 rounded-xl bg-[#EEF3FB] text-[#E3383C] flex items-center justify-center text-sm">
               <FaBuilding />
             </div>
             <div>
@@ -136,12 +136,12 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
             <div key={key} className="space-y-1.5">
               <label className="text-xs font-bold text-[#6B7280]">{label}</label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#C4A47C] text-sm">{icon}</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#E3383C] text-sm">{icon}</span>
                 <input
                   type={type}
                   value={agency[key] || ''}
                   onChange={e => setAgency({ ...agency, [key]: e.target.value })}
-                  className="w-full pl-11 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]"
+                  className="w-full pl-11 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none transition-colors font-medium text-sm text-[#111827]"
                 />
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
               <select
                 value={agency.currency || 'DH'}
                 onChange={e => setAgency({ ...agency, currency: e.target.value })}
-                className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none font-medium text-xs text-[#111827]"
+                className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none font-medium text-xs text-[#111827]"
               >
                 <option value="DH">DH — Dirham Marocain</option>
                 <option value="EUR">EUR — Euro</option>
@@ -167,14 +167,14 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
                 value={agency.hours || ''}
                 onChange={e => setAgency({ ...agency, hours: e.target.value })}
                 placeholder="08:00 - 21:00 (7j/7)"
-                className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none font-medium text-xs text-[#111827]"
+                className="w-full px-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none font-medium text-xs text-[#111827]"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-black transition-colors shadow-sm flex items-center justify-center gap-2 mt-2"
+            className="w-full py-3.5 bg-[#0F2F75] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-[#0A2463] transition-colors shadow-sm flex items-center justify-center gap-2 mt-2"
           >
             <FaSave /> Enregistrer les paramètres
           </button>
@@ -204,13 +204,13 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
                   key={key}
                   type="button"
                   onClick={() => handleExport(key)}
-                  className="w-full p-4 rounded-xl border border-gray-200 hover:border-[#C4A47C] bg-[#F9FAFB] hover:bg-white transition-all flex items-center justify-between text-left group"
+                  className="w-full p-4 rounded-xl border border-gray-200 hover:border-[#E3383C] bg-[#F9FAFB] hover:bg-white transition-all flex items-center justify-between text-left group"
                 >
                   <div>
-                    <p className="text-xs font-bold text-[#111827] group-hover:text-[#C4A47C] transition-colors">{label}</p>
+                    <p className="text-xs font-bold text-[#111827] group-hover:text-[#E3383C] transition-colors">{label}</p>
                     <p className="text-[11px] text-[#6B7280]">{desc}</p>
                   </div>
-                  <div className="w-8 h-8 rounded-lg bg-white group-hover:bg-[#F8F5F0] flex items-center justify-center text-gray-400 group-hover:text-[#C4A47C] border border-gray-200 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-white group-hover:bg-[#EEF3FB] flex items-center justify-center text-gray-400 group-hover:text-[#E3383C] border border-gray-200 transition-colors">
                     <FaDownload size={12} />
                   </div>
                 </button>
@@ -232,7 +232,7 @@ export default function SettingsTab({ bookings = [], users = [], cars = [] }) {
 
             <div className="space-y-3 text-xs text-[#4B5563]">
               <div className="flex items-start gap-2.5 p-3 bg-gray-50 rounded-xl">
-                <FaClock className="text-[#C4A47C] mt-0.5 shrink-0" />
+                <FaClock className="text-[#E3383C] mt-0.5 shrink-0" />
                 <div>
                   <p className="font-bold text-[#111827]">Prise en charge flexible</p>
                   <p className="text-[#6B7280]">Aéroport Fès-Saïss, Agence Centre-Ville ou livraison directe à l'hôtel / riad.</p>

@@ -40,7 +40,7 @@ function ConfirmModal({ message, onConfirm, onCancel }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onCancel}
-        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -498,7 +498,7 @@ export default function Dashboard() {
     if (activeTab === 'cars') return <SkeletonTable cols={5} />;
     if (activeTab === 'users') return <SkeletonTable cols={6} />;
     if (activeTab === 'messages') return <SkeletonTable cols={5} />;
-    return <div className="flex justify-center py-32"><div className="w-16 h-16 border-4 border-[#C4A47C] border-t-transparent rounded-full animate-spin" /></div>;
+    return <div className="flex justify-center py-32"><div className="w-16 h-16 border-4 border-[#E3383C] border-t-transparent rounded-full animate-spin" /></div>;
   };
 
   return (
@@ -635,7 +635,7 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowAddModal(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -648,7 +648,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-slate-100 bg-white shrink-0">
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 tracking-tight">
-                    Nouveau <span className="text-[#C4A47C]">Véhicule</span>
+                    Nouveau <span className="text-[#E3383C]">Véhicule</span>
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">Ajouter une nouvelle automobile à la flotte LocaFès</p>
                 </div>
@@ -671,7 +671,7 @@ export default function Dashboard() {
                       required
                       value={newCar.name}
                       onChange={e => setNewCar({ ...newCar, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                       placeholder="ex: Range Rover Sport"
                     />
                   </div>
@@ -681,7 +681,7 @@ export default function Dashboard() {
                       required
                       value={newCar.brand}
                       onChange={e => setNewCar({ ...newCar, brand: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                       placeholder="ex: Land Rover"
                     />
                   </div>
@@ -692,7 +692,7 @@ export default function Dashboard() {
                       type="number"
                       value={newCar.price}
                       onChange={e => setNewCar({ ...newCar, price: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                       placeholder="ex: 450"
                     />
                   </div>
@@ -703,7 +703,7 @@ export default function Dashboard() {
                       type="number"
                       value={newCar.year}
                       onChange={e => setNewCar({ ...newCar, year: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                       placeholder="2024"
                     />
                   </div>
@@ -721,12 +721,12 @@ export default function Dashboard() {
                       setNewCar({ ...newCar, imageFile: file });
                       if (file) setImagePreview(URL.createObjectURL(file));
                     }}
-                    className="w-full px-4 py-2.5 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs text-slate-600 outline-none focus:border-[#C4A47C] file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer"
+                    className="w-full px-4 py-2.5 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs text-slate-600 outline-none focus:border-[#E3383C] file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer"
                   />
                   {imagePreview && (
                     <div className="relative mt-2 rounded-2xl overflow-hidden h-40 border border-slate-200/80 shadow-xs">
                       <img src={imagePreview} alt="Aperçu véhicule" className="w-full h-full object-cover" />
-                      <span className="absolute bottom-2.5 left-2.5 text-white bg-slate-900/70 backdrop-blur-xs px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">
+                      <span className="absolute bottom-2.5 left-2.5 text-white bg-[#0F2F75]/70 backdrop-blur-xs px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">
                         Aperçu
                       </span>
                     </div>
@@ -740,7 +740,7 @@ export default function Dashboard() {
                     <select
                       value={newCar.fuel}
                       onChange={e => setNewCar({ ...newCar, fuel: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] cursor-pointer"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] cursor-pointer"
                     >
                       <option>Diesel</option><option>Essence</option><option>Hybride</option><option>Électrique</option>
                     </select>
@@ -750,7 +750,7 @@ export default function Dashboard() {
                     <select
                       value={newCar.gearbox}
                       onChange={e => setNewCar({ ...newCar, gearbox: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] cursor-pointer"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] cursor-pointer"
                     >
                       <option>Automatique</option><option>Manuelle</option>
                     </select>
@@ -761,7 +761,7 @@ export default function Dashboard() {
                 <div className="pt-3 flex gap-3 border-t border-slate-100">
                   <button
                     type="submit"
-                    className="flex-1 py-3.5 bg-slate-900 hover:bg-black text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
+                    className="flex-1 py-3.5 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
                   >
                     Enregistrer le véhicule
                   </button>
@@ -799,7 +799,7 @@ export default function Dashboard() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowDetailModal(false)}
-                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+                className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
               />
               <motion.div
                 initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -814,7 +814,7 @@ export default function Dashboard() {
                     <div>
                       <div className="flex items-center gap-2.5">
                         <h3 className="text-xl font-bold text-slate-900 tracking-tight">
-                          Fiche <span className="text-[#C4A47C]">Mission</span>
+                          Fiche <span className="text-[#E3383C]">Mission</span>
                         </h3>
                         <span className="text-xs font-mono font-semibold text-slate-400 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-100">
                           #{selectedBooking._id?.slice(-6).toUpperCase() || 'REF'}
@@ -850,7 +850,7 @@ export default function Dashboard() {
                         />
                       </div>
                       <div>
-                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#C4A47C]">
+                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#E3383C]">
                           {selectedBooking.car?.brand || 'Véhicule'}
                         </span>
                         <h4 className="font-bold text-slate-900 text-base leading-snug">
@@ -897,12 +897,12 @@ export default function Dashboard() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C4A47C]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#E3383C]" />
                         Prise en charge & Logistique
                       </h4>
                       {selectedBooking.pickupTime && (
                         <span className="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200/60 flex items-center gap-1.5">
-                          <FaClock size={11} className="text-[#C4A47C]" />
+                          <FaClock size={11} className="text-[#E3383C]" />
                           {selectedBooking.pickupTime}
                         </span>
                       )}
@@ -912,7 +912,7 @@ export default function Dashboard() {
                       {/* Lieu de rendez-vous */}
                       <div className="p-4 bg-slate-50/50 rounded-xl border border-slate-100 space-y-1">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                          <FaMapMarkerAlt size={11} className="text-[#C4A47C]" />
+                          <FaMapMarkerAlt size={11} className="text-[#E3383C]" />
                           Lieu de rendez-vous
                         </span>
                         <p className="text-xs font-bold text-slate-800">
@@ -928,7 +928,7 @@ export default function Dashboard() {
                       {/* Vol / Accueil */}
                       <div className="p-4 bg-slate-50/50 rounded-xl border border-slate-100 space-y-1">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                          <FaPlane size={11} className="text-[#C4A47C]" />
+                          <FaPlane size={11} className="text-[#E3383C]" />
                           Vol / Accueil
                         </span>
                         {selectedBooking.flightNumber ? (
@@ -949,7 +949,7 @@ export default function Dashboard() {
                     {/* Consignes particulières */}
                     {selectedBooking.deliveryNotes && (
                       <div className="p-3.5 bg-amber-50/30 border border-amber-200/40 rounded-xl flex items-start gap-3 text-xs text-slate-700">
-                        <span className="px-2 py-0.5 bg-white text-[#C4A47C] font-extrabold text-[10px] rounded border border-slate-200 shrink-0 uppercase tracking-wider">
+                        <span className="px-2 py-0.5 bg-white text-[#E3383C] font-extrabold text-[10px] rounded border border-slate-200 shrink-0 uppercase tracking-wider">
                           Consigne
                         </span>
                         <p className="leading-relaxed font-medium">
@@ -962,14 +962,14 @@ export default function Dashboard() {
                   {/* 3. Chauffeur Référent & Dispatch */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C4A47C]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E3383C]" />
                       Chauffeur Référent & Dispatch
                     </h4>
 
                     <div className="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200/80 shadow-2xs space-y-4">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="flex items-center gap-3.5">
-                          <div className="w-11 h-11 rounded-xl bg-slate-900 text-[#C4A47C] flex items-center justify-center font-bold text-sm shrink-0">
+                          <div className="w-11 h-11 rounded-xl bg-[#0F2F75] text-[#E3383C] flex items-center justify-center font-bold text-sm shrink-0">
                             <FaCar size={16} />
                           </div>
                           <div>
@@ -1010,7 +1010,7 @@ export default function Dashboard() {
                           <select
                             value={currentDriver?._id || selectedBooking.assignedDriver || ''}
                             onChange={(e) => handleAssignDriver(selectedBooking._id || selectedBooking.id, e.target.value || null)}
-                            className="w-full text-xs px-3 py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl font-semibold text-slate-700 outline-none focus:border-[#C4A47C] transition-colors cursor-pointer"
+                            className="w-full text-xs px-3 py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl font-semibold text-slate-700 outline-none focus:border-[#E3383C] transition-colors cursor-pointer"
                           >
                             <option value="">-- Assigner un chauffeur --</option>
                             {drivers.map(d => (
@@ -1072,7 +1072,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* 4. Récapitulatif Financier */}
-                  <div className="p-5 bg-slate-900 rounded-2xl text-white flex items-center justify-between shadow-xs">
+                  <div className="p-5 bg-[#0F2F75] rounded-2xl text-white flex items-center justify-between shadow-xs">
                     <div>
                       <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block mb-0.5">
                         Montant Total TTC
@@ -1081,7 +1081,7 @@ export default function Dashboard() {
                         <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                           {selectedBooking.totalPrice?.toLocaleString('fr-FR')}
                         </span>
-                        <span className="text-xs font-bold text-[#C4A47C]">DH</span>
+                        <span className="text-xs font-bold text-[#E3383C]">DH</span>
                       </div>
                     </div>
 
@@ -1129,7 +1129,7 @@ export default function Dashboard() {
                     <div className="pt-1">
                       <button
                         onClick={() => { handleUpdateBooking(selectedBooking._id, 'completed'); setShowDetailModal(false); }}
-                        className="w-full py-3 bg-slate-900 hover:bg-black text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2"
+                        className="w-full py-3 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2"
                       >
                         <FaCheck size={12} /> Marquer comme terminée
                       </button>
@@ -1151,7 +1151,7 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowEditModal(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -1164,7 +1164,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-slate-100 bg-white shrink-0">
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 tracking-tight">
-                    Modifier <span className="text-[#C4A47C]">Véhicule</span>
+                    Modifier <span className="text-[#E3383C]">Véhicule</span>
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">Mettre à jour les spécifications et tarifs</p>
                 </div>
@@ -1187,7 +1187,7 @@ export default function Dashboard() {
                       required
                       value={editingCar.name}
                       onChange={e => setEditingCar({ ...editingCar, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -1196,7 +1196,7 @@ export default function Dashboard() {
                       required
                       value={editingCar.brand}
                       onChange={e => setEditingCar({ ...editingCar, brand: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -1206,7 +1206,7 @@ export default function Dashboard() {
                       type="number"
                       value={editingCar.price}
                       onChange={e => setEditingCar({ ...editingCar, price: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -1215,7 +1215,7 @@ export default function Dashboard() {
                       type="number"
                       value={editingCar.year}
                       onChange={e => setEditingCar({ ...editingCar, year: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
                 </div>
@@ -1226,7 +1226,7 @@ export default function Dashboard() {
                   {(editImagePreview || editingCar.image) && (
                     <div className="relative rounded-2xl overflow-hidden h-40 border border-slate-200/80 shadow-xs mb-2">
                       <img src={editImagePreview || resolveImageUrl(editingCar.image)} alt="Aperçu véhicule" className="w-full h-full object-cover" />
-                      <span className="absolute bottom-2.5 left-2.5 text-white bg-slate-900/70 backdrop-blur-xs px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">
+                      <span className="absolute bottom-2.5 left-2.5 text-white bg-[#0F2F75]/70 backdrop-blur-xs px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">
                         {editImagePreview ? 'Nouvelle image' : 'Image actuelle'}
                       </span>
                     </div>
@@ -1239,7 +1239,7 @@ export default function Dashboard() {
                       setEditingCar({ ...editingCar, imageFile: file });
                       if (file) setEditImagePreview(URL.createObjectURL(file));
                     }}
-                    className="w-full px-4 py-2.5 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs text-slate-600 outline-none focus:border-[#C4A47C] file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer"
+                    className="w-full px-4 py-2.5 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs text-slate-600 outline-none focus:border-[#E3383C] file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer"
                   />
                 </div>
 
@@ -1250,7 +1250,7 @@ export default function Dashboard() {
                     <select
                       value={editingCar.fuel}
                       onChange={e => setEditingCar({ ...editingCar, fuel: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] cursor-pointer"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] cursor-pointer"
                     >
                       <option>Diesel</option><option>Essence</option><option>Hybride</option><option>Électrique</option>
                     </select>
@@ -1260,7 +1260,7 @@ export default function Dashboard() {
                     <select
                       value={editingCar.gearbox}
                       onChange={e => setEditingCar({ ...editingCar, gearbox: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] cursor-pointer"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] cursor-pointer"
                     >
                       <option>Automatique</option><option>Manuelle</option>
                     </select>
@@ -1271,7 +1271,7 @@ export default function Dashboard() {
                 <div className="pt-3 flex gap-3 border-t border-slate-100">
                   <button
                     type="submit"
-                    className="flex-1 py-3.5 bg-slate-900 hover:bg-black text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
+                    className="flex-1 py-3.5 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
                   >
                     Enregistrer les modifications
                   </button>
@@ -1298,7 +1298,7 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowUserEditModal(false)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -1311,7 +1311,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-slate-100 bg-white shrink-0">
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 tracking-tight">
-                    Modifier <span className="text-[#C4A47C]">Utilisateur</span>
+                    Modifier <span className="text-[#E3383C]">Utilisateur</span>
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">Mise à jour des informations du profil</p>
                 </div>
@@ -1332,7 +1332,7 @@ export default function Dashboard() {
                     required
                     value={editingUser.name}
                     onChange={e => setEditingUser({ ...editingUser, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -1342,7 +1342,7 @@ export default function Dashboard() {
                     type="email"
                     value={editingUser.email}
                     onChange={e => setEditingUser({ ...editingUser, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -1350,7 +1350,7 @@ export default function Dashboard() {
                   <input
                     value={editingUser.phone || ''}
                     onChange={e => setEditingUser({ ...editingUser, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     placeholder="06 00 00 00 00"
                   />
                 </div>
@@ -1359,7 +1359,7 @@ export default function Dashboard() {
                   <select
                     value={editingUser.role}
                     onChange={e => setEditingUser({ ...editingUser, role: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] cursor-pointer"
+                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl font-semibold text-xs text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] cursor-pointer"
                   >
                     <option value="user">Utilisateur (Client)</option>
                     <option value="admin">Administrateur</option>
@@ -1368,7 +1368,7 @@ export default function Dashboard() {
                 <div className="pt-3 flex gap-3 border-t border-slate-100">
                   <button
                     type="submit"
-                    className="flex-1 py-3.5 bg-slate-900 hover:bg-black text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
+                    className="flex-1 py-3.5 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer"
                   >
                     Sauvegarder
                   </button>

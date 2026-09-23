@@ -146,7 +146,7 @@ export default function Profile() {
         <div className="bg-white border border-gray-200/80 rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
             {/* Avatar initiales */}
-            <div className="w-20 h-20 rounded-2xl bg-[#F8F5F0] border border-[#E8DDD0] flex items-center justify-center text-2xl font-bold text-[#C4A47C] shrink-0 shadow-inner">
+            <div className="w-20 h-20 rounded-2xl bg-[#EEF3FB] border border-[#D3E0F4] flex items-center justify-center text-2xl font-bold text-[#E3383C] shrink-0 shadow-inner">
               {currentUser.name?.charAt(0).toUpperCase()}
             </div>
 
@@ -176,8 +176,8 @@ export default function Profile() {
                 <p className="text-xl font-bold text-emerald-600">{confirmedBookingsCount}</p>
                 <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Validées</p>
               </div>
-              <div className="text-center px-4 py-3 rounded-xl bg-[#F8F5F0] border border-[#E8DDD0] min-w-[100px]">
-                <p className="text-xl font-bold text-[#111827]">{totalSpent} <span className="text-xs font-semibold text-[#C4A47C]">DH</span></p>
+              <div className="text-center px-4 py-3 rounded-xl bg-[#EEF3FB] border border-[#D3E0F4] min-w-[100px]">
+                <p className="text-xl font-bold text-[#111827]">{totalSpent} <span className="text-xs font-semibold text-[#E3383C]">DH</span></p>
                 <p className="text-[11px] font-medium text-[#6B7280] mt-0.5">Dépenses</p>
               </div>
             </div>
@@ -193,11 +193,11 @@ export default function Profile() {
                   onClick={() => setActiveTab('bookings')}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-colors ${
                     activeTab === 'bookings' 
-                      ? 'bg-[#111827] text-white shadow-sm' 
+                      ? 'bg-[#0F2F75] text-white shadow-sm' 
                       : 'text-[#4B5563] hover:bg-gray-50'
                   }`}
                 >
-                  <FaCalendarAlt size={14} className={activeTab === 'bookings' ? 'text-[#C4A47C]' : 'text-gray-400'} />
+                  <FaCalendarAlt size={14} className={activeTab === 'bookings' ? 'text-[#E3383C]' : 'text-gray-400'} />
                   Mes Réservations
                   <span className={`ml-auto text-xs font-bold px-2 py-0.5 rounded-full ${
                     activeTab === 'bookings' ? 'bg-white/20 text-white' : 'bg-gray-100 text-[#4B5563]'
@@ -208,20 +208,20 @@ export default function Profile() {
                   onClick={() => setActiveTab('settings')}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-colors ${
                     activeTab === 'settings' 
-                      ? 'bg-[#111827] text-white shadow-sm' 
+                      ? 'bg-[#0F2F75] text-white shadow-sm' 
                       : 'text-[#4B5563] hover:bg-gray-50'
                   }`}
                 >
-                  <FaUser size={14} className={activeTab === 'settings' ? 'text-[#C4A47C]' : 'text-gray-400'} />
+                  <FaUser size={14} className={activeTab === 'settings' ? 'text-[#E3383C]' : 'text-gray-400'} />
                   Mon Profil
                 </button>
               </div>
 
               <Link 
                 to="/cars"
-                className="flex items-center gap-2.5 w-full px-5 py-3.5 bg-white border border-gray-200/80 rounded-xl text-xs font-bold text-[#111827] hover:border-[#C4A47C] hover:text-[#C4A47C] transition-all shadow-sm group"
+                className="flex items-center gap-2.5 w-full px-5 py-3.5 bg-white border border-gray-200/80 rounded-xl text-xs font-bold text-[#111827] hover:border-[#E3383C] hover:text-[#E3383C] transition-all shadow-sm group"
               >
-                <FaCar className="text-[#C4A47C]" />
+                <FaCar className="text-[#E3383C]" />
                 Nouvelle réservation
                 <FaArrowRight size={11} className="ml-auto text-gray-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
@@ -248,7 +248,7 @@ export default function Profile() {
                         onClick={() => setFilterStatus(f.key)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors border ${
                           filterStatus === f.key
-                            ? 'bg-[#111827] text-white border-[#111827]'
+                            ? 'bg-[#0F2F75] text-white border-[#0F2F75]'
                             : 'bg-white text-[#6B7280] border-gray-200 hover:border-gray-300 hover:text-[#111827]'
                         }`}
                       >
@@ -264,7 +264,7 @@ export default function Profile() {
 
                   {loading ? (
                     <div className="flex justify-center py-16">
-                      <div className="w-8 h-8 border-3 border-[#C4A47C] border-t-transparent rounded-full animate-spin" />
+                      <div className="w-8 h-8 border-3 border-[#E3383C] border-t-transparent rounded-full animate-spin" />
                     </div>
                   ) : filteredBookings.length === 0 ? (
                     <div className="bg-white rounded-2xl p-12 text-center border border-gray-200/80 shadow-sm">
@@ -280,7 +280,7 @@ export default function Profile() {
                           : "Aucune réservation trouvée pour ce statut."}
                       </p>
                       {filterStatus === 'all' && (
-                        <Link to="/cars" className="inline-flex items-center gap-2 px-6 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-black transition-colors shadow-sm">
+                        <Link to="/cars" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0F2F75] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-[#0A2463] transition-colors shadow-sm">
                           Découvrir le catalogue <FaArrowRight size={10} />
                         </Link>
                       )}
@@ -290,7 +290,7 @@ export default function Profile() {
                       {filteredBookings.map((booking) => (
                         <div
                           key={booking._id}
-                          className="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-sm hover:border-[#C4A47C]/40 transition-colors"
+                          className="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-sm hover:border-[#E3383C]/40 transition-colors"
                         >
                           <div className="flex flex-col sm:flex-row gap-5">
                             {/* Photo véhicule */}
@@ -320,7 +320,7 @@ export default function Profile() {
                                   <span>{new Date(booking.endDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                                 </div>
                                 {booking.pickupLocation && (
-                                  <div className="flex items-center gap-1.5 text-[11px] text-[#A68B5B] font-semibold mt-1">
+                                  <div className="flex items-center gap-1.5 text-[11px] text-[#C42A2E] font-semibold mt-1">
                                     <FaMapMarkerAlt size={10} />
                                     <span>{booking.pickupLocation}</span>
                                     {booking.flightNumber && <span className="text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded text-[10px] font-bold">Vol {booking.flightNumber}</span>}
@@ -339,7 +339,7 @@ export default function Profile() {
                                         <FaCheck size={9} /> Réglé en ligne (Carte)
                                       </span>
                                     ) : (
-                                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#F8F5F0] text-[#8C6D3F] text-[10px] font-bold border border-[#E8DDD0]">
+                                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#EEF3FB] text-[#A61F23] text-[10px] font-bold border border-[#D3E0F4]">
                                         • Espèces à la remise des clés
                                       </span>
                                     )}
@@ -380,7 +380,7 @@ export default function Profile() {
                 <motion.div key="settings" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-6">
                   <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-sm">
                     <div className="flex items-center gap-3 mb-6 pb-2 border-b border-gray-100">
-                      <div className="w-9 h-9 bg-[#F8F5F0] text-[#C4A47C] rounded-xl flex items-center justify-center text-sm">
+                      <div className="w-9 h-9 bg-[#EEF3FB] text-[#E3383C] rounded-xl flex items-center justify-center text-sm">
                         <FaUser />
                       </div>
                       <div>
@@ -401,7 +401,7 @@ export default function Profile() {
                               id="profile-name"
                               value={editFormData.name} 
                               onChange={e => setEditFormData({...editFormData, name: e.target.value})} 
-                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none transition-colors font-medium text-sm text-[#111827]" 
                             />
                           </div>
                         </div>
@@ -417,7 +417,7 @@ export default function Profile() {
                               type="email"
                               value={editFormData.email} 
                               onChange={e => setEditFormData({...editFormData, email: e.target.value})} 
-                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none transition-colors font-medium text-sm text-[#111827]" 
                             />
                           </div>
                         </div>
@@ -433,7 +433,7 @@ export default function Profile() {
                               type="tel"
                               value={editFormData.phone} 
                               onChange={e => setEditFormData({...editFormData, phone: e.target.value})} 
-                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827]" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none transition-colors font-medium text-sm text-[#111827]" 
                             />
                           </div>
                         </div>
@@ -450,7 +450,7 @@ export default function Profile() {
                               value={editFormData.password} 
                               onChange={e => setEditFormData({...editFormData, password: e.target.value})} 
                               placeholder="Laisser vide pour conserver l'actuel"
-                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#C4A47C] outline-none transition-colors font-medium text-sm text-[#111827] placeholder:text-gray-400" 
+                              className="w-full pl-10 pr-4 py-3 bg-[#F9FAFB] border border-gray-200 rounded-xl focus:bg-white focus:border-[#E3383C] outline-none transition-colors font-medium text-sm text-[#111827] placeholder:text-gray-400" 
                             />
                           </div>
                         </div>
@@ -460,7 +460,7 @@ export default function Profile() {
                         <button 
                           type="submit" 
                           disabled={updating} 
-                          className="px-6 py-3 bg-[#111827] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-black transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
+                          className="px-6 py-3 bg-[#0F2F75] text-white rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-[#0A2463] transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
                         >
                           {updating ? 'Enregistrement...' : <><FaCheck size={11} /> Enregistrer les modifications</>}
                         </button>
@@ -497,7 +497,7 @@ export default function Profile() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setConfirmCancel(null)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}

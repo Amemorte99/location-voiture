@@ -117,7 +117,7 @@ export default function MessagesTab({
         <div>
           <div className="flex items-center gap-3">
             <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-              Messages & <span className="text-[#C4A47C]">Demandes</span>
+              Messages & <span className="text-[#E3383C]">Demandes</span>
             </h2>
             {unreadCount > 0 && (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-black">
@@ -138,7 +138,7 @@ export default function MessagesTab({
             onClick={() => setStatusFilter('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               statusFilter === 'all'
-                ? 'bg-slate-900 text-white shadow-xs'
+                ? 'bg-[#0F2F75] text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -161,7 +161,7 @@ export default function MessagesTab({
             onClick={() => setStatusFilter('read')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               statusFilter === 'read'
-                ? 'bg-slate-900 text-white shadow-xs'
+                ? 'bg-[#0F2F75] text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -178,7 +178,7 @@ export default function MessagesTab({
           placeholder="Rechercher par nom, email, téléphone, objet ou mot-clé..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200/80 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 outline-none focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all shadow-2xs"
+          className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200/80 rounded-2xl text-xs sm:text-sm font-medium text-slate-900 placeholder-slate-400 outline-none focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all shadow-2xs"
         />
         {searchTerm && (
           <button
@@ -194,12 +194,12 @@ export default function MessagesTab({
       {/* Liste des messages */}
       {loading ? (
         <div className="p-12 text-center bg-white rounded-3xl border border-slate-100 shadow-xs">
-          <div className="w-10 h-10 border-3 border-[#C4A47C] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+          <div className="w-10 h-10 border-3 border-[#E3383C] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
           <p className="text-xs text-slate-400 font-semibold">Chargement des messages...</p>
         </div>
       ) : messages.length === 0 ? (
         <div className="bg-white rounded-3xl p-12 text-center border border-slate-100 shadow-xs">
-          <div className="w-16 h-16 rounded-2xl bg-[#F8F5F0] text-[#C4A47C] flex items-center justify-center text-2xl mx-auto mb-4 border border-[#E8DDD0]">
+          <div className="w-16 h-16 rounded-2xl bg-[#EEF3FB] text-[#E3383C] flex items-center justify-center text-2xl mx-auto mb-4 border border-[#D3E0F4]">
             <FaEnvelopeOpen />
           </div>
           <h3 className="text-lg font-bold text-slate-900 mb-1">Aucun message trouvé</h3>
@@ -231,7 +231,7 @@ export default function MessagesTab({
                 className={`group bg-white rounded-2xl p-5 sm:p-6 border transition-all duration-200 shadow-2xs hover:shadow-md ${
                   isUnread
                     ? 'border-emerald-200 bg-emerald-50/15 hover:border-emerald-300'
-                    : 'border-slate-200/80 hover:border-[#C4A47C]/60'
+                    : 'border-slate-200/80 hover:border-[#E3383C]/60'
                 }`}
               >
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -252,7 +252,7 @@ export default function MessagesTab({
                     <div className="min-w-0 flex-1">
                       {/* En-tête : Nom + Badges de statut & Traçabilité */}
                       <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h4 className="text-sm font-bold text-slate-900 group-hover:text-[#C4A47C] transition-colors">
+                        <h4 className="text-sm font-bold text-slate-900 group-hover:text-[#E3383C] transition-colors">
                           {clientName}
                         </h4>
                         
@@ -295,7 +295,7 @@ export default function MessagesTab({
 
                       {/* Objet de la demande et coordonnées */}
                       <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span className="px-2.5 py-0.5 rounded-md bg-[#F8F5F0] text-[#9E7B4E] border border-[#E8DDD0]/70 text-[11px] font-bold">
+                        <span className="px-2.5 py-0.5 rounded-md bg-[#EEF3FB] text-[#B0252A] border border-[#D3E0F4]/70 text-[11px] font-bold">
                           {msg.subject || 'Demande d\'information'}
                         </span>
                         {msg.phone && (
@@ -337,7 +337,7 @@ export default function MessagesTab({
                     {msg.phone && (
                       <a
                         href={`tel:${msg.phone}`}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-50 hover:bg-slate-900 text-slate-700 hover:text-white border border-slate-200 rounded-xl text-xs font-bold transition-all shadow-2xs"
+                        className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-50 hover:bg-[#0F2F75] text-slate-700 hover:text-white border border-slate-200 rounded-xl text-xs font-bold transition-all shadow-2xs"
                         title={`Appeler le ${msg.phone}`}
                       >
                         <FaPhoneAlt size={12} />
@@ -351,7 +351,7 @@ export default function MessagesTab({
                       onClick={() => onToggleStatus(msg._id, isUnread ? 'read' : 'unread')}
                       className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-colors border cursor-pointer ${
                         isUnread
-                          ? 'bg-slate-900 hover:bg-black text-white border-slate-900 shadow-xs'
+                          ? 'bg-[#0F2F75] hover:bg-[#0A2463] text-white border-slate-900 shadow-xs'
                           : 'bg-amber-50 hover:bg-amber-100 text-amber-700 border-amber-200'
                       }`}
                       title={isUnread ? "Marquer comme traité et horodater" : "Remettre en non traité"}
@@ -422,7 +422,7 @@ export default function MessagesTab({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedMessage(null)}
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#0F2F75]/60 backdrop-blur-sm"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -434,12 +434,12 @@ export default function MessagesTab({
               {/* En-tête Modal */}
               <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-slate-100 bg-white shrink-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900 text-[#C4A47C] flex items-center justify-center text-base">
+                  <div className="w-10 h-10 rounded-xl bg-[#0F2F75] text-[#E3383C] flex items-center justify-center text-base">
                     <FaCommentDots />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">
-                      Fiche Demande & <span className="text-[#C4A47C]">Traçabilité</span>
+                      Fiche Demande & <span className="text-[#E3383C]">Traçabilité</span>
                     </h3>
                     <p className="text-[11px] text-slate-400 font-medium">
                       Reçu le {formatFullDateTime(selectedMessage.createdAt)}
@@ -465,7 +465,7 @@ export default function MessagesTab({
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                       Coordonnées Client
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#F8F5F0] text-[#9E7B4E] border border-[#E8DDD0] text-[10px] font-extrabold">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#EEF3FB] text-[#B0252A] border border-[#D3E0F4] text-[10px] font-extrabold">
                       {selectedMessage.subject || 'Demande d\'information'}
                     </span>
                   </div>
@@ -572,7 +572,7 @@ export default function MessagesTab({
                       type="button"
                       onClick={handleSaveNotes}
                       disabled={savingNotes}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-900 hover:bg-black text-white rounded-lg text-xs font-bold transition-all cursor-pointer disabled:opacity-50"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-lg text-xs font-bold transition-all cursor-pointer disabled:opacity-50"
                     >
                       <FaSave size={11} />
                       {savingNotes ? 'Sauvegarde...' : 'Enregistrer la note'}
@@ -583,7 +583,7 @@ export default function MessagesTab({
                     value={internalNotes}
                     onChange={(e) => setInternalNotes(e.target.value)}
                     placeholder="Ajoutez une note de suivi interne (ex: Client contacté par téléphone le 18/09, devis Mercedes envoyé sur WhatsApp, négociation en cours...)"
-                    className="w-full p-4 bg-slate-50/70 border border-slate-200/80 rounded-2xl text-xs sm:text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                    className="w-full p-4 bg-slate-50/70 border border-slate-200/80 rounded-2xl text-xs sm:text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                   />
                 </div>
 
@@ -602,7 +602,7 @@ export default function MessagesTab({
                   {selectedMessage.phone ? (
                     <a
                       href={`tel:${selectedMessage.phone}`}
-                      className="py-3.5 px-4 bg-slate-900 hover:bg-black text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-all"
+                      className="py-3.5 px-4 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-all"
                     >
                       <FaPhoneAlt size={12} />
                       <span>Appeler le client ({selectedMessage.phone})</span>

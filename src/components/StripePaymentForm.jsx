@@ -48,7 +48,7 @@ export default function StripePaymentForm({ totalPrice, onPaymentSuccess }) {
       <div className="bg-white p-5 rounded-2xl border border-gray-100 mb-5 min-h-[150px] relative">
         {!isReady && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-white rounded-2xl z-10">
-            <div className="w-8 h-8 border-4 border-[#C4A47C] border-t-transparent rounded-full animate-spin mb-2" />
+            <div className="w-8 h-8 border-4 border-[#E3383C] border-t-transparent rounded-full animate-spin mb-2" />
             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Initialisation du terminal...</p>
           </div>
         )}
@@ -68,7 +68,7 @@ export default function StripePaymentForm({ totalPrice, onPaymentSuccess }) {
       <button
         type="submit"
         disabled={!stripe || !isReady || isProcessing}
-        className="w-full py-4 mt-2 bg-[#111827] text-white rounded-[16px] font-black tracking-widest text-xs uppercase hover:bg-[#0D1321] transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 shadow-xl shadow-black/10"
+        className="w-full py-4 mt-2 bg-[#0F2F75] text-white rounded-[16px] font-black tracking-widest text-xs uppercase hover:bg-[#0D1321] transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 shadow-xl shadow-black/10"
       >
         {isProcessing ? (
           "Validation en cours..."

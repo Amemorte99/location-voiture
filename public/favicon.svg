@@ -2,11 +2,11 @@
   <defs>
     <linearGradient id="locafesBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1E293B"/>
-      <stop offset="100%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#123A8A"/>
     </linearGradient>
     <linearGradient id="locafesGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#E5D3B8"/>
-      <stop offset="100%" stop-color="#C4A47C"/>
+      <stop offset="100%" stop-color="#E3383C"/>
     </linearGradient>
   </defs>
 

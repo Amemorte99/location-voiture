@@ -47,10 +47,10 @@ export const generateInvoicePDF = (booking, isUser = false) => {
     });
 
     // Palette Prestige LocaFès
-    const slateDark = [15, 23, 42];       // #0F172A
-    const goldAccent = [180, 142, 95];    // #B48E5F (doré noble lisible à l'impression)
-    const softCream = [250, 248, 245];    // #FAF8F5 (fond champagne très doux)
-    const lineLight = [232, 226, 217];    // #E8E2D9 (lignes séparatrices fines)
+    const slateDark = [15, 47, 117];      // #0F2F75 (bleu marine)
+    const goldAccent = [227, 56, 60];     // #E3383C (rouge accent)
+    const softCream = [245, 248, 253];    // #F5F8FD (fond bleu très doux)
+    const lineLight = [220, 229, 243];    // #DCE5F3 (lignes séparatrices fines)
     const textMuted = [100, 116, 139];    // #64748B
     const emeraldGreen = [16, 185, 129];  // #10B981
 

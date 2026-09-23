@@ -62,7 +62,7 @@ export default function CarsTab({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h2 className="text-2xl font-bold text-[#111827]">
-            Gestion <span className="text-[#C4A47C]">Voitures</span>
+            Gestion <span className="text-[#E3383C]">Voitures</span>
           </h2>
           <p className="text-[#6B7280] text-xs font-medium mt-0.5">
             Administration du parc automobile et disponibilités
@@ -73,7 +73,7 @@ export default function CarsTab({
           {/* Ajouter véhicule */}
           <button
             onClick={() => setShowAddModal(true)}
-            className="px-4 py-2.5 bg-[#111827] text-white rounded-xl font-bold text-xs shadow-sm hover:bg-black transition-colors flex items-center gap-2"
+            className="px-4 py-2.5 bg-[#0F2F75] text-white rounded-xl font-bold text-xs shadow-sm hover:bg-[#0A2463] transition-colors flex items-center gap-2"
           >
             <FaPlus size={11} /> Nouveau Véhicule
           </button>
@@ -90,14 +90,14 @@ export default function CarsTab({
           <div className="flex items-center gap-1 bg-[#F9FAFB] p-1 rounded-xl border border-gray-200">
             <button
               onClick={() => setViewMode('table')}
-              className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-[#111827] text-white shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
+              className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-[#0F2F75] text-white shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
               title="Vue tableau"
             >
               <FaTable size={13} />
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[#111827] text-white shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
+              className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[#0F2F75] text-white shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
               title="Vue grille"
             >
               <FaTh size={13} />
@@ -112,7 +112,7 @@ export default function CarsTab({
               placeholder="Rechercher modèle ou marque..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:border-[#C4A47C] transition-all outline-none font-medium shadow-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:border-[#E3383C] transition-all outline-none font-medium shadow-sm"
             />
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function CarsTab({
             onClick={() => setFilterStatus(tab.key)}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterStatus === tab.key
-                ? 'bg-[#111827] text-white shadow-sm'
+                ? 'bg-[#0F2F75] text-white shadow-sm'
                 : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
@@ -178,7 +178,7 @@ export default function CarsTab({
                             </div>
                             <div>
                               <p className="font-bold text-[#111827] text-sm">{car.name}</p>
-                              <p className="text-[11px] font-semibold text-[#C4A47C]">{car.brand || 'Premium'}</p>
+                              <p className="text-[11px] font-semibold text-[#E3383C]">{car.brand || 'Premium'}</p>
                             </div>
                           </div>
                         </td>
@@ -214,7 +214,7 @@ export default function CarsTab({
                           <div className="flex items-center justify-center gap-3">
                             <button
                               onClick={() => { setEditingCar(car); setShowEditModal(true); }}
-                              className="p-3 bg-[#F8F5F0] text-[#C4A47C] rounded-xl hover:bg-[#C4A47C] hover:text-white transition-all shadow-sm"
+                              className="p-3 bg-[#EEF3FB] text-[#E3383C] rounded-xl hover:bg-[#E3383C] hover:text-white transition-all shadow-sm"
                               title="Modifier"
                             >
                               <FaEdit size={14} />
@@ -238,13 +238,13 @@ export default function CarsTab({
             {totalPages > 1 && (
               <div className="px-10 py-6 bg-gray-50/50 border-t border-gray-50 flex items-center justify-between">
                 <p className="text-[10px] font-black uppercase tracking-widest text-[#6B7280]">
-                  Page <span className="text-[#C4A47C]">{page}</span> sur <span className="text-[#111827]">{totalPages}</span>
+                  Page <span className="text-[#E3383C]">{page}</span> sur <span className="text-[#111827]">{totalPages}</span>
                 </p>
                 <div className="flex items-center gap-2">
-                  <button onClick={() => handlePageChange(page - 1)} disabled={page === 1} className="px-4 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-[#C4A47C] hover:text-[#C4A47C] disabled:opacity-50 transition-all">
+                  <button onClick={() => handlePageChange(page - 1)} disabled={page === 1} className="px-4 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-[#E3383C] hover:text-[#E3383C] disabled:opacity-50 transition-all">
                     Précédent
                   </button>
-                  <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages} className="px-4 py-2 bg-[#111827] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-black/10 hover:scale-105 disabled:opacity-50 transition-all">
+                  <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages} className="px-4 py-2 bg-[#0F2F75] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-black/10 hover:scale-105 disabled:opacity-50 transition-all">
                     Suivant
                   </button>
                 </div>
@@ -297,7 +297,7 @@ export default function CarsTab({
 
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
-                        <p className="text-[10px] font-bold text-[#C4A47C] uppercase tracking-wider mb-0.5">{car.brand}</p>
+                        <p className="text-[10px] font-bold text-[#E3383C] uppercase tracking-wider mb-0.5">{car.brand}</p>
                         <h4 className="text-base font-bold text-[#111827] mb-3">{car.name}</h4>
 
                         <div className="flex items-center gap-3 text-xs text-[#6B7280] mb-4">
@@ -321,7 +321,7 @@ export default function CarsTab({
                         <div className="flex items-center gap-1.5">
                           <button
                             onClick={() => { setEditingCar(car); setShowEditModal(true); }}
-                            className="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-[#111827] hover:text-white transition-all border border-gray-100"
+                            className="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-[#0F2F75] hover:text-white transition-all border border-gray-100"
                             title="Modifier"
                           >
                             <FaEdit size={12} />
@@ -347,10 +347,10 @@ export default function CarsTab({
                   Page <span className="font-bold text-[#111827]">{page}</span> sur <span className="font-bold text-[#111827]">{totalPages}</span>
                 </p>
                 <div className="flex items-center gap-2">
-                  <button onClick={() => handlePageChange(page - 1)} disabled={page === 1} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-bold hover:border-[#C4A47C] hover:text-[#C4A47C] disabled:opacity-50 transition-all">
+                  <button onClick={() => handlePageChange(page - 1)} disabled={page === 1} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-bold hover:border-[#E3383C] hover:text-[#E3383C] disabled:opacity-50 transition-all">
                     Précédent
                   </button>
-                  <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages} className="px-3 py-1.5 bg-[#111827] text-white rounded-lg text-xs font-bold hover:bg-black disabled:opacity-50 transition-all">
+                  <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages} className="px-3 py-1.5 bg-[#0F2F75] text-white rounded-lg text-xs font-bold hover:bg-[#0A2463] disabled:opacity-50 transition-all">
                     Suivant
                   </button>
                 </div>

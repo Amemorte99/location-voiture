@@ -53,7 +53,7 @@ export default function Topbar({ setIsOpen, isCollapsed, toggleCollapse, pending
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="lg:hidden p-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-[#C4A47C] hover:bg-slate-100 transition-all cursor-pointer"
+          className="lg:hidden p-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-[#E3383C] hover:bg-slate-100 transition-all cursor-pointer"
           title="Ouvrir le menu"
         >
           <FaBars size={17} />
@@ -74,7 +74,7 @@ export default function Topbar({ setIsOpen, isCollapsed, toggleCollapse, pending
 
         {/* Date — desktop only */}
         <div className="hidden lg:flex items-center gap-2 text-slate-500">
-          <FaCalendarDay className="text-[#C4A47C]" size={12} />
+          <FaCalendarDay className="text-[#E3383C]" size={12} />
           <span className="text-xs font-semibold capitalize">{formattedDate}</span>
           <span className="text-slate-300">·</span>
           <span className="text-xs font-bold tabular-nums text-slate-900">{formattedTime}</span>
@@ -90,7 +90,7 @@ export default function Topbar({ setIsOpen, isCollapsed, toggleCollapse, pending
             onClick={() => setShowNotif(v => !v)}
             aria-haspopup="menu"
             aria-expanded={showNotif}
-            className="relative p-2.5 bg-[#F9FAFB] border border-gray-100 rounded-xl text-[#6B7280] hover:text-[#C4A47C] hover:border-[#E8DDD0] transition-all"
+            className="relative p-2.5 bg-[#F9FAFB] border border-gray-100 rounded-xl text-[#6B7280] hover:text-[#E3383C] hover:border-[#D3E0F4] transition-all"
           >
             <FaBell size={17} />
             {pendingCount > 0 && (
@@ -130,7 +130,7 @@ export default function Topbar({ setIsOpen, isCollapsed, toggleCollapse, pending
                     pendingBookings.slice(0, 5).map((b) => (
                       <div key={b._id} className="px-5 py-3.5 hover:bg-[#F9FAFB] transition-colors border-b border-gray-50 last:border-0">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-[#F8F5F0] text-[#C4A47C] flex items-center justify-center font-bold text-sm shrink-0">
+                          <div className="w-8 h-8 rounded-lg bg-[#EEF3FB] text-[#E3383C] flex items-center justify-center font-bold text-sm shrink-0">
                             {b.fullName?.charAt(0)?.toUpperCase()}
                           </div>
                           <div className="flex-1 min-w-0">
@@ -164,9 +164,9 @@ export default function Topbar({ setIsOpen, isCollapsed, toggleCollapse, pending
           >
             <div className="hidden text-right md:block">
               <p className="text-sm font-bold text-[#111827] leading-tight">{currentUser?.name || 'Administrateur'}</p>
-              <p className="text-[10px] text-[#C4A47C] font-semibold capitalize">{currentUser?.role || 'admin'}</p>
+              <p className="text-[10px] text-[#E3383C] font-semibold capitalize">{currentUser?.role || 'admin'}</p>
             </div>
-            <div className="w-9 h-9 rounded-xl bg-[#111827] flex items-center justify-center font-bold text-[#C4A47C] text-sm shadow-sm">
+            <div className="w-9 h-9 rounded-xl bg-[#0F2F75] flex items-center justify-center font-bold text-[#E3383C] text-sm shadow-sm">
               {currentUser?.name?.charAt(0)?.toUpperCase() || <FaUserShield size={14} />}
             </div>
             <FaChevronDown className={`text-[#6B7280] text-xs transition-transform ${showProfileMenu ? 'rotate-180' : ''}`} />

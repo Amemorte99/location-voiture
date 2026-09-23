@@ -70,12 +70,12 @@ export default function Navbar() {
           <div className={`p-2 rounded-xl group-hover:scale-110 transition-all duration-300 shadow-lg ${
             isTransparent 
               ? 'bg-white/10 backdrop-blur-md shadow-white/5' 
-              : 'bg-[#111827] shadow-black/10'
+              : 'bg-[#0F2F75] shadow-black/10'
           }`}>
             <FaCar className="text-white" size={24} />
           </div>
           <span className={`transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-[#111827]'}`}>
-            LOCA<span className="text-[#C4A47C]">FÈS</span>
+            LOCA<span className="text-[#E3383C]">FÈS</span>
           </span>
         </Link>
 
@@ -87,14 +87,14 @@ export default function Navbar() {
               to={link.path} 
               className={`font-semibold transition-all duration-300 relative group ${
                 isActive(link.path) 
-                  ? 'text-[#C4A47C]' 
+                  ? 'text-[#E3383C]' 
                   : isTransparent
                     ? 'text-white/80 hover:text-white'
-                    : 'text-[#6B7280] hover:text-[#C4A47C]'
+                    : 'text-[#6B7280] hover:text-[#E3383C]'
               }`}
             >
               {link.label}
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#C4A47C] transition-all ${
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#E3383C] transition-all ${
                 isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
               }`}></span>
             </Link>
@@ -108,7 +108,7 @@ export default function Navbar() {
                 <Link 
                   to="/dashboard"
                   className={`flex items-center gap-2 font-semibold transition-colors duration-300 ${
-                    isTransparent ? 'text-white/80 hover:text-white' : 'text-[#6B7280] hover:text-[#C4A47C]'
+                    isTransparent ? 'text-white/80 hover:text-white' : 'text-[#6B7280] hover:text-[#E3383C]'
                   }`}
                 >
                   <FaTachometerAlt />
@@ -118,9 +118,9 @@ export default function Navbar() {
               <Link to="/profile" className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                 isTransparent 
                   ? 'bg-white/10 backdrop-blur-md hover:bg-white/20 text-white' 
-                  : 'bg-[#F8F5F0] hover:bg-[#F0EBE3]'
+                  : 'bg-[#EEF3FB] hover:bg-[#E3EBF8]'
               }`}>
-                <FaUser className={isTransparent ? 'text-white' : 'text-[#C4A47C]'} />
+                <FaUser className={isTransparent ? 'text-white' : 'text-[#E3383C]'} />
                 <span className={`text-sm font-bold ${isTransparent ? 'text-white' : 'text-[#111827]'}`}>
                   {currentUser.name || currentUser.email?.split('@')[0]}
                 </span>
@@ -143,7 +143,7 @@ export default function Navbar() {
               className={`px-6 py-2.5 rounded-lg font-bold transition-all duration-300 ${
                 isTransparent
                   ? 'bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20 hover:-translate-y-0.5'
-                  : 'bg-[#111827] text-white hover:shadow-lg hover:shadow-black/15 hover:-translate-y-0.5'
+                  : 'bg-[#0F2F75] text-white hover:shadow-lg hover:shadow-black/15 hover:-translate-y-0.5'
               }`}
             >
               Connexion
@@ -176,7 +176,7 @@ export default function Navbar() {
                 to={link.path} 
                 className={`block py-3 px-4 rounded-xl font-bold transition-all ${
                   isActive(link.path) 
-                    ? 'bg-[#F8F5F0] text-[#C4A47C]' 
+                    ? 'bg-[#EEF3FB] text-[#E3383C]' 
                     : 'text-[#6B7280] hover:bg-gray-50'
                 }`}
                 onClick={() => setMenuOpen(false)}
@@ -193,12 +193,12 @@ export default function Navbar() {
                     className="flex items-center gap-3 px-4 py-3 text-[#111827] font-bold"
                     onClick={() => setMenuOpen(false)}
                   >
-                    <FaTachometerAlt className="text-[#C4A47C]" />
+                    <FaTachometerAlt className="text-[#E3383C]" />
                     Dashboard Administrateur
                   </Link>
                 )}
-                <Link to="/profile" className="flex items-center gap-3 px-4 py-3 bg-[#F8F5F0] rounded-xl hover:bg-[#F0EBE3] transition-colors" onClick={() => setMenuOpen(false)}>
-                  <FaUser className="text-[#C4A47C]" />
+                <Link to="/profile" className="flex items-center gap-3 px-4 py-3 bg-[#EEF3FB] rounded-xl hover:bg-[#E3EBF8] transition-colors" onClick={() => setMenuOpen(false)}>
+                  <FaUser className="text-[#E3383C]" />
                   <span className="font-bold text-[#111827]">{currentUser.name || currentUser.email}</span>
                 </Link>
                 <button 
@@ -212,7 +212,7 @@ export default function Navbar() {
             ) : (
               <Link 
                 to="/login" 
-                className="block text-center py-4 bg-[#111827] text-white rounded-xl font-bold shadow-lg shadow-black/15"
+                className="block text-center py-4 bg-[#0F2F75] text-white rounded-xl font-bold shadow-lg shadow-black/15"
                 onClick={() => setMenuOpen(false)}
               >
                 Connexion
@@ -222,10 +222,10 @@ export default function Navbar() {
             <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-3">
               <a 
                 href="tel:+212535621020" 
-                className="flex items-center justify-center gap-2 py-3 bg-[#F8F5F0] text-[#111827] rounded-xl font-bold text-xs hover:bg-[#F0EBE3] transition-colors"
+                className="flex items-center justify-center gap-2 py-3 bg-[#EEF3FB] text-[#111827] rounded-xl font-bold text-xs hover:bg-[#E3EBF8] transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                <FaPhoneAlt className="text-[#C4A47C]" size={12} />
+                <FaPhoneAlt className="text-[#E3383C]" size={12} />
                 Appeler
               </a>
               <a 
