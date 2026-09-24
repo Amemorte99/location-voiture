@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const WHATSAPP_NUMBER = '212668898245';
+const WHATSAPP_NUMBER = '23566000000';
 
 export default function WhatsAppButton() {
   const location = useLocation();
@@ -10,9 +10,9 @@ export default function WhatsAppButton() {
 
   const getMessage = () => {
     if (location.pathname.startsWith('/cars/')) {
-      return 'Bonjour, je suis intéressé par un véhicule sur votre site LocaFès. Pouvez-vous me donner plus d\'informations ?';
+      return 'Bonjour, je suis intéressé par un véhicule sur votre site LocaGawa. Pouvez-vous me donner plus d\'informations ?';
     }
-    return 'Bonjour, je souhaite des informations sur la location de voiture chez LocaFès.';
+    return 'Bonjour, je souhaite des informations sur la location de voiture chez LocaGawa.';
   };
 
   useEffect(() => {
@@ -29,16 +29,16 @@ export default function WhatsAppButton() {
 
       {}
       {tooltip && (
-        <div className="animate-fadeIn bg-[#111827] text-white text-sm font-medium px-4 py-2.5 rounded-xl shadow-xl whitespace-nowrap relative">
+        <div className="animate-fadeIn bg-[#0F2F75] text-white text-sm font-medium px-4 py-2.5 rounded-xl shadow-xl whitespace-nowrap relative">
           Contactez-nous sur WhatsApp
-          <div className="absolute bottom-[-6px] right-5 w-3 h-3 bg-[#111827] rotate-45"></div>
+          <div className="absolute bottom-[-6px] right-5 w-3 h-3 bg-[#0F2F75] rotate-45"></div>
         </div>
       )}
 
       {}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="w-11 h-11 bg-white border border-gray-200 text-[#C4A47C] rounded-full shadow-lg hover:shadow-xl hover:border-[#C4A47C] hover:scale-110 transition-all flex items-center justify-center"
+        className="w-11 h-11 bg-white border border-gray-200 text-[#E3383C] rounded-full shadow-lg hover:shadow-xl hover:border-[#E3383C] hover:scale-110 transition-all flex items-center justify-center"
         aria-label="Retour en haut de page"
         title="Retour en haut"
       >

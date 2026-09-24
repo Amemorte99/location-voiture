@@ -26,7 +26,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 function LoadingFallback() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center bg-transparent">
-      <div className="w-12 h-12 border-4 border-[#C4A47C] border-t-transparent rounded-full animate-spin"></div>
+      <div className="w-12 h-12 border-4 border-[#E3383C] border-t-transparent rounded-full animate-spin"></div>
     </div>
   );
 }
@@ -46,7 +46,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
       <p className="text-[#6B7280] mb-8 max-w-md">{error.message}</p>
       <button 
         onClick={resetErrorBoundary}
-        className="px-8 py-4 bg-[#111827] text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-black/10"
+        className="px-8 py-4 bg-[#0F2F75] text-white rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-black/10"
       >
         Réessayer
       </button>
@@ -130,7 +130,7 @@ function AppContent() {
     <div className="min-h-screen flex flex-col">
       <a 
         href='#main-content' 
-        className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-[#111827] focus:p-4 focus:rounded-xl focus:shadow-2xl focus:z-50 font-bold border border-[#C4A47C]'
+        className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-[#111827] focus:p-4 focus:rounded-xl focus:shadow-2xl focus:z-50 font-bold border border-[#E3383C]'
       >
         Aller au contenu principal
       </a>

@@ -38,7 +38,7 @@ const CarCard = memo(function CarCard({ car }) {
                 : 'bg-white/95 text-slate-500 border border-slate-200'
             }`}>
               <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
-              {isAvailable ? 'Disponible à Fès' : 'Réservé'}
+              {isAvailable ? 'Disponible à N’Djamena' : 'Réservé'}
             </span>
           </div>
 
@@ -55,7 +55,7 @@ const CarCard = memo(function CarCard({ car }) {
         <div className="p-6">
           <div className="mb-4">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#C4A47C] transition-colors line-clamp-1">
+              <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#E3383C] transition-colors line-clamp-1">
                 {car.name}
               </h3>
               {car.numReviews > 0 ? (
@@ -68,24 +68,24 @@ const CarCard = memo(function CarCard({ car }) {
                 <span className="text-[11px] text-gray-400 font-medium shrink-0">Nouveau</span>
               )}
             </div>
-            <p className="text-[#8B7355] text-xs font-semibold tracking-wider mt-0.5">
-              {car.brand || 'Gamme Récente'} • Fès Saïss
+            <p className="text-[#8F1C20] text-xs font-semibold tracking-wider mt-0.5">
+              {car.brand || 'Gamme Récente'} • N’Djamena
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-2.5 mb-6">
-            <div className="flex flex-col items-center p-2.5 bg-[#F9FAFB] rounded-xl border border-gray-100 group-hover:bg-[#F8F5F0]/60 transition-colors">
-              <FaCalendarAlt className="text-[#C4A47C] mb-1" size={13} />
+            <div className="flex flex-col items-center p-2.5 bg-[#F9FAFB] rounded-xl border border-gray-100 group-hover:bg-[#EEF3FB]/60 transition-colors">
+              <FaCalendarAlt className="text-[#E3383C] mb-1" size={13} />
               <span className="text-xs text-[#111827] font-bold">{car.year}</span>
             </div>
 
-            <div className="flex flex-col items-center p-2.5 bg-[#F9FAFB] rounded-xl border border-gray-100 group-hover:bg-[#F8F5F0]/60 transition-colors">
-              <FaGasPump className="text-[#C4A47C] mb-1" size={13} />
+            <div className="flex flex-col items-center p-2.5 bg-[#F9FAFB] rounded-xl border border-gray-100 group-hover:bg-[#EEF3FB]/60 transition-colors">
+              <FaGasPump className="text-[#E3383C] mb-1" size={13} />
               <span className="text-xs text-[#111827] font-bold">{car.fuel}</span>
             </div>
 
-            <div className="flex flex-col items-center p-2.5 bg-[#F9FAFB] rounded-xl border border-gray-100 group-hover:bg-[#F8F5F0]/60 transition-colors">
-              <FaCog className="text-[#C4A47C] mb-1" size={13} />
+            <div className="flex flex-col items-center p-2.5 bg-[#F9FAFB] rounded-xl border border-gray-100 group-hover:bg-[#EEF3FB]/60 transition-colors">
+              <FaCog className="text-[#E3383C] mb-1" size={13} />
               <span className="text-xs text-[#111827] font-bold">{car.gearbox === 'Automatique' ? 'Auto' : 'Manuelle'}</span>
             </div>
           </div>
@@ -94,7 +94,7 @@ const CarCard = memo(function CarCard({ car }) {
             <div>
               <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">À partir de</p>
               <p className="text-2xl font-black text-[#111827] leading-none">
-                {car.price} <span className="text-xs font-bold text-[#C4A47C]">DH / jour</span>
+                {Number(car.price || 0).toLocaleString('fr-FR')} <span className="text-xs font-bold text-[#E3383C]">FCFA / jour</span>
               </p>
               <p className="text-[10px] text-emerald-600 font-medium mt-1">Assurance incluse</p>
             </div>
@@ -102,7 +102,7 @@ const CarCard = memo(function CarCard({ car }) {
             <Link 
               to={`/cars/${car._id || car.id}`} 
               aria-label={`Réserver la voiture ${car.name}`}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#111827] text-white rounded-xl font-bold text-xs hover:bg-[#C4A47C] hover:text-[#111827] hover:shadow-lg transition-all active:scale-95 group/btn"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#0F2F75] text-white rounded-xl font-bold text-xs hover:bg-[#E3383C] hover:text-white hover:shadow-lg transition-all active:scale-95 group/btn"
             >
               Réserver
               <FaArrowRight className="group-hover/btn:translate-x-1 transition-transform" size={11} />

@@ -27,8 +27,8 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
 
   const getStatusBadge = (status) => {
     const customStyles = {
-      confirmed: 'bg-slate-900 text-[#C4A47C] border-slate-900',
-      completed: 'bg-[#F8F5F0] text-[#8C6D3F] border-[#E8DDD0]',
+      confirmed: 'bg-[#0F2F75] text-[#E3383C] border-slate-900',
+      completed: 'bg-[#EEF3FB] text-[#A61F23] border-[#D3E0F4]',
       pending: 'bg-slate-100 text-slate-700 border-slate-200/80',
       cancelled: 'bg-slate-50 text-slate-400 border-slate-200',
     };
@@ -45,12 +45,12 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
       label: 'Utilisateurs',
       val: stats.totalUsers,
       icon: <FaUsers size={18} />,
-      color: 'text-[#C4A47C]',
-      bg: 'bg-[#F8F5F0]',
-      border: 'border-[#E8DDD0]',
+      color: 'text-[#E3383C]',
+      bg: 'bg-[#EEF3FB]',
+      border: 'border-[#D3E0F4]',
       trend: stats.growth?.users || 0,
       sparkData: stats?.userTrends || null,
-      sparkColor: '#C4A47C',
+      sparkColor: '#E3383C',
     },
     {
       label: 'Véhicules',
@@ -76,7 +76,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
     },
     {
       label: 'Revenus',
-      val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} DH`,
+      val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} FCFA`,
       icon: <FaMoneyBillWave size={18} />,
       color: 'text-emerald-600',
       bg: 'bg-emerald-50',
@@ -94,10 +94,10 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-[#111827]">
-            Tableau de <span className="text-[#C4A47C]">Bord</span>
+            Tableau de <span className="text-[#E3383C]">Bord</span>
           </h2>
           <p className="text-[#6B7280] text-xs font-medium mt-0.5">
-            Activité et indicateurs de performance de l'agence à Fès
+            Activité et indicateurs de performance de l'agence à N’Djamena
           </p>
         </div>
       </div>
@@ -157,7 +157,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                 onClick={() => setPeriod(p.key)}
                 className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
                   period === p.key
-                    ? 'bg-[#111827] text-white shadow-lg shadow-black/10'
+                    ? 'bg-[#0F2F75] text-white shadow-lg shadow-black/10'
                     : 'text-[#6B7280] hover:text-[#111827]'
                 }`}
               >
@@ -171,8 +171,8 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
             <AreaChart data={stats.trends || []} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#C4A47C" stopOpacity={0.25} />
-                  <stop offset="95%" stopColor="#C4A47C" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#E3383C" stopOpacity={0.25} />
+                  <stop offset="95%" stopColor="#E3383C" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis
@@ -183,7 +183,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                 tickLine={false}
               />
               <Tooltip
-                formatter={(value) => [`${value} DH`, 'Revenus']}
+                formatter={(value) => [`${value} FCFA`, 'Revenus']}
                 contentStyle={{
                   borderRadius: '16px',
                   border: 'none',
@@ -195,12 +195,12 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
               <Area
                 type="monotone"
                 dataKey="revenue"
-                stroke="#C4A47C"
+                stroke="#E3383C"
                 strokeWidth={3}
                 fillOpacity={1}
                 fill="url(#colorTotal)"
-                dot={{ r: 4, fill: '#C4A47C', strokeWidth: 2, stroke: '#fff' }}
-                activeDot={{ r: 6, fill: '#C4A47C', stroke: '#fff', strokeWidth: 2 }}
+                dot={{ r: 4, fill: '#E3383C', strokeWidth: 2, stroke: '#fff' }}
+                activeDot={{ r: 6, fill: '#E3383C', stroke: '#fff', strokeWidth: 2 }}
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -219,7 +219,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
             </div>
             <button
               onClick={() => setActiveTab('bookings')}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F9FAFB] rounded-xl text-xs font-bold text-[#6B7280] hover:bg-[#F8F5F0] hover:text-[#C4A47C] transition-all border border-gray-100"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F9FAFB] rounded-xl text-xs font-bold text-[#6B7280] hover:bg-[#EEF3FB] hover:text-[#E3383C] transition-all border border-gray-100"
             >
               Voir tout <FaChevronRight size={8} />
             </button>
@@ -234,7 +234,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                   className="grid grid-cols-[1fr_auto_auto] gap-3 items-center p-3.5 rounded-2xl bg-white border border-slate-200/80 hover:border-slate-300 hover:shadow-xs transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 rounded-xl bg-slate-900 text-[#C4A47C] shrink-0 flex items-center justify-center shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-[#0F2F75] text-[#E3383C] shrink-0 flex items-center justify-center shadow-xs">
                       <FaCar size={14} />
                     </div>
                     <div className="min-w-0">
@@ -242,21 +242,21 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                       <p className="text-[11px] text-slate-500 truncate flex items-center gap-1.5 mt-0.5">
                         <span className="font-semibold text-slate-700">{booking.car?.name || 'Véhicule'}</span>
                         {booking.pickupLocation?.includes('Aéroport') && (
-                          <span className="text-[9px] font-bold text-[#8C6D3F] bg-[#F8F5F0] px-2 py-0.5 rounded-md border border-[#E8DDD0]">
+                          <span className="text-[9px] font-bold text-[#A61F23] bg-[#EEF3FB] px-2 py-0.5 rounded-md border border-[#D3E0F4]">
                             Aéroport
                           </span>
                         )}
                         {(booking.pickupLocation?.includes('Hôtel') || booking.pickupLocation?.includes('Riad')) && (
-                          <span className="text-[9px] font-bold text-[#8C6D3F] bg-[#F8F5F0] px-2 py-0.5 rounded-md border border-[#E8DDD0]">
-                            Riad/Hôtel
+                          <span className="text-[9px] font-bold text-[#A61F23] bg-[#EEF3FB] px-2 py-0.5 rounded-md border border-[#D3E0F4]">
+                            Hôtel/Domicile
                           </span>
                         )}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-xs font-black text-[#C4A47C] whitespace-nowrap text-right">
-                    {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-[10px] text-slate-400 font-normal">DH</span>
+                  <p className="text-xs font-black text-[#E3383C] whitespace-nowrap text-right">
+                    {Number(booking.totalPrice || 0).toLocaleString('fr-FR')} <span className="text-[10px] text-slate-400 font-normal">FCFA</span>
                   </p>
 
                   <div className="flex justify-end">
@@ -277,7 +277,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
             </div>
             <button
               onClick={() => setActiveTab('users')}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F9FAFB] rounded-xl text-xs font-bold text-[#6B7280] hover:bg-[#F8F5F0] hover:text-[#C4A47C] transition-all border border-gray-100"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F9FAFB] rounded-xl text-xs font-bold text-[#6B7280] hover:bg-[#EEF3FB] hover:text-[#E3383C] transition-all border border-gray-100"
             >
               Voir tout <FaChevronRight size={8} />
             </button>
@@ -301,8 +301,8 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                   <div className="flex items-center gap-3 min-w-0">
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm shrink-0 ${
                       isAdmin
-                        ? 'bg-slate-900 text-[#C4A47C] shadow-xs'
-                        : 'bg-[#F8F5F0] text-[#8C6D3F] border border-[#E8DDD0]'
+                        ? 'bg-[#0F2F75] text-[#E3383C] shadow-xs'
+                        : 'bg-[#EEF3FB] text-[#A61F23] border border-[#D3E0F4]'
                     }`}>
                       {(user.name?.charAt(0) || user.email?.charAt(0) || '?').toUpperCase()}
                     </div>
@@ -310,7 +310,7 @@ export default function OverviewTab({ stats, setActiveTab, fetchStats }) {
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <p className="text-xs font-bold text-slate-900 truncate">{user.name || '—'}</p>
                         {isAdmin && (
-                          <span className="px-1.5 py-0.5 bg-[#F8F5F0] text-[#C4A47C] text-[8px] font-black uppercase tracking-widest rounded-full border border-[#E8DDD0] shrink-0">
+                          <span className="px-1.5 py-0.5 bg-[#EEF3FB] text-[#E3383C] text-[8px] font-black uppercase tracking-widest rounded-full border border-[#D3E0F4] shrink-0">
                             Admin
                           </span>
                         )}

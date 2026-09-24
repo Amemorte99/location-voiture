@@ -71,7 +71,7 @@ export default function Login({ defaultRegister = false }) {
           password: formData.password,
           phone: formData.phone.trim()
         });
-        toast.success("Compte créé avec succès ! Bienvenue chez LocaFès.");
+        toast.success("Compte créé avec succès ! Bienvenue chez LocaGawa.");
         if (newUser?.role === 'admin') {
           navigate('/dashboard', { replace: true });
           return;
@@ -115,10 +115,10 @@ export default function Login({ defaultRegister = false }) {
   const strength = isRegister ? getPasswordStrength(formData.password) : null;
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-[#070B14] py-10 px-4 sm:px-6 font-sans">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-[#0A2463] py-10 px-4 sm:px-6 font-sans">
       <Helmet>
-        <title>{isRegister ? 'Inscription Prestige | LocaFès' : 'Connexion Espace Client Privilège | LocaFès'}</title>
-        <meta name="description" content="Accédez à votre espace client LocaFès pour gérer vos réservations et vos contrats de location." />
+        <title>{isRegister ? 'Inscription Prestige | LocaGawa' : 'Connexion Espace Client Privilège | LocaGawa'}</title>
+        <meta name="description" content="Accédez à votre espace client LocaGawa pour gérer vos réservations et vos contrats de location." />
       </Helmet>
 
       <svg 
@@ -128,20 +128,20 @@ export default function Login({ defaultRegister = false }) {
       >
         <defs>
           <pattern id="moroccan-zellige" width="70" height="70" patternUnits="userSpaceOnUse">
-            <path d="M35 0 L70 35 L35 70 L0 35 Z" fill="none" stroke="#C4A47C" strokeWidth="0.8" />
-            <path d="M35 12 L58 35 L35 58 L12 35 Z" fill="none" stroke="#C4A47C" strokeWidth="0.5" />
-            <circle cx="35" cy="35" r="4.5" fill="none" stroke="#C4A47C" strokeWidth="0.8" />
-            <path d="M0 0 L18 18 M70 0 L52 18 M70 70 L52 52 M0 70 L18 52" stroke="#C4A47C" strokeWidth="0.6" />
-            <path d="M35 0 L35 12 M35 58 L35 70 M0 35 L12 35 M58 35 L70 35" stroke="#C4A47C" strokeWidth="0.5" />
-            <rect x="30" y="30" width="10" height="10" transform="rotate(45 35 35)" fill="none" stroke="#C4A47C" strokeWidth="0.5" />
+            <path d="M35 0 L70 35 L35 70 L0 35 Z" fill="none" stroke="#E3383C" strokeWidth="0.8" />
+            <path d="M35 12 L58 35 L35 58 L12 35 Z" fill="none" stroke="#E3383C" strokeWidth="0.5" />
+            <circle cx="35" cy="35" r="4.5" fill="none" stroke="#E3383C" strokeWidth="0.8" />
+            <path d="M0 0 L18 18 M70 0 L52 18 M70 70 L52 52 M0 70 L18 52" stroke="#E3383C" strokeWidth="0.6" />
+            <path d="M35 0 L35 12 M35 58 L35 70 M0 35 L12 35 M58 35 L70 35" stroke="#E3383C" strokeWidth="0.5" />
+            <rect x="30" y="30" width="10" height="10" transform="rotate(45 35 35)" fill="none" stroke="#E3383C" strokeWidth="0.5" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#moroccan-zellige)" />
       </svg>
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C4A47C]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E3383C]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-10 -left-28 w-80 h-80 bg-[#1A2E4C]/40 rounded-full blur-2xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-28 w-80 h-80 bg-[#C4A47C]/15 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-28 w-80 h-80 bg-[#E3383C]/15 rounded-full blur-2xl pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#0A1120] to-transparent pointer-events-none" />
       <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#04060B] to-transparent pointer-events-none" />
 
@@ -155,12 +155,12 @@ export default function Login({ defaultRegister = false }) {
         >
           <img
             src="/images/login-luxury-cars.jpg" 
-            alt="Flotte de prestige LocaFès" 
+            alt="Flotte de prestige LocaGawa" 
             className="w-full h-full object-cover object-center filter contrast-[1.08] brightness-[0.95]"
           />
-          {/* Dégradés d'assombrissement et de fusion pour le thème LocaFès #070B14 */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/30 to-[#070B14]/85" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070B14]/75 via-transparent to-[#070B14]/75" />
+          {/* Dégradés d'assombrissement et de fusion pour le thème LocaGawa #0A2463 */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A2463] via-[#0A2463]/30 to-[#0A2463]/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A2463]/75 via-transparent to-[#0A2463]/75" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,#070B14_85%)]" />
         </motion.div>
       </div>
@@ -170,24 +170,24 @@ export default function Login({ defaultRegister = false }) {
           initial={{ opacity: 0, y: 25, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full bg-white/95 backdrop-blur-xl rounded-[28px] p-7 sm:p-10 border border-[#C4A47C]/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7),0_0_50px_rgba(196,164,124,0.12)] overflow-hidden text-left"
+          className="relative w-full bg-white/95 backdrop-blur-xl rounded-[28px] p-7 sm:p-10 border border-[#E3383C]/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7),0_0_50px_rgba(227, 56, 60,0.12)] overflow-hidden text-left"
         >
-          <div className="absolute top-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-[#C4A47C]/80 to-transparent" />
-          <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C4A47C]/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute top-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-[#E3383C]/80 to-transparent" />
+          <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#E3383C]/10 rounded-full blur-2xl pointer-events-none" />
 
           <div className="flex items-center justify-between mb-7">
             <Link 
               to="/" 
-              className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-[#0B1329] transition-colors group"
+              className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-[#0F2F75] transition-colors group"
             >
-              <FaArrowLeft size={11} className="text-[#C4A47C] group-hover:-translate-x-1 transition-transform" />
-              <span className="group-hover:text-[#0B1329] transition-colors">Retour au catalogue</span>
+              <FaArrowLeft size={11} className="text-[#E3383C] group-hover:-translate-x-1 transition-transform" />
+              <span className="group-hover:text-[#0F2F75] transition-colors">Retour au catalogue</span>
             </Link>
             <Link to="/" className="flex flex-col items-end group">
-              <span className="text-xl font-black tracking-tight text-[#0B1329]">
-                LOCA<span className="text-[#C4A47C]">FÈS</span>
+              <span className="text-xl font-black tracking-tight text-[#0F2F75]">
+                LOCA<span className="text-[#E3383C]">GAWA</span>
               </span>
-              <span className="text-[8px] tracking-[0.25em] font-extrabold text-[#C4A47C]/90 uppercase -mt-0.5">
+              <span className="text-[8px] tracking-[0.25em] font-extrabold text-[#E3383C]/90 uppercase -mt-0.5">
                 Prestige Car
               </span>
             </Link>
@@ -200,12 +200,12 @@ export default function Login({ defaultRegister = false }) {
               onClick={() => setIsRegister(false)}
               className={`relative py-3 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${
                 !isRegister 
-                  ? 'bg-[#0B1329] text-white shadow-md border border-[#C4A47C]/40' 
-                  : 'text-gray-500 hover:text-[#0B1329] hover:bg-white/60'
+                  ? 'bg-[#0F2F75] text-white shadow-md border border-[#E3383C]/40' 
+                  : 'text-gray-500 hover:text-[#0F2F75] hover:bg-white/60'
               }`}
             >
               {!isRegister && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C4A47C] shadow-[0_0_8px_#C4A47C]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E3383C] shadow-[0_0_8px_#E3383C]" />
               )}
               <span>Se connecter</span>
             </button>
@@ -214,12 +214,12 @@ export default function Login({ defaultRegister = false }) {
               onClick={() => setIsRegister(true)}
               className={`relative py-3 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${
                 isRegister 
-                  ? 'bg-[#0B1329] text-white shadow-md border border-[#C4A47C]/40' 
-                  : 'text-gray-500 hover:text-[#0B1329] hover:bg-white/60'
+                  ? 'bg-[#0F2F75] text-white shadow-md border border-[#E3383C]/40' 
+                  : 'text-gray-500 hover:text-[#0F2F75] hover:bg-white/60'
               }`}
             >
               {isRegister && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C4A47C] shadow-[0_0_8px_#C4A47C]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E3383C] shadow-[0_0_8px_#E3383C]" />
               )}
               <span>Créer un compte</span>
             </button>
@@ -228,24 +228,24 @@ export default function Login({ defaultRegister = false }) {
           {/* Titre principal */}
           <div className="mb-7">
             <div className="inline-flex items-center gap-2 mb-2">
-              <span className="w-4 h-[1.5px] bg-[#C4A47C]" />
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C4A47C]">
+              <span className="w-4 h-[1.5px] bg-[#E3383C]" />
+              <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#E3383C]">
                 {isRegister ? 'Adhésion Prestige' : 'Espace Privilège'}
               </span>
             </div>
             <h1 
-              className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight leading-snug"
+              className="text-2xl sm:text-3xl font-bold text-[#123A8A] tracking-tight leading-snug"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               {isRegister ? (
-                <>Créer votre compte <span className="text-[#C4A47C] italic font-normal">Privilège</span></>
+                <>Créer votre compte <span className="text-[#E3383C] italic font-normal">Privilège</span></>
               ) : (
-                <>Bienvenue chez <span className="text-[#C4A47C] italic font-normal">LocaFès</span></>
+                <>Bienvenue chez <span className="text-[#E3383C] italic font-normal">LocaGawa</span></>
               )}
             </h1>
             <p className="text-gray-500 text-xs font-medium mt-1.5 leading-relaxed">
               {isRegister 
-                ? 'Complétez vos coordonnées pour réserver en toute sérénité à Fès et à l\'Aéroport Saïss.' 
+                ? 'Complétez vos coordonnées pour réserver en toute sérénité à N’Djamena et à l\'aéroport.' 
                 : 'Saisissez vos identifiants pour accéder à vos réservations et contrats.'
               }
             </p>
@@ -266,17 +266,17 @@ export default function Login({ defaultRegister = false }) {
                     Nom & Prénom
                   </label>
                   <div className="relative">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#C4A47C] transition-colors duration-200 pointer-events-none">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E3383C] transition-colors duration-200 pointer-events-none">
                       <FaUser size={14} />
                     </div>
                     <input
                       name="name"
                       type="text"
                       autoComplete="name"
-                      placeholder="Ex: Mohammed Benjelloun"
+                      placeholder="Ex: Mahamat Abakar"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#0F172A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#C4A47C]/15"
+                      className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
                       required={isRegister}
                     />
                   </div>
@@ -290,17 +290,17 @@ export default function Login({ defaultRegister = false }) {
                 {isRegister ? 'Adresse email' : 'Adresse email ou Téléphone'}
               </label>
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#C4A47C] transition-colors duration-200 pointer-events-none">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E3383C] transition-colors duration-200 pointer-events-none">
                   <FaEnvelope size={14} />
                 </div>
                 <input
                   name="email"
                   type={isRegister ? 'email' : 'text'}
                   autoComplete="email"
-                  placeholder={isRegister ? 'nom@exemple.com' : 'nom@exemple.com ou 06 68 89 82 45'}
+                  placeholder={isRegister ? 'nom@exemple.com' : 'nom@exemple.com ou 66 00 00 00'}
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#0F172A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#C4A47C]/15"
+                  className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
                   required
                 />
               </div>
@@ -319,17 +319,17 @@ export default function Login({ defaultRegister = false }) {
                     Numéro de téléphone
                   </label>
                   <div className="relative">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#C4A47C] transition-colors duration-200 pointer-events-none">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E3383C] transition-colors duration-200 pointer-events-none">
                       <FaPhoneAlt size={14} />
                     </div>
                     <input
                       name="phone"
                       type="tel"
                       autoComplete="tel"
-                      placeholder="Ex: 06 68 89 82 45"
+                      placeholder="Ex: 66 00 00 00"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#0F172A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#C4A47C]/15"
+                      className="w-full pl-11 pr-4 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
                       required={isRegister}
                     />
                   </div>
@@ -346,15 +346,15 @@ export default function Login({ defaultRegister = false }) {
                 {!isRegister && (
                   <button 
                     type="button" 
-                    onClick={() => toast('Pour réinitialiser votre accès, contactez notre équipe au 05 35 62 10 20 ou sur WhatsApp.')} 
-                    className="text-[10px] font-bold text-[#C4A47C] hover:text-[#A68B5B] transition-colors hover:underline decoration-1 underline-offset-2"
+                    onClick={() => toast('Pour réinitialiser votre accès, contactez notre équipe au 22 00 00 00 ou sur WhatsApp.')} 
+                    className="text-[10px] font-bold text-[#E3383C] hover:text-[#C42A2E] transition-colors hover:underline decoration-1 underline-offset-2"
                   >
                     Mot de passe oublié ?
                   </button>
                 )}
               </div>
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#C4A47C] transition-colors duration-200 pointer-events-none">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E3383C] transition-colors duration-200 pointer-events-none">
                   <FaLock size={14} />
                 </div>
                 <input
@@ -364,14 +364,14 @@ export default function Login({ defaultRegister = false }) {
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-11 pr-12 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#0F172A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#C4A47C]/15"
+                  className="w-full pl-11 pr-12 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#C4A47C] transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#E3383C] transition-colors"
                 >
                   {showPassword ? <FaEyeSlash size={15} /> : <FaEye size={15} />}
                 </button>
@@ -406,7 +406,7 @@ export default function Login({ defaultRegister = false }) {
                     Confirmer le mot de passe
                   </label>
                   <div className="relative">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#C4A47C] transition-colors duration-200 pointer-events-none">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E3383C] transition-colors duration-200 pointer-events-none">
                       <FaLock size={14} />
                     </div>
                     <input
@@ -416,7 +416,7 @@ export default function Login({ defaultRegister = false }) {
                       placeholder="••••••••"
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className="w-full pl-11 pr-12 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#0F172A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#C4A47C] focus:ring-4 focus:ring-[#C4A47C]/15"
+                      className="w-full pl-11 pr-12 py-3.5 bg-[#F8FAFC] border border-gray-200/90 rounded-xl font-semibold text-sm text-[#123A8A] placeholder:text-gray-400 placeholder:font-normal outline-none transition-all duration-200 focus:bg-white focus:border-[#E3383C] focus:ring-4 focus:ring-[#E3383C]/15"
                       required={isRegister}
                     />
                   </div>
@@ -427,19 +427,19 @@ export default function Login({ defaultRegister = false }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-3 py-4 px-6 bg-gradient-to-r from-[#0B1329] via-[#152238] to-[#0B1329] text-white rounded-xl font-extrabold text-xs uppercase tracking-[0.2em] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg shadow-black/30 hover:shadow-[0_12px_28px_rgba(11,19,41,0.4),0_0_25px_rgba(196,164,124,0.2)] border border-[#C4A47C]/40 flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer group"
+              className="w-full mt-3 py-4 px-6 bg-gradient-to-r from-[#0F2F75] via-[#152238] to-[#0F2F75] text-white rounded-xl font-extrabold text-xs uppercase tracking-[0.2em] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg shadow-black/30 hover:shadow-[0_12px_28px_rgba(15, 47, 117,0.4),0_0_25px_rgba(227, 56, 60,0.2)] border border-[#E3383C]/40 flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer group"
             >
               {loading ? (
                 <div className="flex items-center gap-2 text-white">
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-[#C4A47C] rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-[#E3383C] rounded-full animate-spin" />
                   <span>Traitement en cours...</span>
                 </div>
               ) : (
                 <>
-                  <span className="group-hover:text-[#F3E5AB] transition-colors">
+                  <span className="group-hover:text-[#FBD0D1] transition-colors">
                     {isRegister ? "Créer mon compte Privilège" : "Se connecter"}
                   </span>
-                  <span className="w-6 h-6 rounded-full bg-[#C4A47C]/20 border border-[#C4A47C]/50 flex items-center justify-center text-[#C4A47C] group-hover:translate-x-1 group-hover:bg-[#C4A47C] group-hover:text-[#0B1329] transition-all duration-300">
+                  <span className="w-6 h-6 rounded-full bg-[#E3383C]/20 border border-[#E3383C]/50 flex items-center justify-center text-[#E3383C] group-hover:translate-x-1 group-hover:bg-[#E3383C] group-hover:text-white transition-all duration-300">
                     <FaArrowRight size={10} />
                   </span>
                 </>
@@ -449,11 +449,11 @@ export default function Login({ defaultRegister = false }) {
 
           <div className="mt-7 pt-6 border-t border-gray-100 text-center">
             <p className="text-xs text-gray-500 font-medium">
-              {isRegister ? 'Vous disposez déjà d’un compte ?' : 'Première visite chez LocaFès ?'}
+              {isRegister ? 'Vous disposez déjà d’un compte ?' : 'Première visite chez LocaGawa ?'}
               <button
                 type="button"
                 onClick={() => setIsRegister(!isRegister)}
-                className="ml-1.5 text-[#0B1329] font-extrabold hover:text-[#C4A47C] transition-colors underline decoration-[#C4A47C]/50 decoration-2 underline-offset-4 cursor-pointer"
+                className="ml-1.5 text-[#0F2F75] font-extrabold hover:text-[#E3383C] transition-colors underline decoration-[#E3383C]/50 decoration-2 underline-offset-4 cursor-pointer"
               >
                 {isRegister ? 'Se connecter' : 'Créer un compte'}
               </button>
@@ -461,11 +461,11 @@ export default function Login({ defaultRegister = false }) {
           </div>
 
           <div className="mt-5 p-3 rounded-xl bg-[#F8FAFC] border border-gray-200/70 text-center flex items-center justify-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#C4A47C]" />
+            <span className="w-2 h-2 rounded-full bg-[#E3383C]" />
             <p className="text-[11px] text-gray-500">
               Besoin d'aide ? Contactez notre agence au{' '}
-              <a href="tel:+212535621020" className="font-bold text-[#0B1329] hover:text-[#C4A47C] transition-colors">
-                +212 535 62 10 20
+              <a href="tel:+23522000000" className="font-bold text-[#0F2F75] hover:text-[#E3383C] transition-colors">
+                +235 22 00 00 00
               </a>
             </p>
           </div>
@@ -473,7 +473,7 @@ export default function Login({ defaultRegister = false }) {
 
         {/* Mention de bas de page */}
         <p className="mt-6 text-center text-xs text-gray-400/80 font-medium tracking-wide">
-          © {new Date().getFullYear()} LocaFès • Conciergerie Automobile & Location de Prestige à Fès
+          © {new Date().getFullYear()} LocaGawa • Conciergerie Automobile & Location de Prestige à N’Djamena
         </p>
       </div>
     </div>

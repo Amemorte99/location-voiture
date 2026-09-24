@@ -16,7 +16,7 @@ export default function Cars() {
   const [filterFuel, setFilterFuel] = useState("all");
   const [filterGearbox, setFilterGearbox] = useState("all");
   const [sortBy, setSortBy] = useState("default");
-  const [priceRange, setPriceRange] = useState(2000);
+  const [priceRange, setPriceRange] = useState(120000);
   const [viewMode, setViewMode] = useState("grid"); 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -73,7 +73,7 @@ export default function Cars() {
   const activeFilters = [];
   if (filterFuel !== "all") activeFilters.push({ key: 'fuel', label: filterFuel, clear: () => setFilterFuel("all") });
   if (filterGearbox !== "all") activeFilters.push({ key: 'gearbox', label: filterGearbox, clear: () => setFilterGearbox("all") });
-  if (priceRange < 2000) activeFilters.push({ key: 'price', label: `Max ${priceRange} DH`, clear: () => setPriceRange(2000) });
+  if (priceRange < 120000) activeFilters.push({ key: 'price', label: `Max ${priceRange} FCFA`, clear: () => setPriceRange(120000) });
   if (searchTerm) activeFilters.push({ key: 'search', label: `"${searchTerm}"`, clear: () => setSearchTerm("") });
   if (sortBy !== "default") {
     const sortLabels = { "price-asc": "Prix croissant", "price-desc": "Prix décroissant", "year-desc": "Plus récents" };
@@ -85,15 +85,15 @@ export default function Cars() {
     setFilterFuel("all");
     setFilterGearbox("all");
     setSortBy("default");
-    setPriceRange(2000);
+    setPriceRange(120000);
     setDateValue({ startDate: null, endDate: null });
   };
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#F9FAFB]">
       <Helmet>
-        <title>Flotte Automobile | LocaFès - Voitures Premium</title>
-        <meta name="description" content="Découvrez notre large gamme de véhicules premium à Fès. Filtrez par prix, carburant et boîte de vitesse." />
+        <title>Flotte Automobile | LocaGawa - Voitures Premium</title>
+        <meta name="description" content="Découvrez notre large gamme de véhicules premium à N’Djamena. Filtrez par prix, carburant et boîte de vitesse." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -103,15 +103,15 @@ export default function Cars() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full font-bold text-xs uppercase tracking-widest mb-4 border border-[#E8DDD0]"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full font-bold text-xs uppercase tracking-widest mb-4 border border-[#D3E0F4]"
           >
             <FaCar /> Notre Flotte
           </motion.div>
           <h1 className="text-4xl md:text-5xl font-black text-[#111827] mb-4 tracking-tight">
-            Trouvez votre <span className="text-[#C4A47C]">véhicule idéal</span>
+            Trouvez votre <span className="text-[#E3383C]">véhicule idéal</span>
           </h1>
           <p className="text-lg text-[#6B7280] max-w-xl mx-auto font-medium">
-            {loading ? 'Chargement du catalogue...' : `${filteredCars.length} véhicule${filteredCars.length !== 1 ? 's' : ''} disponible${filteredCars.length !== 1 ? 's' : ''} à Fès`}
+            {loading ? 'Chargement du catalogue...' : `${filteredCars.length} véhicule${filteredCars.length !== 1 ? 's' : ''} disponible${filteredCars.length !== 1 ? 's' : ''} à N’Djamena`}
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export default function Cars() {
                 placeholder="Rechercher un véhicule (nom, marque...)"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-11 pr-4 py-4 bg-[#F9FAFB] border border-gray-100 rounded-2xl focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/10 outline-none text-sm font-medium transition-all"
+                className="w-full pl-11 pr-4 py-4 bg-[#F9FAFB] border border-gray-100 rounded-2xl focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/10 outline-none text-sm font-medium transition-all"
               />
               {searchTerm && (
                 <button onClick={() => setSearchTerm("")} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -137,7 +137,7 @@ export default function Cars() {
 
             {}
             <div className="lg:w-80 relative z-30">
-              <div className="border border-gray-100 rounded-2xl overflow-hidden bg-[#F9FAFB] hover:border-[#C4A47C] transition-colors">
+              <div className="border border-gray-100 rounded-2xl overflow-hidden bg-[#F9FAFB] hover:border-[#E3383C] transition-colors">
                 <Datepicker
                   primaryColor={"amber"}
                   value={dateValue}
@@ -153,12 +153,12 @@ export default function Cars() {
             {}
             <button
               onClick={() => setIsFilterOpen(true)}
-              className="lg:w-auto px-6 py-4 bg-[#111827] text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black hover:shadow-xl transition-all text-sm whitespace-nowrap"
+              className="lg:w-auto px-6 py-4 bg-[#0F2F75] text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#0A2463] hover:shadow-xl transition-all text-sm whitespace-nowrap"
             >
               <FaFilter size={12} />
               Filtres
               {activeFilters.length > 0 && (
-                <span className="w-5 h-5 bg-[#C4A47C] text-white rounded-full text-[10px] font-black flex items-center justify-center">{activeFilters.length}</span>
+                <span className="w-5 h-5 bg-[#E3383C] text-white rounded-full text-[10px] font-black flex items-center justify-center">{activeFilters.length}</span>
               )}
             </button>
           </div>
@@ -175,7 +175,7 @@ export default function Cars() {
                 onClick={() => setFilterFuel(fuel)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   filterFuel === fuel
-                    ? 'bg-[#111827] text-white shadow-md shadow-black/10'
+                    ? 'bg-[#0F2F75] text-white shadow-md shadow-black/10'
                     : 'text-[#6B7280] hover:bg-gray-50'
                 }`}
               >
@@ -193,7 +193,7 @@ export default function Cars() {
                 onClick={() => setFilterGearbox(gear)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   filterGearbox === gear
-                    ? 'bg-[#111827] text-white shadow-md shadow-black/10'
+                    ? 'bg-[#0F2F75] text-white shadow-md shadow-black/10'
                     : 'text-[#6B7280] hover:bg-gray-50'
                 }`}
               >
@@ -215,7 +215,7 @@ export default function Cars() {
                 onClick={() => setSortBy(sort.key)}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   sortBy === sort.key
-                    ? 'bg-[#111827] text-white shadow-md'
+                    ? 'bg-[#0F2F75] text-white shadow-md'
                     : 'text-[#6B7280] hover:bg-gray-50'
                 }`}
               >
@@ -228,13 +228,13 @@ export default function Cars() {
           <div className="flex items-center gap-1 bg-white rounded-2xl p-1.5 border border-gray-100 shadow-sm ml-auto">
             <button
               onClick={() => setViewMode("grid")}
-              className={`p-2.5 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-[#111827] text-white' : 'text-gray-400 hover:text-gray-600'}`}
+              className={`p-2.5 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-[#0F2F75] text-white' : 'text-gray-400 hover:text-gray-600'}`}
             >
               <FaThLarge size={14} />
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`p-2.5 rounded-xl transition-all ${viewMode === 'list' ? 'bg-[#111827] text-white' : 'text-gray-400 hover:text-gray-600'}`}
+              className={`p-2.5 rounded-xl transition-all ${viewMode === 'list' ? 'bg-[#0F2F75] text-white' : 'text-gray-400 hover:text-gray-600'}`}
             >
               <FaList size={14} />
             </button>
@@ -258,7 +258,7 @@ export default function Cars() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={f.clear}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F8F5F0] text-[#C4A47C] rounded-full text-xs font-bold border border-[#E8DDD0] hover:bg-[#F0EBE3] transition-all group"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#EEF3FB] text-[#E3383C] rounded-full text-xs font-bold border border-[#D3E0F4] hover:bg-[#E3EBF8] transition-all group"
                 >
                   {f.label}
                   <FaTimes size={8} className="opacity-50 group-hover:opacity-100" />
@@ -281,7 +281,7 @@ export default function Cars() {
               key={filteredCars.length}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-block text-[#C4A47C] text-xl font-black mr-1"
+              className="inline-block text-[#E3383C] text-xl font-black mr-1"
             >
               {filteredCars.length}
             </motion.span>
@@ -296,7 +296,7 @@ export default function Cars() {
               <motion.div
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 onClick={() => setIsFilterOpen(false)}
-                className="fixed inset-0 bg-[#111827]/40 backdrop-blur-sm z-40 cursor-pointer"
+                className="fixed inset-0 bg-[#0F2F75]/40 backdrop-blur-sm z-40 cursor-pointer"
               />
               <motion.div
                 initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
@@ -321,20 +321,20 @@ export default function Cars() {
                       <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#6B7280]">
                         <FaMoneyBillWave size={10} /> Budget Maximum
                       </label>
-                      <span className="text-sm font-black text-[#C4A47C]">{priceRange} DH</span>
+                      <span className="text-sm font-black text-[#E3383C]">{priceRange} FCFA</span>
                     </div>
                     <input
                       type="range"
-                      min="100"
-                      max="2000"
-                      step="50"
+                      min="5000"
+                      max="120000"
+                      step="1000"
                       value={priceRange}
                       onChange={(e) => setPriceRange(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-[#C4A47C]"
+                      className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-[#E3383C]"
                     />
                     <div className="flex justify-between mt-2 text-[10px] font-bold text-gray-400">
-                      <span>100 DH</span>
-                      <span>2000 DH</span>
+                      <span>5 000 FCFA</span>
+                      <span>120 000 FCFA</span>
                     </div>
                   </div>
 
@@ -350,8 +350,8 @@ export default function Cars() {
                           onClick={() => setFilterFuel(fuel)}
                           className={`py-3 rounded-xl text-xs font-bold transition-all border ${
                             filterFuel === fuel
-                              ? 'bg-[#111827] text-white border-[#C4A47C] shadow-lg shadow-black/10'
-                              : 'bg-gray-50 text-[#6B7280] border-gray-100 hover:border-[#C4A47C]'
+                              ? 'bg-[#0F2F75] text-white border-[#E3383C] shadow-lg shadow-black/10'
+                              : 'bg-gray-50 text-[#6B7280] border-gray-100 hover:border-[#E3383C]'
                           }`}
                         >
                           {fuel === "all" ? "Tous" : fuel}
@@ -372,8 +372,8 @@ export default function Cars() {
                           onClick={() => setFilterGearbox(gear)}
                           className={`py-3 rounded-xl text-xs font-bold transition-all border ${
                             filterGearbox === gear
-                              ? 'bg-[#111827] text-white border-[#C4A47C] shadow-lg shadow-black/10'
-                              : 'bg-gray-50 text-[#6B7280] border-gray-100 hover:border-[#C4A47C]'
+                              ? 'bg-[#0F2F75] text-white border-[#E3383C] shadow-lg shadow-black/10'
+                              : 'bg-gray-50 text-[#6B7280] border-gray-100 hover:border-[#E3383C]'
                           }`}
                         >
                           {gear === "all" ? "Toutes" : gear === "Automatique" ? "Auto" : "Manuelle"}
@@ -399,7 +399,7 @@ export default function Cars() {
                           onClick={() => setSortBy(s.key)}
                           className={`py-3 rounded-xl text-xs font-bold transition-all border ${
                             sortBy === s.key
-                              ? 'bg-[#111827] text-white border-[#111827]'
+                              ? 'bg-[#0F2F75] text-white border-[#0F2F75]'
                               : 'bg-gray-50 text-[#6B7280] border-gray-100 hover:border-gray-200'
                           }`}
                         >
@@ -421,7 +421,7 @@ export default function Cars() {
                     )}
                     <button
                       onClick={() => setIsFilterOpen(false)}
-                      className="w-full py-4 bg-[#111827] text-white rounded-2xl font-bold text-sm shadow-lg shadow-black/10 hover:shadow-xl transition-all"
+                      className="w-full py-4 bg-[#0F2F75] text-white rounded-2xl font-bold text-sm shadow-lg shadow-black/10 hover:shadow-xl transition-all"
                     >
                       Voir {filteredCars.length} résultat{filteredCars.length !== 1 ? 's' : ''}
                     </button>
@@ -493,7 +493,7 @@ export default function Cars() {
                               : 'bg-white/95 text-slate-500 border border-slate-200'
                           }`}>
                             <span className={`w-2 h-2 rounded-full ${car.isAvailableNow !== false ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
-                            {car.isAvailableNow !== false ? 'Disponible à Fès' : 'Réservé'}
+                            {car.isAvailableNow !== false ? 'Disponible à N’Djamena' : 'Réservé'}
                           </span>
                         </div>
                       </div>
@@ -502,17 +502,17 @@ export default function Cars() {
                         <div>
                           <div className="flex items-start justify-between mb-3">
                             <div>
-                              <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#C4A47C] transition-colors">{car.name}</h3>
-                              <p className="text-xs font-semibold text-[#8B7355] tracking-wider">{car.brand || 'Gamme Récente'} • Fès Saïss</p>
+                              <h3 className="text-xl font-bold text-[#111827] group-hover:text-[#E3383C] transition-colors">{car.name}</h3>
+                              <p className="text-xs font-semibold text-[#8F1C20] tracking-wider">{car.brand || 'Gamme Récente'} • N’Djamena</p>
                             </div>
                             <span className="px-3 py-1 bg-gray-50 rounded-lg text-[11px] font-semibold text-[#111827] border border-gray-100">
                               {car.gearbox === 'Automatique' ? 'Boîte Auto' : 'Manuelle'}
                             </span>
                           </div>
                           <div className="flex items-center gap-4 text-xs text-[#6B7280] font-medium">
-                            <span className="flex items-center gap-1.5"><FaCalendarAlt className="text-[#C4A47C]" size={11} /> {car.year}</span>
-                            <span className="flex items-center gap-1.5"><FaGasPump className="text-[#C4A47C]" size={11} /> {car.fuel}</span>
-                            <span className="flex items-center gap-1.5"><FaCog className="text-[#C4A47C]" size={11} /> {car.gearbox === 'Automatique' ? 'Auto' : 'Manuelle'}</span>
+                            <span className="flex items-center gap-1.5"><FaCalendarAlt className="text-[#E3383C]" size={11} /> {car.year}</span>
+                            <span className="flex items-center gap-1.5"><FaGasPump className="text-[#E3383C]" size={11} /> {car.fuel}</span>
+                            <span className="flex items-center gap-1.5"><FaCog className="text-[#E3383C]" size={11} /> {car.gearbox === 'Automatique' ? 'Auto' : 'Manuelle'}</span>
                           </div>
                         </div>
 
@@ -520,11 +520,11 @@ export default function Cars() {
                           <div>
                             <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">À partir de</p>
                             <p className="text-2xl font-black text-[#111827] leading-none">
-                              {car.price} <span className="text-xs font-bold text-[#C4A47C]">DH / jour</span>
+                              {Number(car.price || 0).toLocaleString('fr-FR')} <span className="text-xs font-bold text-[#E3383C]">FCFA / jour</span>
                             </p>
                             <p className="text-[10px] text-emerald-600 font-medium mt-1">Assurance tous risques incluse</p>
                           </div>
-                          <span className="flex items-center gap-2 px-5 py-2.5 bg-[#111827] text-white rounded-xl font-bold text-xs hover:bg-[#C4A47C] hover:text-[#111827] hover:shadow-lg transition-all">
+                          <span className="flex items-center gap-2 px-5 py-2.5 bg-[#0F2F75] text-white rounded-xl font-bold text-xs hover:bg-[#E3383C] hover:text-white hover:shadow-lg transition-all">
                             Réserver <FaArrowRight size={10} />
                           </span>
                         </div>
@@ -540,15 +540,15 @@ export default function Cars() {
               animate={{ opacity: 1 }}
               className="text-center py-24 bg-white rounded-[32px] border border-dashed border-gray-200"
             >
-              <div className="w-20 h-20 bg-[#F8F5F0] rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <FaCar className="text-[#C4A47C]/40" size={32} />
+              <div className="w-20 h-20 bg-[#EEF3FB] rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <FaCar className="text-[#E3383C]/40" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-[#111827] mb-2">Aucun véhicule trouvé</h3>
               <p className="text-[#6B7280] mb-8">Essayez de modifier vos filtres ou vos dates de recherche.</p>
               {activeFilters.length > 0 && (
                 <button
                   onClick={clearAll}
-                  className="px-8 py-4 bg-[#111827] text-white rounded-2xl font-bold hover:shadow-lg transition-all"
+                  className="px-8 py-4 bg-[#0F2F75] text-white rounded-2xl font-bold hover:shadow-lg transition-all"
                 >
                   Réinitialiser les filtres
                 </button>

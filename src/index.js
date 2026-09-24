@@ -22,7 +22,7 @@ root.render(
           },
           success: {
             iconTheme: {
-              primary: '#C4A47C',
+              primary: '#E3383C',
               secondary: '#fff',
             },
           },

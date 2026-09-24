@@ -1,6 +1,6 @@
 {
-  "short_name": "LocaFès",
-  "name": "LocaFès - Location de Voitures à Fès",
+  "short_name": "LocaGawa",
+  "name": "LocaGawa - Location de Voitures à N’Djamena",
   "icons": [
     {
       "src": "favicon.ico",
@@ -25,6 +25,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#111827",
-  "background_color": "#111827"
+  "theme_color": "#0F2F75",
+  "background_color": "#0F2F75"
 }

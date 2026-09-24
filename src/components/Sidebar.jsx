@@ -60,7 +60,7 @@ export default function Sidebar({
     <>
       {/* Voile sombre pour mobile */}
       <div
-        className={`fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-[#0F2F75]/60 backdrop-blur-sm z-[60] lg:hidden transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
@@ -81,12 +81,12 @@ export default function Sidebar({
               : 'p-6 pb-8 flex items-center justify-between'
           }`}
         >
-          <Link to="/" className="flex items-center gap-3 group" title="LocaFès - Accueil">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shadow-md text-[#C4A47C] group-hover:scale-105 transition-transform shrink-0">
+          <Link to="/" className="flex items-center gap-3 group" title="LocaGawa - Accueil">
+            <div className="w-10 h-10 rounded-xl bg-[#0F2F75] flex items-center justify-center shadow-md text-[#E3383C] group-hover:scale-105 transition-transform shrink-0">
               <FaCar size={18} />
             </div>
             <span className={`text-xl font-black uppercase tracking-tighter text-slate-900 ${effectiveCollapsed ? 'lg:hidden' : ''}`}>
-              LOCA<span className="text-[#C4A47C]">FÈS</span>
+              LOCA<span className="text-[#E3383C]">GAWA</span>
             </span>
           </Link>
 
@@ -134,12 +134,12 @@ export default function Sidebar({
                       : ''
                   } ${
                     isActive
-                      ? 'bg-slate-900 text-white shadow-md shadow-slate-900/10'
-                      : 'text-slate-500 hover:text-[#C4A47C] hover:bg-slate-50'
+                      ? 'bg-[#0F2F75] text-white shadow-md shadow-slate-900/10'
+                      : 'text-slate-500 hover:text-[#E3383C] hover:bg-slate-50'
                   }`}
                   title={effectiveCollapsed ? item.label : undefined}
                 >
-                  <span className={`text-lg transition-transform duration-200 shrink-0 ${isActive ? 'scale-110 text-[#C4A47C]' : 'group-hover:scale-110'}`}>
+                  <span className={`text-lg transition-transform duration-200 shrink-0 ${isActive ? 'scale-110 text-[#E3383C]' : 'group-hover:scale-110'}`}>
                     {item.icon}
                   </span>
 
@@ -155,7 +155,7 @@ export default function Sidebar({
                         ? 'bg-rose-100 text-rose-600 animate-pulse'
                         : item.id === 'messages'
                         ? 'bg-emerald-100 text-emerald-700 animate-pulse'
-                        : 'bg-slate-100 text-[#C4A47C]'
+                        : 'bg-slate-100 text-[#E3383C]'
                     }`}>
                       {item.badge}
                     </span>
@@ -168,7 +168,7 @@ export default function Sidebar({
                         ? 'bg-rose-500 text-white animate-pulse'
                         : item.id === 'messages'
                         ? 'bg-emerald-500 text-white animate-pulse'
-                        : 'bg-[#C4A47C] text-slate-900'
+                        : 'bg-[#E3383C] text-slate-900'
                     }`}>
                       {item.badge}
                     </span>
@@ -177,7 +177,7 @@ export default function Sidebar({
 
                 {/* Tooltip flottant au survol en mode réduit */}
                 {effectiveCollapsed && (
-                  <div className="hidden lg:flex absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-xl shadow-xl whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 items-center gap-2">
+                  <div className="hidden lg:flex absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[#0F2F75] text-white text-xs font-bold rounded-xl shadow-xl whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 items-center gap-2">
                     <span>{item.label}</span>
                     {item.badge > 0 && (
                       <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[10px]">
@@ -197,7 +197,7 @@ export default function Sidebar({
             <p className="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 mb-2.5">Résumé</p>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: 'Revenus', val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} DH` },
+                { label: 'Revenus', val: `${(stats.totalRevenue || 0).toLocaleString('fr-FR')} FCFA` },
                 { label: 'Réservations', val: stats.totalBookings || 0 },
               ].map(({ label, val }) => (
                 <div key={label}>

@@ -38,11 +38,11 @@ const STATUS_CONFIG = {
 };
 
 const POPULAR_ZONES = [
-  'Spécialiste Aéroport Fès-Saïss',
-  'Agence Quartier Atlas & Centre',
-  'Hôtels & Riads (Médina)',
-  'Gare Ferroviaire Fès-Ville',
-  'Toutes zones (Fès & Région)',
+  'Spécialiste Aéroport de N’Djamena',
+  'Agence Centre-Ville',
+  'Hôtels & Domiciles',
+  'Gare Routière de N’Djamena',
+  'Toutes zones (N’Djamena & Région)',
 ];
 
 export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
@@ -213,7 +213,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
           <button
             type="button"
             onClick={openCreateModal}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#111827] text-white rounded-xl font-bold text-xs hover:bg-[#C4A47C] hover:text-[#111827] transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#0F2F75] text-white rounded-xl font-bold text-xs hover:bg-[#E3383C] hover:text-white transition-all shadow-sm cursor-pointer"
           >
             <FaPlus size={11} />
             <span>Nouveau Chauffeur</span>
@@ -303,7 +303,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
               placeholder="Rechercher par nom, téléphone, permis, zone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-8 py-2.5 bg-gray-50/80 border border-gray-200 rounded-xl text-xs font-medium text-[#111827] placeholder:text-gray-400 outline-none focus:bg-white focus:border-[#C4A47C] transition-all"
+              className="w-full pl-10 pr-8 py-2.5 bg-gray-50/80 border border-gray-200 rounded-xl text-xs font-medium text-[#111827] placeholder:text-gray-400 outline-none focus:bg-white focus:border-[#E3383C] transition-all"
             />
             {search && (
               <button
@@ -321,7 +321,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
             <select
               value={selectedZone}
               onChange={(e) => setSelectedZone(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-gray-50/80 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 outline-none focus:bg-white focus:border-[#C4A47C] transition-all cursor-pointer"
+              className="w-full px-3.5 py-2.5 bg-gray-50/80 border border-gray-200 rounded-xl text-xs font-medium text-gray-700 outline-none focus:bg-white focus:border-[#E3383C] transition-all cursor-pointer"
             >
               <option value="all">Toutes les zones d'intervention</option>
               {POPULAR_ZONES.map((z, idx) => (
@@ -348,7 +348,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   onClick={() => setSelectedStatus(tab.id)}
                   className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                     isActive
-                      ? 'bg-[#111827] text-white shadow-xs'
+                      ? 'bg-[#0F2F75] text-white shadow-xs'
                       : 'text-gray-600 hover:text-[#111827] hover:bg-gray-100'
                   }`}
                 >
@@ -372,7 +372,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                 setSelectedStatus('all');
                 setSelectedZone('all');
               }}
-              className="text-xs text-[#C4A47C] hover:text-[#b08f65] font-semibold cursor-pointer py-1"
+              className="text-xs text-[#E3383C] hover:text-[#b08f65] font-semibold cursor-pointer py-1"
             >
               Réinitialiser les filtres
             </button>
@@ -396,7 +396,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
           <button
             type="button"
             onClick={openCreateModal}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0F172A] text-white rounded-xl text-xs font-bold hover:bg-[#C4A47C] hover:text-[#0F172A] transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#123A8A] text-white rounded-xl text-xs font-bold hover:bg-[#E3383C] hover:text-[#123A8A] transition-all shadow-sm cursor-pointer"
           >
             <FaPlus size={10} />
             Ajouter un chauffeur
@@ -430,7 +430,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   {/* Profil principal & Statut */}
                   <div className="flex items-start justify-between gap-3 mb-4">
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-11 h-11 rounded-xl bg-[#111827] text-[#C4A47C] font-black text-sm flex items-center justify-center shadow-xs border border-gray-800 shrink-0">
+                      <div className="w-11 h-11 rounded-xl bg-[#0F2F75] text-[#E3383C] font-black text-sm flex items-center justify-center shadow-xs border border-gray-800 shrink-0">
                         {initials}
                       </div>
                       <div className="min-w-0">
@@ -462,7 +462,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   <div className="bg-gray-50/80 rounded-xl p-3.5 space-y-2.5 border border-gray-100 text-xs mb-4">
                     <div className="flex items-center justify-between gap-2">
                       <span className="flex items-center gap-1.5 text-gray-400 font-medium shrink-0">
-                        <FaMapMarkerAlt size={11} className="text-[#C4A47C]" /> Zone
+                        <FaMapMarkerAlt size={11} className="text-[#E3383C]" /> Zone
                       </span>
                       <span className="font-semibold text-gray-800 truncate text-right">
                         {displayZone}
@@ -484,7 +484,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                       </span>
                       <a
                         href={`tel:${driver.phone}`}
-                        className="font-bold text-[#111827] hover:text-[#C4A47C] transition-colors"
+                        className="font-bold text-[#111827] hover:text-[#E3383C] transition-colors"
                       >
                         {driver.phone}
                       </a>
@@ -493,7 +493,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
 
                   {/* Bouton Ordre de Mission WhatsApp (propre sur une seule ligne) */}
                   <a
-                    href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaF%C3%A8s.`}
+                    href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaGawa.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200/80 text-xs font-bold transition-all shadow-xs active:scale-95 mb-1"
@@ -565,7 +565,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                     <tr key={driver._id} className="hover:bg-slate-50/60 transition-colors">
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-[#0F172A] text-[#C4A47C] font-bold text-xs flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 rounded-xl bg-[#123A8A] text-[#E3383C] font-bold text-xs flex items-center justify-center shrink-0">
                             {initials}
                           </div>
                           <div>
@@ -591,7 +591,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
 
                       <td className="py-4 px-6">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200/60 font-semibold text-slate-700 text-xs">
-                          <FaMapMarkerAlt size={11} className="text-[#C4A47C]" />
+                          <FaMapMarkerAlt size={11} className="text-[#E3383C]" />
                           {displayZone}
                         </span>
                       </td>
@@ -599,7 +599,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                       <td className="py-4 px-6">
                         <a
                           href={`tel:${driver.phone}`}
-                          className="font-bold text-slate-800 hover:text-[#C4A47C] transition-colors"
+                          className="font-bold text-slate-800 hover:text-[#E3383C] transition-colors"
                         >
                           {driver.phone}
                         </a>
@@ -611,7 +611,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
 
                       <td className="py-4 px-6 text-center">
                         <a
-                          href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaF%C3%A8s.`}
+                          href={`https://wa.me/${waPhone}?text=Bonjour%20${encodeURIComponent(driver.name)},%20ordre%20de%20mission%20LocaGawa.`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 font-bold text-xs transition-all"
@@ -653,7 +653,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
       {/* 5. MODALE AJOUT / MODIFICATION SPACIEUSE */}
       <AnimatePresence>
         {modalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0F2F75]/60 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -670,7 +670,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
               </button>
 
               <div className="flex items-center gap-3.5 mb-7">
-                <div className="w-12 h-12 rounded-2xl bg-slate-900 text-[#C4A47C] flex items-center justify-center font-bold shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#0F2F75] text-[#E3383C] flex items-center justify-center font-bold shadow-xs">
                   <FaUserTie size={18} />
                 </div>
                 <div>
@@ -691,10 +691,10 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   <input
                     type="text"
                     required
-                    placeholder="Ex: Karim Alami"
+                    placeholder="Ex: Idriss Moussa"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                   />
                 </div>
 
@@ -706,10 +706,10 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                     <input
                       type="text"
                       required
-                      placeholder="Ex: 06 61 48 92 15"
+                      placeholder="Ex: 66 00 00 01"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
 
@@ -722,7 +722,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                       placeholder="Identique au tél si vide"
                       value={formData.whatsapp}
                       onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
                 </div>
@@ -734,7 +734,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   <select
                     value={formData.zone}
                     onChange={(e) => setFormData({ ...formData, zone: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] transition-colors cursor-pointer"
+                    className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] transition-colors cursor-pointer"
                   >
                     {POPULAR_ZONES.map((zone, idx) => (
                       <option key={idx} value={zone}>
@@ -752,7 +752,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                     <select
                       value={formData.status}
                       onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:bg-white focus:border-[#C4A47C] transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:bg-white focus:border-[#E3383C] transition-colors cursor-pointer"
                     >
                       <option value="disponible">Disponible</option>
                       <option value="en_mission">En mission</option>
@@ -769,7 +769,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                       placeholder="Ex: 23/184920"
                       value={formData.licenseNumber}
                       onChange={(e) => setFormData({ ...formData, licenseNumber: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#C4A47C] focus:ring-2 focus:ring-[#C4A47C]/15 transition-all"
+                      className="w-full px-4 py-3 bg-slate-50/70 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-[#E3383C] focus:ring-2 focus:ring-[#E3383C]/15 transition-all"
                     />
                   </div>
                 </div>
@@ -785,7 +785,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="px-6 py-3.5 bg-slate-900 hover:bg-black text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer disabled:opacity-50"
+                    className="px-6 py-3.5 bg-[#0F2F75] hover:bg-[#0A2463] text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs cursor-pointer disabled:opacity-50"
                   >
                     {submitting ? 'Enregistrement...' : editingDriver ? 'Mettre à jour' : 'Ajouter le Chauffeur'}
                   </button>
@@ -799,7 +799,7 @@ export default function DriversTab({ drivers = [], stats = null, onRefresh }) {
       {/* 6. MODALE DE SUPPRESSION SÉCURISÉE */}
       <AnimatePresence>
         {deleteConfirmDriver && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0F2F75]/60 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}

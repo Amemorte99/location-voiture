@@ -17,7 +17,7 @@ export default function BookingSuccess() {
   const totalPrice = searchParams.get('totalPrice');
   const fullName = searchParams.get('fullName');
   const phone = searchParams.get('phone');
-  const pickupLocation = searchParams.get('pickupLocation') || 'Aéroport Fès-Saïss (Terminal Arrivées)';
+  const pickupLocation = searchParams.get('pickupLocation') || 'Aéroport de N’Djamena (Terminal Arrivées)';
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -44,12 +44,12 @@ export default function BookingSuccess() {
   };
 
   const refCode = bookingId ? `LF-${bookingId.slice(-6).toUpperCase()}` : 'LF-WEB';
-  const waMsg = `Bonjour LocaFès, je viens de finaliser ma réservation pour ${car?.name || 'mon véhicule'} du ${startDate || ''} au ${endDate || ''}. Prise en charge : ${pickupLocation}. Réf : ${refCode}. Pouvez-vous me confirmer la bonne prise en compte ?`;
-  const waUrl = `https://wa.me/212668898245?text=${encodeURIComponent(waMsg)}`;
+  const waMsg = `Bonjour LocaGawa, je viens de finaliser ma réservation pour ${car?.name || 'mon véhicule'} du ${startDate || ''} au ${endDate || ''}. Prise en charge : ${pickupLocation}. Réf : ${refCode}. Pouvez-vous me confirmer la bonne prise en compte ?`;
+  const waUrl = `https://wa.me/23566000000?text=${encodeURIComponent(waMsg)}`;
 
   return (
     <>
-    <Helmet><title>Réservation Confirmée | LocaFès</title></Helmet>
+    <Helmet><title>Réservation Confirmée | LocaGawa</title></Helmet>
     <div className="min-h-screen flex items-center justify-center px-6 py-24 bg-[#F9FAFB]">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-2xl z-10">
         <div className="bg-white rounded-[40px] p-8 md:p-14 text-center border border-gray-100 shadow-xl shadow-gray-200/50">
@@ -63,25 +63,25 @@ export default function BookingSuccess() {
           </h1>
 
           <p className="text-sm text-[#6B7280] max-w-md mx-auto mb-8 font-medium leading-relaxed">
-            Votre dossier est validé sous la référence <span className="font-extrabold text-[#111827]">{refCode}</span>. Notre équipe prépare votre véhicule à Fès.
+            Votre dossier est validé sous la référence <span className="font-extrabold text-[#111827]">{refCode}</span>. Notre équipe prépare votre véhicule à N’Djamena.
           </p>
 
           {/* Récapitulatif Prise en charge */}
-          <div className="bg-[#F8F5F0] rounded-2xl p-5 border border-[#E8DDD0] text-left mb-8 space-y-2">
+          <div className="bg-[#EEF3FB] rounded-2xl p-5 border border-[#D3E0F4] text-left mb-8 space-y-2">
             <div className="flex items-center justify-between text-xs font-bold text-[#111827]">
               <span className="flex items-center gap-2">
-                <FaCar className="text-[#C4A47C]" />
+                <FaCar className="text-[#E3383C]" />
                 {car?.name || 'Véhicule sélectionné'}
               </span>
-              <span className="text-sm font-black text-[#C4A47C]">{Number(totalPrice || 0).toLocaleString('fr-FR')} DH</span>
+              <span className="text-sm font-black text-[#E3383C]">{Number(totalPrice || 0).toLocaleString('fr-FR')} FCFA</span>
             </div>
             <div className="flex items-center gap-2 text-xs font-medium text-[#6B7280] pt-1">
-              <FaMapMarkerAlt className="text-[#C4A47C] shrink-0" size={13} />
+              <FaMapMarkerAlt className="text-[#E3383C] shrink-0" size={13} />
               <span>{pickupLocation}</span>
             </div>
             {startDate && endDate && (
               <div className="flex items-center gap-2 text-xs font-medium text-[#6B7280]">
-                <FaCalendarAlt className="text-[#C4A47C] shrink-0" size={12} />
+                <FaCalendarAlt className="text-[#E3383C] shrink-0" size={12} />
                 <span>Du {startDate} au {endDate}</span>
               </div>
             )}
@@ -94,19 +94,19 @@ export default function BookingSuccess() {
             </h4>
             <div className="grid sm:grid-cols-2 gap-3 text-xs font-semibold text-[#4B5563]">
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaIdCard className="text-[#C4A47C]" size={14} />
+                <FaIdCard className="text-[#E3383C]" size={14} />
                 <span>Permis de conduire valide (2 ans min.)</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaIdCard className="text-[#C4A47C]" size={14} />
+                <FaIdCard className="text-[#E3383C]" size={14} />
                 <span>Pièce d'identité ou passeport</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaMapMarkerAlt className="text-[#C4A47C]" size={14} />
+                <FaMapMarkerAlt className="text-[#E3383C]" size={14} />
                 <span>Remise sur le lieu convenu</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-gray-100">
-                <FaClock className="text-[#C4A47C]" size={14} />
+                <FaClock className="text-[#E3383C]" size={14} />
                 <span>Assistance technique 7j/7</span>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function BookingSuccess() {
             <div className="grid sm:grid-cols-2 gap-3">
               <button 
                 onClick={handleDownload}
-                className="px-6 py-3.5 bg-[#111827] text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#C4A47C] transition-all"
+                className="px-6 py-3.5 bg-[#0F2F75] text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#E3383C] transition-all"
               >
                 <FaDownload size={13} /> Facture PDF
               </button>
